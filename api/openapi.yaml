@@ -1,0 +1,5377 @@
+openapi: 3.0.0
+info:
+  title: ""
+  version: ""
+servers:
+- url: /
+paths:
+  /contracts:
+    get:
+      parameters:
+      - explode: true
+        in: query
+        name: roleCurrency
+        required: false
+        schema:
+          items:
+            description: The hex-encoded minting policy ID for a native Cardano token
+            pattern: "^[a-fA-F0-9]*$"
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: tag
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: partyAddress
+        required: false
+        schema:
+          items:
+            description: A cardano address
+            example: addr1w94f8ywk4fg672xasahtk4t9k6w3aql943uxz5rt62d4dvq8evxaf
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: partyRole
+        required: false
+        schema:
+          items:
+            description: A minting policy ID and a token name identifying a specific
+              asset type. Encoded as policyId.tokenName.
+            pattern: "^[a-fA-F0-9]*\\..*$"
+            type: string
+          type: array
+        style: form
+      - explode: false
+        in: header
+        name: Range
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "206":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ListObject_ContractHeader'
+          description: ""
+          headers:
+            Accept-Ranges:
+              explode: false
+              schema:
+                items:
+                  enum:
+                  - contractId
+                  type: string
+                type: array
+              style: simple
+            Content-Range:
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Next-Range:
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Total-Count:
+              explode: false
+              schema:
+                maximum: 9223372036854775807
+                minimum: -9223372036854775808
+                type: integer
+              style: simple
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+        "400":
+          description: Invalid `Range` or `partyRole` or `partyAddress` or `tag` or
+            `roleCurrency`
+    post:
+      parameters:
+      - explode: false
+        in: header
+        name: X-Stake-Address
+        required: false
+        schema:
+          description: A cardano stake address
+          example: stake1ux7lyy9nhecm033qsmel9awnr22up6jadlzkrxufr78w82gsfsn0d
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: X-Change-Address
+        required: true
+        schema:
+          description: A cardano address
+          example: addr1w94f8ywk4fg672xasahtk4t9k6w3aql943uxz5rt62d4dvq8evxaf
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: X-Address
+        required: false
+        schema:
+          description: A comma-separated list of values
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: X-Collateral-UTxO
+        required: false
+        schema:
+          description: A comma-separated list of values
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/PostContractsRequest'
+      responses:
+        "201":
+          content:
+            application/vendor.iog.marlowe-runtime.contract-tx-json:
+              schema:
+                $ref: '#/components/schemas/_contracts_post_201_response'
+          description: ""
+          headers:
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+        "400":
+          description: Invalid `X-Collateral-UTxO` or `X-Address` or `X-Change-Address`
+            or `X-Stake-Address` or `body`
+  /contracts/{contractId}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: contractId
+        required: true
+        schema:
+          description: A reference to a transaction output with a transaction ID and
+            index. The value must be URL encoded by replacing the '#' character with
+            %23.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7%231
+          pattern: "^[a-fA-F0-9]{64}%23[0-9]+$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/_contracts__contractId__get_200_response'
+          description: ""
+          headers:
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+        "404":
+          description: '`contractId` not found'
+    put:
+      parameters:
+      - explode: false
+        in: path
+        name: contractId
+        required: true
+        schema:
+          description: A reference to a transaction output with a transaction ID and
+            index. The value must be URL encoded by replacing the '#' character with
+            %23.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7%231
+          pattern: "^[a-fA-F0-9]{64}%23[0-9]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/TextEnvelope'
+      responses:
+        "202":
+          content:
+            application/json;charset=utf-8: {}
+          description: ""
+          headers:
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+        "400":
+          description: Invalid `body`
+        "404":
+          description: '`contractId` not found'
+  /contracts/{contractId}/next:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: contractId
+        required: true
+        schema:
+          description: A reference to a transaction output with a transaction ID and
+            index. The value must be URL encoded by replacing the '#' character with
+            %23.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7%231
+          pattern: "^[a-fA-F0-9]{64}%23[0-9]+$"
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: validityStart
+        required: true
+        schema:
+          format: yyyy-mm-ddThh:MM:ssZ
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: validityEnd
+        required: true
+        schema:
+          format: yyyy-mm-ddThh:MM:ssZ
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: party
+        required: false
+        schema:
+          items:
+            description: Party (A role name or an Address)
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Next'
+          description: ""
+          headers:
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+        "400":
+          description: Invalid `party` or `validityEnd` or `validityStart`
+        "404":
+          description: '`contractId` not found'
+  /contracts/{contractId}/transactions:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: contractId
+        required: true
+        schema:
+          description: A reference to a transaction output with a transaction ID and
+            index. The value must be URL encoded by replacing the '#' character with
+            %23.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7%231
+          pattern: "^[a-fA-F0-9]{64}%23[0-9]+$"
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: Range
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "206":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ListObject_TxHeader'
+          description: ""
+          headers:
+            Accept-Ranges:
+              explode: false
+              schema:
+                items:
+                  enum:
+                  - transactionId
+                  type: string
+                type: array
+              style: simple
+            Content-Range:
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Next-Range:
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Total-Count:
+              explode: false
+              schema:
+                maximum: 9223372036854775807
+                minimum: -9223372036854775808
+                type: integer
+              style: simple
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+        "400":
+          description: Invalid `Range`
+        "404":
+          description: '`contractId` not found'
+    post:
+      parameters:
+      - explode: false
+        in: path
+        name: contractId
+        required: true
+        schema:
+          description: A reference to a transaction output with a transaction ID and
+            index. The value must be URL encoded by replacing the '#' character with
+            %23.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7%231
+          pattern: "^[a-fA-F0-9]{64}%23[0-9]+$"
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: X-Change-Address
+        required: true
+        schema:
+          description: A cardano address
+          example: addr1w94f8ywk4fg672xasahtk4t9k6w3aql943uxz5rt62d4dvq8evxaf
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: X-Address
+        required: false
+        schema:
+          description: A comma-separated list of values
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: X-Collateral-UTxO
+        required: false
+        schema:
+          description: A comma-separated list of values
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/PostTransactionsRequest'
+      responses:
+        "201":
+          content:
+            application/vendor.iog.marlowe-runtime.apply-inputs-tx-json:
+              schema:
+                $ref: '#/components/schemas/_contracts__contractId__transactions_post_201_response'
+          description: ""
+          headers:
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+        "400":
+          description: Invalid `X-Collateral-UTxO` or `X-Address` or `X-Change-Address`
+            or `body`
+        "404":
+          description: '`contractId` not found'
+  /contracts/{contractId}/transactions/{transactionId}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: contractId
+        required: true
+        schema:
+          description: A reference to a transaction output with a transaction ID and
+            index. The value must be URL encoded by replacing the '#' character with
+            %23.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7%231
+          pattern: "^[a-fA-F0-9]{64}%23[0-9]+$"
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: transactionId
+        required: true
+        schema:
+          description: The hex-encoded identifier of a Cardano transaction
+          pattern: "^[a-fA-F0-9]{64}$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/_contracts__contractId__transactions__transactionId__get_200_response'
+          description: ""
+          headers:
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+        "404":
+          description: '`contractId` or `transactionId` not found'
+    put:
+      parameters:
+      - explode: false
+        in: path
+        name: contractId
+        required: true
+        schema:
+          description: A reference to a transaction output with a transaction ID and
+            index. The value must be URL encoded by replacing the '#' character with
+            %23.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7%231
+          pattern: "^[a-fA-F0-9]{64}%23[0-9]+$"
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: transactionId
+        required: true
+        schema:
+          description: The hex-encoded identifier of a Cardano transaction
+          pattern: "^[a-fA-F0-9]{64}$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/TextEnvelope'
+      responses:
+        "202":
+          content:
+            application/json;charset=utf-8: {}
+          description: ""
+          headers:
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+        "400":
+          description: Invalid `body`
+        "404":
+          description: '`contractId` or `transactionId` not found'
+  /contracts/sources:
+    post:
+      parameters:
+      - explode: true
+        in: query
+        name: main
+        required: true
+        schema:
+          description: An arbitrary text identifier for an object in a Marlowe object
+            bundle.
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectBundle'
+          application/json;charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/ObjectBundle'
+      responses:
+        "200":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/PostContractSourceResponse'
+          description: ""
+          headers:
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+        "400":
+          description: Invalid `body` or `main`
+  /contracts/sources/{contractSourceId}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: contractSourceId
+        required: true
+        schema:
+          description: The hex-encoded identifier of a Marlowe contract source
+          pattern: "^[a-fA-F0-9]{64}$"
+          type: string
+        style: simple
+      - allowEmptyValue: true
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Contract'
+          description: ""
+          headers:
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+        "400":
+          description: Invalid `expand`
+        "404":
+          description: '`contractSourceId` not found'
+  /contracts/sources/{contractSourceId}/adjacency:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: contractSourceId
+        required: true
+        schema:
+          description: The hex-encoded identifier of a Marlowe contract source
+          pattern: "^[a-fA-F0-9]{64}$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ListObject_ContractSourceId'
+          description: ""
+          headers:
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+        "404":
+          description: '`contractSourceId` not found'
+  /contracts/sources/{contractSourceId}/closure:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: contractSourceId
+        required: true
+        schema:
+          description: The hex-encoded identifier of a Marlowe contract source
+          pattern: "^[a-fA-F0-9]{64}$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ListObject_ContractSourceId'
+          description: ""
+          headers:
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+        "404":
+          description: '`contractSourceId` not found'
+  /withdrawals:
+    get:
+      parameters:
+      - explode: true
+        in: query
+        name: roleCurrency
+        required: false
+        schema:
+          items:
+            description: The hex-encoded minting policy ID for a native Cardano token
+            pattern: "^[a-fA-F0-9]*$"
+            type: string
+          type: array
+        style: form
+      - explode: false
+        in: header
+        name: Range
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "206":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ListObject_WithdrawalHeader'
+          description: ""
+          headers:
+            Accept-Ranges:
+              explode: false
+              schema:
+                items:
+                  enum:
+                  - withdrawalId
+                  type: string
+                type: array
+              style: simple
+            Content-Range:
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Next-Range:
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Total-Count:
+              explode: false
+              schema:
+                maximum: 9223372036854775807
+                minimum: -9223372036854775808
+                type: integer
+              style: simple
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+        "400":
+          description: Invalid `Range` or `roleCurrency`
+    post:
+      parameters:
+      - explode: false
+        in: header
+        name: X-Change-Address
+        required: true
+        schema:
+          description: A cardano address
+          example: addr1w94f8ywk4fg672xasahtk4t9k6w3aql943uxz5rt62d4dvq8evxaf
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: X-Address
+        required: false
+        schema:
+          description: A comma-separated list of values
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: X-Collateral-UTxO
+        required: false
+        schema:
+          description: A comma-separated list of values
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/PostWithdrawalsRequest'
+      responses:
+        "201":
+          content:
+            application/vendor.iog.marlowe-runtime.withdraw-tx-json:
+              schema:
+                $ref: '#/components/schemas/_withdrawals_post_201_response'
+          description: ""
+          headers:
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+        "400":
+          description: Invalid `X-Collateral-UTxO` or `X-Address` or `X-Change-Address`
+            or `body`
+  /withdrawals/{withdrawalId}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: withdrawalId
+        required: true
+        schema:
+          description: The hex-encoded identifier of a Cardano transaction
+          pattern: "^[a-fA-F0-9]{64}$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Withdrawal'
+          description: ""
+          headers:
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+        "404":
+          description: '`withdrawalId` not found'
+    put:
+      parameters:
+      - explode: false
+        in: path
+        name: withdrawalId
+        required: true
+        schema:
+          description: The hex-encoded identifier of a Cardano transaction
+          pattern: "^[a-fA-F0-9]{64}$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/TextEnvelope'
+      responses:
+        "202":
+          content:
+            application/json;charset=utf-8: {}
+          description: ""
+          headers:
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+        "400":
+          description: Invalid `body`
+        "404":
+          description: '`withdrawalId` not found'
+  /payouts:
+    get:
+      parameters:
+      - explode: true
+        in: query
+        name: contractId
+        required: false
+        schema:
+          items:
+            description: A reference to a transaction output with a transaction ID
+              and index. The value must be URL encoded by replacing the '#' character
+              with %23.
+            example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7%231
+            pattern: "^[a-fA-F0-9]{64}%23[0-9]+$"
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: roleToken
+        required: false
+        schema:
+          items:
+            description: A minting policy ID and a token name identifying a specific
+              asset type. Encoded as policyId.tokenName.
+            pattern: "^[a-fA-F0-9]*\\..*$"
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          description: "The status of a payout. Either it is available to be withdrawn,\
+            \ or it has already been withdrawn."
+          enum:
+          - available
+          - withdrawn
+          type: string
+        style: form
+      - explode: false
+        in: header
+        name: Range
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "206":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ListObject_PayoutHeader'
+          description: ""
+          headers:
+            Accept-Ranges:
+              explode: false
+              schema:
+                items:
+                  enum:
+                  - payoutId
+                  type: string
+                type: array
+              style: simple
+            Content-Range:
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Next-Range:
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Total-Count:
+              explode: false
+              schema:
+                maximum: 9223372036854775807
+                minimum: -9223372036854775808
+                type: integer
+              style: simple
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+        "400":
+          description: Invalid `Range` or `status` or `roleToken` or `contractId`
+  /payouts/{payoutId}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: payoutId
+        required: true
+        schema:
+          description: A reference to a transaction output with a transaction ID and
+            index. The value must be URL encoded by replacing the '#' character with
+            %23.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7%231
+          pattern: "^[a-fA-F0-9]{64}%23[0-9]+$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/_payouts__payoutId__get_200_response'
+          description: ""
+          headers:
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+        "404":
+          description: '`payoutId` not found'
+  /healthcheck:
+    get:
+      responses:
+        "200":
+          content:
+            application/json;charset=utf-8: {}
+          description: ""
+          headers:
+            X-Network-Id:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - type: string
+                - type: integer
+              style: simple
+            X-Node-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Chain-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Tip:
+              explode: false
+              schema:
+                description: The latest known point in the chain on a peer.
+                oneOf:
+                - properties:
+                    genesisTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+                - properties:
+                    blockHeader:
+                      $ref: '#/components/schemas/BlockHeader'
+                    slotTimeUTC:
+                      format: yyyy-mm-ddThh:MM:ssZ
+                      type: string
+                  required:
+                  - genesisTimeUTC
+                  type: object
+              style: simple
+            X-Runtime-Version:
+              explode: false
+              schema:
+                pattern: ^\d+(\.\d+)*$
+                type: string
+              style: simple
+components:
+  schemas:
+    ListObject_ContractHeader:
+      example:
+        results:
+        - resource:
+            metadata:
+              key: null
+            continuations: continuations
+            contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+            block:
+              blockNo: 738633633822310400
+              blockHeaderHash: blockHeaderHash
+              slotNo: 5559347081229897728
+            roleTokenMintingPolicyId: roleTokenMintingPolicyId
+            version: null
+            status: null
+            tags:
+              key: null
+          links:
+            contract: contract
+            transactions: transactions
+        - resource:
+            metadata:
+              key: null
+            continuations: continuations
+            contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+            block:
+              blockNo: 738633633822310400
+              blockHeaderHash: blockHeaderHash
+              slotNo: 5559347081229897728
+            roleTokenMintingPolicyId: roleTokenMintingPolicyId
+            version: null
+            status: null
+            tags:
+              key: null
+          links:
+            contract: contract
+            transactions: transactions
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ListObject_ContractHeader_results_inner'
+          type: array
+      required:
+      - results
+      type: object
+    ContractHeader:
+      example:
+        metadata:
+          key: null
+        continuations: continuations
+        contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+        block:
+          blockNo: 738633633822310400
+          blockHeaderHash: blockHeaderHash
+          slotNo: 5559347081229897728
+        roleTokenMintingPolicyId: roleTokenMintingPolicyId
+        version: null
+        status: null
+        tags:
+          key: null
+      properties:
+        block:
+          $ref: '#/components/schemas/BlockHeader'
+        continuations:
+          type: string
+        contractId:
+          description: A reference to a transaction output with a transaction ID and
+            index.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          pattern: "^[a-fA-F0-9]{64}#[0-9]+$"
+          type: string
+        metadata:
+          additionalProperties:
+            $ref: '#/components/schemas/Metadata'
+          type: object
+        roleTokenMintingPolicyId:
+          description: The hex-encoded minting policy ID for a native Cardano token
+          pattern: "^[a-fA-F0-9]*$"
+          type: string
+        status:
+          $ref: '#/components/schemas/TxStatus'
+        tags:
+          additionalProperties:
+            $ref: '#/components/schemas/Metadata'
+          type: object
+        version:
+          $ref: '#/components/schemas/MarloweVersion'
+      required:
+      - contractId
+      - metadata
+      - roleTokenMintingPolicyId
+      - status
+      - tags
+      - version
+      type: object
+    TxOutRef:
+      description: A reference to a transaction output with a transaction ID and index.
+      example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+      pattern: "^[a-fA-F0-9]{64}#[0-9]+$"
+      type: string
+    PolicyId:
+      description: The hex-encoded minting policy ID for a native Cardano token
+      pattern: "^[a-fA-F0-9]*$"
+      type: string
+    MarloweVersion:
+      description: A version of the Marlowe language.
+      enum:
+      - v1
+      type: string
+    Metadata:
+      description: An arbitrary JSON value for storage in a metadata key
+    TxStatus:
+      description: The status of a transaction on the local node.
+      enum:
+      - unsigned
+      - submitted
+      - confirmed
+      type: string
+    BlockHeader:
+      example:
+        blockNo: 738633633822310400
+        blockHeaderHash: blockHeaderHash
+        slotNo: 5559347081229897728
+      properties:
+        blockHeaderHash:
+          type: string
+        blockNo:
+          format: int64
+          maximum: 9223372036854775807
+          minimum: 0
+          type: integer
+        slotNo:
+          format: int64
+          maximum: 9223372036854775807
+          minimum: 0
+          type: integer
+      required:
+      - blockHeaderHash
+      - blockNo
+      - slotNo
+      type: object
+    ApplyInputsTxEnvelope:
+      properties:
+        tx:
+          $ref: '#/components/schemas/TextEnvelope'
+        withdrawalId:
+          description: The hex-encoded identifier of a Cardano transaction
+          pattern: "^[a-fA-F0-9]{64}$"
+          type: string
+      required:
+      - tx
+      - withdrawalId
+      type: object
+    TextEnvelope:
+      example:
+        description: description
+        type: type
+        cborHex: cborHex
+      properties:
+        cborHex:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+      required:
+      - cborHex
+      - description
+      - type
+      type: object
+    SafetyError:
+      description: Information about the safety of a Marlowe contract and its state.
+      properties:
+        account-id:
+          $ref: '#/components/schemas/Party'
+        address:
+          $ref: '#/components/schemas/Plutus.Address'
+        bytes:
+          exclusiveMinimum: false
+          minimum: 0
+          type: integer
+        choice-id:
+          $ref: '#/components/schemas/ChoiceId'
+        cost:
+          $ref: '#/components/schemas/ExBudget'
+        currency-symbol:
+          type: string
+        detail:
+          type: string
+        error:
+          type: string
+        fatal:
+          type: boolean
+        hash:
+          type: string
+        message:
+          type: string
+        role-name:
+          type: string
+        token:
+          $ref: '#/components/schemas/Token'
+        token-name:
+          type: string
+        transaction:
+          $ref: '#/components/schemas/Transaction'
+        value-id:
+          type: string
+        warning:
+          $ref: '#/components/schemas/TransactionWarning'
+      required:
+      - detail
+      - error
+      - fatal
+    TransactionWarning:
+      description: A transaction semantics warning.
+      oneOf:
+      - $ref: '#/components/schemas/TransactionWarning_oneOf'
+      - $ref: '#/components/schemas/TransactionWarning_oneOf_1'
+      - $ref: '#/components/schemas/TransactionWarning_oneOf_2'
+      - $ref: '#/components/schemas/TransactionWarning_oneOf_3'
+      - description: A semantics assertion failed.
+        enum:
+        - assertion_failed
+        type: string
+    Party:
+      description: A participant in a contract
+      oneOf:
+      - $ref: '#/components/schemas/Party_oneOf'
+      - $ref: '#/components/schemas/Party_oneOf_1'
+    Address:
+      description: A cardano address
+      example: addr1w94f8ywk4fg672xasahtk4t9k6w3aql943uxz5rt62d4dvq8evxaf
+      type: string
+    Token:
+      description: A token with a currency symbol (minting policy ID) and token name.
+      example:
+        currency_symbol: currency_symbol
+        token_name: token_name
+      properties:
+        currency_symbol:
+          type: string
+        token_name:
+          type: string
+      required:
+      - currency_symbol
+      - token_name
+      type: object
+    Payee:
+      description: A recipient of a payment
+      oneOf:
+      - $ref: '#/components/schemas/Payee_oneOf'
+      - $ref: '#/components/schemas/Payee_oneOf_1'
+    ChoiceId:
+      description: Refers to a party by role name.
+      example:
+        choice_name: choice_name
+        choice_owner: null
+      properties:
+        choice_name:
+          type: string
+        choice_owner:
+          $ref: '#/components/schemas/Party'
+      required:
+      - choice_name
+      - choice_owner
+      type: object
+    ExBudget:
+      example:
+        exBudgetCPU: 10
+        exBudgetMemory: 10
+      properties:
+        exBudgetCPU:
+          type: number
+        exBudgetMemory:
+          type: number
+      required:
+      - exBudgetCPU
+      - exBudgetMemory
+      type: object
+    Transaction:
+      description: Information about a Marlowe transaction.
+      properties:
+        contract:
+          $ref: '#/components/schemas/Contract'
+        input:
+          $ref: '#/components/schemas/TransactionInput'
+        output:
+          $ref: '#/components/schemas/TransactionOutput'
+        state:
+          $ref: '#/components/schemas/MarloweState'
+      required:
+      - contract
+      - input
+      - output
+      - state
+    MarloweState:
+      description: The on-chain state of a Marlowe contract.
+      example:
+        boundValues:
+        - - null
+          - null
+        - - null
+          - null
+        minTime: 1
+        accounts:
+        - - null
+          - null
+        - - null
+          - null
+        choices:
+        - - null
+          - null
+        - - null
+          - null
+      properties:
+        accounts:
+          items:
+            items:
+              $ref: '#/components/schemas/MarloweState_accounts_inner_inner'
+            maxItems: 2
+            minItems: 2
+            type: array
+          type: array
+        boundValues:
+          items:
+            items:
+              $ref: '#/components/schemas/MarloweState_boundValues_inner_inner'
+            maxItems: 2
+            minItems: 2
+            type: array
+          type: array
+        choices:
+          items:
+            items:
+              $ref: '#/components/schemas/MarloweState_choices_inner_inner'
+            maxItems: 2
+            minItems: 2
+            type: array
+          type: array
+        minTime:
+          type: integer
+      required:
+      - accounts
+      - boundValues
+      - choices
+      - minTime
+      type: object
+    Contract:
+      description: Contract terms specified in Marlowe
+      oneOf:
+      - description: No more payments will be sent and the balance of the contract
+          is 0.
+        enum:
+        - close
+        type: string
+      - $ref: '#/components/schemas/Contract_oneOf'
+      - $ref: '#/components/schemas/Contract_oneOf_1'
+      - $ref: '#/components/schemas/Contract_oneOf_2'
+      - $ref: '#/components/schemas/Contract_oneOf_3'
+      - $ref: '#/components/schemas/Contract_oneOf_4'
+    Value:
+      description: A time-varying expression that evaluates to a boolean
+      oneOf:
+      - $ref: '#/components/schemas/Value_oneOf'
+      - format: int64
+        type: integer
+      - $ref: '#/components/schemas/Value_oneOf_1'
+      - $ref: '#/components/schemas/Value_oneOf_2'
+      - $ref: '#/components/schemas/Value_oneOf_3'
+      - $ref: '#/components/schemas/Value_oneOf_4'
+      - $ref: '#/components/schemas/Value_oneOf_5'
+      - $ref: '#/components/schemas/Value_oneOf_6'
+      - enum:
+        - time_interval_start
+        - time_interval_end
+        type: string
+      - $ref: '#/components/schemas/Value_oneOf_7'
+      - $ref: '#/components/schemas/Value_oneOf_8'
+    Observation:
+      description: A time-varying expression that evaluates to an integer
+      oneOf:
+      - type: boolean
+      - $ref: '#/components/schemas/Observation_oneOf'
+      - $ref: '#/components/schemas/Observation_oneOf_1'
+      - $ref: '#/components/schemas/Observation_oneOf_2'
+      - $ref: '#/components/schemas/Observation_oneOf_3'
+      - $ref: '#/components/schemas/Observation_oneOf_4'
+      - $ref: '#/components/schemas/Observation_oneOf_5'
+      - $ref: '#/components/schemas/Observation_oneOf_6'
+      - $ref: '#/components/schemas/Observation_oneOf_7'
+      - $ref: '#/components/schemas/Observation_oneOf_8'
+    Case:
+      description: A contract which becomes active when an action occurs.
+      oneOf:
+      - $ref: '#/components/schemas/Case_oneOf'
+      - $ref: '#/components/schemas/Case_oneOf_1'
+    Action:
+      description: A contract which becomes active when an action occurs.
+      oneOf:
+      - $ref: '#/components/schemas/Action_oneOf'
+      - $ref: '#/components/schemas/Action_oneOf_1'
+      - $ref: '#/components/schemas/Action_oneOf_2'
+    Bound:
+      description: An inclusive range of values for a choice.
+      example:
+        from: 0
+        to: 6
+      properties:
+        from:
+          type: integer
+        to:
+          type: integer
+      required:
+      - from
+      - to
+      type: object
+    TransactionInput:
+      description: Marlowe transaction input.
+      properties:
+        tx_inputs:
+          items:
+            $ref: '#/components/schemas/Input'
+          type: array
+        tx_interval:
+          $ref: '#/components/schemas/TransactionInput_tx_interval'
+      required:
+      - tx_inputs
+      - tx_interval
+    Input:
+      description: An input to a Marlowe transaction
+      oneOf:
+      - $ref: '#/components/schemas/Input_oneOf'
+      - description: Notify a contract to check a condition
+        enum:
+        - input_notify
+        type: string
+      - $ref: '#/components/schemas/Input_oneOf_1'
+      - $ref: '#/components/schemas/Input_oneOf_2'
+      - $ref: '#/components/schemas/Input_oneOf_3'
+      - $ref: '#/components/schemas/Input_oneOf_4'
+    TransactionOutput:
+      description: Marlowe transaction output.
+      oneOf:
+      - $ref: '#/components/schemas/TransactionOutput_oneOf'
+      - $ref: '#/components/schemas/TransactionOutput_oneOf_1'
+    TransactionError:
+      description: A Marlowe transaction error.
+      oneOf:
+      - description: Ambiguous time interval.
+        enum:
+        - TEAmbiguousTimeIntervalError
+        type: string
+      - description: No match on applying input.
+        enum:
+        - TEApplyNoMatchError
+        type: string
+      - $ref: '#/components/schemas/TransactionError_oneOf'
+      - description: A useless application of input.
+        enum:
+        - TEUselessTransaction
+        type: string
+      - description: A mismatch in the continuation hash.
+        enum:
+        - TEHashMismatch
+        type: string
+    IntervalError:
+      description: A Marlowe transaction interval error.
+      oneOf:
+      - $ref: '#/components/schemas/IntervalError_oneOf'
+      - $ref: '#/components/schemas/IntervalError_oneOf_1'
+    Payment:
+      description: A Marlowe payment.
+      properties:
+        amount:
+          type: integer
+        payment_from:
+          $ref: '#/components/schemas/Party'
+        to:
+          $ref: '#/components/schemas/Payee'
+        token:
+          $ref: '#/components/schemas/Token'
+      required:
+      - amount
+      - payment_from
+      - to
+      - token
+    Plutus.Address:
+      description: A Plutus address.
+      properties:
+        addressCredential:
+          $ref: '#/components/schemas/Plutus.Credential'
+        addressStakingCredential:
+          $ref: '#/components/schemas/Plutus.StakingCredential'
+      required:
+      - addressCredential
+    Plutus.Credential:
+      description: A Plutus credential.
+      oneOf:
+      - $ref: '#/components/schemas/Plutus_Credential_oneOf'
+      - $ref: '#/components/schemas/Plutus_Credential_oneOf_1'
+    Plutus.StakingCredential:
+      description: A Plutus staking credential.
+      oneOf:
+      - $ref: '#/components/schemas/Plutus_StakingCredential_oneOf'
+      - $ref: '#/components/schemas/Plutus_StakingCredential_oneOf_1'
+    PostContractsRequest:
+      example:
+        metadata:
+          key: null
+        contract: null
+        roles: null
+        minUTxODeposit: 1477267267644620800
+        version: null
+        tags:
+          key: null
+      properties:
+        contract:
+          $ref: '#/components/schemas/PostContractsRequest_contract'
+        metadata:
+          additionalProperties:
+            $ref: '#/components/schemas/Metadata'
+          type: object
+        minUTxODeposit:
+          format: int64
+          maximum: 18446744073709551615
+          minimum: 0
+          type: integer
+        roles:
+          $ref: '#/components/schemas/RolesConfig'
+        tags:
+          additionalProperties:
+            $ref: '#/components/schemas/Metadata'
+          type: object
+        version:
+          $ref: '#/components/schemas/MarloweVersion'
+      required:
+      - contract
+      - metadata
+      - minUTxODeposit
+      - tags
+      - version
+      type: object
+    RolesConfig:
+      oneOf:
+      - $ref: '#/components/schemas/PolicyId'
+      - additionalProperties:
+          $ref: '#/components/schemas/RoleTokenConfig'
+        type: object
+    RoleTokenConfig:
+      oneOf:
+      - $ref: '#/components/schemas/Address'
+      - $ref: '#/components/schemas/RoleTokenConfig_oneOf'
+    TokenMetadata:
+      description: "Metadata for an NFT, as described by https://cips.cardano.org/cips/cip25/"
+      properties:
+        description:
+          type: string
+        files:
+          items:
+            $ref: '#/components/schemas/TokenMetadataFile'
+          type: array
+        image:
+          type: string
+        mediaType:
+          type: string
+        name:
+          type: string
+      required:
+      - image
+      - name
+      type: object
+    TokenMetadataFile:
+      properties:
+        mediaType:
+          type: string
+        name:
+          type: string
+        src:
+          type: string
+      required:
+      - mediaType
+      - name
+      - src
+      type: object
+    ContractSourceId:
+      description: The hex-encoded identifier of a Marlowe contract source
+      pattern: "^[a-fA-F0-9]{64}$"
+      type: string
+    ContractState:
+      example:
+        unclaimedPayouts:
+        - assets:
+            lovelace: 0
+            tokens:
+              key:
+                key: 6
+          role: role
+          payoutId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+        - assets:
+            lovelace: 0
+            tokens:
+              key:
+                key: 6
+          role: role
+          payoutId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+        utxo: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+        initialContract: null
+        metadata:
+          key: null
+        txBody:
+          description: description
+          type: type
+          cborHex: cborHex
+        currentContract: null
+        version: null
+        tags:
+          key: null
+        assets:
+          lovelace: 0
+          tokens:
+            key:
+              key: 6
+        continuations: continuations
+        contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+        block:
+          blockNo: 738633633822310400
+          blockHeaderHash: blockHeaderHash
+          slotNo: 5559347081229897728
+        state:
+          boundValues:
+          - - null
+            - null
+          - - null
+            - null
+          minTime: 1
+          accounts:
+          - - null
+            - null
+          - - null
+            - null
+          choices:
+          - - null
+            - null
+          - - null
+            - null
+        roleTokenMintingPolicyId: roleTokenMintingPolicyId
+        status: null
+      properties:
+        assets:
+          $ref: '#/components/schemas/Assets'
+        block:
+          $ref: '#/components/schemas/BlockHeader'
+        continuations:
+          type: string
+        contractId:
+          description: A reference to a transaction output with a transaction ID and
+            index.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          pattern: "^[a-fA-F0-9]{64}#[0-9]+$"
+          type: string
+        currentContract:
+          $ref: '#/components/schemas/Contract'
+        initialContract:
+          $ref: '#/components/schemas/Contract'
+        metadata:
+          additionalProperties:
+            $ref: '#/components/schemas/Metadata'
+          type: object
+        roleTokenMintingPolicyId:
+          description: The hex-encoded minting policy ID for a native Cardano token
+          pattern: "^[a-fA-F0-9]*$"
+          type: string
+        state:
+          $ref: '#/components/schemas/MarloweState'
+        status:
+          $ref: '#/components/schemas/TxStatus'
+        tags:
+          additionalProperties:
+            $ref: '#/components/schemas/Metadata'
+          type: object
+        txBody:
+          $ref: '#/components/schemas/TextEnvelope'
+        unclaimedPayouts:
+          items:
+            $ref: '#/components/schemas/Payout'
+          type: array
+        utxo:
+          description: A reference to a transaction output with a transaction ID and
+            index.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          pattern: "^[a-fA-F0-9]{64}#[0-9]+$"
+          type: string
+        version:
+          $ref: '#/components/schemas/MarloweVersion'
+      required:
+      - assets
+      - contractId
+      - initialContract
+      - metadata
+      - roleTokenMintingPolicyId
+      - status
+      - tags
+      - unclaimedPayouts
+      - version
+      type: object
+    Assets:
+      example:
+        lovelace: 0
+        tokens:
+          key:
+            key: 6
+      properties:
+        lovelace:
+          type: integer
+        tokens:
+          additionalProperties:
+            additionalProperties:
+              type: integer
+            type: object
+          type: object
+      required:
+      - lovelace
+      - tokens
+      type: object
+    Payout:
+      example:
+        assets:
+          lovelace: 0
+          tokens:
+            key:
+              key: 6
+        role: role
+        payoutId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+      properties:
+        assets:
+          $ref: '#/components/schemas/Assets'
+        payoutId:
+          description: A reference to a transaction output with a transaction ID and
+            index.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          pattern: "^[a-fA-F0-9]{64}#[0-9]+$"
+          type: string
+        role:
+          type: string
+      required:
+      - assets
+      - payoutId
+      - role
+      type: object
+    Next:
+      description: Describe the reducibility (Can be Reduced ?) and the applicability
+        (Can Inputs be Applied ?) for a given contract.
+      example:
+        applicable_inputs:
+          choices:
+          - for_choice:
+              choice_name: choice_name
+              choice_owner: null
+            can_choose_between:
+            - from: 0
+              to: 6
+            - from: 0
+              to: 6
+            case_index: 1
+            is_merkleized_continuation: true
+          - for_choice:
+              choice_name: choice_name
+              choice_owner: null
+            can_choose_between:
+            - from: 0
+              to: 6
+            - from: 0
+              to: 6
+            case_index: 1
+            is_merkleized_continuation: true
+          deposits:
+          - of_token:
+              currency_symbol: currency_symbol
+              token_name: token_name
+            into_account: null
+            case_index: 5
+            can_deposit: 5
+            is_merkleized_continuation: true
+            party: null
+          - of_token:
+              currency_symbol: currency_symbol
+              token_name: token_name
+            into_account: null
+            case_index: 5
+            can_deposit: 5
+            is_merkleized_continuation: true
+            party: null
+          notify:
+            case_index: 2
+            is_merkleized_continuation: true
+        can_reduce: true
+      properties:
+        applicable_inputs:
+          $ref: '#/components/schemas/ApplicableInputs'
+        can_reduce:
+          description: "Indicates if a given contract can be reduced (apply []) or\
+            \ not."
+          type: boolean
+      required:
+      - applicable_inputs
+      - can_reduce
+      type: object
+    ApplicableInputs:
+      description: Applicable Inputs for a given contract
+      example:
+        choices:
+        - for_choice:
+            choice_name: choice_name
+            choice_owner: null
+          can_choose_between:
+          - from: 0
+            to: 6
+          - from: 0
+            to: 6
+          case_index: 1
+          is_merkleized_continuation: true
+        - for_choice:
+            choice_name: choice_name
+            choice_owner: null
+          can_choose_between:
+          - from: 0
+            to: 6
+          - from: 0
+            to: 6
+          case_index: 1
+          is_merkleized_continuation: true
+        deposits:
+        - of_token:
+            currency_symbol: currency_symbol
+            token_name: token_name
+          into_account: null
+          case_index: 5
+          can_deposit: 5
+          is_merkleized_continuation: true
+          party: null
+        - of_token:
+            currency_symbol: currency_symbol
+            token_name: token_name
+          into_account: null
+          case_index: 5
+          can_deposit: 5
+          is_merkleized_continuation: true
+          party: null
+        notify:
+          case_index: 2
+          is_merkleized_continuation: true
+      properties:
+        choices:
+          items:
+            $ref: '#/components/schemas/CanChoose'
+          type: array
+        deposits:
+          items:
+            $ref: '#/components/schemas/CanDeposit'
+          type: array
+        notify:
+          $ref: '#/components/schemas/CanNotify'
+      required:
+      - choices
+      - deposits
+      type: object
+    CanNotify:
+      description: Notify Input tha can be applied for a given contract
+      example:
+        case_index: 2
+        is_merkleized_continuation: true
+      properties:
+        case_index:
+          description: Index of a "Case Action" in a "When"
+          type: integer
+        is_merkleized_continuation:
+          description: Indicates if a given contract continuation is merkleized
+          type: boolean
+      required:
+      - case_index
+      - is_merkleized_continuation
+      type: object
+    IsMerkleizedContinuation:
+      description: Indicates if a given contract continuation is merkleized
+      type: boolean
+    CaseIndex:
+      description: Index of a "Case Action" in a "When"
+      type: integer
+    CanDeposit:
+      description: Deposit Input that can be applied for a given contract
+      example:
+        of_token:
+          currency_symbol: currency_symbol
+          token_name: token_name
+        into_account: null
+        case_index: 5
+        can_deposit: 5
+        is_merkleized_continuation: true
+        party: null
+      properties:
+        can_deposit:
+          type: integer
+        case_index:
+          description: Index of a "Case Action" in a "When"
+          type: integer
+        into_account:
+          $ref: '#/components/schemas/Party'
+        is_merkleized_continuation:
+          description: Indicates if a given contract continuation is merkleized
+          type: boolean
+        of_token:
+          $ref: '#/components/schemas/Token'
+        party:
+          $ref: '#/components/schemas/Party'
+      required:
+      - can_deposit
+      - case_index
+      - into_account
+      - is_merkleized_continuation
+      - of_token
+      - party
+      type: object
+    CanChoose:
+      description: Choice Inputs that can be applied for a given contract
+      example:
+        for_choice:
+          choice_name: choice_name
+          choice_owner: null
+        can_choose_between:
+        - from: 0
+          to: 6
+        - from: 0
+          to: 6
+        case_index: 1
+        is_merkleized_continuation: true
+      properties:
+        can_choose_between:
+          items:
+            $ref: '#/components/schemas/Bound'
+          type: array
+        case_index:
+          description: Index of a "Case Action" in a "When"
+          type: integer
+        for_choice:
+          $ref: '#/components/schemas/ChoiceId'
+        is_merkleized_continuation:
+          description: Indicates if a given contract continuation is merkleized
+          type: boolean
+      required:
+      - can_choose_between
+      - case_index
+      - for_choice
+      - is_merkleized_continuation
+      type: object
+    CanReduce:
+      description: "Indicates if a given contract can be reduced (apply []) or not."
+      type: boolean
+    ListObject_TxHeader:
+      example:
+        results:
+        - resource:
+            utxo: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+            metadata:
+              key: null
+            continuations: continuations
+            contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+            block:
+              blockNo: 738633633822310400
+              blockHeaderHash: blockHeaderHash
+              slotNo: 5559347081229897728
+            transactionId: transactionId
+            status: null
+            tags:
+              key: null
+          links:
+            transaction: transaction
+        - resource:
+            utxo: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+            metadata:
+              key: null
+            continuations: continuations
+            contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+            block:
+              blockNo: 738633633822310400
+              blockHeaderHash: blockHeaderHash
+              slotNo: 5559347081229897728
+            transactionId: transactionId
+            status: null
+            tags:
+              key: null
+          links:
+            transaction: transaction
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ListObject_TxHeader_results_inner'
+          type: array
+      required:
+      - results
+      type: object
+    TxHeader:
+      example:
+        utxo: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+        metadata:
+          key: null
+        continuations: continuations
+        contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+        block:
+          blockNo: 738633633822310400
+          blockHeaderHash: blockHeaderHash
+          slotNo: 5559347081229897728
+        transactionId: transactionId
+        status: null
+        tags:
+          key: null
+      properties:
+        block:
+          $ref: '#/components/schemas/BlockHeader'
+        continuations:
+          type: string
+        contractId:
+          description: A reference to a transaction output with a transaction ID and
+            index.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          pattern: "^[a-fA-F0-9]{64}#[0-9]+$"
+          type: string
+        metadata:
+          additionalProperties:
+            $ref: '#/components/schemas/Metadata'
+          type: object
+        status:
+          $ref: '#/components/schemas/TxStatus'
+        tags:
+          additionalProperties:
+            $ref: '#/components/schemas/Metadata'
+          type: object
+        transactionId:
+          description: The hex-encoded identifier of a Cardano transaction
+          pattern: "^[a-fA-F0-9]{64}$"
+          type: string
+        utxo:
+          description: A reference to a transaction output with a transaction ID and
+            index.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          pattern: "^[a-fA-F0-9]{64}#[0-9]+$"
+          type: string
+      required:
+      - contractId
+      - metadata
+      - status
+      - tags
+      - transactionId
+      type: object
+    TxId:
+      description: The hex-encoded identifier of a Cardano transaction
+      pattern: "^[a-fA-F0-9]{64}$"
+      type: string
+    PostTransactionsRequest:
+      example:
+        metadata:
+          key: null
+        inputs:
+        - null
+        - null
+        invalidHereafter: 2016-07-22T00:00:00Z
+        version: null
+        invalidBefore: 2016-07-22T00:00:00Z
+        tags:
+          key: null
+      properties:
+        inputs:
+          items:
+            $ref: '#/components/schemas/Input'
+          type: array
+        invalidBefore:
+          example: 2016-07-22T00:00:00Z
+          format: yyyy-mm-ddThh:MM:ssZ
+          type: string
+        invalidHereafter:
+          example: 2016-07-22T00:00:00Z
+          format: yyyy-mm-ddThh:MM:ssZ
+          type: string
+        metadata:
+          additionalProperties:
+            $ref: '#/components/schemas/Metadata'
+          type: object
+        tags:
+          additionalProperties:
+            $ref: '#/components/schemas/Metadata'
+          type: object
+        version:
+          $ref: '#/components/schemas/MarloweVersion'
+      required:
+      - inputs
+      - metadata
+      - tags
+      - version
+      type: object
+    UTCTime:
+      example: 2016-07-22T00:00:00Z
+      format: yyyy-mm-ddThh:MM:ssZ
+      type: string
+    Tx:
+      example:
+        metadata:
+          key: null
+        outputState:
+          boundValues:
+          - - null
+            - null
+          - - null
+            - null
+          minTime: 1
+          accounts:
+          - - null
+            - null
+          - - null
+            - null
+          choices:
+          - - null
+            - null
+          - - null
+            - null
+        outputUtxo: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+        inputs:
+        - null
+        - null
+        outputContract: null
+        txBody:
+          description: description
+          type: type
+          cborHex: cborHex
+        transactionId: transactionId
+        invalidBefore: 2016-07-22T00:00:00Z
+        tags:
+          key: null
+        payouts:
+        - assets:
+            lovelace: 0
+            tokens:
+              key:
+                key: 6
+          role: role
+          payoutId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+        - assets:
+            lovelace: 0
+            tokens:
+              key:
+                key: 6
+          role: role
+          payoutId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+        consumingTx: consumingTx
+        assets:
+          lovelace: 0
+          tokens:
+            key:
+              key: 6
+        continuations: continuations
+        contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+        block:
+          blockNo: 738633633822310400
+          blockHeaderHash: blockHeaderHash
+          slotNo: 5559347081229897728
+        invalidHereafter: 2016-07-22T00:00:00Z
+        inputUtxo: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+        status: null
+      properties:
+        assets:
+          $ref: '#/components/schemas/Assets'
+        block:
+          $ref: '#/components/schemas/BlockHeader'
+        consumingTx:
+          description: The hex-encoded identifier of a Cardano transaction
+          pattern: "^[a-fA-F0-9]{64}$"
+          type: string
+        continuations:
+          type: string
+        contractId:
+          description: A reference to a transaction output with a transaction ID and
+            index.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          pattern: "^[a-fA-F0-9]{64}#[0-9]+$"
+          type: string
+        inputUtxo:
+          description: A reference to a transaction output with a transaction ID and
+            index.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          pattern: "^[a-fA-F0-9]{64}#[0-9]+$"
+          type: string
+        inputs:
+          items:
+            $ref: '#/components/schemas/Input'
+          type: array
+        invalidBefore:
+          example: 2016-07-22T00:00:00Z
+          format: yyyy-mm-ddThh:MM:ssZ
+          type: string
+        invalidHereafter:
+          example: 2016-07-22T00:00:00Z
+          format: yyyy-mm-ddThh:MM:ssZ
+          type: string
+        metadata:
+          additionalProperties:
+            $ref: '#/components/schemas/Metadata'
+          type: object
+        outputContract:
+          $ref: '#/components/schemas/Contract'
+        outputState:
+          $ref: '#/components/schemas/MarloweState'
+        outputUtxo:
+          description: A reference to a transaction output with a transaction ID and
+            index.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          pattern: "^[a-fA-F0-9]{64}#[0-9]+$"
+          type: string
+        payouts:
+          items:
+            $ref: '#/components/schemas/Payout'
+          type: array
+        status:
+          $ref: '#/components/schemas/TxStatus'
+        tags:
+          additionalProperties:
+            $ref: '#/components/schemas/Metadata'
+          type: object
+        transactionId:
+          description: The hex-encoded identifier of a Cardano transaction
+          pattern: "^[a-fA-F0-9]{64}$"
+          type: string
+        txBody:
+          $ref: '#/components/schemas/TextEnvelope'
+      required:
+      - assets
+      - contractId
+      - inputUtxo
+      - inputs
+      - invalidBefore
+      - invalidHereafter
+      - metadata
+      - payouts
+      - status
+      - tags
+      - transactionId
+      type: object
+    PostContractSourceResponse:
+      example:
+        intermediateIds:
+          key: null
+        contractSourceId: contractSourceId
+      properties:
+        contractSourceId:
+          description: The hex-encoded identifier of a Marlowe contract source
+          pattern: "^[a-fA-F0-9]{64}$"
+          type: string
+        intermediateIds:
+          additionalProperties:
+            $ref: '#/components/schemas/ContractSourceId'
+          type: object
+      required:
+      - contractSourceId
+      - intermediateIds
+      type: object
+    ObjectBundle:
+      description: A bundle of labelled Marlowe objects in define-before-use order.
+      items:
+        $ref: '#/components/schemas/LabelledObject'
+      type: array
+    LabelledObject:
+      description: A bundle of labelled Marlowe objects in define-before-use order.
+      example:
+        label: label
+        type: value
+        value: null
+      properties:
+        label:
+          description: An arbitrary text identifier for an object in a Marlowe object
+            bundle.
+          type: string
+        type:
+          enum:
+          - value
+          - observation
+          - contract
+          - party
+          - token
+          - action
+          type: string
+        value:
+          $ref: '#/components/schemas/LabelledObject_value'
+      required:
+      - label
+      - type
+      - value
+      type: object
+    Label:
+      description: An arbitrary text identifier for an object in a Marlowe object
+        bundle.
+      type: string
+    ValueObject:
+      description: A time-varying expression that evaluates to a boolean
+      oneOf:
+      - $ref: '#/components/schemas/ValueObject_oneOf'
+      - format: int64
+        type: integer
+      - $ref: '#/components/schemas/ValueObject_oneOf_1'
+      - $ref: '#/components/schemas/ValueObject_oneOf_2'
+      - $ref: '#/components/schemas/ValueObject_oneOf_3'
+      - $ref: '#/components/schemas/ValueObject_oneOf_4'
+      - $ref: '#/components/schemas/ValueObject_oneOf_5'
+      - $ref: '#/components/schemas/ValueObject_oneOf_6'
+      - enum:
+        - time_interval_start
+        - time_interval_end
+        type: string
+      - $ref: '#/components/schemas/Value_oneOf_7'
+      - $ref: '#/components/schemas/ValueObject_oneOf_7'
+      - $ref: '#/components/schemas/ValueObject_oneOf_8'
+    PartyObject:
+      description: A participant in a contract
+      oneOf:
+      - $ref: '#/components/schemas/Party_oneOf'
+      - $ref: '#/components/schemas/Party_oneOf_1'
+      - $ref: '#/components/schemas/ValueObject_oneOf_8'
+    ChoiceIdObject:
+      description: Refers to a party by role name.
+      properties:
+        choice_name:
+          type: string
+        choice_owner:
+          $ref: '#/components/schemas/PartyObject'
+      required:
+      - choice_name
+      - choice_owner
+      type: object
+    TokenObject:
+      description: A token with a currency symbol (minting policy ID) and token name.
+      oneOf:
+      - $ref: '#/components/schemas/Token'
+      - $ref: '#/components/schemas/ValueObject_oneOf_8'
+    ObservationObject:
+      description: A time-varying expression that evaluates to an integer
+      oneOf:
+      - type: boolean
+      - $ref: '#/components/schemas/ObservationObject_oneOf'
+      - $ref: '#/components/schemas/ObservationObject_oneOf_1'
+      - $ref: '#/components/schemas/ObservationObject_oneOf_2'
+      - $ref: '#/components/schemas/ObservationObject_oneOf_3'
+      - $ref: '#/components/schemas/ObservationObject_oneOf_4'
+      - $ref: '#/components/schemas/ObservationObject_oneOf_5'
+      - $ref: '#/components/schemas/ObservationObject_oneOf_6'
+      - $ref: '#/components/schemas/ObservationObject_oneOf_7'
+      - $ref: '#/components/schemas/ObservationObject_oneOf_8'
+      - $ref: '#/components/schemas/ValueObject_oneOf_8'
+    ContractObject:
+      description: Contract terms specified in Marlowe
+      oneOf:
+      - description: No more payments will be sent and the balance of the contract
+          is 0.
+        enum:
+        - close
+        type: string
+      - $ref: '#/components/schemas/ContractObject_oneOf'
+      - $ref: '#/components/schemas/ContractObject_oneOf_1'
+      - $ref: '#/components/schemas/ContractObject_oneOf_2'
+      - $ref: '#/components/schemas/ContractObject_oneOf_3'
+      - $ref: '#/components/schemas/ContractObject_oneOf_4'
+      - $ref: '#/components/schemas/ValueObject_oneOf_8'
+    PayeeObject:
+      description: A recipient of a payment
+      oneOf:
+      - $ref: '#/components/schemas/PayeeObject_oneOf'
+      - $ref: '#/components/schemas/PayeeObject_oneOf_1'
+    CaseObject:
+      description: A contract which becomes active when an action occurs.
+      oneOf:
+      - $ref: '#/components/schemas/CaseObject_oneOf'
+      - $ref: '#/components/schemas/CaseObject_oneOf_1'
+    ActionObject:
+      description: A contract which becomes active when an action occurs.
+      oneOf:
+      - $ref: '#/components/schemas/Action_oneOf'
+      - $ref: '#/components/schemas/Action_oneOf_1'
+      - $ref: '#/components/schemas/Action_oneOf_2'
+      - $ref: '#/components/schemas/ValueObject_oneOf_8'
+    ListObject_ContractSourceId:
+      example:
+        results:
+        - null
+        - null
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ContractSourceId'
+          type: array
+      required:
+      - results
+      type: object
+    ListObject_WithdrawalHeader:
+      example:
+        results:
+        - resource:
+            withdrawalId: withdrawalId
+            block:
+              blockNo: 738633633822310400
+              blockHeaderHash: blockHeaderHash
+              slotNo: 5559347081229897728
+            status: null
+          links:
+            withdrawal: withdrawal
+        - resource:
+            withdrawalId: withdrawalId
+            block:
+              blockNo: 738633633822310400
+              blockHeaderHash: blockHeaderHash
+              slotNo: 5559347081229897728
+            status: null
+          links:
+            withdrawal: withdrawal
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ListObject_WithdrawalHeader_results_inner'
+          type: array
+      required:
+      - results
+      type: object
+    WithdrawalHeader:
+      example:
+        withdrawalId: withdrawalId
+        block:
+          blockNo: 738633633822310400
+          blockHeaderHash: blockHeaderHash
+          slotNo: 5559347081229897728
+        status: null
+      properties:
+        block:
+          $ref: '#/components/schemas/BlockHeader'
+        status:
+          $ref: '#/components/schemas/TxStatus'
+        withdrawalId:
+          description: The hex-encoded identifier of a Cardano transaction
+          pattern: "^[a-fA-F0-9]{64}$"
+          type: string
+      required:
+      - status
+      - withdrawalId
+      type: object
+    PostWithdrawalsRequest:
+      example:
+        payouts:
+        - 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+        - 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+      properties:
+        payouts:
+          items:
+            $ref: '#/components/schemas/TxOutRef'
+          type: array
+          uniqueItems: true
+      required:
+      - payouts
+      type: object
+    Withdrawal:
+      example:
+        payouts:
+        - withdrawalId: withdrawalId
+          role:
+            policyId: policyId
+            assetName: assetName
+          contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          payoutId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          status: null
+        - withdrawalId: withdrawalId
+          role:
+            policyId: policyId
+            assetName: assetName
+          contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          payoutId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          status: null
+        withdrawalId: withdrawalId
+        block:
+          blockNo: 738633633822310400
+          blockHeaderHash: blockHeaderHash
+          slotNo: 5559347081229897728
+        status: null
+      properties:
+        block:
+          $ref: '#/components/schemas/BlockHeader'
+        payouts:
+          items:
+            $ref: '#/components/schemas/PayoutHeader'
+          type: array
+          uniqueItems: true
+        status:
+          $ref: '#/components/schemas/TxStatus'
+        withdrawalId:
+          description: The hex-encoded identifier of a Cardano transaction
+          pattern: "^[a-fA-F0-9]{64}$"
+          type: string
+      required:
+      - payouts
+      - status
+      - withdrawalId
+      type: object
+    PayoutHeader:
+      example:
+        withdrawalId: withdrawalId
+        role:
+          policyId: policyId
+          assetName: assetName
+        contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+        payoutId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+        status: null
+      properties:
+        contractId:
+          description: A reference to a transaction output with a transaction ID and
+            index.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          pattern: "^[a-fA-F0-9]{64}#[0-9]+$"
+          type: string
+        payoutId:
+          description: A reference to a transaction output with a transaction ID and
+            index.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          pattern: "^[a-fA-F0-9]{64}#[0-9]+$"
+          type: string
+        role:
+          $ref: '#/components/schemas/AssetId'
+        status:
+          $ref: '#/components/schemas/PayoutStatus'
+        withdrawalId:
+          description: The hex-encoded identifier of a Cardano transaction
+          pattern: "^[a-fA-F0-9]{64}$"
+          type: string
+      required:
+      - contractId
+      - payoutId
+      - role
+      - status
+      type: object
+    AssetId:
+      example:
+        policyId: policyId
+        assetName: assetName
+      properties:
+        assetName:
+          type: string
+        policyId:
+          description: The hex-encoded minting policy ID for a native Cardano token
+          pattern: "^[a-fA-F0-9]*$"
+          type: string
+      required:
+      - assetName
+      - policyId
+      type: object
+    PayoutStatus:
+      description: "The status of a payout. Either it is available to be withdrawn,\
+        \ or it has already been withdrawn."
+      enum:
+      - available
+      - withdrawn
+      type: string
+    ListObject_PayoutHeader:
+      example:
+        results:
+        - resource:
+            withdrawalId: withdrawalId
+            role:
+              policyId: policyId
+              assetName: assetName
+            contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+            payoutId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+            status: null
+          links:
+            payout: payout
+        - resource:
+            withdrawalId: withdrawalId
+            role:
+              policyId: policyId
+              assetName: assetName
+            contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+            payoutId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+            status: null
+          links:
+            payout: payout
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ListObject_PayoutHeader_results_inner'
+          type: array
+      required:
+      - results
+      type: object
+    PayoutState:
+      example:
+        withdrawalId: withdrawalId
+        assets:
+          lovelace: 0
+          tokens:
+            key:
+              key: 6
+        role:
+          policyId: policyId
+          assetName: assetName
+        contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+        payoutValidatorAddress: addr1w94f8ywk4fg672xasahtk4t9k6w3aql943uxz5rt62d4dvq8evxaf
+        payoutId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+        status: null
+      properties:
+        assets:
+          $ref: '#/components/schemas/Assets'
+        contractId:
+          description: A reference to a transaction output with a transaction ID and
+            index.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          pattern: "^[a-fA-F0-9]{64}#[0-9]+$"
+          type: string
+        payoutId:
+          description: A reference to a transaction output with a transaction ID and
+            index.
+          example: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          pattern: "^[a-fA-F0-9]{64}#[0-9]+$"
+          type: string
+        payoutValidatorAddress:
+          description: A cardano address
+          example: addr1w94f8ywk4fg672xasahtk4t9k6w3aql943uxz5rt62d4dvq8evxaf
+          type: string
+        role:
+          $ref: '#/components/schemas/AssetId'
+        status:
+          $ref: '#/components/schemas/PayoutStatus'
+        withdrawalId:
+          description: The hex-encoded identifier of a Cardano transaction
+          pattern: "^[a-fA-F0-9]{64}$"
+          type: string
+      required:
+      - assets
+      - contractId
+      - payoutId
+      - payoutValidatorAddress
+      - role
+      - status
+      type: object
+    _contracts_post_201_response_links:
+      properties:
+        contract:
+          type: string
+      type: object
+    _contracts_post_201_response:
+      properties:
+        links:
+          $ref: '#/components/schemas/_contracts_post_201_response_links'
+        resource:
+          $ref: '#/components/schemas/ApplyInputsTxEnvelope'
+      required:
+      - links
+      - resource
+      type: object
+    _contracts__contractId__get_200_response_links:
+      example:
+        transactions: transactions
+      properties:
+        transactions:
+          type: string
+      type: object
+    _contracts__contractId__get_200_response:
+      example:
+        resource:
+          unclaimedPayouts:
+          - assets:
+              lovelace: 0
+              tokens:
+                key:
+                  key: 6
+            role: role
+            payoutId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          - assets:
+              lovelace: 0
+              tokens:
+                key:
+                  key: 6
+            role: role
+            payoutId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          utxo: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          initialContract: null
+          metadata:
+            key: null
+          txBody:
+            description: description
+            type: type
+            cborHex: cborHex
+          currentContract: null
+          version: null
+          tags:
+            key: null
+          assets:
+            lovelace: 0
+            tokens:
+              key:
+                key: 6
+          continuations: continuations
+          contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          block:
+            blockNo: 738633633822310400
+            blockHeaderHash: blockHeaderHash
+            slotNo: 5559347081229897728
+          state:
+            boundValues:
+            - - null
+              - null
+            - - null
+              - null
+            minTime: 1
+            accounts:
+            - - null
+              - null
+            - - null
+              - null
+            choices:
+            - - null
+              - null
+            - - null
+              - null
+          roleTokenMintingPolicyId: roleTokenMintingPolicyId
+          status: null
+        links:
+          transactions: transactions
+      properties:
+        links:
+          $ref: '#/components/schemas/_contracts__contractId__get_200_response_links'
+        resource:
+          $ref: '#/components/schemas/ContractState'
+      required:
+      - links
+      - resource
+      type: object
+    _contracts__contractId__transactions_post_201_response_links:
+      example:
+        transaction: transaction
+      properties:
+        transaction:
+          type: string
+      type: object
+    _contracts__contractId__transactions_post_201_response:
+      properties:
+        links:
+          $ref: '#/components/schemas/_contracts__contractId__transactions_post_201_response_links'
+        resource:
+          $ref: '#/components/schemas/ApplyInputsTxEnvelope'
+      required:
+      - links
+      - resource
+      type: object
+    _contracts__contractId__transactions__transactionId__get_200_response_links:
+      example:
+        next: next
+        previous: previous
+      properties:
+        next:
+          type: string
+        previous:
+          type: string
+      type: object
+    _contracts__contractId__transactions__transactionId__get_200_response:
+      example:
+        resource:
+          metadata:
+            key: null
+          outputState:
+            boundValues:
+            - - null
+              - null
+            - - null
+              - null
+            minTime: 1
+            accounts:
+            - - null
+              - null
+            - - null
+              - null
+            choices:
+            - - null
+              - null
+            - - null
+              - null
+          outputUtxo: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          inputs:
+          - null
+          - null
+          outputContract: null
+          txBody:
+            description: description
+            type: type
+            cborHex: cborHex
+          transactionId: transactionId
+          invalidBefore: 2016-07-22T00:00:00Z
+          tags:
+            key: null
+          payouts:
+          - assets:
+              lovelace: 0
+              tokens:
+                key:
+                  key: 6
+            role: role
+            payoutId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          - assets:
+              lovelace: 0
+              tokens:
+                key:
+                  key: 6
+            role: role
+            payoutId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          consumingTx: consumingTx
+          assets:
+            lovelace: 0
+            tokens:
+              key:
+                key: 6
+          continuations: continuations
+          contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          block:
+            blockNo: 738633633822310400
+            blockHeaderHash: blockHeaderHash
+            slotNo: 5559347081229897728
+          invalidHereafter: 2016-07-22T00:00:00Z
+          inputUtxo: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          status: null
+        links:
+          next: next
+          previous: previous
+      properties:
+        links:
+          $ref: '#/components/schemas/_contracts__contractId__transactions__transactionId__get_200_response_links'
+        resource:
+          $ref: '#/components/schemas/Tx'
+      required:
+      - links
+      - resource
+      type: object
+    _withdrawals_post_201_response_links:
+      example:
+        withdrawal: withdrawal
+      properties:
+        withdrawal:
+          type: string
+      type: object
+    _withdrawals_post_201_response:
+      properties:
+        links:
+          $ref: '#/components/schemas/_withdrawals_post_201_response_links'
+        resource:
+          $ref: '#/components/schemas/ApplyInputsTxEnvelope'
+      required:
+      - links
+      - resource
+      type: object
+    _payouts__payoutId__get_200_response_links:
+      example:
+        contract: contract
+        withdrawal: withdrawal
+        transaction: transaction
+      properties:
+        contract:
+          type: string
+        transaction:
+          type: string
+        withdrawal:
+          type: string
+      type: object
+    _payouts__payoutId__get_200_response:
+      example:
+        resource:
+          withdrawalId: withdrawalId
+          assets:
+            lovelace: 0
+            tokens:
+              key:
+                key: 6
+          role:
+            policyId: policyId
+            assetName: assetName
+          contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          payoutValidatorAddress: addr1w94f8ywk4fg672xasahtk4t9k6w3aql943uxz5rt62d4dvq8evxaf
+          payoutId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          status: null
+        links:
+          contract: contract
+          withdrawal: withdrawal
+          transaction: transaction
+      properties:
+        links:
+          $ref: '#/components/schemas/_payouts__payoutId__get_200_response_links'
+        resource:
+          $ref: '#/components/schemas/PayoutState'
+      required:
+      - links
+      - resource
+      type: object
+    ListObject_ContractHeader_results_inner_links:
+      example:
+        contract: contract
+        transactions: transactions
+      properties:
+        contract:
+          type: string
+        transactions:
+          type: string
+      type: object
+    ListObject_ContractHeader_results_inner:
+      example:
+        resource:
+          metadata:
+            key: null
+          continuations: continuations
+          contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          block:
+            blockNo: 738633633822310400
+            blockHeaderHash: blockHeaderHash
+            slotNo: 5559347081229897728
+          roleTokenMintingPolicyId: roleTokenMintingPolicyId
+          version: null
+          status: null
+          tags:
+            key: null
+        links:
+          contract: contract
+          transactions: transactions
+      properties:
+        links:
+          $ref: '#/components/schemas/ListObject_ContractHeader_results_inner_links'
+        resource:
+          $ref: '#/components/schemas/ContractHeader'
+      required:
+      - links
+      - resource
+      type: object
+    TransactionWarning_oneOf:
+      description: A warning for a non-positive deposit.
+      properties:
+        asked_to_deposit:
+          type: integer
+        in_account:
+          $ref: '#/components/schemas/Party'
+        of_token:
+          $ref: '#/components/schemas/Token'
+        party:
+          $ref: '#/components/schemas/Party'
+      required:
+      - asked_to_deposit
+      - in_account
+      - of_token
+      - party
+      type: object
+    TransactionWarning_oneOf_1:
+      description: A warning for a non-positive payment.
+      properties:
+        account:
+          $ref: '#/components/schemas/Party'
+        asked_to_pay:
+          type: integer
+        of_token:
+          $ref: '#/components/schemas/Token'
+        to_payee:
+          $ref: '#/components/schemas/Payee'
+      required:
+      - account
+      - asked_to_pay
+      - of_token
+      - to_payee
+      type: object
+    TransactionWarning_oneOf_2:
+      description: A warning for partial payment.
+      properties:
+        account:
+          $ref: '#/components/schemas/Party'
+        asked_to_pay:
+          type: integer
+        but_only_paid:
+          type: integer
+        of_token:
+          $ref: '#/components/schemas/Token'
+        to_payee:
+          $ref: '#/components/schemas/Payee'
+      required:
+      - account
+      - asked_to_pay
+      - but_only_paid
+      - of_token
+      - to_payee
+      type: object
+    TransactionWarning_oneOf_3:
+      description: A variable-name shadowing warning.
+      properties:
+        had_value:
+          type: integer
+        is_now_assigned:
+          type: integer
+        value_id:
+          type: string
+      required:
+      - had_value
+      - is_now_assigned
+      - value_id
+      type: object
+    Party_oneOf:
+      description: Refers to a party by role name.
+      properties:
+        role_token:
+          type: string
+      required:
+      - role_token
+      type: object
+    Party_oneOf_1:
+      description: Refers to a party by Cardano address.
+      properties:
+        address:
+          description: A cardano address
+          example: addr1w94f8ywk4fg672xasahtk4t9k6w3aql943uxz5rt62d4dvq8evxaf
+          type: string
+      required:
+      - address
+      type: object
+    Payee_oneOf:
+      description: Pays funds into a party's account in the contract.
+      properties:
+        account:
+          $ref: '#/components/schemas/Party'
+      required:
+      - account
+      type: object
+    Payee_oneOf_1:
+      description: Pays funds to a party.
+      properties:
+        party:
+          $ref: '#/components/schemas/Party'
+      required:
+      - party
+      type: object
+    MarloweState_accounts_inner_inner_oneOf_inner:
+      oneOf:
+      - $ref: '#/components/schemas/Party'
+      - $ref: '#/components/schemas/Token'
+    MarloweState_accounts_inner_inner:
+      oneOf:
+      - items:
+          $ref: '#/components/schemas/MarloweState_accounts_inner_inner_oneOf_inner'
+        maxItems: 2
+        minItems: 2
+        type: array
+      - type: integer
+    MarloweState_boundValues_inner_inner:
+      oneOf:
+      - type: string
+      - type: integer
+    MarloweState_choices_inner_inner:
+      oneOf:
+      - $ref: '#/components/schemas/ChoiceId'
+      - type: integer
+    Contract_oneOf:
+      description: A payment will be sent from an account to a payee.
+      properties:
+        from_account:
+          $ref: '#/components/schemas/Party'
+        pay:
+          $ref: '#/components/schemas/Value'
+        then:
+          $ref: '#/components/schemas/Contract'
+        to:
+          $ref: '#/components/schemas/Payee'
+        token:
+          $ref: '#/components/schemas/Token'
+      required:
+      - from_account
+      - pay
+      - then
+      - to
+      - token
+      type: object
+    Contract_oneOf_1:
+      description: "If an observation is true, the first contract applies, otherwise\
+        \ the second contract applies."
+      properties:
+        else:
+          $ref: '#/components/schemas/Contract'
+        if:
+          $ref: '#/components/schemas/Observation'
+        then:
+          $ref: '#/components/schemas/Contract'
+      required:
+      - else
+      - if
+      - then
+      type: object
+    Contract_oneOf_2:
+      description: Wait for an action to be performed and apply the matching contract
+        when it does. Apply the timeout contract if no actions have been performed
+        in the timeout period.
+      properties:
+        timeout:
+          type: integer
+        timeout_continuation:
+          $ref: '#/components/schemas/Contract'
+        when:
+          items:
+            $ref: '#/components/schemas/Case'
+          type: array
+      required:
+      - timeout
+      - timeout_continuation
+      - when
+      type: object
+    Contract_oneOf_3:
+      description: Bind a value to a name within the scope of a sub-contract.
+      properties:
+        be:
+          $ref: '#/components/schemas/Value'
+        let:
+          type: string
+        then:
+          $ref: '#/components/schemas/Contract'
+      required:
+      - be
+      - let
+      - then
+      type: object
+    Contract_oneOf_4:
+      description: Check an observation and produce a warning if it is false.
+      properties:
+        assert:
+          $ref: '#/components/schemas/Observation'
+        then:
+          $ref: '#/components/schemas/Contract'
+      required:
+      - assert
+      - then
+      type: object
+    Value_oneOf:
+      properties:
+        amount_of_token:
+          $ref: '#/components/schemas/Token'
+        in_account:
+          $ref: '#/components/schemas/Party'
+      required:
+      - amount_of_token
+      - in_account
+      type: object
+    Value_oneOf_1:
+      properties:
+        negate:
+          $ref: '#/components/schemas/Value'
+      required:
+      - negate
+      type: object
+    Value_oneOf_2:
+      properties:
+        add:
+          $ref: '#/components/schemas/Value'
+        and:
+          $ref: '#/components/schemas/Value'
+      required:
+      - add
+      - and
+      type: object
+    Value_oneOf_3:
+      properties:
+        minus:
+          $ref: '#/components/schemas/Value'
+        value:
+          $ref: '#/components/schemas/Value'
+      required:
+      - minus
+      - value
+      type: object
+    Value_oneOf_4:
+      properties:
+        multiply:
+          $ref: '#/components/schemas/Value'
+        times:
+          $ref: '#/components/schemas/Value'
+      required:
+      - multiply
+      - times
+      type: object
+    Value_oneOf_5:
+      properties:
+        by:
+          $ref: '#/components/schemas/Value'
+        divide:
+          $ref: '#/components/schemas/Value'
+      required:
+      - by
+      - divide
+      type: object
+    Value_oneOf_6:
+      properties:
+        value_of_choice:
+          $ref: '#/components/schemas/ChoiceId'
+      required:
+      - value_of_choice
+      type: object
+    Value_oneOf_7:
+      properties:
+        use_value:
+          type: string
+      required:
+      - use_value
+      type: object
+    Value_oneOf_8:
+      properties:
+        else:
+          $ref: '#/components/schemas/Value'
+        if:
+          $ref: '#/components/schemas/Observation'
+        then:
+          $ref: '#/components/schemas/Value'
+      required:
+      - else
+      - if
+      - then
+      type: object
+    Observation_oneOf:
+      properties:
+        and:
+          $ref: '#/components/schemas/Observation'
+        both:
+          $ref: '#/components/schemas/Observation'
+      required:
+      - and
+      - both
+      type: object
+    Observation_oneOf_1:
+      properties:
+        either:
+          $ref: '#/components/schemas/Observation'
+        or:
+          $ref: '#/components/schemas/Observation'
+      required:
+      - either
+      - or
+      type: object
+    Observation_oneOf_2:
+      properties:
+        not:
+          $ref: '#/components/schemas/Observation'
+      required:
+      - not
+      type: object
+    Observation_oneOf_3:
+      properties:
+        chose_something_for:
+          $ref: '#/components/schemas/ChoiceId'
+      required:
+      - chose_something_for
+      type: object
+    Observation_oneOf_4:
+      properties:
+        ge_than:
+          $ref: '#/components/schemas/Value'
+        value:
+          $ref: '#/components/schemas/Value'
+      required:
+      - ge_than
+      - value
+      type: object
+    Observation_oneOf_5:
+      properties:
+        gt:
+          $ref: '#/components/schemas/Value'
+        value:
+          $ref: '#/components/schemas/Value'
+      required:
+      - gt
+      - value
+      type: object
+    Observation_oneOf_6:
+      properties:
+        lt:
+          $ref: '#/components/schemas/Value'
+        value:
+          $ref: '#/components/schemas/Value'
+      required:
+      - lt
+      - value
+      type: object
+    Observation_oneOf_7:
+      properties:
+        le_than:
+          $ref: '#/components/schemas/Value'
+        value:
+          $ref: '#/components/schemas/Value'
+      required:
+      - le_than
+      - value
+      type: object
+    Observation_oneOf_8:
+      properties:
+        equal_to:
+          $ref: '#/components/schemas/Value'
+        value:
+          $ref: '#/components/schemas/Value'
+      required:
+      - equal_to
+      - value
+      type: object
+    Case_oneOf:
+      properties:
+        case:
+          $ref: '#/components/schemas/Action'
+        then:
+          $ref: '#/components/schemas/Contract'
+      required:
+      - case
+      - then
+      type: object
+    Case_oneOf_1:
+      properties:
+        case:
+          $ref: '#/components/schemas/Action'
+        merkleized_then:
+          type: string
+      required:
+      - case
+      - merkleized_then
+      type: object
+    Action_oneOf:
+      properties:
+        deposits:
+          $ref: '#/components/schemas/Value'
+        into_account:
+          $ref: '#/components/schemas/Party'
+        of_token:
+          $ref: '#/components/schemas/Token'
+        party:
+          $ref: '#/components/schemas/Party'
+      required:
+      - deposits
+      - into_account
+      - of_token
+      - party
+      type: object
+    Action_oneOf_1:
+      properties:
+        choose_between:
+          items:
+            $ref: '#/components/schemas/Bound'
+          type: array
+        for_choice:
+          $ref: '#/components/schemas/ChoiceId'
+      required:
+      - choose_between
+      - for_choice
+      type: object
+    Action_oneOf_2:
+      properties:
+        notify_if:
+          $ref: '#/components/schemas/Observation'
+      required:
+      - notify_if
+      type: object
+    TransactionInput_tx_interval:
+      description: Time interval.
+      properties:
+        from:
+          type: integer
+        to:
+          type: integer
+      required:
+      - from
+      - to
+      type: object
+    Input_oneOf:
+      description: Notify a contract to check a condition and provide the continuation
+        of the contract
+      properties:
+        continuation_hash:
+          type: string
+        merkleized_continuation:
+          $ref: '#/components/schemas/Contract'
+      required:
+      - continuation_hash
+      - merkleized_continuation
+      type: object
+    Input_oneOf_1:
+      description: Make a choice in a contract and provide the continuation of the
+        contract
+      properties:
+        continuation_hash:
+          type: string
+        for_choice_id:
+          $ref: '#/components/schemas/ChoiceId'
+        input_that_chooses_num:
+          type: integer
+        merkleized_continuation:
+          $ref: '#/components/schemas/Contract'
+      required:
+      - continuation_hash
+      - for_choice_id
+      - input_that_chooses_num
+      - merkleized_continuation
+      type: object
+    Input_oneOf_2:
+      description: Make a choice in a contract
+      properties:
+        for_choice_id:
+          $ref: '#/components/schemas/ChoiceId'
+        input_that_chooses_num:
+          type: integer
+      required:
+      - for_choice_id
+      - input_that_chooses_num
+      type: object
+    Input_oneOf_3:
+      description: Deposit funds into an account in a contract and provide the continuation
+        of the contract
+      properties:
+        continuation_hash:
+          type: string
+        input_from_party:
+          $ref: '#/components/schemas/Party'
+        into_account:
+          $ref: '#/components/schemas/Party'
+        merkleized_continuation:
+          $ref: '#/components/schemas/Contract'
+        of_token:
+          $ref: '#/components/schemas/Token'
+        that_deposits:
+          type: integer
+      required:
+      - continuation_hash
+      - input_from_party
+      - into_account
+      - merkleized_continuation
+      - of_token
+      - that_deposits
+      type: object
+    Input_oneOf_4:
+      description: Deposit funds into an account in a contract
+      properties:
+        input_from_party:
+          $ref: '#/components/schemas/Party'
+        into_account:
+          $ref: '#/components/schemas/Party'
+        of_token:
+          $ref: '#/components/schemas/Token'
+        that_deposits:
+          type: integer
+      required:
+      - input_from_party
+      - into_account
+      - of_token
+      - that_deposits
+      type: object
+    TransactionOutput_oneOf:
+      description: Marlowe transaction output information.
+      properties:
+        contract:
+          $ref: '#/components/schemas/Contract'
+        payments:
+          items:
+            $ref: '#/components/schemas/Payment'
+          type: array
+        state:
+          $ref: '#/components/schemas/MarloweState'
+        warnings:
+          items:
+            $ref: '#/components/schemas/TransactionWarning'
+          type: array
+      required:
+      - contract
+      - payments
+      - state
+      - warnings
+      type: object
+    TransactionOutput_oneOf_1:
+      description: Marlowe transaction error.
+      properties:
+        transaction_error:
+          $ref: '#/components/schemas/TransactionError'
+      required:
+      - transaction_error
+      type: object
+    TransactionError_oneOf:
+      description: An invalid time interval.
+      properties:
+        context:
+          $ref: '#/components/schemas/IntervalError'
+        error:
+          enum:
+          - TEIntervalError
+          type: string
+      required:
+      - context
+      - error
+      type: object
+    IntervalError_oneOf_invalidInterval:
+      properties:
+        from:
+          type: integer
+        to:
+          type: integer
+      required:
+      - from
+      - to
+      type: object
+    IntervalError_oneOf:
+      description: Invalid Marlowe transaction interval.
+      properties:
+        invalidInterval:
+          $ref: '#/components/schemas/IntervalError_oneOf_invalidInterval'
+      required:
+      - invalidInterval
+      type: object
+    IntervalError_oneOf_1_intervalInPastError:
+      properties:
+        from:
+          type: integer
+        minTime:
+          type: integer
+        to:
+          type: integer
+      required:
+      - from
+      - minTime
+      - to
+      type: object
+    IntervalError_oneOf_1:
+      description: Marlowe transaction interval in past.
+      properties:
+        intervalInPastError:
+          $ref: '#/components/schemas/IntervalError_oneOf_1_intervalInPastError'
+      required:
+      - intervalInPastError
+      type: object
+    Plutus_Credential_oneOf:
+      description: A Plutus public key credential.
+      properties:
+        pubKeyCredential:
+          type: string
+      required:
+      - pubKeyCredential
+      type: object
+    Plutus_Credential_oneOf_1:
+      description: A Plutus script credential.
+      properties:
+        scriptCredential:
+          type: string
+      required:
+      - scriptCredential
+      type: object
+    Plutus_StakingCredential_oneOf:
+      description: A Plutus staking hash.
+      properties:
+        stakingHash:
+          $ref: '#/components/schemas/Plutus.Credential'
+      required:
+      - stakingHash
+      type: object
+    Plutus_StakingCredential_oneOf_1_stakingHash_inner:
+      oneOf:
+      - type: integer
+      - type: integer
+      - type: integer
+    Plutus_StakingCredential_oneOf_1:
+      description: A Plutus staking pointer.
+      properties:
+        stakingHash:
+          items:
+            $ref: '#/components/schemas/Plutus_StakingCredential_oneOf_1_stakingHash_inner'
+          maxItems: 3
+          minItems: 3
+          type: array
+      required:
+      - stakingHash
+      type: object
+    PostContractsRequest_contract:
+      oneOf:
+      - $ref: '#/components/schemas/Contract'
+      - $ref: '#/components/schemas/ContractSourceId'
+    RoleTokenConfig_oneOf:
+      properties:
+        address:
+          description: A cardano address
+          example: addr1w94f8ywk4fg672xasahtk4t9k6w3aql943uxz5rt62d4dvq8evxaf
+          type: string
+        metadata:
+          $ref: '#/components/schemas/TokenMetadata'
+      required:
+      - address
+      - metadata
+      type: object
+    ListObject_TxHeader_results_inner:
+      example:
+        resource:
+          utxo: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          metadata:
+            key: null
+          continuations: continuations
+          contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          block:
+            blockNo: 738633633822310400
+            blockHeaderHash: blockHeaderHash
+            slotNo: 5559347081229897728
+          transactionId: transactionId
+          status: null
+          tags:
+            key: null
+        links:
+          transaction: transaction
+      properties:
+        links:
+          $ref: '#/components/schemas/_contracts__contractId__transactions_post_201_response_links'
+        resource:
+          $ref: '#/components/schemas/TxHeader'
+      required:
+      - links
+      - resource
+      type: object
+    LabelledObject_value:
+      oneOf:
+      - $ref: '#/components/schemas/ValueObject'
+      - $ref: '#/components/schemas/ObservationObject'
+      - $ref: '#/components/schemas/ContractObject'
+      - $ref: '#/components/schemas/PartyObject'
+      - $ref: '#/components/schemas/TokenObject'
+      - $ref: '#/components/schemas/ActionObject'
+    ValueObject_oneOf:
+      properties:
+        amount_of_token:
+          $ref: '#/components/schemas/TokenObject'
+        in_account:
+          $ref: '#/components/schemas/PartyObject'
+      required:
+      - amount_of_token
+      - in_account
+      type: object
+    ValueObject_oneOf_1:
+      properties:
+        negate:
+          $ref: '#/components/schemas/ValueObject'
+      required:
+      - negate
+      type: object
+    ValueObject_oneOf_2:
+      properties:
+        add:
+          $ref: '#/components/schemas/ValueObject'
+        and:
+          $ref: '#/components/schemas/ValueObject'
+      required:
+      - add
+      - and
+      type: object
+    ValueObject_oneOf_3:
+      properties:
+        minus:
+          $ref: '#/components/schemas/ValueObject'
+        value:
+          $ref: '#/components/schemas/ValueObject'
+      required:
+      - minus
+      - value
+      type: object
+    ValueObject_oneOf_4:
+      properties:
+        multiply:
+          $ref: '#/components/schemas/ValueObject'
+        times:
+          $ref: '#/components/schemas/ValueObject'
+      required:
+      - multiply
+      - times
+      type: object
+    ValueObject_oneOf_5:
+      properties:
+        by:
+          $ref: '#/components/schemas/ValueObject'
+        divide:
+          $ref: '#/components/schemas/ValueObject'
+      required:
+      - by
+      - divide
+      type: object
+    ValueObject_oneOf_6:
+      properties:
+        value_of_choice:
+          $ref: '#/components/schemas/ChoiceIdObject'
+      required:
+      - value_of_choice
+      type: object
+    ValueObject_oneOf_7:
+      properties:
+        else:
+          $ref: '#/components/schemas/ValueObject'
+        if:
+          $ref: '#/components/schemas/ObservationObject'
+        then:
+          $ref: '#/components/schemas/ValueObject'
+      required:
+      - else
+      - if
+      - then
+      type: object
+    ValueObject_oneOf_8:
+      properties:
+        ref:
+          description: An arbitrary text identifier for an object in a Marlowe object
+            bundle.
+          type: string
+      required:
+      - ref
+      type: object
+    ObservationObject_oneOf:
+      properties:
+        and:
+          $ref: '#/components/schemas/ObservationObject'
+        both:
+          $ref: '#/components/schemas/ObservationObject'
+      required:
+      - and
+      - both
+      type: object
+    ObservationObject_oneOf_1:
+      properties:
+        either:
+          $ref: '#/components/schemas/ObservationObject'
+        or:
+          $ref: '#/components/schemas/ObservationObject'
+      required:
+      - either
+      - or
+      type: object
+    ObservationObject_oneOf_2:
+      properties:
+        not:
+          $ref: '#/components/schemas/ObservationObject'
+      required:
+      - not
+      type: object
+    ObservationObject_oneOf_3:
+      properties:
+        chose_something_for:
+          $ref: '#/components/schemas/ChoiceIdObject'
+      required:
+      - chose_something_for
+      type: object
+    ObservationObject_oneOf_4:
+      properties:
+        ge_than:
+          $ref: '#/components/schemas/ValueObject'
+        value:
+          $ref: '#/components/schemas/ValueObject'
+      required:
+      - ge_than
+      - value
+      type: object
+    ObservationObject_oneOf_5:
+      properties:
+        gt:
+          $ref: '#/components/schemas/ValueObject'
+        value:
+          $ref: '#/components/schemas/ValueObject'
+      required:
+      - gt
+      - value
+      type: object
+    ObservationObject_oneOf_6:
+      properties:
+        lt:
+          $ref: '#/components/schemas/ValueObject'
+        value:
+          $ref: '#/components/schemas/ValueObject'
+      required:
+      - lt
+      - value
+      type: object
+    ObservationObject_oneOf_7:
+      properties:
+        le_than:
+          $ref: '#/components/schemas/ValueObject'
+        value:
+          $ref: '#/components/schemas/ValueObject'
+      required:
+      - le_than
+      - value
+      type: object
+    ObservationObject_oneOf_8:
+      properties:
+        equal_to:
+          $ref: '#/components/schemas/ValueObject'
+        value:
+          $ref: '#/components/schemas/ValueObject'
+      required:
+      - equal_to
+      - value
+      type: object
+    ContractObject_oneOf:
+      description: A payment will be sent from an account to a payee.
+      properties:
+        from_account:
+          $ref: '#/components/schemas/PartyObject'
+        pay:
+          $ref: '#/components/schemas/ValueObject'
+        then:
+          $ref: '#/components/schemas/ContractObject'
+        to:
+          $ref: '#/components/schemas/PayeeObject'
+        token:
+          $ref: '#/components/schemas/TokenObject'
+      required:
+      - from_account
+      - pay
+      - then
+      - to
+      - token
+      type: object
+    ContractObject_oneOf_1:
+      description: "If an observation is true, the first contract applies, otherwise\
+        \ the second contract applies."
+      properties:
+        else:
+          $ref: '#/components/schemas/ContractObject'
+        if:
+          $ref: '#/components/schemas/ObservationObject'
+        then:
+          $ref: '#/components/schemas/ContractObject'
+      required:
+      - else
+      - if
+      - then
+      type: object
+    ContractObject_oneOf_2:
+      description: Wait for an action to be performed and apply the matching contract
+        when it does. Apply the timeout contract if no actions have been performed
+        in the timeout period.
+      properties:
+        timeout:
+          type: integer
+        timeout_continuation:
+          $ref: '#/components/schemas/ContractObject'
+        when:
+          items:
+            $ref: '#/components/schemas/CaseObject'
+          type: array
+      required:
+      - timeout
+      - timeout_continuation
+      - when
+      type: object
+    ContractObject_oneOf_3:
+      description: Bind a value to a name within the scope of a sub-contract.
+      properties:
+        be:
+          $ref: '#/components/schemas/ValueObject'
+        let:
+          type: string
+        then:
+          $ref: '#/components/schemas/ContractObject'
+      required:
+      - be
+      - let
+      - then
+      type: object
+    ContractObject_oneOf_4:
+      description: Check an observation and produce a warning if it is false.
+      properties:
+        assert:
+          $ref: '#/components/schemas/ObservationObject'
+        then:
+          $ref: '#/components/schemas/ContractObject'
+      required:
+      - assert
+      - then
+      type: object
+    PayeeObject_oneOf:
+      description: Pays funds into a party's account in the contract.
+      properties:
+        account:
+          $ref: '#/components/schemas/PartyObject'
+      required:
+      - account
+      type: object
+    PayeeObject_oneOf_1:
+      description: Pays funds to a party.
+      properties:
+        party:
+          $ref: '#/components/schemas/PartyObject'
+      required:
+      - party
+      type: object
+    CaseObject_oneOf:
+      properties:
+        case:
+          $ref: '#/components/schemas/ActionObject'
+        then:
+          $ref: '#/components/schemas/ContractObject'
+      required:
+      - case
+      - then
+      type: object
+    CaseObject_oneOf_1:
+      properties:
+        case:
+          $ref: '#/components/schemas/ActionObject'
+        merkleized_then:
+          type: string
+      required:
+      - case
+      - merkleized_then
+      type: object
+    ListObject_WithdrawalHeader_results_inner:
+      example:
+        resource:
+          withdrawalId: withdrawalId
+          block:
+            blockNo: 738633633822310400
+            blockHeaderHash: blockHeaderHash
+            slotNo: 5559347081229897728
+          status: null
+        links:
+          withdrawal: withdrawal
+      properties:
+        links:
+          $ref: '#/components/schemas/_withdrawals_post_201_response_links'
+        resource:
+          $ref: '#/components/schemas/WithdrawalHeader'
+      required:
+      - links
+      - resource
+      type: object
+    ListObject_PayoutHeader_results_inner_links:
+      example:
+        payout: payout
+      properties:
+        payout:
+          type: string
+      type: object
+    ListObject_PayoutHeader_results_inner:
+      example:
+        resource:
+          withdrawalId: withdrawalId
+          role:
+            policyId: policyId
+            assetName: assetName
+          contractId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          payoutId: 98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1
+          status: null
+        links:
+          payout: payout
+      properties:
+        links:
+          $ref: '#/components/schemas/ListObject_PayoutHeader_results_inner_links'
+        resource:
+          $ref: '#/components/schemas/PayoutHeader'
+      required:
+      - links
+      - resource
+      type: object
+

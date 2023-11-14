@@ -39,7 +39,7 @@ jobs:
       - name: API CLIENT CODEGEN
         uses: peter-evans/create-pull-request@v5
         with:
-          commit-message: feat(MarloweAPIClient): api client update
+          commit-message: feat(MarloweAPIClient):api client update
           title: Update MarloweAPIClient to match OpenAPI specs
           body: |
             This PR updates the MarloweAPIClient project based on the specs described in `openapi.json`

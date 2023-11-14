@@ -1,0 +1,53 @@
+name: C# code from specs
+on: push
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  FILE_PATH: openapi.json
+
+jobs:
+  run:
+    name: C# code from specs in openapi.json
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set file path
+        run: echo "FILE_PATH=openapi.json" >> "$GITHUB_ENV"
+
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 5
+
+      - name: Check if running the action is needed.
+        run: echo "API_SPECS_CHANGED=$(git diff --name-only HEAD HEAD~1 | grep $FILE_PATH)" >> "$GITHUB_ENV"
+
+      - name: Show variables
+        run: echo "HI $API_SPECS_CHANGED $FILE_PATH"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+
+      - name: Remove previously generated code
+        run: cd gen && xargs rm -rf < .openapi-generator/FILES && cd ..
+
+      - name: Generate csharp code from specs
+        run: npx @openapitools/openapi-generator-cli generate -i $FILE_PATH -g csharp --additional-properties=hideGenerationTimestamp=true,netCoreProjectFile=true,packageName=MarloweAPIClient,conditionalSerialization=true
+
+      - name: API CLIENT CODEGEN
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: feat(MarloweAPIClient): api client update
+          title: Update MarloweAPIClient to match OpenAPI specs
+          body: |
+            This PR updates the MarloweAPIClient project based on the specs described in `openapi.json`
+            To check if this newly generated code is functional, run `dotnet build` in the root folder of the project.
+            In case it shows serialization errors, changing the type anotations to the expected types does the trick.
+
+            This because of an [issue][1] on openapi-generator's package.
+
+            [1]: https://github.com/OpenAPITools/openapi-generator/issues/16686
+
+          branch: api-client-codegen

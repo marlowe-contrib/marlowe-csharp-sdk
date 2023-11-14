@@ -1,5 +1,8 @@
 name: C# code from specs
-on: push
+on:
+  push:
+    branches:
+      - main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -28,15 +31,19 @@ jobs:
         run: echo "HI $API_SPECS_CHANGED $FILE_PATH"
 
       - name: Set up Node.js
+        if: ENV.API_SPECS_CHANGED
         uses: actions/setup-node@v3
 
       - name: Remove previously generated code
+        if: ENV.API_SPECS_CHANGED
         run: xargs rm -rf < .openapi-generator/FILES
 
       - name: Generate csharp code from specs
+        if: ENV.API_SPECS_CHANGED
         run: npx @openapitools/openapi-generator-cli generate -i $FILE_PATH -g csharp --additional-properties=hideGenerationTimestamp=true,netCoreProjectFile=true,packageName=MarloweAPIClient,conditionalSerialization=true
 
       - name: API CLIENT CODEGEN
+        if: ENV.API_SPECS_CHANGED
         uses: peter-evans/create-pull-request@v5
         with:
           commit-message: feat(MarloweAPIClient):api client update

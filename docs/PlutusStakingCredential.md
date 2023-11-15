@@ -5,7 +5,7 @@ A Plutus staking credential.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StakingHash** | [**List&lt;PlutusStakingCredentialOneOf1StakingHashInner&gt;**](PlutusStakingCredentialOneOf1StakingHashInner.md) |  | 
+**StakingHash** | **List&lt;int&gt;** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

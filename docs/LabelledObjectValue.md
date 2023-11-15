@@ -42,7 +42,7 @@ Name | Type | Description | Notes
 **Let** | **string** |  | 
 **Assert** | [**ObservationObject**](ObservationObject.md) |  | 
 **RoleToken** | **string** |  | 
-**Address** | **string** | A cardano address | 
+**Address** | **string** | A cardano address, in Bech32 format | 
 **CurrencySymbol** | **string** |  | 
 **TokenName** | **string** |  | 
 **Deposits** | [**Value**](Value.md) |  | 

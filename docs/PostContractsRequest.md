@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Contract** | [**PostContractsRequestContract**](PostContractsRequestContract.md) |  | 
 **Metadata** | **Dictionary&lt;string, Object&gt;** |  | 
-**MinUTxODeposit** | **long** |  | 
+**MinUTxODeposit** | **long** |  | [optional] 
 **Roles** | [**RolesConfig**](RolesConfig.md) |  | [optional] 
 **Tags** | **Dictionary&lt;string, Object&gt;** |  | 
 **VarVersion** | **MarloweVersion** |  | 

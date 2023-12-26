@@ -47,10 +47,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RoleTokenConfig" /> class
-        /// with the <see cref="RoleTokenConfigOneOf" /> class
+        /// with the <see cref="AddressAndMetadata" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of RoleTokenConfigOneOf.</param>
-        public RoleTokenConfig(RoleTokenConfigOneOf actualInstance)
+        /// <param name="actualInstance">An instance of AddressAndMetadata.</param>
+        public RoleTokenConfig(AddressAndMetadata actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -59,10 +59,22 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RoleTokenConfig" /> class
-        /// with the <see cref="RoleTokenConfigOneOf1" /> class
+        /// with the <see cref="MetadataAndScript" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of RoleTokenConfigOneOf1.</param>
-        public RoleTokenConfig(RoleTokenConfigOneOf1 actualInstance)
+        /// <param name="actualInstance">An instance of MetadataAndScript.</param>
+        public RoleTokenConfig(MetadataAndScript actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RoleTokenConfig" /> class
+        /// with the <see cref="MetadataAndRecipients" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of MetadataAndRecipients.</param>
+        public RoleTokenConfig(MetadataAndRecipients actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -83,11 +95,15 @@ namespace MarloweAPIClient.Model
             }
             set
             {
-                if (value.GetType() == typeof(RoleTokenConfigOneOf))
+                if (value.GetType() == typeof(AddressAndMetadata))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(RoleTokenConfigOneOf1))
+                else if (value.GetType() == typeof(MetadataAndRecipients))
+                {
+                    this._actualInstance = value;
+                }
+                else if (value.GetType() == typeof(MetadataAndScript))
                 {
                     this._actualInstance = value;
                 }
@@ -97,7 +113,7 @@ namespace MarloweAPIClient.Model
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: RoleTokenConfigOneOf, RoleTokenConfigOneOf1, string");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: AddressAndMetadata, MetadataAndRecipients, MetadataAndScript, string");
                 }
             }
         }
@@ -113,23 +129,33 @@ namespace MarloweAPIClient.Model
         }
 
         /// <summary>
-        /// Get the actual instance of `RoleTokenConfigOneOf`. If the actual instance is not `RoleTokenConfigOneOf`,
+        /// Get the actual instance of `AddressAndMetadata`. If the actual instance is not `AddressAndMetadata`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of RoleTokenConfigOneOf</returns>
-        public RoleTokenConfigOneOf GetRoleTokenConfigOneOf()
+        /// <returns>An instance of AddressAndMetadata</returns>
+        public AddressAndMetadata GetAddressAndMetadata()
         {
-            return (RoleTokenConfigOneOf)this.ActualInstance;
+            return (AddressAndMetadata)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `RoleTokenConfigOneOf1`. If the actual instance is not `RoleTokenConfigOneOf1`,
+        /// Get the actual instance of `MetadataAndScript`. If the actual instance is not `MetadataAndScript`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of RoleTokenConfigOneOf1</returns>
-        public RoleTokenConfigOneOf1 GetRoleTokenConfigOneOf1()
+        /// <returns>An instance of MetadataAndScript</returns>
+        public MetadataAndScript GetMetadataAndScript()
         {
-            return (RoleTokenConfigOneOf1)this.ActualInstance;
+            return (MetadataAndScript)this.ActualInstance;
+        }
+
+        /// <summary>
+        /// Get the actual instance of `MetadataAndRecipients`. If the actual instance is not `MetadataAndRecipients`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of MetadataAndRecipients</returns>
+        public MetadataAndRecipients GetMetadataAndRecipients()
+        {
+            return (MetadataAndRecipients)this.ActualInstance;
         }
 
         /// <summary>
@@ -173,41 +199,61 @@ namespace MarloweAPIClient.Model
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(RoleTokenConfigOneOf).GetProperty("AdditionalProperties") == null)
+                if (typeof(AddressAndMetadata).GetProperty("AdditionalProperties") == null)
                 {
-                    newRoleTokenConfig = new RoleTokenConfig(JsonConvert.DeserializeObject<RoleTokenConfigOneOf>(jsonString, RoleTokenConfig.SerializerSettings));
+                    newRoleTokenConfig = new RoleTokenConfig(JsonConvert.DeserializeObject<AddressAndMetadata>(jsonString, RoleTokenConfig.SerializerSettings));
                 }
                 else
                 {
-                    newRoleTokenConfig = new RoleTokenConfig(JsonConvert.DeserializeObject<RoleTokenConfigOneOf>(jsonString, RoleTokenConfig.AdditionalPropertiesSerializerSettings));
+                    newRoleTokenConfig = new RoleTokenConfig(JsonConvert.DeserializeObject<AddressAndMetadata>(jsonString, RoleTokenConfig.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("RoleTokenConfigOneOf");
+                matchedTypes.Add("AddressAndMetadata");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into RoleTokenConfigOneOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into AddressAndMetadata: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(RoleTokenConfigOneOf1).GetProperty("AdditionalProperties") == null)
+                if (typeof(MetadataAndRecipients).GetProperty("AdditionalProperties") == null)
                 {
-                    newRoleTokenConfig = new RoleTokenConfig(JsonConvert.DeserializeObject<RoleTokenConfigOneOf1>(jsonString, RoleTokenConfig.SerializerSettings));
+                    newRoleTokenConfig = new RoleTokenConfig(JsonConvert.DeserializeObject<MetadataAndRecipients>(jsonString, RoleTokenConfig.SerializerSettings));
                 }
                 else
                 {
-                    newRoleTokenConfig = new RoleTokenConfig(JsonConvert.DeserializeObject<RoleTokenConfigOneOf1>(jsonString, RoleTokenConfig.AdditionalPropertiesSerializerSettings));
+                    newRoleTokenConfig = new RoleTokenConfig(JsonConvert.DeserializeObject<MetadataAndRecipients>(jsonString, RoleTokenConfig.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("RoleTokenConfigOneOf1");
+                matchedTypes.Add("MetadataAndRecipients");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into RoleTokenConfigOneOf1: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into MetadataAndRecipients: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(MetadataAndScript).GetProperty("AdditionalProperties") == null)
+                {
+                    newRoleTokenConfig = new RoleTokenConfig(JsonConvert.DeserializeObject<MetadataAndScript>(jsonString, RoleTokenConfig.SerializerSettings));
+                }
+                else
+                {
+                    newRoleTokenConfig = new RoleTokenConfig(JsonConvert.DeserializeObject<MetadataAndScript>(jsonString, RoleTokenConfig.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("MetadataAndScript");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into MetadataAndScript: {1}", jsonString, exception.ToString()));
             }
 
             try

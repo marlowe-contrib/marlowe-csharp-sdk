@@ -70,8 +70,8 @@ namespace MarloweAPIClient.Model
         /// <param name="consumingTx">The hex-encoded identifier of a Cardano transaction.</param>
         /// <param name="continuations">continuations.</param>
         /// <param name="contractId">A reference to a transaction output with a transaction ID and index. (required).</param>
-        /// <param name="inputUtxo">A reference to a transaction output with a transaction ID and index. (required).</param>
         /// <param name="inputs">inputs (required).</param>
+        /// <param name="inputUtxo">A reference to a transaction output with a transaction ID and index. (required).</param>
         /// <param name="invalidBefore">invalidBefore (required).</param>
         /// <param name="invalidHereafter">invalidHereafter (required).</param>
         /// <param name="metadata">metadata (required).</param>
@@ -83,7 +83,7 @@ namespace MarloweAPIClient.Model
         /// <param name="tags">tags (required).</param>
         /// <param name="transactionId">The hex-encoded identifier of a Cardano transaction (required).</param>
         /// <param name="txBody">txBody.</param>
-        public Tx(Assets assets = default(Assets), BlockHeader block = default(BlockHeader), string consumingTx = default(string), string continuations = default(string), string contractId = default(string), string inputUtxo = default(string), List<Input> inputs = default(List<Input>), string invalidBefore = default(string), string invalidHereafter = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), Contract outputContract = default(Contract), MarloweState outputState = default(MarloweState), string outputUtxo = default(string), List<Payout> payouts = default(List<Payout>), TxStatus status = default(TxStatus), Dictionary<string, Object> tags = default(Dictionary<string, Object>), string transactionId = default(string), TextEnvelope txBody = default(TextEnvelope))
+        public Tx(Assets assets = default(Assets), BlockHeader block = default(BlockHeader), string consumingTx = default(string), string continuations = default(string), string contractId = default(string), List<Input> inputs = default(List<Input>), string inputUtxo = default(string), string invalidBefore = default(string), string invalidHereafter = default(string), Dictionary<string, Metadata> metadata = default(Dictionary<string, Metadata>), Contract outputContract = default(Contract), MarloweState outputState = default(MarloweState), string outputUtxo = default(string), List<Payout> payouts = default(List<Payout>), TxStatus status = default(TxStatus), Dictionary<string, Metadata> tags = default(Dictionary<string, Metadata>), string transactionId = default(string), TextEnvelope txBody = default(TextEnvelope))
         {
             // to ensure "assets" is required (not null)
             if (assets == null)
@@ -97,18 +97,18 @@ namespace MarloweAPIClient.Model
                 throw new ArgumentNullException("contractId is a required property for Tx and cannot be null");
             }
             this._ContractId = contractId;
-            // to ensure "inputUtxo" is required (not null)
-            if (inputUtxo == null)
-            {
-                throw new ArgumentNullException("inputUtxo is a required property for Tx and cannot be null");
-            }
-            this._InputUtxo = inputUtxo;
             // to ensure "inputs" is required (not null)
             if (inputs == null)
             {
                 throw new ArgumentNullException("inputs is a required property for Tx and cannot be null");
             }
             this._Inputs = inputs;
+            // to ensure "inputUtxo" is required (not null)
+            if (inputUtxo == null)
+            {
+                throw new ArgumentNullException("inputUtxo is a required property for Tx and cannot be null");
+            }
+            this._InputUtxo = inputUtxo;
             // to ensure "invalidBefore" is required (not null)
             if (invalidBefore == null)
             {
@@ -307,6 +307,30 @@ namespace MarloweAPIClient.Model
             return _flagContractId;
         }
         /// <summary>
+        /// Gets or Sets Inputs
+        /// </summary>
+        [DataMember(Name = "inputs", IsRequired = true, EmitDefaultValue = true)]
+        public List<Input> Inputs
+        {
+            get{ return _Inputs;}
+            set
+            {
+                _Inputs = value;
+                _flagInputs = true;
+            }
+        }
+        private List<Input> _Inputs;
+        private bool _flagInputs;
+
+        /// <summary>
+        /// Returns false as Inputs should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeInputs()
+        {
+            return _flagInputs;
+        }
+        /// <summary>
         /// A reference to a transaction output with a transaction ID and index.
         /// </summary>
         /// <value>A reference to a transaction output with a transaction ID and index.</value>
@@ -331,30 +355,6 @@ namespace MarloweAPIClient.Model
         public bool ShouldSerializeInputUtxo()
         {
             return _flagInputUtxo;
-        }
-        /// <summary>
-        /// Gets or Sets Inputs
-        /// </summary>
-        [DataMember(Name = "inputs", IsRequired = true, EmitDefaultValue = true)]
-        public List<Input> Inputs
-        {
-            get{ return _Inputs;}
-            set
-            {
-                _Inputs = value;
-                _flagInputs = true;
-            }
-        }
-        private List<Input> _Inputs;
-        private bool _flagInputs;
-
-        /// <summary>
-        /// Returns false as Inputs should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeInputs()
-        {
-            return _flagInputs;
         }
         /// <summary>
         /// Gets or Sets InvalidBefore
@@ -410,7 +410,7 @@ namespace MarloweAPIClient.Model
         /// Gets or Sets Metadata
         /// </summary>
         [DataMember(Name = "metadata", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Object> Metadata
+        public Dictionary<string, Metadata> Metadata
         {
             get{ return _Metadata;}
             set
@@ -419,7 +419,7 @@ namespace MarloweAPIClient.Model
                 _flagMetadata = true;
             }
         }
-        private Dictionary<string, Object> _Metadata;
+        private Dictionary<string, Metadata> _Metadata;
         private bool _flagMetadata;
 
         /// <summary>
@@ -532,7 +532,7 @@ namespace MarloweAPIClient.Model
         /// Gets or Sets Tags
         /// </summary>
         [DataMember(Name = "tags", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Object> Tags
+        public Dictionary<string, Metadata> Tags
         {
             get{ return _Tags;}
             set
@@ -541,7 +541,7 @@ namespace MarloweAPIClient.Model
                 _flagTags = true;
             }
         }
-        private Dictionary<string, Object> _Tags;
+        private Dictionary<string, Metadata> _Tags;
         private bool _flagTags;
 
         /// <summary>
@@ -614,8 +614,8 @@ namespace MarloweAPIClient.Model
             sb.Append("  ConsumingTx: ").Append(ConsumingTx).Append("\n");
             sb.Append("  Continuations: ").Append(Continuations).Append("\n");
             sb.Append("  ContractId: ").Append(ContractId).Append("\n");
-            sb.Append("  InputUtxo: ").Append(InputUtxo).Append("\n");
             sb.Append("  Inputs: ").Append(Inputs).Append("\n");
+            sb.Append("  InputUtxo: ").Append(InputUtxo).Append("\n");
             sb.Append("  InvalidBefore: ").Append(InvalidBefore).Append("\n");
             sb.Append("  InvalidHereafter: ").Append(InvalidHereafter).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
@@ -688,15 +688,15 @@ namespace MarloweAPIClient.Model
                     this.ContractId.Equals(input.ContractId))
                 ) && 
                 (
-                    this.InputUtxo == input.InputUtxo ||
-                    (this.InputUtxo != null &&
-                    this.InputUtxo.Equals(input.InputUtxo))
-                ) && 
-                (
                     this.Inputs == input.Inputs ||
                     this.Inputs != null &&
                     input.Inputs != null &&
                     this.Inputs.SequenceEqual(input.Inputs)
+                ) && 
+                (
+                    this.InputUtxo == input.InputUtxo ||
+                    (this.InputUtxo != null &&
+                    this.InputUtxo.Equals(input.InputUtxo))
                 ) && 
                 (
                     this.InvalidBefore == input.InvalidBefore ||
@@ -786,13 +786,13 @@ namespace MarloweAPIClient.Model
                 {
                     hashCode = (hashCode * 59) + this.ContractId.GetHashCode();
                 }
-                if (this.InputUtxo != null)
-                {
-                    hashCode = (hashCode * 59) + this.InputUtxo.GetHashCode();
-                }
                 if (this.Inputs != null)
                 {
                     hashCode = (hashCode * 59) + this.Inputs.GetHashCode();
+                }
+                if (this.InputUtxo != null)
+                {
+                    hashCode = (hashCode * 59) + this.InputUtxo.GetHashCode();
                 }
                 if (this.InvalidBefore != null)
                 {

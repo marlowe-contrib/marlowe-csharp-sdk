@@ -9,17 +9,17 @@ Name | Type | Description | Notes
 **ConsumingTx** | **string** | The hex-encoded identifier of a Cardano transaction | [optional] 
 **Continuations** | **string** |  | [optional] 
 **ContractId** | **string** | A reference to a transaction output with a transaction ID and index. | 
-**InputUtxo** | **string** | A reference to a transaction output with a transaction ID and index. | 
 **Inputs** | [**List&lt;Input&gt;**](Input.md) |  | 
+**InputUtxo** | **string** | A reference to a transaction output with a transaction ID and index. | 
 **InvalidBefore** | **string** |  | 
 **InvalidHereafter** | **string** |  | 
-**Metadata** | **Dictionary&lt;string, Object&gt;** |  | 
+**Metadata** | [**Dictionary&lt;string, Metadata&gt;**](Metadata.md) |  | 
 **OutputContract** | [**Contract**](Contract.md) |  | [optional] 
 **OutputState** | [**MarloweState**](MarloweState.md) |  | [optional] 
 **OutputUtxo** | **string** | A reference to a transaction output with a transaction ID and index. | [optional] 
 **Payouts** | [**List&lt;Payout&gt;**](Payout.md) |  | 
 **Status** | **TxStatus** |  | 
-**Tags** | **Dictionary&lt;string, Object&gt;** |  | 
+**Tags** | [**Dictionary&lt;string, Metadata&gt;**](Metadata.md) |  | 
 **TransactionId** | **string** | The hex-encoded identifier of a Cardano transaction | 
 **TxBody** | [**TextEnvelope**](TextEnvelope.md) |  | [optional] 
 

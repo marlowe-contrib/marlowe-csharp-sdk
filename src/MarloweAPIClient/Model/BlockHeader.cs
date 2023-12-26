@@ -214,9 +214,9 @@ namespace MarloweAPIClient.Model
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // BlockNo (long) maximum
-            if (this.BlockNo > (long)9223372036854775807)
+            if (this.BlockNo > (long)384)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for BlockNo, must be a value less than or equal to 9223372036854775807.", new [] { "BlockNo" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for BlockNo, must be a value less than or equal to 384.", new [] { "BlockNo" });
             }
 
             // BlockNo (long) minimum
@@ -226,9 +226,9 @@ namespace MarloweAPIClient.Model
             }
 
             // SlotNo (long) maximum
-            if (this.SlotNo > (long)9223372036854775807)
+            if (this.SlotNo > (long)384)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SlotNo, must be a value less than or equal to 9223372036854775807.", new [] { "SlotNo" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SlotNo, must be a value less than or equal to 384.", new [] { "SlotNo" });
             }
 
             // SlotNo (long) minimum

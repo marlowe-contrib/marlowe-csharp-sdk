@@ -43,7 +43,7 @@ namespace MarloweAPIClient.Model
         /// <param name="boundValues">boundValues (required).</param>
         /// <param name="choices">choices (required).</param>
         /// <param name="minTime">minTime (required).</param>
-        public MarloweState(List<List<MarloweStateAccountsInnerInner>> accounts = default(List<List<MarloweStateAccountsInnerInner>>), List<List<MarloweStateBoundValuesInnerInner>> boundValues = default(List<List<MarloweStateBoundValuesInnerInner>>), List<List<MarloweStateChoicesInnerInner>> choices = default(List<List<MarloweStateChoicesInnerInner>>), int minTime = default(int))
+        public MarloweState(List<List<MarloweStateAccountsInnerInner>> accounts = default(List<List<MarloweStateAccountsInnerInner>>), List<List<MarloweStateBoundValuesInnerInner>> boundValues = default(List<List<MarloweStateBoundValuesInnerInner>>), List<List<MarloweStateChoicesInnerInner>> choices = default(List<List<MarloweStateChoicesInnerInner>>), long minTime = default(long))
         {
             // to ensure "accounts" is required (not null)
             if (accounts == null)
@@ -142,7 +142,7 @@ namespace MarloweAPIClient.Model
         /// Gets or Sets MinTime
         /// </summary>
         [DataMember(Name = "minTime", IsRequired = true, EmitDefaultValue = true)]
-        public int MinTime
+        public long MinTime
         {
             get{ return _MinTime;}
             set
@@ -151,7 +151,7 @@ namespace MarloweAPIClient.Model
                 _flagMinTime = true;
             }
         }
-        private int _MinTime;
+        private long _MinTime;
         private bool _flagMinTime;
 
         /// <summary>

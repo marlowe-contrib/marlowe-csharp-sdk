@@ -35,10 +35,10 @@ namespace MarloweAPIClient.Model
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueObject" /> class
-        /// with the <see cref="ValueObjectOneOf" /> class
+        /// with the <see cref="TokenInAccountObject" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ValueObjectOneOf.</param>
-        public ValueObject(ValueObjectOneOf actualInstance)
+        /// <param name="actualInstance">An instance of TokenInAccountObject.</param>
+        public ValueObject(TokenInAccountObject actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -59,10 +59,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueObject" /> class
-        /// with the <see cref="ValueObjectOneOf1" /> class
+        /// with the <see cref="NegateObject" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ValueObjectOneOf1.</param>
-        public ValueObject(ValueObjectOneOf1 actualInstance)
+        /// <param name="actualInstance">An instance of NegateObject.</param>
+        public ValueObject(NegateObject actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -71,10 +71,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueObject" /> class
-        /// with the <see cref="ValueObjectOneOf2" /> class
+        /// with the <see cref="AddObject" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ValueObjectOneOf2.</param>
-        public ValueObject(ValueObjectOneOf2 actualInstance)
+        /// <param name="actualInstance">An instance of AddObject.</param>
+        public ValueObject(AddObject actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -83,10 +83,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueObject" /> class
-        /// with the <see cref="ValueObjectOneOf3" /> class
+        /// with the <see cref="MinusObject" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ValueObjectOneOf3.</param>
-        public ValueObject(ValueObjectOneOf3 actualInstance)
+        /// <param name="actualInstance">An instance of MinusObject.</param>
+        public ValueObject(MinusObject actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -95,10 +95,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueObject" /> class
-        /// with the <see cref="ValueObjectOneOf4" /> class
+        /// with the <see cref="MultiplyObject" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ValueObjectOneOf4.</param>
-        public ValueObject(ValueObjectOneOf4 actualInstance)
+        /// <param name="actualInstance">An instance of MultiplyObject.</param>
+        public ValueObject(MultiplyObject actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -107,10 +107,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueObject" /> class
-        /// with the <see cref="ValueObjectOneOf5" /> class
+        /// with the <see cref="DivideObject" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ValueObjectOneOf5.</param>
-        public ValueObject(ValueObjectOneOf5 actualInstance)
+        /// <param name="actualInstance">An instance of DivideObject.</param>
+        public ValueObject(DivideObject actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -119,10 +119,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueObject" /> class
-        /// with the <see cref="ValueObjectOneOf6" /> class
+        /// with the <see cref="ValueOfChoiceObject" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ValueObjectOneOf6.</param>
-        public ValueObject(ValueObjectOneOf6 actualInstance)
+        /// <param name="actualInstance">An instance of ValueOfChoiceObject.</param>
+        public ValueObject(ValueOfChoiceObject actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -131,10 +131,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueObject" /> class
-        /// with the <see cref="string" /> class
+        /// with the <see cref="TimeInterval" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of string.</param>
-        public ValueObject(string actualInstance)
+        /// <param name="actualInstance">An instance of TimeInterval.</param>
+        public ValueObject(TimeInterval actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -143,10 +143,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueObject" /> class
-        /// with the <see cref="ValueOneOf7" /> class
+        /// with the <see cref="UseValue" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ValueOneOf7.</param>
-        public ValueObject(ValueOneOf7 actualInstance)
+        /// <param name="actualInstance">An instance of UseValue.</param>
+        public ValueObject(UseValue actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -155,10 +155,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueObject" /> class
-        /// with the <see cref="ValueObjectOneOf7" /> class
+        /// with the <see cref="IfValueObject" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ValueObjectOneOf7.</param>
-        public ValueObject(ValueObjectOneOf7 actualInstance)
+        /// <param name="actualInstance">An instance of IfValueObject.</param>
+        public ValueObject(IfValueObject actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -167,10 +167,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueObject" /> class
-        /// with the <see cref="ActionObjectOneOf" /> class
+        /// with the <see cref="LabelRef" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ActionObjectOneOf.</param>
-        public ValueObject(ActionObjectOneOf actualInstance)
+        /// <param name="actualInstance">An instance of LabelRef.</param>
+        public ValueObject(LabelRef actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -191,43 +191,47 @@ namespace MarloweAPIClient.Model
             }
             set
             {
-                if (value.GetType() == typeof(ActionObjectOneOf))
+                if (value.GetType() == typeof(AddObject))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ValueObjectOneOf))
+                else if (value.GetType() == typeof(DivideObject))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ValueObjectOneOf1))
+                else if (value.GetType() == typeof(IfValueObject))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ValueObjectOneOf2))
+                else if (value.GetType() == typeof(LabelRef))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ValueObjectOneOf3))
+                else if (value.GetType() == typeof(MinusObject))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ValueObjectOneOf4))
+                else if (value.GetType() == typeof(MultiplyObject))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ValueObjectOneOf5))
+                else if (value.GetType() == typeof(NegateObject))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ValueObjectOneOf6))
+                else if (value.GetType() == typeof(TimeInterval))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ValueObjectOneOf7))
+                else if (value.GetType() == typeof(TokenInAccountObject))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ValueOneOf7))
+                else if (value.GetType() == typeof(UseValue))
+                {
+                    this._actualInstance = value;
+                }
+                else if (value.GetType() == typeof(ValueOfChoiceObject))
                 {
                     this._actualInstance = value;
                 }
@@ -235,25 +239,21 @@ namespace MarloweAPIClient.Model
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(string))
-                {
-                    this._actualInstance = value;
-                }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: ActionObjectOneOf, ValueObjectOneOf, ValueObjectOneOf1, ValueObjectOneOf2, ValueObjectOneOf3, ValueObjectOneOf4, ValueObjectOneOf5, ValueObjectOneOf6, ValueObjectOneOf7, ValueOneOf7, long, string");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: AddObject, DivideObject, IfValueObject, LabelRef, MinusObject, MultiplyObject, NegateObject, TimeInterval, TokenInAccountObject, UseValue, ValueOfChoiceObject, long");
                 }
             }
         }
 
         /// <summary>
-        /// Get the actual instance of `ValueObjectOneOf`. If the actual instance is not `ValueObjectOneOf`,
+        /// Get the actual instance of `TokenInAccountObject`. If the actual instance is not `TokenInAccountObject`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ValueObjectOneOf</returns>
-        public ValueObjectOneOf GetValueObjectOneOf()
+        /// <returns>An instance of TokenInAccountObject</returns>
+        public TokenInAccountObject GetTokenInAccountObject()
         {
-            return (ValueObjectOneOf)this.ActualInstance;
+            return (TokenInAccountObject)this.ActualInstance;
         }
 
         /// <summary>
@@ -267,103 +267,103 @@ namespace MarloweAPIClient.Model
         }
 
         /// <summary>
-        /// Get the actual instance of `ValueObjectOneOf1`. If the actual instance is not `ValueObjectOneOf1`,
+        /// Get the actual instance of `NegateObject`. If the actual instance is not `NegateObject`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ValueObjectOneOf1</returns>
-        public ValueObjectOneOf1 GetValueObjectOneOf1()
+        /// <returns>An instance of NegateObject</returns>
+        public NegateObject GetNegateObject()
         {
-            return (ValueObjectOneOf1)this.ActualInstance;
+            return (NegateObject)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ValueObjectOneOf2`. If the actual instance is not `ValueObjectOneOf2`,
+        /// Get the actual instance of `AddObject`. If the actual instance is not `AddObject`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ValueObjectOneOf2</returns>
-        public ValueObjectOneOf2 GetValueObjectOneOf2()
+        /// <returns>An instance of AddObject</returns>
+        public AddObject GetAddObject()
         {
-            return (ValueObjectOneOf2)this.ActualInstance;
+            return (AddObject)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ValueObjectOneOf3`. If the actual instance is not `ValueObjectOneOf3`,
+        /// Get the actual instance of `MinusObject`. If the actual instance is not `MinusObject`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ValueObjectOneOf3</returns>
-        public ValueObjectOneOf3 GetValueObjectOneOf3()
+        /// <returns>An instance of MinusObject</returns>
+        public MinusObject GetMinusObject()
         {
-            return (ValueObjectOneOf3)this.ActualInstance;
+            return (MinusObject)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ValueObjectOneOf4`. If the actual instance is not `ValueObjectOneOf4`,
+        /// Get the actual instance of `MultiplyObject`. If the actual instance is not `MultiplyObject`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ValueObjectOneOf4</returns>
-        public ValueObjectOneOf4 GetValueObjectOneOf4()
+        /// <returns>An instance of MultiplyObject</returns>
+        public MultiplyObject GetMultiplyObject()
         {
-            return (ValueObjectOneOf4)this.ActualInstance;
+            return (MultiplyObject)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ValueObjectOneOf5`. If the actual instance is not `ValueObjectOneOf5`,
+        /// Get the actual instance of `DivideObject`. If the actual instance is not `DivideObject`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ValueObjectOneOf5</returns>
-        public ValueObjectOneOf5 GetValueObjectOneOf5()
+        /// <returns>An instance of DivideObject</returns>
+        public DivideObject GetDivideObject()
         {
-            return (ValueObjectOneOf5)this.ActualInstance;
+            return (DivideObject)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ValueObjectOneOf6`. If the actual instance is not `ValueObjectOneOf6`,
+        /// Get the actual instance of `ValueOfChoiceObject`. If the actual instance is not `ValueOfChoiceObject`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ValueObjectOneOf6</returns>
-        public ValueObjectOneOf6 GetValueObjectOneOf6()
+        /// <returns>An instance of ValueOfChoiceObject</returns>
+        public ValueOfChoiceObject GetValueOfChoiceObject()
         {
-            return (ValueObjectOneOf6)this.ActualInstance;
+            return (ValueOfChoiceObject)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `string`. If the actual instance is not `string`,
+        /// Get the actual instance of `TimeInterval`. If the actual instance is not `TimeInterval`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of string</returns>
-        public string GetString()
+        /// <returns>An instance of TimeInterval</returns>
+        public TimeInterval GetTimeInterval()
         {
-            return (string)this.ActualInstance;
+            return (TimeInterval)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ValueOneOf7`. If the actual instance is not `ValueOneOf7`,
+        /// Get the actual instance of `UseValue`. If the actual instance is not `UseValue`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ValueOneOf7</returns>
-        public ValueOneOf7 GetValueOneOf7()
+        /// <returns>An instance of UseValue</returns>
+        public UseValue GetUseValue()
         {
-            return (ValueOneOf7)this.ActualInstance;
+            return (UseValue)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ValueObjectOneOf7`. If the actual instance is not `ValueObjectOneOf7`,
+        /// Get the actual instance of `IfValueObject`. If the actual instance is not `IfValueObject`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ValueObjectOneOf7</returns>
-        public ValueObjectOneOf7 GetValueObjectOneOf7()
+        /// <returns>An instance of IfValueObject</returns>
+        public IfValueObject GetIfValueObject()
         {
-            return (ValueObjectOneOf7)this.ActualInstance;
+            return (IfValueObject)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ActionObjectOneOf`. If the actual instance is not `ActionObjectOneOf`,
+        /// Get the actual instance of `LabelRef`. If the actual instance is not `LabelRef`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ActionObjectOneOf</returns>
-        public ActionObjectOneOf GetActionObjectOneOf()
+        /// <returns>An instance of LabelRef</returns>
+        public LabelRef GetLabelRef()
         {
-            return (ActionObjectOneOf)this.ActualInstance;
+            return (LabelRef)this.ActualInstance;
         }
 
         /// <summary>
@@ -407,201 +407,221 @@ namespace MarloweAPIClient.Model
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ActionObjectOneOf).GetProperty("AdditionalProperties") == null)
+                if (typeof(AddObject).GetProperty("AdditionalProperties") == null)
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ActionObjectOneOf>(jsonString, ValueObject.SerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<AddObject>(jsonString, ValueObject.SerializerSettings));
                 }
                 else
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ActionObjectOneOf>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<AddObject>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ActionObjectOneOf");
+                matchedTypes.Add("AddObject");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ActionObjectOneOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into AddObject: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ValueObjectOneOf).GetProperty("AdditionalProperties") == null)
+                if (typeof(DivideObject).GetProperty("AdditionalProperties") == null)
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueObjectOneOf>(jsonString, ValueObject.SerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<DivideObject>(jsonString, ValueObject.SerializerSettings));
                 }
                 else
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueObjectOneOf>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<DivideObject>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ValueObjectOneOf");
+                matchedTypes.Add("DivideObject");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueObjectOneOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into DivideObject: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ValueObjectOneOf1).GetProperty("AdditionalProperties") == null)
+                if (typeof(IfValueObject).GetProperty("AdditionalProperties") == null)
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueObjectOneOf1>(jsonString, ValueObject.SerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<IfValueObject>(jsonString, ValueObject.SerializerSettings));
                 }
                 else
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueObjectOneOf1>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<IfValueObject>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ValueObjectOneOf1");
+                matchedTypes.Add("IfValueObject");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueObjectOneOf1: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into IfValueObject: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ValueObjectOneOf2).GetProperty("AdditionalProperties") == null)
+                if (typeof(LabelRef).GetProperty("AdditionalProperties") == null)
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueObjectOneOf2>(jsonString, ValueObject.SerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<LabelRef>(jsonString, ValueObject.SerializerSettings));
                 }
                 else
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueObjectOneOf2>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<LabelRef>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ValueObjectOneOf2");
+                matchedTypes.Add("LabelRef");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueObjectOneOf2: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into LabelRef: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ValueObjectOneOf3).GetProperty("AdditionalProperties") == null)
+                if (typeof(MinusObject).GetProperty("AdditionalProperties") == null)
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueObjectOneOf3>(jsonString, ValueObject.SerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<MinusObject>(jsonString, ValueObject.SerializerSettings));
                 }
                 else
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueObjectOneOf3>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<MinusObject>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ValueObjectOneOf3");
+                matchedTypes.Add("MinusObject");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueObjectOneOf3: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into MinusObject: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ValueObjectOneOf4).GetProperty("AdditionalProperties") == null)
+                if (typeof(MultiplyObject).GetProperty("AdditionalProperties") == null)
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueObjectOneOf4>(jsonString, ValueObject.SerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<MultiplyObject>(jsonString, ValueObject.SerializerSettings));
                 }
                 else
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueObjectOneOf4>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<MultiplyObject>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ValueObjectOneOf4");
+                matchedTypes.Add("MultiplyObject");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueObjectOneOf4: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into MultiplyObject: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ValueObjectOneOf5).GetProperty("AdditionalProperties") == null)
+                if (typeof(NegateObject).GetProperty("AdditionalProperties") == null)
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueObjectOneOf5>(jsonString, ValueObject.SerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<NegateObject>(jsonString, ValueObject.SerializerSettings));
                 }
                 else
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueObjectOneOf5>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<NegateObject>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ValueObjectOneOf5");
+                matchedTypes.Add("NegateObject");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueObjectOneOf5: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into NegateObject: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ValueObjectOneOf6).GetProperty("AdditionalProperties") == null)
+                if (typeof(TimeInterval).GetProperty("AdditionalProperties") == null)
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueObjectOneOf6>(jsonString, ValueObject.SerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<TimeInterval>(jsonString, ValueObject.SerializerSettings));
                 }
                 else
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueObjectOneOf6>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<TimeInterval>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ValueObjectOneOf6");
+                matchedTypes.Add("TimeInterval");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueObjectOneOf6: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into TimeInterval: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ValueObjectOneOf7).GetProperty("AdditionalProperties") == null)
+                if (typeof(TokenInAccountObject).GetProperty("AdditionalProperties") == null)
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueObjectOneOf7>(jsonString, ValueObject.SerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<TokenInAccountObject>(jsonString, ValueObject.SerializerSettings));
                 }
                 else
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueObjectOneOf7>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<TokenInAccountObject>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ValueObjectOneOf7");
+                matchedTypes.Add("TokenInAccountObject");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueObjectOneOf7: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into TokenInAccountObject: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ValueOneOf7).GetProperty("AdditionalProperties") == null)
+                if (typeof(UseValue).GetProperty("AdditionalProperties") == null)
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueOneOf7>(jsonString, ValueObject.SerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<UseValue>(jsonString, ValueObject.SerializerSettings));
                 }
                 else
                 {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueOneOf7>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<UseValue>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ValueOneOf7");
+                matchedTypes.Add("UseValue");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueOneOf7: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into UseValue: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(ValueOfChoiceObject).GetProperty("AdditionalProperties") == null)
+                {
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueOfChoiceObject>(jsonString, ValueObject.SerializerSettings));
+                }
+                else
+                {
+                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<ValueOfChoiceObject>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("ValueOfChoiceObject");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueOfChoiceObject: {1}", jsonString, exception.ToString()));
             }
 
             try
@@ -622,26 +642,6 @@ namespace MarloweAPIClient.Model
             {
                 // deserialization failed, try the next one
                 System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into long: {1}", jsonString, exception.ToString()));
-            }
-
-            try
-            {
-                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(string).GetProperty("AdditionalProperties") == null)
-                {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<string>(jsonString, ValueObject.SerializerSettings));
-                }
-                else
-                {
-                    newValueObject = new ValueObject(JsonConvert.DeserializeObject<string>(jsonString, ValueObject.AdditionalPropertiesSerializerSettings));
-                }
-                matchedTypes.Add("string");
-                match++;
-            }
-            catch (Exception exception)
-            {
-                // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into string: {1}", jsonString, exception.ToString()));
             }
 
             if (match == 0)

@@ -29,13 +29,16 @@ namespace MarloweAPIClient.Model
     /// Metadata for an NFT, as described by https://cips.cardano.org/cips/cip25/
     /// </summary>
     [DataContract(Name = "TokenMetadata")]
-    public partial class TokenMetadata : IEquatable<TokenMetadata>, IValidatableObject
+    public partial class TokenMetadata : Dictionary<String, Metadata>, IEquatable<TokenMetadata>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenMetadata" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected TokenMetadata() { }
+        protected TokenMetadata()
+        {
+            this.AdditionalProperties = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenMetadata" /> class.
         /// </summary>
@@ -44,7 +47,7 @@ namespace MarloweAPIClient.Model
         /// <param name="image">image (required).</param>
         /// <param name="mediaType">mediaType.</param>
         /// <param name="name">name (required).</param>
-        public TokenMetadata(string description = default(string), List<TokenMetadataFile> files = default(List<TokenMetadataFile>), string image = default(string), string mediaType = default(string), string name = default(string))
+        public TokenMetadata(string description = default(string), List<TokenMetadataFile> files = default(List<TokenMetadataFile>), string image = default(string), string mediaType = default(string), string name = default(string)) : base()
         {
             // to ensure "image" is required (not null)
             if (image == null)
@@ -73,6 +76,7 @@ namespace MarloweAPIClient.Model
             {
                 this._flagMediaType = true;
             }
+            this.AdditionalProperties = new Dictionary<string, object>();
         }
 
         /// <summary>
@@ -196,6 +200,12 @@ namespace MarloweAPIClient.Model
             return _flagName;
         }
         /// <summary>
+        /// Gets or Sets additional properties
+        /// </summary>
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -203,11 +213,13 @@ namespace MarloweAPIClient.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class TokenMetadata {\n");
+            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Files: ").Append(Files).Append("\n");
             sb.Append("  Image: ").Append(Image).Append("\n");
             sb.Append("  MediaType: ").Append(MediaType).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -216,7 +228,7 @@ namespace MarloweAPIClient.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
@@ -242,33 +254,34 @@ namespace MarloweAPIClient.Model
             {
                 return false;
             }
-            return 
+            return base.Equals(input) && 
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Files == input.Files ||
                     this.Files != null &&
                     input.Files != null &&
                     this.Files.SequenceEqual(input.Files)
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Image == input.Image ||
                     (this.Image != null &&
                     this.Image.Equals(input.Image))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.MediaType == input.MediaType ||
                     (this.MediaType != null &&
                     this.MediaType.Equals(input.MediaType))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                );
+                )
+                && (this.AdditionalProperties.Count == input.AdditionalProperties.Count && !this.AdditionalProperties.Except(input.AdditionalProperties).Any());
         }
 
         /// <summary>
@@ -279,7 +292,7 @@ namespace MarloweAPIClient.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
+                int hashCode = base.GetHashCode();
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
@@ -300,6 +313,10 @@ namespace MarloweAPIClient.Model
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
+                if (this.AdditionalProperties != null)
+                {
+                    hashCode = (hashCode * 59) + this.AdditionalProperties.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -310,6 +327,16 @@ namespace MarloweAPIClient.Model
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            return this.BaseValidate(validationContext);
+        }
+
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        protected IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> BaseValidate(ValidationContext validationContext)
         {
             yield break;
         }

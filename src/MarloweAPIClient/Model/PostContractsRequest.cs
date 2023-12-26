@@ -70,8 +70,9 @@ namespace MarloweAPIClient.Model
         /// <param name="minUTxODeposit">minUTxODeposit.</param>
         /// <param name="roles">roles.</param>
         /// <param name="tags">tags (required).</param>
+        /// <param name="threadTokenName">threadTokenName.</param>
         /// <param name="varVersion">varVersion (required).</param>
-        public PostContractsRequest(PostContractsRequestContract contract = default(PostContractsRequestContract), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), long minUTxODeposit = default(long), RolesConfig roles = default(RolesConfig), Dictionary<string, Object> tags = default(Dictionary<string, Object>), MarloweVersion varVersion = default(MarloweVersion))
+        public PostContractsRequest(PostContractsRequestContract contract = default(PostContractsRequestContract), Dictionary<string, Metadata> metadata = default(Dictionary<string, Metadata>), long minUTxODeposit = default(long), RolesConfig roles = default(RolesConfig), Dictionary<string, Metadata> tags = default(Dictionary<string, Metadata>), string threadTokenName = default(string), MarloweVersion varVersion = default(MarloweVersion))
         {
             // to ensure "contract" is required (not null)
             if (contract == null)
@@ -101,6 +102,11 @@ namespace MarloweAPIClient.Model
             if (this.Roles != null)
             {
                 this._flagRoles = true;
+            }
+            this._ThreadTokenName = threadTokenName;
+            if (this.ThreadTokenName != null)
+            {
+                this._flagThreadTokenName = true;
             }
         }
 
@@ -132,7 +138,7 @@ namespace MarloweAPIClient.Model
         /// Gets or Sets Metadata
         /// </summary>
         [DataMember(Name = "metadata", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Object> Metadata
+        public Dictionary<string, Metadata> Metadata
         {
             get{ return _Metadata;}
             set
@@ -141,7 +147,7 @@ namespace MarloweAPIClient.Model
                 _flagMetadata = true;
             }
         }
-        private Dictionary<string, Object> _Metadata;
+        private Dictionary<string, Metadata> _Metadata;
         private bool _flagMetadata;
 
         /// <summary>
@@ -204,7 +210,7 @@ namespace MarloweAPIClient.Model
         /// Gets or Sets Tags
         /// </summary>
         [DataMember(Name = "tags", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Object> Tags
+        public Dictionary<string, Metadata> Tags
         {
             get{ return _Tags;}
             set
@@ -213,7 +219,7 @@ namespace MarloweAPIClient.Model
                 _flagTags = true;
             }
         }
-        private Dictionary<string, Object> _Tags;
+        private Dictionary<string, Metadata> _Tags;
         private bool _flagTags;
 
         /// <summary>
@@ -223,6 +229,30 @@ namespace MarloweAPIClient.Model
         public bool ShouldSerializeTags()
         {
             return _flagTags;
+        }
+        /// <summary>
+        /// Gets or Sets ThreadTokenName
+        /// </summary>
+        [DataMember(Name = "threadTokenName", EmitDefaultValue = false)]
+        public string ThreadTokenName
+        {
+            get{ return _ThreadTokenName;}
+            set
+            {
+                _ThreadTokenName = value;
+                _flagThreadTokenName = true;
+            }
+        }
+        private string _ThreadTokenName;
+        private bool _flagThreadTokenName;
+
+        /// <summary>
+        /// Returns false as ThreadTokenName should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeThreadTokenName()
+        {
+            return _flagThreadTokenName;
         }
         /// <summary>
         /// Returns the string presentation of the object
@@ -237,6 +267,7 @@ namespace MarloweAPIClient.Model
             sb.Append("  MinUTxODeposit: ").Append(MinUTxODeposit).Append("\n");
             sb.Append("  Roles: ").Append(Roles).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
+            sb.Append("  ThreadTokenName: ").Append(ThreadTokenName).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -300,6 +331,11 @@ namespace MarloweAPIClient.Model
                     this.Tags.SequenceEqual(input.Tags)
                 ) && 
                 (
+                    this.ThreadTokenName == input.ThreadTokenName ||
+                    (this.ThreadTokenName != null &&
+                    this.ThreadTokenName.Equals(input.ThreadTokenName))
+                ) && 
+                (
                     this.VarVersion == input.VarVersion ||
                     this.VarVersion.Equals(input.VarVersion)
                 );
@@ -331,6 +367,10 @@ namespace MarloweAPIClient.Model
                 {
                     hashCode = (hashCode * 59) + this.Tags.GetHashCode();
                 }
+                if (this.ThreadTokenName != null)
+                {
+                    hashCode = (hashCode * 59) + this.ThreadTokenName.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.VarVersion.GetHashCode();
                 return hashCode;
             }
@@ -344,9 +384,9 @@ namespace MarloweAPIClient.Model
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // MinUTxODeposit (long) maximum
-            if (this.MinUTxODeposit > (long)-1)
+            if (this.MinUTxODeposit > (long)384)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for MinUTxODeposit, must be a value less than or equal to -1.", new [] { "MinUTxODeposit" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for MinUTxODeposit, must be a value less than or equal to 384.", new [] { "MinUTxODeposit" });
             }
 
             // MinUTxODeposit (long) minimum

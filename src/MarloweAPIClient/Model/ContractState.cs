@@ -106,7 +106,7 @@ namespace MarloweAPIClient.Model
         /// <param name="unclaimedPayouts">unclaimedPayouts (required).</param>
         /// <param name="utxo">A reference to a transaction output with a transaction ID and index..</param>
         /// <param name="varVersion">varVersion (required).</param>
-        public ContractState(Assets assets = default(Assets), BlockHeader block = default(BlockHeader), string continuations = default(string), string contractId = default(string), Contract currentContract = default(Contract), Contract initialContract = default(Contract), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), string roleTokenMintingPolicyId = default(string), MarloweState state = default(MarloweState), TxStatus status = default(TxStatus), Dictionary<string, Object> tags = default(Dictionary<string, Object>), TextEnvelope txBody = default(TextEnvelope), List<Payout> unclaimedPayouts = default(List<Payout>), string utxo = default(string), MarloweVersion varVersion = default(MarloweVersion))
+        public ContractState(Assets assets = default(Assets), BlockHeader block = default(BlockHeader), string continuations = default(string), string contractId = default(string), Contract currentContract = default(Contract), Contract initialContract = default(Contract), Dictionary<string, Metadata> metadata = default(Dictionary<string, Metadata>), string roleTokenMintingPolicyId = default(string), MarloweState state = default(MarloweState), TxStatus status = default(TxStatus), Dictionary<string, Metadata> tags = default(Dictionary<string, Metadata>), TextEnvelope txBody = default(TextEnvelope), List<Payout> unclaimedPayouts = default(List<Payout>), string utxo = default(string), MarloweVersion varVersion = default(MarloweVersion))
         {
             // to ensure "assets" is required (not null)
             if (assets == null)
@@ -334,7 +334,7 @@ namespace MarloweAPIClient.Model
         /// Gets or Sets Metadata
         /// </summary>
         [DataMember(Name = "metadata", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Object> Metadata
+        public Dictionary<string, Metadata> Metadata
         {
             get{ return _Metadata;}
             set
@@ -343,7 +343,7 @@ namespace MarloweAPIClient.Model
                 _flagMetadata = true;
             }
         }
-        private Dictionary<string, Object> _Metadata;
+        private Dictionary<string, Metadata> _Metadata;
         private bool _flagMetadata;
 
         /// <summary>
@@ -407,7 +407,7 @@ namespace MarloweAPIClient.Model
         /// Gets or Sets Tags
         /// </summary>
         [DataMember(Name = "tags", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Object> Tags
+        public Dictionary<string, Metadata> Tags
         {
             get{ return _Tags;}
             set
@@ -416,7 +416,7 @@ namespace MarloweAPIClient.Model
                 _flagTags = true;
             }
         }
-        private Dictionary<string, Object> _Tags;
+        private Dictionary<string, Metadata> _Tags;
         private bool _flagTags;
 
         /// <summary>

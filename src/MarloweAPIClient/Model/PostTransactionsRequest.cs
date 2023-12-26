@@ -71,7 +71,7 @@ namespace MarloweAPIClient.Model
         /// <param name="metadata">metadata (required).</param>
         /// <param name="tags">tags (required).</param>
         /// <param name="varVersion">varVersion (required).</param>
-        public PostTransactionsRequest(List<Input> inputs = default(List<Input>), string invalidBefore = default(string), string invalidHereafter = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), Dictionary<string, Object> tags = default(Dictionary<string, Object>), MarloweVersion varVersion = default(MarloweVersion))
+        public PostTransactionsRequest(List<Input> inputs = default(List<Input>), string invalidBefore = default(string), string invalidHereafter = default(string), Dictionary<string, Metadata> metadata = default(Dictionary<string, Metadata>), Dictionary<string, Metadata> tags = default(Dictionary<string, Metadata>), MarloweVersion varVersion = default(MarloweVersion))
         {
             // to ensure "inputs" is required (not null)
             if (inputs == null)
@@ -182,7 +182,7 @@ namespace MarloweAPIClient.Model
         /// Gets or Sets Metadata
         /// </summary>
         [DataMember(Name = "metadata", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Object> Metadata
+        public Dictionary<string, Metadata> Metadata
         {
             get{ return _Metadata;}
             set
@@ -191,7 +191,7 @@ namespace MarloweAPIClient.Model
                 _flagMetadata = true;
             }
         }
-        private Dictionary<string, Object> _Metadata;
+        private Dictionary<string, Metadata> _Metadata;
         private bool _flagMetadata;
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace MarloweAPIClient.Model
         /// Gets or Sets Tags
         /// </summary>
         [DataMember(Name = "tags", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Object> Tags
+        public Dictionary<string, Metadata> Tags
         {
             get{ return _Tags;}
             set
@@ -215,7 +215,7 @@ namespace MarloweAPIClient.Model
                 _flagTags = true;
             }
         }
-        private Dictionary<string, Object> _Tags;
+        private Dictionary<string, Metadata> _Tags;
         private bool _flagTags;
 
         /// <summary>

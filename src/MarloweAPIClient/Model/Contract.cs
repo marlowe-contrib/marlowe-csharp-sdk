@@ -35,10 +35,10 @@ namespace MarloweAPIClient.Model
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Contract" /> class
-        /// with the <see cref="string" /> class
+        /// with the <see cref="Close" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of string.</param>
-        public Contract(string actualInstance)
+        /// <param name="actualInstance">An instance of Close.</param>
+        public Contract(Close actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -47,10 +47,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Contract" /> class
-        /// with the <see cref="ContractOneOf" /> class
+        /// with the <see cref="Pay" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ContractOneOf.</param>
-        public Contract(ContractOneOf actualInstance)
+        /// <param name="actualInstance">An instance of Pay.</param>
+        public Contract(Pay actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -59,10 +59,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Contract" /> class
-        /// with the <see cref="ContractOneOf1" /> class
+        /// with the <see cref="If" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ContractOneOf1.</param>
-        public Contract(ContractOneOf1 actualInstance)
+        /// <param name="actualInstance">An instance of If.</param>
+        public Contract(If actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -71,10 +71,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Contract" /> class
-        /// with the <see cref="ContractOneOf2" /> class
+        /// with the <see cref="When" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ContractOneOf2.</param>
-        public Contract(ContractOneOf2 actualInstance)
+        /// <param name="actualInstance">An instance of When.</param>
+        public Contract(When actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -83,10 +83,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Contract" /> class
-        /// with the <see cref="ContractOneOf3" /> class
+        /// with the <see cref="Let" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ContractOneOf3.</param>
-        public Contract(ContractOneOf3 actualInstance)
+        /// <param name="actualInstance">An instance of Let.</param>
+        public Contract(Let actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -95,10 +95,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Contract" /> class
-        /// with the <see cref="ContractOneOf4" /> class
+        /// with the <see cref="Assert" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ContractOneOf4.</param>
-        public Contract(ContractOneOf4 actualInstance)
+        /// <param name="actualInstance">An instance of Assert.</param>
+        public Contract(Assert actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -119,95 +119,95 @@ namespace MarloweAPIClient.Model
             }
             set
             {
-                if (value.GetType() == typeof(ContractOneOf))
+                if (value.GetType() == typeof(Assert))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ContractOneOf1))
+                else if (value.GetType() == typeof(Close))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ContractOneOf2))
+                else if (value.GetType() == typeof(If))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ContractOneOf3))
+                else if (value.GetType() == typeof(Let))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ContractOneOf4))
+                else if (value.GetType() == typeof(Pay))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(string))
+                else if (value.GetType() == typeof(When))
                 {
                     this._actualInstance = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: ContractOneOf, ContractOneOf1, ContractOneOf2, ContractOneOf3, ContractOneOf4, string");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: Assert, Close, If, Let, Pay, When");
                 }
             }
         }
 
         /// <summary>
-        /// Get the actual instance of `string`. If the actual instance is not `string`,
+        /// Get the actual instance of `Close`. If the actual instance is not `Close`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of string</returns>
-        public string GetString()
+        /// <returns>An instance of Close</returns>
+        public Close GetClose()
         {
-            return (string)this.ActualInstance;
+            return (Close)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ContractOneOf`. If the actual instance is not `ContractOneOf`,
+        /// Get the actual instance of `Pay`. If the actual instance is not `Pay`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ContractOneOf</returns>
-        public ContractOneOf GetContractOneOf()
+        /// <returns>An instance of Pay</returns>
+        public Pay GetPay()
         {
-            return (ContractOneOf)this.ActualInstance;
+            return (Pay)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ContractOneOf1`. If the actual instance is not `ContractOneOf1`,
+        /// Get the actual instance of `If`. If the actual instance is not `If`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ContractOneOf1</returns>
-        public ContractOneOf1 GetContractOneOf1()
+        /// <returns>An instance of If</returns>
+        public If GetIf()
         {
-            return (ContractOneOf1)this.ActualInstance;
+            return (If)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ContractOneOf2`. If the actual instance is not `ContractOneOf2`,
+        /// Get the actual instance of `When`. If the actual instance is not `When`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ContractOneOf2</returns>
-        public ContractOneOf2 GetContractOneOf2()
+        /// <returns>An instance of When</returns>
+        public When GetWhen()
         {
-            return (ContractOneOf2)this.ActualInstance;
+            return (When)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ContractOneOf3`. If the actual instance is not `ContractOneOf3`,
+        /// Get the actual instance of `Let`. If the actual instance is not `Let`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ContractOneOf3</returns>
-        public ContractOneOf3 GetContractOneOf3()
+        /// <returns>An instance of Let</returns>
+        public Let GetLet()
         {
-            return (ContractOneOf3)this.ActualInstance;
+            return (Let)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ContractOneOf4`. If the actual instance is not `ContractOneOf4`,
+        /// Get the actual instance of `Assert`. If the actual instance is not `Assert`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ContractOneOf4</returns>
-        public ContractOneOf4 GetContractOneOf4()
+        /// <returns>An instance of Assert</returns>
+        public Assert GetAssert()
         {
-            return (ContractOneOf4)this.ActualInstance;
+            return (Assert)this.ActualInstance;
         }
 
         /// <summary>
@@ -251,121 +251,121 @@ namespace MarloweAPIClient.Model
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ContractOneOf).GetProperty("AdditionalProperties") == null)
+                if (typeof(Assert).GetProperty("AdditionalProperties") == null)
                 {
-                    newContract = new Contract(JsonConvert.DeserializeObject<ContractOneOf>(jsonString, Contract.SerializerSettings));
+                    newContract = new Contract(JsonConvert.DeserializeObject<Assert>(jsonString, Contract.SerializerSettings));
                 }
                 else
                 {
-                    newContract = new Contract(JsonConvert.DeserializeObject<ContractOneOf>(jsonString, Contract.AdditionalPropertiesSerializerSettings));
+                    newContract = new Contract(JsonConvert.DeserializeObject<Assert>(jsonString, Contract.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ContractOneOf");
+                matchedTypes.Add("Assert");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ContractOneOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into Assert: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ContractOneOf1).GetProperty("AdditionalProperties") == null)
+                if (typeof(Close).GetProperty("AdditionalProperties") == null)
                 {
-                    newContract = new Contract(JsonConvert.DeserializeObject<ContractOneOf1>(jsonString, Contract.SerializerSettings));
+                    newContract = new Contract(JsonConvert.DeserializeObject<Close>(jsonString, Contract.SerializerSettings));
                 }
                 else
                 {
-                    newContract = new Contract(JsonConvert.DeserializeObject<ContractOneOf1>(jsonString, Contract.AdditionalPropertiesSerializerSettings));
+                    newContract = new Contract(JsonConvert.DeserializeObject<Close>(jsonString, Contract.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ContractOneOf1");
+                matchedTypes.Add("Close");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ContractOneOf1: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into Close: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ContractOneOf2).GetProperty("AdditionalProperties") == null)
+                if (typeof(If).GetProperty("AdditionalProperties") == null)
                 {
-                    newContract = new Contract(JsonConvert.DeserializeObject<ContractOneOf2>(jsonString, Contract.SerializerSettings));
+                    newContract = new Contract(JsonConvert.DeserializeObject<If>(jsonString, Contract.SerializerSettings));
                 }
                 else
                 {
-                    newContract = new Contract(JsonConvert.DeserializeObject<ContractOneOf2>(jsonString, Contract.AdditionalPropertiesSerializerSettings));
+                    newContract = new Contract(JsonConvert.DeserializeObject<If>(jsonString, Contract.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ContractOneOf2");
+                matchedTypes.Add("If");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ContractOneOf2: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into If: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ContractOneOf3).GetProperty("AdditionalProperties") == null)
+                if (typeof(Let).GetProperty("AdditionalProperties") == null)
                 {
-                    newContract = new Contract(JsonConvert.DeserializeObject<ContractOneOf3>(jsonString, Contract.SerializerSettings));
+                    newContract = new Contract(JsonConvert.DeserializeObject<Let>(jsonString, Contract.SerializerSettings));
                 }
                 else
                 {
-                    newContract = new Contract(JsonConvert.DeserializeObject<ContractOneOf3>(jsonString, Contract.AdditionalPropertiesSerializerSettings));
+                    newContract = new Contract(JsonConvert.DeserializeObject<Let>(jsonString, Contract.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ContractOneOf3");
+                matchedTypes.Add("Let");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ContractOneOf3: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into Let: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ContractOneOf4).GetProperty("AdditionalProperties") == null)
+                if (typeof(Pay).GetProperty("AdditionalProperties") == null)
                 {
-                    newContract = new Contract(JsonConvert.DeserializeObject<ContractOneOf4>(jsonString, Contract.SerializerSettings));
+                    newContract = new Contract(JsonConvert.DeserializeObject<Pay>(jsonString, Contract.SerializerSettings));
                 }
                 else
                 {
-                    newContract = new Contract(JsonConvert.DeserializeObject<ContractOneOf4>(jsonString, Contract.AdditionalPropertiesSerializerSettings));
+                    newContract = new Contract(JsonConvert.DeserializeObject<Pay>(jsonString, Contract.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ContractOneOf4");
+                matchedTypes.Add("Pay");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ContractOneOf4: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into Pay: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(string).GetProperty("AdditionalProperties") == null)
+                if (typeof(When).GetProperty("AdditionalProperties") == null)
                 {
-                    newContract = new Contract(JsonConvert.DeserializeObject<string>(jsonString, Contract.SerializerSettings));
+                    newContract = new Contract(JsonConvert.DeserializeObject<When>(jsonString, Contract.SerializerSettings));
                 }
                 else
                 {
-                    newContract = new Contract(JsonConvert.DeserializeObject<string>(jsonString, Contract.AdditionalPropertiesSerializerSettings));
+                    newContract = new Contract(JsonConvert.DeserializeObject<When>(jsonString, Contract.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("string");
+                matchedTypes.Add("When");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into string: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into When: {1}", jsonString, exception.ToString()));
             }
 
             if (match == 0)

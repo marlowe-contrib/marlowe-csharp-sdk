@@ -73,7 +73,7 @@ namespace MarloweAPIClient.Model
         /// <param name="tags">tags (required).</param>
         /// <param name="transactionId">The hex-encoded identifier of a Cardano transaction (required).</param>
         /// <param name="utxo">A reference to a transaction output with a transaction ID and index..</param>
-        public TxHeader(BlockHeader block = default(BlockHeader), string continuations = default(string), string contractId = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), TxStatus status = default(TxStatus), Dictionary<string, Object> tags = default(Dictionary<string, Object>), string transactionId = default(string), string utxo = default(string))
+        public TxHeader(BlockHeader block = default(BlockHeader), string continuations = default(string), string contractId = default(string), Dictionary<string, Metadata> metadata = default(Dictionary<string, Metadata>), TxStatus status = default(TxStatus), Dictionary<string, Metadata> tags = default(Dictionary<string, Metadata>), string transactionId = default(string), string utxo = default(string))
         {
             // to ensure "contractId" is required (not null)
             if (contractId == null)
@@ -195,7 +195,7 @@ namespace MarloweAPIClient.Model
         /// Gets or Sets Metadata
         /// </summary>
         [DataMember(Name = "metadata", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Object> Metadata
+        public Dictionary<string, Metadata> Metadata
         {
             get{ return _Metadata;}
             set
@@ -204,7 +204,7 @@ namespace MarloweAPIClient.Model
                 _flagMetadata = true;
             }
         }
-        private Dictionary<string, Object> _Metadata;
+        private Dictionary<string, Metadata> _Metadata;
         private bool _flagMetadata;
 
         /// <summary>
@@ -219,7 +219,7 @@ namespace MarloweAPIClient.Model
         /// Gets or Sets Tags
         /// </summary>
         [DataMember(Name = "tags", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Object> Tags
+        public Dictionary<string, Metadata> Tags
         {
             get{ return _Tags;}
             set
@@ -228,7 +228,7 @@ namespace MarloweAPIClient.Model
                 _flagTags = true;
             }
         }
-        private Dictionary<string, Object> _Tags;
+        private Dictionary<string, Metadata> _Tags;
         private bool _flagTags;
 
         /// <summary>

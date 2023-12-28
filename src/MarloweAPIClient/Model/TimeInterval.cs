@@ -23,12 +23,42 @@ using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = MarloweAPIClient.Client.OpenAPIDateConverter;
 
+public class StrictStringEnumConverter : StringEnumConverter
+{
+    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+    {
+        if (reader.TokenType != JsonToken.String)
+        {
+            throw new JsonSerializationException("Expected string value for enum deserialization");
+        }
+
+        var enumString = (string)reader.Value;
+
+        // Get the string values assigned to the enum members
+        var enumValues = objectType.GetEnumValues();
+        var enumStringValues = new List<string>();
+        foreach (var enumValue in enumValues)
+        {
+            var memberInfo = objectType.GetMember(enumValue.ToString())[0];
+            var enumMemberAttribute = (EnumMemberAttribute)memberInfo.GetCustomAttributes(typeof(EnumMemberAttribute), false)[0];
+            enumStringValues.Add(enumMemberAttribute.Value);
+        }
+
+        if (!enumStringValues.Contains(enumString))
+        {
+            throw new JsonSerializationException($"Value '{enumString}' is not a valid value for enum '{objectType.Name}'");
+        }
+
+        return base.ReadJson(reader, objectType, existingValue, serializer);
+    }
+}
+
 namespace MarloweAPIClient.Model
 {
     /// <summary>
     /// Defines TimeInterval
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(StrictStringEnumConverter))]
     public enum TimeInterval
     {
         /// <summary>

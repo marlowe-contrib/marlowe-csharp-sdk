@@ -47,33 +47,15 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("results is a required property for GetContractsResponse and cannot be null");
             }
-            this._Results = results;
+            this.Results = results;
         }
 
         /// <summary>
         /// Gets or Sets Results
         /// </summary>
         [DataMember(Name = "results", IsRequired = true, EmitDefaultValue = true)]
-        public List<GetContractsResponseResultsInner> Results
-        {
-            get{ return _Results;}
-            set
-            {
-                _Results = value;
-                _flagResults = true;
-            }
-        }
-        private List<GetContractsResponseResultsInner> _Results;
-        private bool _flagResults;
+        public List<GetContractsResponseResultsInner> Results { get; set; }
 
-        /// <summary>
-        /// Returns false as Results should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeResults()
-        {
-            return _flagResults;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

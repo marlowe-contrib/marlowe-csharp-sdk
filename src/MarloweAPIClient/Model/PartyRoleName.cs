@@ -47,33 +47,15 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("roleToken is a required property for PartyRoleName and cannot be null");
             }
-            this._RoleToken = roleToken;
+            this.RoleToken = roleToken;
         }
 
         /// <summary>
         /// Gets or Sets RoleToken
         /// </summary>
         [DataMember(Name = "role_token", IsRequired = true, EmitDefaultValue = true)]
-        public string RoleToken
-        {
-            get{ return _RoleToken;}
-            set
-            {
-                _RoleToken = value;
-                _flagRoleToken = true;
-            }
-        }
-        private string _RoleToken;
-        private bool _flagRoleToken;
+        public string RoleToken { get; set; }
 
-        /// <summary>
-        /// Returns false as RoleToken should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeRoleToken()
-        {
-            return _flagRoleToken;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

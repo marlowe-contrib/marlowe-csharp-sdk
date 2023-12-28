@@ -44,93 +44,39 @@ namespace MarloweAPIClient.Model
         /// <param name="when">when (required).</param>
         public WhenObject(long timeout = default(long), ContractObject timeoutContinuation = default(ContractObject), List<CaseObject> when = default(List<CaseObject>))
         {
-            this._Timeout = timeout;
+            this.Timeout = timeout;
             // to ensure "timeoutContinuation" is required (not null)
             if (timeoutContinuation == null)
             {
                 throw new ArgumentNullException("timeoutContinuation is a required property for WhenObject and cannot be null");
             }
-            this._TimeoutContinuation = timeoutContinuation;
+            this.TimeoutContinuation = timeoutContinuation;
             // to ensure "when" is required (not null)
             if (when == null)
             {
                 throw new ArgumentNullException("when is a required property for WhenObject and cannot be null");
             }
-            this._When = when;
+            this.When = when;
         }
 
         /// <summary>
         /// Gets or Sets Timeout
         /// </summary>
         [DataMember(Name = "timeout", IsRequired = true, EmitDefaultValue = true)]
-        public long Timeout
-        {
-            get{ return _Timeout;}
-            set
-            {
-                _Timeout = value;
-                _flagTimeout = true;
-            }
-        }
-        private long _Timeout;
-        private bool _flagTimeout;
+        public long Timeout { get; set; }
 
-        /// <summary>
-        /// Returns false as Timeout should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTimeout()
-        {
-            return _flagTimeout;
-        }
         /// <summary>
         /// Gets or Sets TimeoutContinuation
         /// </summary>
         [DataMember(Name = "timeout_continuation", IsRequired = true, EmitDefaultValue = true)]
-        public ContractObject TimeoutContinuation
-        {
-            get{ return _TimeoutContinuation;}
-            set
-            {
-                _TimeoutContinuation = value;
-                _flagTimeoutContinuation = true;
-            }
-        }
-        private ContractObject _TimeoutContinuation;
-        private bool _flagTimeoutContinuation;
+        public ContractObject TimeoutContinuation { get; set; }
 
-        /// <summary>
-        /// Returns false as TimeoutContinuation should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTimeoutContinuation()
-        {
-            return _flagTimeoutContinuation;
-        }
         /// <summary>
         /// Gets or Sets When
         /// </summary>
         [DataMember(Name = "when", IsRequired = true, EmitDefaultValue = true)]
-        public List<CaseObject> When
-        {
-            get{ return _When;}
-            set
-            {
-                _When = value;
-                _flagWhen = true;
-            }
-        }
-        private List<CaseObject> _When;
-        private bool _flagWhen;
+        public List<CaseObject> When { get; set; }
 
-        /// <summary>
-        /// Returns false as When should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeWhen()
-        {
-            return _flagWhen;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

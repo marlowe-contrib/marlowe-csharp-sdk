@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("links is a required property for CreateContractResponse and cannot be null");
             }
-            this._Links = links;
+            this.Links = links;
             // to ensure "resource" is required (not null)
             if (resource == null)
             {
                 throw new ArgumentNullException("resource is a required property for CreateContractResponse and cannot be null");
             }
-            this._Resource = resource;
+            this.Resource = resource;
         }
 
         /// <summary>
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "links", IsRequired = true, EmitDefaultValue = true)]
-        public CreateContractResponseLinks Links
-        {
-            get{ return _Links;}
-            set
-            {
-                _Links = value;
-                _flagLinks = true;
-            }
-        }
-        private CreateContractResponseLinks _Links;
-        private bool _flagLinks;
+        public CreateContractResponseLinks Links { get; set; }
 
-        /// <summary>
-        /// Returns false as Links should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeLinks()
-        {
-            return _flagLinks;
-        }
         /// <summary>
         /// Gets or Sets Resource
         /// </summary>
         [DataMember(Name = "resource", IsRequired = true, EmitDefaultValue = true)]
-        public CreateTxEnvelope Resource
-        {
-            get{ return _Resource;}
-            set
-            {
-                _Resource = value;
-                _flagResource = true;
-            }
-        }
-        private CreateTxEnvelope _Resource;
-        private bool _flagResource;
+        public CreateTxEnvelope Resource { get; set; }
 
-        /// <summary>
-        /// Returns false as Resource should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeResource()
-        {
-            return _flagResource;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

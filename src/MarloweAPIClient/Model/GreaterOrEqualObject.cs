@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("geThan is a required property for GreaterOrEqualObject and cannot be null");
             }
-            this._GeThan = geThan;
+            this.GeThan = geThan;
             // to ensure "value" is required (not null)
             if (value == null)
             {
                 throw new ArgumentNullException("value is a required property for GreaterOrEqualObject and cannot be null");
             }
-            this._Value = value;
+            this.Value = value;
         }
 
         /// <summary>
         /// Gets or Sets GeThan
         /// </summary>
         [DataMember(Name = "ge_than", IsRequired = true, EmitDefaultValue = true)]
-        public ValueObject GeThan
-        {
-            get{ return _GeThan;}
-            set
-            {
-                _GeThan = value;
-                _flagGeThan = true;
-            }
-        }
-        private ValueObject _GeThan;
-        private bool _flagGeThan;
+        public ValueObject GeThan { get; set; }
 
-        /// <summary>
-        /// Returns false as GeThan should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeGeThan()
-        {
-            return _flagGeThan;
-        }
         /// <summary>
         /// Gets or Sets Value
         /// </summary>
         [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
-        public ValueObject Value
-        {
-            get{ return _Value;}
-            set
-            {
-                _Value = value;
-                _flagValue = true;
-            }
-        }
-        private ValueObject _Value;
-        private bool _flagValue;
+        public ValueObject Value { get; set; }
 
-        /// <summary>
-        /// Returns false as Value should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeValue()
-        {
-            return _flagValue;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

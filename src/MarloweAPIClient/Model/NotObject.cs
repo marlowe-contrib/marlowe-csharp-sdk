@@ -47,33 +47,15 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("not is a required property for NotObject and cannot be null");
             }
-            this._Not = not;
+            this.Not = not;
         }
 
         /// <summary>
         /// Gets or Sets Not
         /// </summary>
         [DataMember(Name = "not", IsRequired = true, EmitDefaultValue = true)]
-        public ObservationObject Not
-        {
-            get{ return _Not;}
-            set
-            {
-                _Not = value;
-                _flagNot = true;
-            }
-        }
-        private ObservationObject _Not;
-        private bool _flagNot;
+        public ObservationObject Not { get; set; }
 
-        /// <summary>
-        /// Returns false as Not should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeNot()
-        {
-            return _flagNot;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

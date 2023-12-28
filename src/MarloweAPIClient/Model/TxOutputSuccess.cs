@@ -50,123 +50,51 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("contract is a required property for TxOutputSuccess and cannot be null");
             }
-            this._Contract = contract;
+            this.Contract = contract;
             // to ensure "payments" is required (not null)
             if (payments == null)
             {
                 throw new ArgumentNullException("payments is a required property for TxOutputSuccess and cannot be null");
             }
-            this._Payments = payments;
+            this.Payments = payments;
             // to ensure "state" is required (not null)
             if (state == null)
             {
                 throw new ArgumentNullException("state is a required property for TxOutputSuccess and cannot be null");
             }
-            this._State = state;
+            this.State = state;
             // to ensure "warnings" is required (not null)
             if (warnings == null)
             {
                 throw new ArgumentNullException("warnings is a required property for TxOutputSuccess and cannot be null");
             }
-            this._Warnings = warnings;
+            this.Warnings = warnings;
         }
 
         /// <summary>
         /// Gets or Sets Contract
         /// </summary>
         [DataMember(Name = "contract", IsRequired = true, EmitDefaultValue = true)]
-        public Contract Contract
-        {
-            get{ return _Contract;}
-            set
-            {
-                _Contract = value;
-                _flagContract = true;
-            }
-        }
-        private Contract _Contract;
-        private bool _flagContract;
+        public Contract Contract { get; set; }
 
-        /// <summary>
-        /// Returns false as Contract should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeContract()
-        {
-            return _flagContract;
-        }
         /// <summary>
         /// Gets or Sets Payments
         /// </summary>
         [DataMember(Name = "payments", IsRequired = true, EmitDefaultValue = true)]
-        public List<Payment> Payments
-        {
-            get{ return _Payments;}
-            set
-            {
-                _Payments = value;
-                _flagPayments = true;
-            }
-        }
-        private List<Payment> _Payments;
-        private bool _flagPayments;
+        public List<Payment> Payments { get; set; }
 
-        /// <summary>
-        /// Returns false as Payments should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializePayments()
-        {
-            return _flagPayments;
-        }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = true)]
-        public MarloweState State
-        {
-            get{ return _State;}
-            set
-            {
-                _State = value;
-                _flagState = true;
-            }
-        }
-        private MarloweState _State;
-        private bool _flagState;
+        public MarloweState State { get; set; }
 
-        /// <summary>
-        /// Returns false as State should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeState()
-        {
-            return _flagState;
-        }
         /// <summary>
         /// Gets or Sets Warnings
         /// </summary>
         [DataMember(Name = "warnings", IsRequired = true, EmitDefaultValue = true)]
-        public List<TransactionWarning> Warnings
-        {
-            get{ return _Warnings;}
-            set
-            {
-                _Warnings = value;
-                _flagWarnings = true;
-            }
-        }
-        private List<TransactionWarning> _Warnings;
-        private bool _flagWarnings;
+        public List<TransactionWarning> Warnings { get; set; }
 
-        /// <summary>
-        /// Returns false as Warnings should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeWarnings()
-        {
-            return _flagWarnings;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

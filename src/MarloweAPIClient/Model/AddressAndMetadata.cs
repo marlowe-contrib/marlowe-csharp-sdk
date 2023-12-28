@@ -48,12 +48,8 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("address is a required property for AddressAndMetadata and cannot be null");
             }
-            this._Address = address;
-            this._Metadata = metadata;
-            if (this.Metadata != null)
-            {
-                this._flagMetadata = true;
-            }
+            this.Address = address;
+            this.Metadata = metadata;
         }
 
         /// <summary>
@@ -62,50 +58,14 @@ namespace MarloweAPIClient.Model
         /// <value>A cardano address, in Bech32 format</value>
         /// <example>addr1w94f8ywk4fg672xasahtk4t9k6w3aql943uxz5rt62d4dvq8evxaf</example>
         [DataMember(Name = "address", IsRequired = true, EmitDefaultValue = true)]
-        public string Address
-        {
-            get{ return _Address;}
-            set
-            {
-                _Address = value;
-                _flagAddress = true;
-            }
-        }
-        private string _Address;
-        private bool _flagAddress;
+        public string Address { get; set; }
 
-        /// <summary>
-        /// Returns false as Address should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeAddress()
-        {
-            return _flagAddress;
-        }
         /// <summary>
         /// Gets or Sets Metadata
         /// </summary>
         [DataMember(Name = "metadata", EmitDefaultValue = false)]
-        public TokenMetadata Metadata
-        {
-            get{ return _Metadata;}
-            set
-            {
-                _Metadata = value;
-                _flagMetadata = true;
-            }
-        }
-        private TokenMetadata _Metadata;
-        private bool _flagMetadata;
+        public TokenMetadata Metadata { get; set; }
 
-        /// <summary>
-        /// Returns false as Metadata should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeMetadata()
-        {
-            return _flagMetadata;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("varMultiply is a required property for Multiply and cannot be null");
             }
-            this._VarMultiply = varMultiply;
+            this.VarMultiply = varMultiply;
             // to ensure "times" is required (not null)
             if (times == null)
             {
                 throw new ArgumentNullException("times is a required property for Multiply and cannot be null");
             }
-            this._Times = times;
+            this.Times = times;
         }
 
         /// <summary>
         /// Gets or Sets VarMultiply
         /// </summary>
         [DataMember(Name = "multiply", IsRequired = true, EmitDefaultValue = true)]
-        public Value VarMultiply
-        {
-            get{ return _VarMultiply;}
-            set
-            {
-                _VarMultiply = value;
-                _flagVarMultiply = true;
-            }
-        }
-        private Value _VarMultiply;
-        private bool _flagVarMultiply;
+        public Value VarMultiply { get; set; }
 
-        /// <summary>
-        /// Returns false as VarMultiply should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarMultiply()
-        {
-            return _flagVarMultiply;
-        }
         /// <summary>
         /// Gets or Sets Times
         /// </summary>
         [DataMember(Name = "times", IsRequired = true, EmitDefaultValue = true)]
-        public Value Times
-        {
-            get{ return _Times;}
-            set
-            {
-                _Times = value;
-                _flagTimes = true;
-            }
-        }
-        private Value _Times;
-        private bool _flagTimes;
+        public Value Times { get; set; }
 
-        /// <summary>
-        /// Returns false as Times should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTimes()
-        {
-            return _flagTimes;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

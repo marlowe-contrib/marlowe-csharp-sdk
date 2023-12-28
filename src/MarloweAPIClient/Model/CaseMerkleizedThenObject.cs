@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("varCase is a required property for CaseMerkleizedThenObject and cannot be null");
             }
-            this._VarCase = varCase;
+            this.VarCase = varCase;
             // to ensure "merkleizedThen" is required (not null)
             if (merkleizedThen == null)
             {
                 throw new ArgumentNullException("merkleizedThen is a required property for CaseMerkleizedThenObject and cannot be null");
             }
-            this._MerkleizedThen = merkleizedThen;
+            this.MerkleizedThen = merkleizedThen;
         }
 
         /// <summary>
         /// Gets or Sets VarCase
         /// </summary>
         [DataMember(Name = "case", IsRequired = true, EmitDefaultValue = true)]
-        public ActionObject VarCase
-        {
-            get{ return _VarCase;}
-            set
-            {
-                _VarCase = value;
-                _flagVarCase = true;
-            }
-        }
-        private ActionObject _VarCase;
-        private bool _flagVarCase;
+        public ActionObject VarCase { get; set; }
 
-        /// <summary>
-        /// Returns false as VarCase should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarCase()
-        {
-            return _flagVarCase;
-        }
         /// <summary>
         /// Gets or Sets MerkleizedThen
         /// </summary>
         [DataMember(Name = "merkleized_then", IsRequired = true, EmitDefaultValue = true)]
-        public string MerkleizedThen
-        {
-            get{ return _MerkleizedThen;}
-            set
-            {
-                _MerkleizedThen = value;
-                _flagMerkleizedThen = true;
-            }
-        }
-        private string _MerkleizedThen;
-        private bool _flagMerkleizedThen;
+        public string MerkleizedThen { get; set; }
 
-        /// <summary>
-        /// Returns false as MerkleizedThen should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeMerkleizedThen()
-        {
-            return _flagMerkleizedThen;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

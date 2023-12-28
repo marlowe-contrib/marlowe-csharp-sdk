@@ -49,93 +49,39 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("be is a required property for Let and cannot be null");
             }
-            this._Be = be;
+            this.Be = be;
             // to ensure "varLet" is required (not null)
             if (varLet == null)
             {
                 throw new ArgumentNullException("varLet is a required property for Let and cannot be null");
             }
-            this._VarLet = varLet;
+            this.VarLet = varLet;
             // to ensure "then" is required (not null)
             if (then == null)
             {
                 throw new ArgumentNullException("then is a required property for Let and cannot be null");
             }
-            this._Then = then;
+            this.Then = then;
         }
 
         /// <summary>
         /// Gets or Sets Be
         /// </summary>
         [DataMember(Name = "be", IsRequired = true, EmitDefaultValue = true)]
-        public Value Be
-        {
-            get{ return _Be;}
-            set
-            {
-                _Be = value;
-                _flagBe = true;
-            }
-        }
-        private Value _Be;
-        private bool _flagBe;
+        public Value Be { get; set; }
 
-        /// <summary>
-        /// Returns false as Be should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeBe()
-        {
-            return _flagBe;
-        }
         /// <summary>
         /// Gets or Sets VarLet
         /// </summary>
         [DataMember(Name = "let", IsRequired = true, EmitDefaultValue = true)]
-        public string VarLet
-        {
-            get{ return _VarLet;}
-            set
-            {
-                _VarLet = value;
-                _flagVarLet = true;
-            }
-        }
-        private string _VarLet;
-        private bool _flagVarLet;
+        public string VarLet { get; set; }
 
-        /// <summary>
-        /// Returns false as VarLet should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarLet()
-        {
-            return _flagVarLet;
-        }
         /// <summary>
         /// Gets or Sets Then
         /// </summary>
         [DataMember(Name = "then", IsRequired = true, EmitDefaultValue = true)]
-        public Contract Then
-        {
-            get{ return _Then;}
-            set
-            {
-                _Then = value;
-                _flagThen = true;
-            }
-        }
-        private Contract _Then;
-        private bool _flagThen;
+        public Contract Then { get; set; }
 
-        /// <summary>
-        /// Returns false as Then should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeThen()
-        {
-            return _flagThen;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

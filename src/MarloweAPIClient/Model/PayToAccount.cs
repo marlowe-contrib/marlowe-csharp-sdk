@@ -47,33 +47,15 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("account is a required property for PayToAccount and cannot be null");
             }
-            this._Account = account;
+            this.Account = account;
         }
 
         /// <summary>
         /// Gets or Sets Account
         /// </summary>
         [DataMember(Name = "account", IsRequired = true, EmitDefaultValue = true)]
-        public Party Account
-        {
-            get{ return _Account;}
-            set
-            {
-                _Account = value;
-                _flagAccount = true;
-            }
-        }
-        private Party _Account;
-        private bool _flagAccount;
+        public Party Account { get; set; }
 
-        /// <summary>
-        /// Returns false as Account should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeAccount()
-        {
-            return _flagAccount;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

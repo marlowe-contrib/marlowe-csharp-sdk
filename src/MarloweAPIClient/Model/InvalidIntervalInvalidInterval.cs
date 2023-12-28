@@ -43,58 +43,22 @@ namespace MarloweAPIClient.Model
         /// <param name="to">to (required).</param>
         public InvalidIntervalInvalidInterval(int from = default(int), int to = default(int))
         {
-            this._From = from;
-            this._To = to;
+            this.From = from;
+            this.To = to;
         }
 
         /// <summary>
         /// Gets or Sets From
         /// </summary>
         [DataMember(Name = "from", IsRequired = true, EmitDefaultValue = true)]
-        public int From
-        {
-            get{ return _From;}
-            set
-            {
-                _From = value;
-                _flagFrom = true;
-            }
-        }
-        private int _From;
-        private bool _flagFrom;
+        public int From { get; set; }
 
-        /// <summary>
-        /// Returns false as From should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeFrom()
-        {
-            return _flagFrom;
-        }
         /// <summary>
         /// Gets or Sets To
         /// </summary>
         [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = true)]
-        public int To
-        {
-            get{ return _To;}
-            set
-            {
-                _To = value;
-                _flagTo = true;
-            }
-        }
-        private int _To;
-        private bool _flagTo;
+        public int To { get; set; }
 
-        /// <summary>
-        /// Returns false as To should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTo()
-        {
-            return _flagTo;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

@@ -47,33 +47,15 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("varStakingHash is a required property for StakingHash and cannot be null");
             }
-            this._VarStakingHash = varStakingHash;
+            this.VarStakingHash = varStakingHash;
         }
 
         /// <summary>
         /// Gets or Sets VarStakingHash
         /// </summary>
         [DataMember(Name = "stakingHash", IsRequired = true, EmitDefaultValue = true)]
-        public PlutusCredential VarStakingHash
-        {
-            get{ return _VarStakingHash;}
-            set
-            {
-                _VarStakingHash = value;
-                _flagVarStakingHash = true;
-            }
-        }
-        private PlutusCredential _VarStakingHash;
-        private bool _flagVarStakingHash;
+        public PlutusCredential VarStakingHash { get; set; }
 
-        /// <summary>
-        /// Returns false as VarStakingHash should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarStakingHash()
-        {
-            return _flagVarStakingHash;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

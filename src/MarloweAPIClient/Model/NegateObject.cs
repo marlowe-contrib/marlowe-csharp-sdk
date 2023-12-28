@@ -47,33 +47,15 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("negate is a required property for NegateObject and cannot be null");
             }
-            this._Negate = negate;
+            this.Negate = negate;
         }
 
         /// <summary>
         /// Gets or Sets Negate
         /// </summary>
         [DataMember(Name = "negate", IsRequired = true, EmitDefaultValue = true)]
-        public ValueObject Negate
-        {
-            get{ return _Negate;}
-            set
-            {
-                _Negate = value;
-                _flagNegate = true;
-            }
-        }
-        private ValueObject _Negate;
-        private bool _flagNegate;
+        public ValueObject Negate { get; set; }
 
-        /// <summary>
-        /// Returns false as Negate should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeNegate()
-        {
-            return _flagNegate;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

@@ -51,153 +51,63 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("fromAccount is a required property for Pay and cannot be null");
             }
-            this._FromAccount = fromAccount;
+            this.FromAccount = fromAccount;
             // to ensure "varPay" is required (not null)
             if (varPay == null)
             {
                 throw new ArgumentNullException("varPay is a required property for Pay and cannot be null");
             }
-            this._VarPay = varPay;
+            this.VarPay = varPay;
             // to ensure "then" is required (not null)
             if (then == null)
             {
                 throw new ArgumentNullException("then is a required property for Pay and cannot be null");
             }
-            this._Then = then;
+            this.Then = then;
             // to ensure "to" is required (not null)
             if (to == null)
             {
                 throw new ArgumentNullException("to is a required property for Pay and cannot be null");
             }
-            this._To = to;
+            this.To = to;
             // to ensure "token" is required (not null)
             if (token == null)
             {
                 throw new ArgumentNullException("token is a required property for Pay and cannot be null");
             }
-            this._Token = token;
+            this.Token = token;
         }
 
         /// <summary>
         /// Gets or Sets FromAccount
         /// </summary>
         [DataMember(Name = "from_account", IsRequired = true, EmitDefaultValue = true)]
-        public Party FromAccount
-        {
-            get{ return _FromAccount;}
-            set
-            {
-                _FromAccount = value;
-                _flagFromAccount = true;
-            }
-        }
-        private Party _FromAccount;
-        private bool _flagFromAccount;
+        public Party FromAccount { get; set; }
 
-        /// <summary>
-        /// Returns false as FromAccount should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeFromAccount()
-        {
-            return _flagFromAccount;
-        }
         /// <summary>
         /// Gets or Sets VarPay
         /// </summary>
         [DataMember(Name = "pay", IsRequired = true, EmitDefaultValue = true)]
-        public Value VarPay
-        {
-            get{ return _VarPay;}
-            set
-            {
-                _VarPay = value;
-                _flagVarPay = true;
-            }
-        }
-        private Value _VarPay;
-        private bool _flagVarPay;
+        public Value VarPay { get; set; }
 
-        /// <summary>
-        /// Returns false as VarPay should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarPay()
-        {
-            return _flagVarPay;
-        }
         /// <summary>
         /// Gets or Sets Then
         /// </summary>
         [DataMember(Name = "then", IsRequired = true, EmitDefaultValue = true)]
-        public Contract Then
-        {
-            get{ return _Then;}
-            set
-            {
-                _Then = value;
-                _flagThen = true;
-            }
-        }
-        private Contract _Then;
-        private bool _flagThen;
+        public Contract Then { get; set; }
 
-        /// <summary>
-        /// Returns false as Then should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeThen()
-        {
-            return _flagThen;
-        }
         /// <summary>
         /// Gets or Sets To
         /// </summary>
         [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = true)]
-        public Payee To
-        {
-            get{ return _To;}
-            set
-            {
-                _To = value;
-                _flagTo = true;
-            }
-        }
-        private Payee _To;
-        private bool _flagTo;
+        public Payee To { get; set; }
 
-        /// <summary>
-        /// Returns false as To should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTo()
-        {
-            return _flagTo;
-        }
         /// <summary>
         /// Gets or Sets Token
         /// </summary>
         [DataMember(Name = "token", IsRequired = true, EmitDefaultValue = true)]
-        public Token Token
-        {
-            get{ return _Token;}
-            set
-            {
-                _Token = value;
-                _flagToken = true;
-            }
-        }
-        private Token _Token;
-        private bool _flagToken;
+        public Token Token { get; set; }
 
-        /// <summary>
-        /// Returns false as Token should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeToken()
-        {
-            return _flagToken;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

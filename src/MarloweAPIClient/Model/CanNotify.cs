@@ -43,8 +43,8 @@ namespace MarloweAPIClient.Model
         /// <param name="isMerkleizedContinuation">Indicates if a given contract continuation is merkleized (required).</param>
         public CanNotify(int caseIndex = default(int), bool isMerkleizedContinuation = default(bool))
         {
-            this._CaseIndex = caseIndex;
-            this._IsMerkleizedContinuation = isMerkleizedContinuation;
+            this.CaseIndex = caseIndex;
+            this.IsMerkleizedContinuation = isMerkleizedContinuation;
         }
 
         /// <summary>
@@ -52,51 +52,15 @@ namespace MarloweAPIClient.Model
         /// </summary>
         /// <value>Index of a \&quot;Case Action\&quot; in a \&quot;When\&quot;</value>
         [DataMember(Name = "case_index", IsRequired = true, EmitDefaultValue = true)]
-        public int CaseIndex
-        {
-            get{ return _CaseIndex;}
-            set
-            {
-                _CaseIndex = value;
-                _flagCaseIndex = true;
-            }
-        }
-        private int _CaseIndex;
-        private bool _flagCaseIndex;
+        public int CaseIndex { get; set; }
 
-        /// <summary>
-        /// Returns false as CaseIndex should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeCaseIndex()
-        {
-            return _flagCaseIndex;
-        }
         /// <summary>
         /// Indicates if a given contract continuation is merkleized
         /// </summary>
         /// <value>Indicates if a given contract continuation is merkleized</value>
         [DataMember(Name = "is_merkleized_continuation", IsRequired = true, EmitDefaultValue = true)]
-        public bool IsMerkleizedContinuation
-        {
-            get{ return _IsMerkleizedContinuation;}
-            set
-            {
-                _IsMerkleizedContinuation = value;
-                _flagIsMerkleizedContinuation = true;
-            }
-        }
-        private bool _IsMerkleizedContinuation;
-        private bool _flagIsMerkleizedContinuation;
+        public bool IsMerkleizedContinuation { get; set; }
 
-        /// <summary>
-        /// Returns false as IsMerkleizedContinuation should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeIsMerkleizedContinuation()
-        {
-            return _flagIsMerkleizedContinuation;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("either is a required property for OrObject and cannot be null");
             }
-            this._Either = either;
+            this.Either = either;
             // to ensure "or" is required (not null)
             if (or == null)
             {
                 throw new ArgumentNullException("or is a required property for OrObject and cannot be null");
             }
-            this._Or = or;
+            this.Or = or;
         }
 
         /// <summary>
         /// Gets or Sets Either
         /// </summary>
         [DataMember(Name = "either", IsRequired = true, EmitDefaultValue = true)]
-        public ObservationObject Either
-        {
-            get{ return _Either;}
-            set
-            {
-                _Either = value;
-                _flagEither = true;
-            }
-        }
-        private ObservationObject _Either;
-        private bool _flagEither;
+        public ObservationObject Either { get; set; }
 
-        /// <summary>
-        /// Returns false as Either should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeEither()
-        {
-            return _flagEither;
-        }
         /// <summary>
         /// Gets or Sets Or
         /// </summary>
         [DataMember(Name = "or", IsRequired = true, EmitDefaultValue = true)]
-        public ObservationObject Or
-        {
-            get{ return _Or;}
-            set
-            {
-                _Or = value;
-                _flagOr = true;
-            }
-        }
-        private ObservationObject _Or;
-        private bool _flagOr;
+        public ObservationObject Or { get; set; }
 
-        /// <summary>
-        /// Returns false as Or should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeOr()
-        {
-            return _flagOr;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

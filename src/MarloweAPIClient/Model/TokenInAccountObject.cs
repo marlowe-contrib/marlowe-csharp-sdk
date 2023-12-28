@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("amountOfToken is a required property for TokenInAccountObject and cannot be null");
             }
-            this._AmountOfToken = amountOfToken;
+            this.AmountOfToken = amountOfToken;
             // to ensure "inAccount" is required (not null)
             if (inAccount == null)
             {
                 throw new ArgumentNullException("inAccount is a required property for TokenInAccountObject and cannot be null");
             }
-            this._InAccount = inAccount;
+            this.InAccount = inAccount;
         }
 
         /// <summary>
         /// Gets or Sets AmountOfToken
         /// </summary>
         [DataMember(Name = "amount_of_token", IsRequired = true, EmitDefaultValue = true)]
-        public TokenObject AmountOfToken
-        {
-            get{ return _AmountOfToken;}
-            set
-            {
-                _AmountOfToken = value;
-                _flagAmountOfToken = true;
-            }
-        }
-        private TokenObject _AmountOfToken;
-        private bool _flagAmountOfToken;
+        public TokenObject AmountOfToken { get; set; }
 
-        /// <summary>
-        /// Returns false as AmountOfToken should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeAmountOfToken()
-        {
-            return _flagAmountOfToken;
-        }
         /// <summary>
         /// Gets or Sets InAccount
         /// </summary>
         [DataMember(Name = "in_account", IsRequired = true, EmitDefaultValue = true)]
-        public PartyObject InAccount
-        {
-            get{ return _InAccount;}
-            set
-            {
-                _InAccount = value;
-                _flagInAccount = true;
-            }
-        }
-        private PartyObject _InAccount;
-        private bool _flagInAccount;
+        public PartyObject InAccount { get; set; }
 
-        /// <summary>
-        /// Returns false as InAccount should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeInAccount()
-        {
-            return _flagInAccount;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

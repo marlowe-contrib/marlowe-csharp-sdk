@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("by is a required property for DivideObject and cannot be null");
             }
-            this._By = by;
+            this.By = by;
             // to ensure "divide" is required (not null)
             if (divide == null)
             {
                 throw new ArgumentNullException("divide is a required property for DivideObject and cannot be null");
             }
-            this._Divide = divide;
+            this.Divide = divide;
         }
 
         /// <summary>
         /// Gets or Sets By
         /// </summary>
         [DataMember(Name = "by", IsRequired = true, EmitDefaultValue = true)]
-        public ValueObject By
-        {
-            get{ return _By;}
-            set
-            {
-                _By = value;
-                _flagBy = true;
-            }
-        }
-        private ValueObject _By;
-        private bool _flagBy;
+        public ValueObject By { get; set; }
 
-        /// <summary>
-        /// Returns false as By should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeBy()
-        {
-            return _flagBy;
-        }
         /// <summary>
         /// Gets or Sets Divide
         /// </summary>
         [DataMember(Name = "divide", IsRequired = true, EmitDefaultValue = true)]
-        public ValueObject Divide
-        {
-            get{ return _Divide;}
-            set
-            {
-                _Divide = value;
-                _flagDivide = true;
-            }
-        }
-        private ValueObject _Divide;
-        private bool _flagDivide;
+        public ValueObject Divide { get; set; }
 
-        /// <summary>
-        /// Returns false as Divide should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeDivide()
-        {
-            return _flagDivide;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

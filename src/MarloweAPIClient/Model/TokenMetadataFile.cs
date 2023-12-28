@@ -52,19 +52,19 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("mediaType is a required property for TokenMetadataFile and cannot be null");
             }
-            this._MediaType = mediaType;
+            this.MediaType = mediaType;
             // to ensure "name" is required (not null)
             if (name == null)
             {
                 throw new ArgumentNullException("name is a required property for TokenMetadataFile and cannot be null");
             }
-            this._Name = name;
+            this.Name = name;
             // to ensure "src" is required (not null)
             if (src == null)
             {
                 throw new ArgumentNullException("src is a required property for TokenMetadataFile and cannot be null");
             }
-            this._Src = src;
+            this.Src = src;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
 
@@ -72,74 +72,20 @@ namespace MarloweAPIClient.Model
         /// Gets or Sets MediaType
         /// </summary>
         [DataMember(Name = "mediaType", IsRequired = true, EmitDefaultValue = true)]
-        public string MediaType
-        {
-            get{ return _MediaType;}
-            set
-            {
-                _MediaType = value;
-                _flagMediaType = true;
-            }
-        }
-        private string _MediaType;
-        private bool _flagMediaType;
+        public string MediaType { get; set; }
 
-        /// <summary>
-        /// Returns false as MediaType should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeMediaType()
-        {
-            return _flagMediaType;
-        }
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
-        public string Name
-        {
-            get{ return _Name;}
-            set
-            {
-                _Name = value;
-                _flagName = true;
-            }
-        }
-        private string _Name;
-        private bool _flagName;
+        public string Name { get; set; }
 
-        /// <summary>
-        /// Returns false as Name should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeName()
-        {
-            return _flagName;
-        }
         /// <summary>
         /// Gets or Sets Src
         /// </summary>
         [DataMember(Name = "src", IsRequired = true, EmitDefaultValue = true)]
-        public string Src
-        {
-            get{ return _Src;}
-            set
-            {
-                _Src = value;
-                _flagSrc = true;
-            }
-        }
-        private string _Src;
-        private bool _flagSrc;
+        public string Src { get; set; }
 
-        /// <summary>
-        /// Returns false as Src should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeSrc()
-        {
-            return _flagSrc;
-        }
         /// <summary>
         /// Gets or Sets additional properties
         /// </summary>

@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("minus is a required property for MinusObject and cannot be null");
             }
-            this._Minus = minus;
+            this.Minus = minus;
             // to ensure "value" is required (not null)
             if (value == null)
             {
                 throw new ArgumentNullException("value is a required property for MinusObject and cannot be null");
             }
-            this._Value = value;
+            this.Value = value;
         }
 
         /// <summary>
         /// Gets or Sets Minus
         /// </summary>
         [DataMember(Name = "minus", IsRequired = true, EmitDefaultValue = true)]
-        public ValueObject Minus
-        {
-            get{ return _Minus;}
-            set
-            {
-                _Minus = value;
-                _flagMinus = true;
-            }
-        }
-        private ValueObject _Minus;
-        private bool _flagMinus;
+        public ValueObject Minus { get; set; }
 
-        /// <summary>
-        /// Returns false as Minus should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeMinus()
-        {
-            return _flagMinus;
-        }
         /// <summary>
         /// Gets or Sets Value
         /// </summary>
         [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
-        public ValueObject Value
-        {
-            get{ return _Value;}
-            set
-            {
-                _Value = value;
-                _flagValue = true;
-            }
-        }
-        private ValueObject _Value;
-        private bool _flagValue;
+        public ValueObject Value { get; set; }
 
-        /// <summary>
-        /// Returns false as Value should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeValue()
-        {
-            return _flagValue;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

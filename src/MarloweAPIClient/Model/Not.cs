@@ -47,33 +47,15 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("varNot is a required property for Not and cannot be null");
             }
-            this._VarNot = varNot;
+            this.VarNot = varNot;
         }
 
         /// <summary>
         /// Gets or Sets VarNot
         /// </summary>
         [DataMember(Name = "not", IsRequired = true, EmitDefaultValue = true)]
-        public Observation VarNot
-        {
-            get{ return _VarNot;}
-            set
-            {
-                _VarNot = value;
-                _flagVarNot = true;
-            }
-        }
-        private Observation _VarNot;
-        private bool _flagVarNot;
+        public Observation VarNot { get; set; }
 
-        /// <summary>
-        /// Returns false as VarNot should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarNot()
-        {
-            return _flagVarNot;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

@@ -47,33 +47,15 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("party is a required property for PayToPartyObject and cannot be null");
             }
-            this._Party = party;
+            this.Party = party;
         }
 
         /// <summary>
         /// Gets or Sets Party
         /// </summary>
         [DataMember(Name = "party", IsRequired = true, EmitDefaultValue = true)]
-        public PartyObject Party
-        {
-            get{ return _Party;}
-            set
-            {
-                _Party = value;
-                _flagParty = true;
-            }
-        }
-        private PartyObject _Party;
-        private bool _flagParty;
+        public PartyObject Party { get; set; }
 
-        /// <summary>
-        /// Returns false as Party should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeParty()
-        {
-            return _flagParty;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

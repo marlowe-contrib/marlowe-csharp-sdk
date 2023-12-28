@@ -47,33 +47,15 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("notifyIf is a required property for NotifyAction and cannot be null");
             }
-            this._NotifyIf = notifyIf;
+            this.NotifyIf = notifyIf;
         }
 
         /// <summary>
         /// Gets or Sets NotifyIf
         /// </summary>
         [DataMember(Name = "notify_if", IsRequired = true, EmitDefaultValue = true)]
-        public Observation NotifyIf
-        {
-            get{ return _NotifyIf;}
-            set
-            {
-                _NotifyIf = value;
-                _flagNotifyIf = true;
-            }
-        }
-        private Observation _NotifyIf;
-        private bool _flagNotifyIf;
+        public Observation NotifyIf { get; set; }
 
-        /// <summary>
-        /// Returns false as NotifyIf should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeNotifyIf()
-        {
-            return _flagNotifyIf;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

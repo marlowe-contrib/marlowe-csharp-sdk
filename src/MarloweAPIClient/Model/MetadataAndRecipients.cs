@@ -48,62 +48,22 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("recipients is a required property for MetadataAndRecipients and cannot be null");
             }
-            this._Recipients = recipients;
-            this._Metadata = metadata;
-            if (this.Metadata != null)
-            {
-                this._flagMetadata = true;
-            }
+            this.Recipients = recipients;
+            this.Metadata = metadata;
         }
 
         /// <summary>
         /// Gets or Sets Metadata
         /// </summary>
         [DataMember(Name = "metadata", EmitDefaultValue = false)]
-        public TokenMetadata Metadata
-        {
-            get{ return _Metadata;}
-            set
-            {
-                _Metadata = value;
-                _flagMetadata = true;
-            }
-        }
-        private TokenMetadata _Metadata;
-        private bool _flagMetadata;
+        public TokenMetadata Metadata { get; set; }
 
-        /// <summary>
-        /// Returns false as Metadata should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeMetadata()
-        {
-            return _flagMetadata;
-        }
         /// <summary>
         /// Gets or Sets Recipients
         /// </summary>
         [DataMember(Name = "recipients", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, long> Recipients
-        {
-            get{ return _Recipients;}
-            set
-            {
-                _Recipients = value;
-                _flagRecipients = true;
-            }
-        }
-        private Dictionary<string, long> _Recipients;
-        private bool _flagRecipients;
+        public Dictionary<string, long> Recipients { get; set; }
 
-        /// <summary>
-        /// Returns false as Recipients should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeRecipients()
-        {
-            return _flagRecipients;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

@@ -47,33 +47,15 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("varValueOfChoice is a required property for ValueOfChoice and cannot be null");
             }
-            this._VarValueOfChoice = varValueOfChoice;
+            this.VarValueOfChoice = varValueOfChoice;
         }
 
         /// <summary>
         /// Gets or Sets VarValueOfChoice
         /// </summary>
         [DataMember(Name = "value_of_choice", IsRequired = true, EmitDefaultValue = true)]
-        public ChoiceId VarValueOfChoice
-        {
-            get{ return _VarValueOfChoice;}
-            set
-            {
-                _VarValueOfChoice = value;
-                _flagVarValueOfChoice = true;
-            }
-        }
-        private ChoiceId _VarValueOfChoice;
-        private bool _flagVarValueOfChoice;
+        public ChoiceId VarValueOfChoice { get; set; }
 
-        /// <summary>
-        /// Returns false as VarValueOfChoice should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarValueOfChoice()
-        {
-            return _flagVarValueOfChoice;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

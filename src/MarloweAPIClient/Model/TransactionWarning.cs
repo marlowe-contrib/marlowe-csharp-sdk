@@ -41,7 +41,7 @@ namespace MarloweAPIClient.Model
         public TransactionWarning(NonPositiveDeposit actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -53,7 +53,7 @@ namespace MarloweAPIClient.Model
         public TransactionWarning(NonPositivePayment actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -65,7 +65,7 @@ namespace MarloweAPIClient.Model
         public TransactionWarning(PartialPayment actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -77,7 +77,7 @@ namespace MarloweAPIClient.Model
         public TransactionWarning(VariableShadowing actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -89,7 +89,7 @@ namespace MarloweAPIClient.Model
         public TransactionWarning(AssertFail actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance;
         }
 
@@ -410,7 +410,7 @@ namespace MarloweAPIClient.Model
         /// <returns>The object converted from the JSON string</returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if(reader.TokenType != JsonToken.Null)
+            if (reader.TokenType != JsonToken.Null)
             {
                 return TransactionWarning.FromJson(JObject.Load(reader).ToString(Formatting.None));
             }

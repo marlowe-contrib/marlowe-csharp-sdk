@@ -35,28 +35,8 @@ namespace MarloweAPIClient.Model
         /// <summary>
         /// Gets or Sets VarVersion
         /// </summary>
-
         [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = true)]
-        public MarloweVersion VarVersion
-        {
-            get{ return _VarVersion;}
-            set
-            {
-                _VarVersion = value;
-                _flagVarVersion = true;
-            }
-        }
-        private MarloweVersion _VarVersion;
-        private bool _flagVarVersion;
-
-        /// <summary>
-        /// Returns false as VarVersion should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarVersion()
-        {
-            return _flagVarVersion;
-        }
+        public MarloweVersion VarVersion { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PostContractsRequest" /> class.
         /// </summary>
@@ -79,181 +59,61 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("contract is a required property for PostContractsRequest and cannot be null");
             }
-            this._Contract = contract;
+            this.Contract = contract;
             // to ensure "metadata" is required (not null)
             if (metadata == null)
             {
                 throw new ArgumentNullException("metadata is a required property for PostContractsRequest and cannot be null");
             }
-            this._Metadata = metadata;
+            this.Metadata = metadata;
             // to ensure "tags" is required (not null)
             if (tags == null)
             {
                 throw new ArgumentNullException("tags is a required property for PostContractsRequest and cannot be null");
             }
-            this._Tags = tags;
-            this._VarVersion = varVersion;
-            this._MinUTxODeposit = minUTxODeposit;
-            if (this.MinUTxODeposit != null)
-            {
-                this._flagMinUTxODeposit = true;
-            }
-            this._Roles = roles;
-            if (this.Roles != null)
-            {
-                this._flagRoles = true;
-            }
-            this._ThreadTokenName = threadTokenName;
-            if (this.ThreadTokenName != null)
-            {
-                this._flagThreadTokenName = true;
-            }
+            this.Tags = tags;
+            this.VarVersion = varVersion;
+            this.MinUTxODeposit = minUTxODeposit;
+            this.Roles = roles;
+            this.ThreadTokenName = threadTokenName;
         }
 
         /// <summary>
         /// Gets or Sets Contract
         /// </summary>
         [DataMember(Name = "contract", IsRequired = true, EmitDefaultValue = true)]
-        public PostContractsRequestContract Contract
-        {
-            get{ return _Contract;}
-            set
-            {
-                _Contract = value;
-                _flagContract = true;
-            }
-        }
-        private PostContractsRequestContract _Contract;
-        private bool _flagContract;
+        public PostContractsRequestContract Contract { get; set; }
 
-        /// <summary>
-        /// Returns false as Contract should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeContract()
-        {
-            return _flagContract;
-        }
         /// <summary>
         /// Gets or Sets Metadata
         /// </summary>
         [DataMember(Name = "metadata", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Metadata> Metadata
-        {
-            get{ return _Metadata;}
-            set
-            {
-                _Metadata = value;
-                _flagMetadata = true;
-            }
-        }
-        private Dictionary<string, Metadata> _Metadata;
-        private bool _flagMetadata;
+        public Dictionary<string, Metadata> Metadata { get; set; }
 
-        /// <summary>
-        /// Returns false as Metadata should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeMetadata()
-        {
-            return _flagMetadata;
-        }
         /// <summary>
         /// Gets or Sets MinUTxODeposit
         /// </summary>
         [DataMember(Name = "minUTxODeposit", EmitDefaultValue = false)]
-        public long MinUTxODeposit
-        {
-            get{ return _MinUTxODeposit;}
-            set
-            {
-                _MinUTxODeposit = value;
-                _flagMinUTxODeposit = true;
-            }
-        }
-        private long _MinUTxODeposit;
-        private bool _flagMinUTxODeposit;
+        public long MinUTxODeposit { get; set; }
 
-        /// <summary>
-        /// Returns false as MinUTxODeposit should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeMinUTxODeposit()
-        {
-            return _flagMinUTxODeposit;
-        }
         /// <summary>
         /// Gets or Sets Roles
         /// </summary>
         [DataMember(Name = "roles", EmitDefaultValue = false)]
-        public RolesConfig Roles
-        {
-            get{ return _Roles;}
-            set
-            {
-                _Roles = value;
-                _flagRoles = true;
-            }
-        }
-        private RolesConfig _Roles;
-        private bool _flagRoles;
+        public RolesConfig Roles { get; set; }
 
-        /// <summary>
-        /// Returns false as Roles should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeRoles()
-        {
-            return _flagRoles;
-        }
         /// <summary>
         /// Gets or Sets Tags
         /// </summary>
         [DataMember(Name = "tags", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Metadata> Tags
-        {
-            get{ return _Tags;}
-            set
-            {
-                _Tags = value;
-                _flagTags = true;
-            }
-        }
-        private Dictionary<string, Metadata> _Tags;
-        private bool _flagTags;
+        public Dictionary<string, Metadata> Tags { get; set; }
 
-        /// <summary>
-        /// Returns false as Tags should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTags()
-        {
-            return _flagTags;
-        }
         /// <summary>
         /// Gets or Sets ThreadTokenName
         /// </summary>
         [DataMember(Name = "threadTokenName", EmitDefaultValue = false)]
-        public string ThreadTokenName
-        {
-            get{ return _ThreadTokenName;}
-            set
-            {
-                _ThreadTokenName = value;
-                _flagThreadTokenName = true;
-            }
-        }
-        private string _ThreadTokenName;
-        private bool _flagThreadTokenName;
+        public string ThreadTokenName { get; set; }
 
-        /// <summary>
-        /// Returns false as ThreadTokenName should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeThreadTokenName()
-        {
-            return _flagThreadTokenName;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

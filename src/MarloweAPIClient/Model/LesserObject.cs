@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("lt is a required property for LesserObject and cannot be null");
             }
-            this._Lt = lt;
+            this.Lt = lt;
             // to ensure "value" is required (not null)
             if (value == null)
             {
                 throw new ArgumentNullException("value is a required property for LesserObject and cannot be null");
             }
-            this._Value = value;
+            this.Value = value;
         }
 
         /// <summary>
         /// Gets or Sets Lt
         /// </summary>
         [DataMember(Name = "lt", IsRequired = true, EmitDefaultValue = true)]
-        public ValueObject Lt
-        {
-            get{ return _Lt;}
-            set
-            {
-                _Lt = value;
-                _flagLt = true;
-            }
-        }
-        private ValueObject _Lt;
-        private bool _flagLt;
+        public ValueObject Lt { get; set; }
 
-        /// <summary>
-        /// Returns false as Lt should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeLt()
-        {
-            return _flagLt;
-        }
         /// <summary>
         /// Gets or Sets Value
         /// </summary>
         [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
-        public ValueObject Value
-        {
-            get{ return _Value;}
-            set
-            {
-                _Value = value;
-                _flagValue = true;
-            }
-        }
-        private ValueObject _Value;
-        private bool _flagValue;
+        public ValueObject Value { get; set; }
 
-        /// <summary>
-        /// Returns false as Value should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeValue()
-        {
-            return _flagValue;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

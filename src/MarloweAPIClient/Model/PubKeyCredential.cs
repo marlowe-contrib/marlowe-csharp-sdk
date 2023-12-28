@@ -47,33 +47,15 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("varPubKeyCredential is a required property for PubKeyCredential and cannot be null");
             }
-            this._VarPubKeyCredential = varPubKeyCredential;
+            this.VarPubKeyCredential = varPubKeyCredential;
         }
 
         /// <summary>
         /// Gets or Sets VarPubKeyCredential
         /// </summary>
         [DataMember(Name = "pubKeyCredential", IsRequired = true, EmitDefaultValue = true)]
-        public string VarPubKeyCredential
-        {
-            get{ return _VarPubKeyCredential;}
-            set
-            {
-                _VarPubKeyCredential = value;
-                _flagVarPubKeyCredential = true;
-            }
-        }
-        private string _VarPubKeyCredential;
-        private bool _flagVarPubKeyCredential;
+        public string VarPubKeyCredential { get; set; }
 
-        /// <summary>
-        /// Returns false as VarPubKeyCredential should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarPubKeyCredential()
-        {
-            return _flagVarPubKeyCredential;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

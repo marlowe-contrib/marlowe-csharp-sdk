@@ -41,7 +41,7 @@ namespace MarloweAPIClient.Model
         public Value(TokenInAccount actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -53,7 +53,7 @@ namespace MarloweAPIClient.Model
         public Value(long actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance;
         }
 
@@ -65,7 +65,7 @@ namespace MarloweAPIClient.Model
         public Value(Negate actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -77,7 +77,7 @@ namespace MarloweAPIClient.Model
         public Value(Add actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -89,7 +89,7 @@ namespace MarloweAPIClient.Model
         public Value(Minus actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -101,7 +101,7 @@ namespace MarloweAPIClient.Model
         public Value(Multiply actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -113,7 +113,7 @@ namespace MarloweAPIClient.Model
         public Value(Divide actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -125,7 +125,7 @@ namespace MarloweAPIClient.Model
         public Value(ValueOfChoice actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -137,7 +137,7 @@ namespace MarloweAPIClient.Model
         public Value(TimeInterval actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance;
         }
 
@@ -149,7 +149,7 @@ namespace MarloweAPIClient.Model
         public Value(UseValue actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -161,7 +161,7 @@ namespace MarloweAPIClient.Model
         public Value(IfValue actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -686,7 +686,7 @@ namespace MarloweAPIClient.Model
         /// <returns>The object converted from the JSON string</returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if(reader.TokenType != JsonToken.Null)
+            if (reader.TokenType != JsonToken.Null)
             {
                 return Value.FromJson(JObject.Load(reader).ToString(Formatting.None));
             }

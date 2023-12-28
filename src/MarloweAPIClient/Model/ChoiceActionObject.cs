@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("chooseBetween is a required property for ChoiceActionObject and cannot be null");
             }
-            this._ChooseBetween = chooseBetween;
+            this.ChooseBetween = chooseBetween;
             // to ensure "forChoice" is required (not null)
             if (forChoice == null)
             {
                 throw new ArgumentNullException("forChoice is a required property for ChoiceActionObject and cannot be null");
             }
-            this._ForChoice = forChoice;
+            this.ForChoice = forChoice;
         }
 
         /// <summary>
         /// Gets or Sets ChooseBetween
         /// </summary>
         [DataMember(Name = "choose_between", IsRequired = true, EmitDefaultValue = true)]
-        public List<Bound> ChooseBetween
-        {
-            get{ return _ChooseBetween;}
-            set
-            {
-                _ChooseBetween = value;
-                _flagChooseBetween = true;
-            }
-        }
-        private List<Bound> _ChooseBetween;
-        private bool _flagChooseBetween;
+        public List<Bound> ChooseBetween { get; set; }
 
-        /// <summary>
-        /// Returns false as ChooseBetween should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeChooseBetween()
-        {
-            return _flagChooseBetween;
-        }
         /// <summary>
         /// Gets or Sets ForChoice
         /// </summary>
         [DataMember(Name = "for_choice", IsRequired = true, EmitDefaultValue = true)]
-        public ChoiceId ForChoice
-        {
-            get{ return _ForChoice;}
-            set
-            {
-                _ForChoice = value;
-                _flagForChoice = true;
-            }
-        }
-        private ChoiceId _ForChoice;
-        private bool _flagForChoice;
+        public ChoiceId ForChoice { get; set; }
 
-        /// <summary>
-        /// Returns false as ForChoice should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeForChoice()
-        {
-            return _flagForChoice;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

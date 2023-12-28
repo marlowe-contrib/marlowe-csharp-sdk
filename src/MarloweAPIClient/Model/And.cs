@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("varAnd is a required property for And and cannot be null");
             }
-            this._VarAnd = varAnd;
+            this.VarAnd = varAnd;
             // to ensure "both" is required (not null)
             if (both == null)
             {
                 throw new ArgumentNullException("both is a required property for And and cannot be null");
             }
-            this._Both = both;
+            this.Both = both;
         }
 
         /// <summary>
         /// Gets or Sets VarAnd
         /// </summary>
         [DataMember(Name = "and", IsRequired = true, EmitDefaultValue = true)]
-        public Observation VarAnd
-        {
-            get{ return _VarAnd;}
-            set
-            {
-                _VarAnd = value;
-                _flagVarAnd = true;
-            }
-        }
-        private Observation _VarAnd;
-        private bool _flagVarAnd;
+        public Observation VarAnd { get; set; }
 
-        /// <summary>
-        /// Returns false as VarAnd should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarAnd()
-        {
-            return _flagVarAnd;
-        }
         /// <summary>
         /// Gets or Sets Both
         /// </summary>
         [DataMember(Name = "both", IsRequired = true, EmitDefaultValue = true)]
-        public Observation Both
-        {
-            get{ return _Both;}
-            set
-            {
-                _Both = value;
-                _flagBoth = true;
-            }
-        }
-        private Observation _Both;
-        private bool _flagBoth;
+        public Observation Both { get; set; }
 
-        /// <summary>
-        /// Returns false as Both should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeBoth()
-        {
-            return _flagBoth;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

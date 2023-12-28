@@ -48,13 +48,13 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("contractSourceId is a required property for PostContractSourceResponse and cannot be null");
             }
-            this._ContractSourceId = contractSourceId;
+            this.ContractSourceId = contractSourceId;
             // to ensure "intermediateIds" is required (not null)
             if (intermediateIds == null)
             {
                 throw new ArgumentNullException("intermediateIds is a required property for PostContractSourceResponse and cannot be null");
             }
-            this._IntermediateIds = intermediateIds;
+            this.IntermediateIds = intermediateIds;
         }
 
         /// <summary>
@@ -62,50 +62,14 @@ namespace MarloweAPIClient.Model
         /// </summary>
         /// <value>The hex-encoded identifier of a Marlowe contract source</value>
         [DataMember(Name = "contractSourceId", IsRequired = true, EmitDefaultValue = true)]
-        public string ContractSourceId
-        {
-            get{ return _ContractSourceId;}
-            set
-            {
-                _ContractSourceId = value;
-                _flagContractSourceId = true;
-            }
-        }
-        private string _ContractSourceId;
-        private bool _flagContractSourceId;
+        public string ContractSourceId { get; set; }
 
-        /// <summary>
-        /// Returns false as ContractSourceId should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeContractSourceId()
-        {
-            return _flagContractSourceId;
-        }
         /// <summary>
         /// Gets or Sets IntermediateIds
         /// </summary>
         [DataMember(Name = "intermediateIds", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, string> IntermediateIds
-        {
-            get{ return _IntermediateIds;}
-            set
-            {
-                _IntermediateIds = value;
-                _flagIntermediateIds = true;
-            }
-        }
-        private Dictionary<string, string> _IntermediateIds;
-        private bool _flagIntermediateIds;
+        public Dictionary<string, string> IntermediateIds { get; set; }
 
-        /// <summary>
-        /// Returns false as IntermediateIds should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeIntermediateIds()
-        {
-            return _flagIntermediateIds;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

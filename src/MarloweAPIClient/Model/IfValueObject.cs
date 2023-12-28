@@ -49,93 +49,39 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("varElse is a required property for IfValueObject and cannot be null");
             }
-            this._VarElse = varElse;
+            this.VarElse = varElse;
             // to ensure "varIf" is required (not null)
             if (varIf == null)
             {
                 throw new ArgumentNullException("varIf is a required property for IfValueObject and cannot be null");
             }
-            this._VarIf = varIf;
+            this.VarIf = varIf;
             // to ensure "then" is required (not null)
             if (then == null)
             {
                 throw new ArgumentNullException("then is a required property for IfValueObject and cannot be null");
             }
-            this._Then = then;
+            this.Then = then;
         }
 
         /// <summary>
         /// Gets or Sets VarElse
         /// </summary>
         [DataMember(Name = "else", IsRequired = true, EmitDefaultValue = true)]
-        public ValueObject VarElse
-        {
-            get{ return _VarElse;}
-            set
-            {
-                _VarElse = value;
-                _flagVarElse = true;
-            }
-        }
-        private ValueObject _VarElse;
-        private bool _flagVarElse;
+        public ValueObject VarElse { get; set; }
 
-        /// <summary>
-        /// Returns false as VarElse should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarElse()
-        {
-            return _flagVarElse;
-        }
         /// <summary>
         /// Gets or Sets VarIf
         /// </summary>
         [DataMember(Name = "if", IsRequired = true, EmitDefaultValue = true)]
-        public ObservationObject VarIf
-        {
-            get{ return _VarIf;}
-            set
-            {
-                _VarIf = value;
-                _flagVarIf = true;
-            }
-        }
-        private ObservationObject _VarIf;
-        private bool _flagVarIf;
+        public ObservationObject VarIf { get; set; }
 
-        /// <summary>
-        /// Returns false as VarIf should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarIf()
-        {
-            return _flagVarIf;
-        }
         /// <summary>
         /// Gets or Sets Then
         /// </summary>
         [DataMember(Name = "then", IsRequired = true, EmitDefaultValue = true)]
-        public ValueObject Then
-        {
-            get{ return _Then;}
-            set
-            {
-                _Then = value;
-                _flagThen = true;
-            }
-        }
-        private ValueObject _Then;
-        private bool _flagThen;
+        public ValueObject Then { get; set; }
 
-        /// <summary>
-        /// Returns false as Then should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeThen()
-        {
-            return _flagThen;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

@@ -47,7 +47,7 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("address is a required property for PartyAddress and cannot be null");
             }
-            this._Address = address;
+            this.Address = address;
         }
 
         /// <summary>
@@ -56,26 +56,8 @@ namespace MarloweAPIClient.Model
         /// <value>A cardano address, in Bech32 format</value>
         /// <example>addr1w94f8ywk4fg672xasahtk4t9k6w3aql943uxz5rt62d4dvq8evxaf</example>
         [DataMember(Name = "address", IsRequired = true, EmitDefaultValue = true)]
-        public string Address
-        {
-            get{ return _Address;}
-            set
-            {
-                _Address = value;
-                _flagAddress = true;
-            }
-        }
-        private string _Address;
-        private bool _flagAddress;
+        public string Address { get; set; }
 
-        /// <summary>
-        /// Returns false as Address should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeAddress()
-        {
-            return _flagAddress;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

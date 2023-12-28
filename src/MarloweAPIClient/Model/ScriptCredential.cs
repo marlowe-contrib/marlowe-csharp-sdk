@@ -47,33 +47,15 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("varScriptCredential is a required property for ScriptCredential and cannot be null");
             }
-            this._VarScriptCredential = varScriptCredential;
+            this.VarScriptCredential = varScriptCredential;
         }
 
         /// <summary>
         /// Gets or Sets VarScriptCredential
         /// </summary>
         [DataMember(Name = "scriptCredential", IsRequired = true, EmitDefaultValue = true)]
-        public string VarScriptCredential
-        {
-            get{ return _VarScriptCredential;}
-            set
-            {
-                _VarScriptCredential = value;
-                _flagVarScriptCredential = true;
-            }
-        }
-        private string _VarScriptCredential;
-        private bool _flagVarScriptCredential;
+        public string VarScriptCredential { get; set; }
 
-        /// <summary>
-        /// Returns false as VarScriptCredential should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarScriptCredential()
-        {
-            return _flagVarScriptCredential;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

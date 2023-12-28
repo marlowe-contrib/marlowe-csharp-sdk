@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("varAssert is a required property for Assert and cannot be null");
             }
-            this._VarAssert = varAssert;
+            this.VarAssert = varAssert;
             // to ensure "then" is required (not null)
             if (then == null)
             {
                 throw new ArgumentNullException("then is a required property for Assert and cannot be null");
             }
-            this._Then = then;
+            this.Then = then;
         }
 
         /// <summary>
         /// Gets or Sets VarAssert
         /// </summary>
         [DataMember(Name = "assert", IsRequired = true, EmitDefaultValue = true)]
-        public Observation VarAssert
-        {
-            get{ return _VarAssert;}
-            set
-            {
-                _VarAssert = value;
-                _flagVarAssert = true;
-            }
-        }
-        private Observation _VarAssert;
-        private bool _flagVarAssert;
+        public Observation VarAssert { get; set; }
 
-        /// <summary>
-        /// Returns false as VarAssert should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarAssert()
-        {
-            return _flagVarAssert;
-        }
         /// <summary>
         /// Gets or Sets Then
         /// </summary>
         [DataMember(Name = "then", IsRequired = true, EmitDefaultValue = true)]
-        public Contract Then
-        {
-            get{ return _Then;}
-            set
-            {
-                _Then = value;
-                _flagThen = true;
-            }
-        }
-        private Contract _Then;
-        private bool _flagThen;
+        public Contract Then { get; set; }
 
-        /// <summary>
-        /// Returns false as Then should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeThen()
-        {
-            return _flagThen;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

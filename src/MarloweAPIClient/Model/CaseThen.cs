@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("varCase is a required property for CaseThen and cannot be null");
             }
-            this._VarCase = varCase;
+            this.VarCase = varCase;
             // to ensure "then" is required (not null)
             if (then == null)
             {
                 throw new ArgumentNullException("then is a required property for CaseThen and cannot be null");
             }
-            this._Then = then;
+            this.Then = then;
         }
 
         /// <summary>
         /// Gets or Sets VarCase
         /// </summary>
         [DataMember(Name = "case", IsRequired = true, EmitDefaultValue = true)]
-        public Action VarCase
-        {
-            get{ return _VarCase;}
-            set
-            {
-                _VarCase = value;
-                _flagVarCase = true;
-            }
-        }
-        private Action _VarCase;
-        private bool _flagVarCase;
+        public Action VarCase { get; set; }
 
-        /// <summary>
-        /// Returns false as VarCase should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarCase()
-        {
-            return _flagVarCase;
-        }
         /// <summary>
         /// Gets or Sets Then
         /// </summary>
         [DataMember(Name = "then", IsRequired = true, EmitDefaultValue = true)]
-        public Contract Then
-        {
-            get{ return _Then;}
-            set
-            {
-                _Then = value;
-                _flagThen = true;
-            }
-        }
-        private Contract _Then;
-        private bool _flagThen;
+        public Contract Then { get; set; }
 
-        /// <summary>
-        /// Returns false as Then should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeThen()
-        {
-            return _flagThen;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

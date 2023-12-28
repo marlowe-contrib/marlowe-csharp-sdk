@@ -47,7 +47,7 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("varRef is a required property for LabelRef and cannot be null");
             }
-            this._VarRef = varRef;
+            this.VarRef = varRef;
         }
 
         /// <summary>
@@ -55,26 +55,8 @@ namespace MarloweAPIClient.Model
         /// </summary>
         /// <value>An arbitrary text identifier for an object in a Marlowe object bundle.</value>
         [DataMember(Name = "ref", IsRequired = true, EmitDefaultValue = true)]
-        public string VarRef
-        {
-            get{ return _VarRef;}
-            set
-            {
-                _VarRef = value;
-                _flagVarRef = true;
-            }
-        }
-        private string _VarRef;
-        private bool _flagVarRef;
+        public string VarRef { get; set; }
 
-        /// <summary>
-        /// Returns false as VarRef should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarRef()
-        {
-            return _flagVarRef;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

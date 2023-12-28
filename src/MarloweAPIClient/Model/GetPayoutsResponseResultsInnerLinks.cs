@@ -37,37 +37,15 @@ namespace MarloweAPIClient.Model
         /// <param name="payout">payout.</param>
         public GetPayoutsResponseResultsInnerLinks(string payout = default(string))
         {
-            this._Payout = payout;
-            if (this.Payout != null)
-            {
-                this._flagPayout = true;
-            }
+            this.Payout = payout;
         }
 
         /// <summary>
         /// Gets or Sets Payout
         /// </summary>
         [DataMember(Name = "payout", EmitDefaultValue = false)]
-        public string Payout
-        {
-            get{ return _Payout;}
-            set
-            {
-                _Payout = value;
-                _flagPayout = true;
-            }
-        }
-        private string _Payout;
-        private bool _flagPayout;
+        public string Payout { get; set; }
 
-        /// <summary>
-        /// Returns false as Payout should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializePayout()
-        {
-            return _flagPayout;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

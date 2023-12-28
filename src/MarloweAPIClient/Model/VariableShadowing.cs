@@ -44,88 +44,34 @@ namespace MarloweAPIClient.Model
         /// <param name="valueId">valueId (required).</param>
         public VariableShadowing(int hadValue = default(int), int isNowAssigned = default(int), string valueId = default(string))
         {
-            this._HadValue = hadValue;
-            this._IsNowAssigned = isNowAssigned;
+            this.HadValue = hadValue;
+            this.IsNowAssigned = isNowAssigned;
             // to ensure "valueId" is required (not null)
             if (valueId == null)
             {
                 throw new ArgumentNullException("valueId is a required property for VariableShadowing and cannot be null");
             }
-            this._ValueId = valueId;
+            this.ValueId = valueId;
         }
 
         /// <summary>
         /// Gets or Sets HadValue
         /// </summary>
         [DataMember(Name = "had_value", IsRequired = true, EmitDefaultValue = true)]
-        public int HadValue
-        {
-            get{ return _HadValue;}
-            set
-            {
-                _HadValue = value;
-                _flagHadValue = true;
-            }
-        }
-        private int _HadValue;
-        private bool _flagHadValue;
+        public int HadValue { get; set; }
 
-        /// <summary>
-        /// Returns false as HadValue should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeHadValue()
-        {
-            return _flagHadValue;
-        }
         /// <summary>
         /// Gets or Sets IsNowAssigned
         /// </summary>
         [DataMember(Name = "is_now_assigned", IsRequired = true, EmitDefaultValue = true)]
-        public int IsNowAssigned
-        {
-            get{ return _IsNowAssigned;}
-            set
-            {
-                _IsNowAssigned = value;
-                _flagIsNowAssigned = true;
-            }
-        }
-        private int _IsNowAssigned;
-        private bool _flagIsNowAssigned;
+        public int IsNowAssigned { get; set; }
 
-        /// <summary>
-        /// Returns false as IsNowAssigned should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeIsNowAssigned()
-        {
-            return _flagIsNowAssigned;
-        }
         /// <summary>
         /// Gets or Sets ValueId
         /// </summary>
         [DataMember(Name = "value_id", IsRequired = true, EmitDefaultValue = true)]
-        public string ValueId
-        {
-            get{ return _ValueId;}
-            set
-            {
-                _ValueId = value;
-                _flagValueId = true;
-            }
-        }
-        private string _ValueId;
-        private bool _flagValueId;
+        public string ValueId { get; set; }
 
-        /// <summary>
-        /// Returns false as ValueId should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeValueId()
-        {
-            return _flagValueId;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

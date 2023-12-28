@@ -48,28 +48,8 @@ namespace MarloweAPIClient.Model
         /// <summary>
         /// Gets or Sets Error
         /// </summary>
-
         [DataMember(Name = "error", IsRequired = true, EmitDefaultValue = true)]
-        public ErrorEnum Error
-        {
-            get{ return _Error;}
-            set
-            {
-                _Error = value;
-                _flagError = true;
-            }
-        }
-        private ErrorEnum _Error;
-        private bool _flagError;
-
-        /// <summary>
-        /// Returns false as Error should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeError()
-        {
-            return _flagError;
-        }
+        public ErrorEnum Error { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionErrorOneOf" /> class.
         /// </summary>
@@ -87,34 +67,16 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("context is a required property for TransactionErrorOneOf and cannot be null");
             }
-            this._Context = context;
-            this._Error = error;
+            this.Context = context;
+            this.Error = error;
         }
 
         /// <summary>
         /// Gets or Sets Context
         /// </summary>
         [DataMember(Name = "context", IsRequired = true, EmitDefaultValue = true)]
-        public IntervalError Context
-        {
-            get{ return _Context;}
-            set
-            {
-                _Context = value;
-                _flagContext = true;
-            }
-        }
-        private IntervalError _Context;
-        private bool _flagContext;
+        public IntervalError Context { get; set; }
 
-        /// <summary>
-        /// Returns false as Context should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeContext()
-        {
-            return _flagContext;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

@@ -50,118 +50,46 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("inputFromParty is a required property for DepositInput and cannot be null");
             }
-            this._InputFromParty = inputFromParty;
+            this.InputFromParty = inputFromParty;
             // to ensure "intoAccount" is required (not null)
             if (intoAccount == null)
             {
                 throw new ArgumentNullException("intoAccount is a required property for DepositInput and cannot be null");
             }
-            this._IntoAccount = intoAccount;
+            this.IntoAccount = intoAccount;
             // to ensure "ofToken" is required (not null)
             if (ofToken == null)
             {
                 throw new ArgumentNullException("ofToken is a required property for DepositInput and cannot be null");
             }
-            this._OfToken = ofToken;
-            this._ThatDeposits = thatDeposits;
+            this.OfToken = ofToken;
+            this.ThatDeposits = thatDeposits;
         }
 
         /// <summary>
         /// Gets or Sets InputFromParty
         /// </summary>
         [DataMember(Name = "input_from_party", IsRequired = true, EmitDefaultValue = true)]
-        public Party InputFromParty
-        {
-            get{ return _InputFromParty;}
-            set
-            {
-                _InputFromParty = value;
-                _flagInputFromParty = true;
-            }
-        }
-        private Party _InputFromParty;
-        private bool _flagInputFromParty;
+        public Party InputFromParty { get; set; }
 
-        /// <summary>
-        /// Returns false as InputFromParty should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeInputFromParty()
-        {
-            return _flagInputFromParty;
-        }
         /// <summary>
         /// Gets or Sets IntoAccount
         /// </summary>
         [DataMember(Name = "into_account", IsRequired = true, EmitDefaultValue = true)]
-        public Party IntoAccount
-        {
-            get{ return _IntoAccount;}
-            set
-            {
-                _IntoAccount = value;
-                _flagIntoAccount = true;
-            }
-        }
-        private Party _IntoAccount;
-        private bool _flagIntoAccount;
+        public Party IntoAccount { get; set; }
 
-        /// <summary>
-        /// Returns false as IntoAccount should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeIntoAccount()
-        {
-            return _flagIntoAccount;
-        }
         /// <summary>
         /// Gets or Sets OfToken
         /// </summary>
         [DataMember(Name = "of_token", IsRequired = true, EmitDefaultValue = true)]
-        public Token OfToken
-        {
-            get{ return _OfToken;}
-            set
-            {
-                _OfToken = value;
-                _flagOfToken = true;
-            }
-        }
-        private Token _OfToken;
-        private bool _flagOfToken;
+        public Token OfToken { get; set; }
 
-        /// <summary>
-        /// Returns false as OfToken should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeOfToken()
-        {
-            return _flagOfToken;
-        }
         /// <summary>
         /// Gets or Sets ThatDeposits
         /// </summary>
         [DataMember(Name = "that_deposits", IsRequired = true, EmitDefaultValue = true)]
-        public int ThatDeposits
-        {
-            get{ return _ThatDeposits;}
-            set
-            {
-                _ThatDeposits = value;
-                _flagThatDeposits = true;
-            }
-        }
-        private int _ThatDeposits;
-        private bool _flagThatDeposits;
+        public int ThatDeposits { get; set; }
 
-        /// <summary>
-        /// Returns false as ThatDeposits should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeThatDeposits()
-        {
-            return _flagThatDeposits;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

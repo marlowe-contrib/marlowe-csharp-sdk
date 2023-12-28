@@ -37,37 +37,15 @@ namespace MarloweAPIClient.Model
         /// <param name="transaction">transaction.</param>
         public ApplyInputsResponseLinks(string transaction = default(string))
         {
-            this._Transaction = transaction;
-            if (this.Transaction != null)
-            {
-                this._flagTransaction = true;
-            }
+            this.Transaction = transaction;
         }
 
         /// <summary>
         /// Gets or Sets Transaction
         /// </summary>
         [DataMember(Name = "transaction", EmitDefaultValue = false)]
-        public string Transaction
-        {
-            get{ return _Transaction;}
-            set
-            {
-                _Transaction = value;
-                _flagTransaction = true;
-            }
-        }
-        private string _Transaction;
-        private bool _flagTransaction;
+        public string Transaction { get; set; }
 
-        /// <summary>
-        /// Returns false as Transaction should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTransaction()
-        {
-            return _flagTransaction;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

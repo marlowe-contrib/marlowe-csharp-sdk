@@ -35,28 +35,8 @@ namespace MarloweAPIClient.Model
         /// <summary>
         /// Gets or Sets VarVersion
         /// </summary>
-
         [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = true)]
-        public MarloweVersion VarVersion
-        {
-            get{ return _VarVersion;}
-            set
-            {
-                _VarVersion = value;
-                _flagVarVersion = true;
-            }
-        }
-        private MarloweVersion _VarVersion;
-        private bool _flagVarVersion;
-
-        /// <summary>
-        /// Returns false as VarVersion should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarVersion()
-        {
-            return _flagVarVersion;
-        }
+        public MarloweVersion VarVersion { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PostTransactionsRequest" /> class.
         /// </summary>
@@ -78,154 +58,56 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("inputs is a required property for PostTransactionsRequest and cannot be null");
             }
-            this._Inputs = inputs;
+            this.Inputs = inputs;
             // to ensure "metadata" is required (not null)
             if (metadata == null)
             {
                 throw new ArgumentNullException("metadata is a required property for PostTransactionsRequest and cannot be null");
             }
-            this._Metadata = metadata;
+            this.Metadata = metadata;
             // to ensure "tags" is required (not null)
             if (tags == null)
             {
                 throw new ArgumentNullException("tags is a required property for PostTransactionsRequest and cannot be null");
             }
-            this._Tags = tags;
-            this._VarVersion = varVersion;
-            this._InvalidBefore = invalidBefore;
-            if (this.InvalidBefore != null)
-            {
-                this._flagInvalidBefore = true;
-            }
-            this._InvalidHereafter = invalidHereafter;
-            if (this.InvalidHereafter != null)
-            {
-                this._flagInvalidHereafter = true;
-            }
+            this.Tags = tags;
+            this.VarVersion = varVersion;
+            this.InvalidBefore = invalidBefore;
+            this.InvalidHereafter = invalidHereafter;
         }
 
         /// <summary>
         /// Gets or Sets Inputs
         /// </summary>
         [DataMember(Name = "inputs", IsRequired = true, EmitDefaultValue = true)]
-        public List<Input> Inputs
-        {
-            get{ return _Inputs;}
-            set
-            {
-                _Inputs = value;
-                _flagInputs = true;
-            }
-        }
-        private List<Input> _Inputs;
-        private bool _flagInputs;
+        public List<Input> Inputs { get; set; }
 
-        /// <summary>
-        /// Returns false as Inputs should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeInputs()
-        {
-            return _flagInputs;
-        }
         /// <summary>
         /// Gets or Sets InvalidBefore
         /// </summary>
         /// <example>2016-07-22T00:00:00Z</example>
         [DataMember(Name = "invalidBefore", EmitDefaultValue = false)]
-        public string InvalidBefore
-        {
-            get{ return _InvalidBefore;}
-            set
-            {
-                _InvalidBefore = value;
-                _flagInvalidBefore = true;
-            }
-        }
-        private string _InvalidBefore;
-        private bool _flagInvalidBefore;
+        public string InvalidBefore { get; set; }
 
-        /// <summary>
-        /// Returns false as InvalidBefore should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeInvalidBefore()
-        {
-            return _flagInvalidBefore;
-        }
         /// <summary>
         /// Gets or Sets InvalidHereafter
         /// </summary>
         /// <example>2016-07-22T00:00:00Z</example>
         [DataMember(Name = "invalidHereafter", EmitDefaultValue = false)]
-        public string InvalidHereafter
-        {
-            get{ return _InvalidHereafter;}
-            set
-            {
-                _InvalidHereafter = value;
-                _flagInvalidHereafter = true;
-            }
-        }
-        private string _InvalidHereafter;
-        private bool _flagInvalidHereafter;
+        public string InvalidHereafter { get; set; }
 
-        /// <summary>
-        /// Returns false as InvalidHereafter should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeInvalidHereafter()
-        {
-            return _flagInvalidHereafter;
-        }
         /// <summary>
         /// Gets or Sets Metadata
         /// </summary>
         [DataMember(Name = "metadata", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Metadata> Metadata
-        {
-            get{ return _Metadata;}
-            set
-            {
-                _Metadata = value;
-                _flagMetadata = true;
-            }
-        }
-        private Dictionary<string, Metadata> _Metadata;
-        private bool _flagMetadata;
+        public Dictionary<string, Metadata> Metadata { get; set; }
 
-        /// <summary>
-        /// Returns false as Metadata should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeMetadata()
-        {
-            return _flagMetadata;
-        }
         /// <summary>
         /// Gets or Sets Tags
         /// </summary>
         [DataMember(Name = "tags", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Metadata> Tags
-        {
-            get{ return _Tags;}
-            set
-            {
-                _Tags = value;
-                _flagTags = true;
-            }
-        }
-        private Dictionary<string, Metadata> _Tags;
-        private bool _flagTags;
+        public Dictionary<string, Metadata> Tags { get; set; }
 
-        /// <summary>
-        /// Returns false as Tags should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTags()
-        {
-            return _flagTags;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

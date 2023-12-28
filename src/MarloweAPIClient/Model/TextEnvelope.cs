@@ -49,94 +49,40 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("cborHex is a required property for TextEnvelope and cannot be null");
             }
-            this._CborHex = cborHex;
+            this.CborHex = cborHex;
             // to ensure "description" is required (not null)
             if (description == null)
             {
                 throw new ArgumentNullException("description is a required property for TextEnvelope and cannot be null");
             }
-            this._Description = description;
+            this.Description = description;
             // to ensure "type" is required (not null)
             if (type == null)
             {
                 throw new ArgumentNullException("type is a required property for TextEnvelope and cannot be null");
             }
-            this._Type = type;
+            this.Type = type;
         }
 
         /// <summary>
         /// Gets or Sets CborHex
         /// </summary>
         [DataMember(Name = "cborHex", IsRequired = true, EmitDefaultValue = true)]
-        public string CborHex
-        {
-            get{ return _CborHex;}
-            set
-            {
-                _CborHex = value;
-                _flagCborHex = true;
-            }
-        }
-        private string _CborHex;
-        private bool _flagCborHex;
+        public string CborHex { get; set; }
 
-        /// <summary>
-        /// Returns false as CborHex should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeCborHex()
-        {
-            return _flagCborHex;
-        }
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
         [DataMember(Name = "description", IsRequired = true, EmitDefaultValue = true)]
-        public string Description
-        {
-            get{ return _Description;}
-            set
-            {
-                _Description = value;
-                _flagDescription = true;
-            }
-        }
-        private string _Description;
-        private bool _flagDescription;
+        public string Description { get; set; }
 
-        /// <summary>
-        /// Returns false as Description should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeDescription()
-        {
-            return _flagDescription;
-        }
         /// <summary>
         /// What type of data is encoded in the CBOR Hex. Valid values include \&quot;Tx &lt;era&gt;\&quot;, \&quot;TxBody &lt;era&gt;\&quot;, and \&quot;ShelleyTxWitness &lt;era&gt;\&quot; where &lt;era&gt; is one of \&quot;BabbageEra\&quot;, \&quot;ConwayEra\&quot;.
         /// </summary>
         /// <value>What type of data is encoded in the CBOR Hex. Valid values include \&quot;Tx &lt;era&gt;\&quot;, \&quot;TxBody &lt;era&gt;\&quot;, and \&quot;ShelleyTxWitness &lt;era&gt;\&quot; where &lt;era&gt; is one of \&quot;BabbageEra\&quot;, \&quot;ConwayEra\&quot;.</value>
         [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
-        public string Type
-        {
-            get{ return _Type;}
-            set
-            {
-                _Type = value;
-                _flagType = true;
-            }
-        }
-        private string _Type;
-        private bool _flagType;
+        public string Type { get; set; }
 
-        /// <summary>
-        /// Returns false as Type should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeType()
-        {
-            return _flagType;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

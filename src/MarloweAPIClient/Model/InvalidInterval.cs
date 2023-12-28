@@ -47,33 +47,15 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("varInvalidInterval is a required property for InvalidInterval and cannot be null");
             }
-            this._VarInvalidInterval = varInvalidInterval;
+            this.VarInvalidInterval = varInvalidInterval;
         }
 
         /// <summary>
         /// Gets or Sets VarInvalidInterval
         /// </summary>
         [DataMember(Name = "invalidInterval", IsRequired = true, EmitDefaultValue = true)]
-        public InvalidIntervalInvalidInterval VarInvalidInterval
-        {
-            get{ return _VarInvalidInterval;}
-            set
-            {
-                _VarInvalidInterval = value;
-                _flagVarInvalidInterval = true;
-            }
-        }
-        private InvalidIntervalInvalidInterval _VarInvalidInterval;
-        private bool _flagVarInvalidInterval;
+        public InvalidIntervalInvalidInterval VarInvalidInterval { get; set; }
 
-        /// <summary>
-        /// Returns false as VarInvalidInterval should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarInvalidInterval()
-        {
-            return _flagVarInvalidInterval;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

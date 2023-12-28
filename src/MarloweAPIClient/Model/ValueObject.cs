@@ -41,7 +41,7 @@ namespace MarloweAPIClient.Model
         public ValueObject(TokenInAccountObject actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -53,7 +53,7 @@ namespace MarloweAPIClient.Model
         public ValueObject(long actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance;
         }
 
@@ -65,7 +65,7 @@ namespace MarloweAPIClient.Model
         public ValueObject(NegateObject actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -77,7 +77,7 @@ namespace MarloweAPIClient.Model
         public ValueObject(AddObject actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -89,7 +89,7 @@ namespace MarloweAPIClient.Model
         public ValueObject(MinusObject actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -101,7 +101,7 @@ namespace MarloweAPIClient.Model
         public ValueObject(MultiplyObject actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -113,7 +113,7 @@ namespace MarloweAPIClient.Model
         public ValueObject(DivideObject actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -125,7 +125,7 @@ namespace MarloweAPIClient.Model
         public ValueObject(ValueOfChoiceObject actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -137,7 +137,7 @@ namespace MarloweAPIClient.Model
         public ValueObject(TimeInterval actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance;
         }
 
@@ -149,7 +149,7 @@ namespace MarloweAPIClient.Model
         public ValueObject(UseValue actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -161,7 +161,7 @@ namespace MarloweAPIClient.Model
         public ValueObject(IfValueObject actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -173,7 +173,7 @@ namespace MarloweAPIClient.Model
         public ValueObject(LabelRef actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -732,7 +732,7 @@ namespace MarloweAPIClient.Model
         /// <returns>The object converted from the JSON string</returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if(reader.TokenType != JsonToken.Null)
+            if (reader.TokenType != JsonToken.Null)
             {
                 return ValueObject.FromJson(JObject.Load(reader).ToString(Formatting.None));
             }

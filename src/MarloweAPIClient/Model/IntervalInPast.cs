@@ -47,33 +47,15 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("intervalInPastError is a required property for IntervalInPast and cannot be null");
             }
-            this._IntervalInPastError = intervalInPastError;
+            this.IntervalInPastError = intervalInPastError;
         }
 
         /// <summary>
         /// Gets or Sets IntervalInPastError
         /// </summary>
         [DataMember(Name = "intervalInPastError", IsRequired = true, EmitDefaultValue = true)]
-        public IntervalInPastIntervalInPastError IntervalInPastError
-        {
-            get{ return _IntervalInPastError;}
-            set
-            {
-                _IntervalInPastError = value;
-                _flagIntervalInPastError = true;
-            }
-        }
-        private IntervalInPastIntervalInPastError _IntervalInPastError;
-        private bool _flagIntervalInPastError;
+        public IntervalInPastIntervalInPastError IntervalInPastError { get; set; }
 
-        /// <summary>
-        /// Returns false as IntervalInPastError should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeIntervalInPastError()
-        {
-            return _flagIntervalInPastError;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

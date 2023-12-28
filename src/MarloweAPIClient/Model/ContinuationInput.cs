@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("continuationHash is a required property for ContinuationInput and cannot be null");
             }
-            this._ContinuationHash = continuationHash;
+            this.ContinuationHash = continuationHash;
             // to ensure "merkleizedContinuation" is required (not null)
             if (merkleizedContinuation == null)
             {
                 throw new ArgumentNullException("merkleizedContinuation is a required property for ContinuationInput and cannot be null");
             }
-            this._MerkleizedContinuation = merkleizedContinuation;
+            this.MerkleizedContinuation = merkleizedContinuation;
         }
 
         /// <summary>
         /// Gets or Sets ContinuationHash
         /// </summary>
         [DataMember(Name = "continuation_hash", IsRequired = true, EmitDefaultValue = true)]
-        public string ContinuationHash
-        {
-            get{ return _ContinuationHash;}
-            set
-            {
-                _ContinuationHash = value;
-                _flagContinuationHash = true;
-            }
-        }
-        private string _ContinuationHash;
-        private bool _flagContinuationHash;
+        public string ContinuationHash { get; set; }
 
-        /// <summary>
-        /// Returns false as ContinuationHash should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeContinuationHash()
-        {
-            return _flagContinuationHash;
-        }
         /// <summary>
         /// Gets or Sets MerkleizedContinuation
         /// </summary>
         [DataMember(Name = "merkleized_continuation", IsRequired = true, EmitDefaultValue = true)]
-        public Contract MerkleizedContinuation
-        {
-            get{ return _MerkleizedContinuation;}
-            set
-            {
-                _MerkleizedContinuation = value;
-                _flagMerkleizedContinuation = true;
-            }
-        }
-        private Contract _MerkleizedContinuation;
-        private bool _flagMerkleizedContinuation;
+        public Contract MerkleizedContinuation { get; set; }
 
-        /// <summary>
-        /// Returns false as MerkleizedContinuation should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeMerkleizedContinuation()
-        {
-            return _flagMerkleizedContinuation;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

@@ -50,28 +50,8 @@ namespace MarloweAPIClient.Model
         /// The type of script receiving the role token.
         /// </summary>
         /// <value>The type of script receiving the role token.</value>
-
         [DataMember(Name = "script", IsRequired = true, EmitDefaultValue = true)]
-        public ScriptEnum Script
-        {
-            get{ return _Script;}
-            set
-            {
-                _Script = value;
-                _flagScript = true;
-            }
-        }
-        private ScriptEnum _Script;
-        private bool _flagScript;
-
-        /// <summary>
-        /// Returns false as Script should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeScript()
-        {
-            return _flagScript;
-        }
+        public ScriptEnum Script { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="MetadataAndScript" /> class.
         /// </summary>
@@ -84,38 +64,16 @@ namespace MarloweAPIClient.Model
         /// <param name="script">The type of script receiving the role token. (required).</param>
         public MetadataAndScript(TokenMetadata metadata = default(TokenMetadata), ScriptEnum script = default(ScriptEnum))
         {
-            this._Script = script;
-            this._Metadata = metadata;
-            if (this.Metadata != null)
-            {
-                this._flagMetadata = true;
-            }
+            this.Script = script;
+            this.Metadata = metadata;
         }
 
         /// <summary>
         /// Gets or Sets Metadata
         /// </summary>
         [DataMember(Name = "metadata", EmitDefaultValue = false)]
-        public TokenMetadata Metadata
-        {
-            get{ return _Metadata;}
-            set
-            {
-                _Metadata = value;
-                _flagMetadata = true;
-            }
-        }
-        private TokenMetadata _Metadata;
-        private bool _flagMetadata;
+        public TokenMetadata Metadata { get; set; }
 
-        /// <summary>
-        /// Returns false as Metadata should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeMetadata()
-        {
-            return _flagMetadata;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

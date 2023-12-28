@@ -47,33 +47,15 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("transactionError is a required property for TxOutputError and cannot be null");
             }
-            this._TransactionError = transactionError;
+            this.TransactionError = transactionError;
         }
 
         /// <summary>
         /// Gets or Sets TransactionError
         /// </summary>
         [DataMember(Name = "transaction_error", IsRequired = true, EmitDefaultValue = true)]
-        public TransactionError TransactionError
-        {
-            get{ return _TransactionError;}
-            set
-            {
-                _TransactionError = value;
-                _flagTransactionError = true;
-            }
-        }
-        private TransactionError _TransactionError;
-        private bool _flagTransactionError;
+        public TransactionError TransactionError { get; set; }
 
-        /// <summary>
-        /// Returns false as TransactionError should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTransactionError()
-        {
-            return _flagTransactionError;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

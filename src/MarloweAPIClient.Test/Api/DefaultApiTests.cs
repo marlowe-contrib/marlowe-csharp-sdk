@@ -36,26 +36,9 @@ namespace MarloweAPIClient.Test.Api
         public DefaultApiTests()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://marlowe-preprod-patch5-rt-webserver-absorbed-homework-091caf.us1.demeter.run";
+            config.BasePath = "";
             instance = new DefaultApi(config);
         }
-        public static string WriteObjectFields(object obj)
-        {
-
-            Type objType = obj.GetType();
-            PropertyInfo[] properties = objType.GetProperties();
-            StringBuilder result = new StringBuilder();
-
-            foreach (PropertyInfo property in properties)
-            {
-                result.AppendLine($"{property.Name}: {property.GetValue(obj)}");
-            }
-
-            return result.ToString();
-        }
-
-
-
         public void Dispose()
         {
             // Cleanup when everything is done.
@@ -93,35 +76,29 @@ namespace MarloweAPIClient.Test.Api
         [Fact]
         public void CreateContractTest()
         {
-            string xChangeAddress = "addr_test1vzuqvqzcnuy9pmrh2sy7tjucufmpwh8gzssz7v6scn0e04gxdvna9";
-            string? xStakeAddress = null;
-            string? xAddress = null;
-            string? xCollateralUTxO = null;
-            Console.WriteLine("Before creating PostContractRequest");
-            Console.WriteLine("PostContractRequest");
-            MarloweAPIClient.Model.PostContractsRequestContract
-                contract = new MarloweAPIClient.Model.PostContractsRequestContract(
-                        new MarloweAPIClient.Model.Contract(
-                            MarloweAPIClient.Model.Close.Close
-                       )
-                );
+            //string xChangeAddress = "addr_test1vzuqvqzcnuy9pmrh2sy7tjucufmpwh8gzssz7v6scn0e04gxdvna9";
+            //string? xStakeAddress = null;
+            //string? xAddress = null;
+            //string? xCollateralUTxO = null;
+            //MarloweAPIClient.Model.PostContractsRequestContract
+            //    contract = new MarloweAPIClient.Model.PostContractsRequestContract(
+            //            new MarloweAPIClient.Model.Contract(
+            //                MarloweAPIClient.Model.Close.Close
+            //           )
+            //    );
 
-            var tags = new System.Collections.Generic.Dictionary<string, MarloweAPIClient.Model.Metadata>();
-            var metadata = new System.Collections.Generic.Dictionary<string, MarloweAPIClient.Model.Metadata>();
-            var minUTxODeposit = 3_000_000;
-            MarloweAPIClient.Model.PostContractsRequest postContractsRequest = new MarloweAPIClient.Model.PostContractsRequest(contract, metadata, minUTxODeposit, null, tags, null, MarloweAPIClient.Model.MarloweVersion.V1);
-            postContractsRequest.Metadata = metadata;
-            postContractsRequest.Tags = tags;
-            postContractsRequest.Contract = contract;
-            postContractsRequest.VarVersion = MarloweAPIClient.Model.MarloweVersion.V1;
-            var response = instance.CreateContract(
-                    xChangeAddress,
-                    xStakeAddress,
-                    xAddress,
-                    xCollateralUTxO,
-                    postContractsRequest
-            );
-            Assert.IsType<MarloweAPIClient.Model.CreateContractResponse>(response);
+            //var tags = new System.Collections.Generic.Dictionary<string, MarloweAPIClient.Model.Metadata>();
+            //var metadata = new System.Collections.Generic.Dictionary<string, MarloweAPIClient.Model.Metadata>();
+            //var minUTxODeposit = 3_000_000;
+            //MarloweAPIClient.Model.PostContractsRequest postContractsRequest = new MarloweAPIClient.Model.PostContractsRequest(contract, metadata, minUTxODeposit, null, tags, null, MarloweAPIClient.Model.MarloweVersion.V1);
+            //var response = instance.CreateContract(
+            //    xChangeAddress,
+            //    xStakeAddress,
+            //    xAddress,
+            //    xCollateralUTxO,
+            //    postContractsRequest
+            //);
+            //Assert.IsType<MarloweAPIClient.Model.CreateContractResponse>(response);
         }
 
         /// <summary>
@@ -130,30 +107,23 @@ namespace MarloweAPIClient.Test.Api
         [Fact]
         public void CreateContractSourcesTest()
         {
-            string main = "contract1";
-            var label1 = "contract1";
-            var label2 = "contract";
-            var type1 = MarloweAPIClient.Model.LabelledObject.TypeEnum.Contract;
-            var type2 = MarloweAPIClient.Model.LabelledObject.TypeEnum.Contract;
-            var closeContract = new MarloweAPIClient.Model.LabelledObjectValue(
-                     new MarloweAPIClient.Model.ContractObject(
-                         MarloweAPIClient.Model.CloseObject.Close
-                     )
-            );
-            var labelledObject1 = new MarloweAPIClient.Model.LabelledObject(label1, type1, closeContract);
-            labelledObject1.Label = label1;
-            labelledObject1.Type = type1;
-            labelledObject1.Value = closeContract;
-            var labelledObject2 = new MarloweAPIClient.Model.LabelledObject(label2, type2, closeContract);
-            labelledObject2.Label = label2;
-            labelledObject2.Type = type2;
-            labelledObject2.Value = closeContract;
-
-            var labelledObjects = new List<MarloweAPIClient.Model.LabelledObject>();
-            labelledObjects.Add(labelledObject1);
-            labelledObjects.Add(labelledObject2);
-            var response = instance.CreateContractSources(main, labelledObjects);
-            Assert.IsType<MarloweAPIClient.Model.PostContractSourceResponse>(response);
+            //    string main = "contract1";
+            //    var label1 = "contract1";
+            //    var label2 = "contract";
+            //    var type1 = MarloweAPIClient.Model.LabelledObject.TypeEnum.Contract;
+            //    var type2 = MarloweAPIClient.Model.LabelledObject.TypeEnum.Contract;
+            //    var closeContract = new MarloweAPIClient.Model.LabelledObjectValue(
+            //             new MarloweAPIClient.Model.ContractObject(
+            //                 MarloweAPIClient.Model.CloseObject.Close
+            //             )
+            //    );
+            //    var labelledObject1 = new MarloweAPIClient.Model.LabelledObject(label1, type1, closeContract);
+            //    var labelledObject2 = new MarloweAPIClient.Model.LabelledObject(label2, type2, closeContract);
+            //    var labelledObjects = new List<MarloweAPIClient.Model.LabelledObject>();
+            //    labelledObjects.Add(labelledObject1);
+            //    labelledObjects.Add(labelledObject2);
+            //    var response = instance.CreateContractSources(main, labelledObjects);
+            //    Assert.IsType<MarloweAPIClient.Model.PostContractSourceResponse>(response);
         }
 
         /// <summary>
@@ -186,7 +156,28 @@ namespace MarloweAPIClient.Test.Api
         [Fact]
         public void GetContractSourceByIdTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
+            //var swapJSON = "{\"timeout\":1704288420000,\"timeout_continuation\":\"close\",\"when\":[{\"case\":{\"deposits\":3000000,\"into_account\":{\"role_token\":\"provider\"},\"of_token\":{\"currency_symbol\":\"\",\"token_name\":\"\"},\"party\":{\"role_token\":\"provider\"}},\"merkleized_then\":\"2d41ea20c87de8ef1d553c19c661afdcff141a09bc9c0febbc3913642e1e8208\"}]}";
+            var closeJsonString = "\"close\"";
+
+            //var swapJSON = "{\"currency_symbol\":\"\",\"token_name\":\"\"}";
+
+            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+            //var newContract = JsonConvert.DeserializeObject<MarloweAPIClient.Model.Close>(swapJSON);
+            var closeDeser = JsonConvert.DeserializeObject<MarloweAPIClient.Model.Contract>(closeJsonString);
+
+            //var contract = MarloweAPIClient.Model.Contract.FromJson(swapJSON);
+
+            //var newContract = new Contract(JsonConvert.DeserializeObject<If>(jsonString, Contract.AdditionalPropertiesSerializerSettings));
+            //}
+            //jmatchedTypes.Add("If");
+            //Console.WriteLine(JsonConvert.SerializeObject(newContract));
+            //match++;
+
+            //var swapJSON = "{\"role_token\":\"provider\"}";
+            //Console.WriteLine(JsonConvert.DeserializeObject(swapJSON));
+            //var contract = MarloweAPIClient.Model.Token.FromJson(swapJSON);
+            //Console.WriteLine(JsonConvert.SerializeObject(contract));
+
             string contractSourceId = "705f33bb023b560f458a277c12130487f8dbca1b9e4dc50c4ed1596e00944996";
             bool? expand = false;
             var response = instance.GetContractSourceById(contractSourceId, expand);

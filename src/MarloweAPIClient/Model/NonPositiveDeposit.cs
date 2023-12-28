@@ -45,123 +45,51 @@ namespace MarloweAPIClient.Model
         /// <param name="party">party (required).</param>
         public NonPositiveDeposit(int askedToDeposit = default(int), Party inAccount = default(Party), Token ofToken = default(Token), Party party = default(Party))
         {
-            this._AskedToDeposit = askedToDeposit;
+            this.AskedToDeposit = askedToDeposit;
             // to ensure "inAccount" is required (not null)
             if (inAccount == null)
             {
                 throw new ArgumentNullException("inAccount is a required property for NonPositiveDeposit and cannot be null");
             }
-            this._InAccount = inAccount;
+            this.InAccount = inAccount;
             // to ensure "ofToken" is required (not null)
             if (ofToken == null)
             {
                 throw new ArgumentNullException("ofToken is a required property for NonPositiveDeposit and cannot be null");
             }
-            this._OfToken = ofToken;
+            this.OfToken = ofToken;
             // to ensure "party" is required (not null)
             if (party == null)
             {
                 throw new ArgumentNullException("party is a required property for NonPositiveDeposit and cannot be null");
             }
-            this._Party = party;
+            this.Party = party;
         }
 
         /// <summary>
         /// Gets or Sets AskedToDeposit
         /// </summary>
         [DataMember(Name = "asked_to_deposit", IsRequired = true, EmitDefaultValue = true)]
-        public int AskedToDeposit
-        {
-            get{ return _AskedToDeposit;}
-            set
-            {
-                _AskedToDeposit = value;
-                _flagAskedToDeposit = true;
-            }
-        }
-        private int _AskedToDeposit;
-        private bool _flagAskedToDeposit;
+        public int AskedToDeposit { get; set; }
 
-        /// <summary>
-        /// Returns false as AskedToDeposit should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeAskedToDeposit()
-        {
-            return _flagAskedToDeposit;
-        }
         /// <summary>
         /// Gets or Sets InAccount
         /// </summary>
         [DataMember(Name = "in_account", IsRequired = true, EmitDefaultValue = true)]
-        public Party InAccount
-        {
-            get{ return _InAccount;}
-            set
-            {
-                _InAccount = value;
-                _flagInAccount = true;
-            }
-        }
-        private Party _InAccount;
-        private bool _flagInAccount;
+        public Party InAccount { get; set; }
 
-        /// <summary>
-        /// Returns false as InAccount should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeInAccount()
-        {
-            return _flagInAccount;
-        }
         /// <summary>
         /// Gets or Sets OfToken
         /// </summary>
         [DataMember(Name = "of_token", IsRequired = true, EmitDefaultValue = true)]
-        public Token OfToken
-        {
-            get{ return _OfToken;}
-            set
-            {
-                _OfToken = value;
-                _flagOfToken = true;
-            }
-        }
-        private Token _OfToken;
-        private bool _flagOfToken;
+        public Token OfToken { get; set; }
 
-        /// <summary>
-        /// Returns false as OfToken should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeOfToken()
-        {
-            return _flagOfToken;
-        }
         /// <summary>
         /// Gets or Sets Party
         /// </summary>
         [DataMember(Name = "party", IsRequired = true, EmitDefaultValue = true)]
-        public Party Party
-        {
-            get{ return _Party;}
-            set
-            {
-                _Party = value;
-                _flagParty = true;
-            }
-        }
-        private Party _Party;
-        private bool _flagParty;
+        public Party Party { get; set; }
 
-        /// <summary>
-        /// Returns false as Party should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeParty()
-        {
-            return _flagParty;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

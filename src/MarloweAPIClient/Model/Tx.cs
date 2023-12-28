@@ -35,28 +35,8 @@ namespace MarloweAPIClient.Model
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-
         [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
-        public TxStatus Status
-        {
-            get{ return _Status;}
-            set
-            {
-                _Status = value;
-                _flagStatus = true;
-            }
-        }
-        private TxStatus _Status;
-        private bool _flagStatus;
-
-        /// <summary>
-        /// Returns false as Status should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeStatus()
-        {
-            return _flagStatus;
-        }
+        public TxStatus Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Tx" /> class.
         /// </summary>
@@ -90,517 +70,183 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("assets is a required property for Tx and cannot be null");
             }
-            this._Assets = assets;
+            this.Assets = assets;
             // to ensure "contractId" is required (not null)
             if (contractId == null)
             {
                 throw new ArgumentNullException("contractId is a required property for Tx and cannot be null");
             }
-            this._ContractId = contractId;
+            this.ContractId = contractId;
             // to ensure "inputs" is required (not null)
             if (inputs == null)
             {
                 throw new ArgumentNullException("inputs is a required property for Tx and cannot be null");
             }
-            this._Inputs = inputs;
+            this.Inputs = inputs;
             // to ensure "inputUtxo" is required (not null)
             if (inputUtxo == null)
             {
                 throw new ArgumentNullException("inputUtxo is a required property for Tx and cannot be null");
             }
-            this._InputUtxo = inputUtxo;
+            this.InputUtxo = inputUtxo;
             // to ensure "invalidBefore" is required (not null)
             if (invalidBefore == null)
             {
                 throw new ArgumentNullException("invalidBefore is a required property for Tx and cannot be null");
             }
-            this._InvalidBefore = invalidBefore;
+            this.InvalidBefore = invalidBefore;
             // to ensure "invalidHereafter" is required (not null)
             if (invalidHereafter == null)
             {
                 throw new ArgumentNullException("invalidHereafter is a required property for Tx and cannot be null");
             }
-            this._InvalidHereafter = invalidHereafter;
+            this.InvalidHereafter = invalidHereafter;
             // to ensure "metadata" is required (not null)
             if (metadata == null)
             {
                 throw new ArgumentNullException("metadata is a required property for Tx and cannot be null");
             }
-            this._Metadata = metadata;
+            this.Metadata = metadata;
             // to ensure "payouts" is required (not null)
             if (payouts == null)
             {
                 throw new ArgumentNullException("payouts is a required property for Tx and cannot be null");
             }
-            this._Payouts = payouts;
-            this._Status = status;
+            this.Payouts = payouts;
+            this.Status = status;
             // to ensure "tags" is required (not null)
             if (tags == null)
             {
                 throw new ArgumentNullException("tags is a required property for Tx and cannot be null");
             }
-            this._Tags = tags;
+            this.Tags = tags;
             // to ensure "transactionId" is required (not null)
             if (transactionId == null)
             {
                 throw new ArgumentNullException("transactionId is a required property for Tx and cannot be null");
             }
-            this._TransactionId = transactionId;
-            this._Block = block;
-            if (this.Block != null)
-            {
-                this._flagBlock = true;
-            }
-            this._ConsumingTx = consumingTx;
-            if (this.ConsumingTx != null)
-            {
-                this._flagConsumingTx = true;
-            }
-            this._Continuations = continuations;
-            if (this.Continuations != null)
-            {
-                this._flagContinuations = true;
-            }
-            this._OutputContract = outputContract;
-            if (this.OutputContract != null)
-            {
-                this._flagOutputContract = true;
-            }
-            this._OutputState = outputState;
-            if (this.OutputState != null)
-            {
-                this._flagOutputState = true;
-            }
-            this._OutputUtxo = outputUtxo;
-            if (this.OutputUtxo != null)
-            {
-                this._flagOutputUtxo = true;
-            }
-            this._TxBody = txBody;
-            if (this.TxBody != null)
-            {
-                this._flagTxBody = true;
-            }
+            this.TransactionId = transactionId;
+            this.Block = block;
+            this.ConsumingTx = consumingTx;
+            this.Continuations = continuations;
+            this.OutputContract = outputContract;
+            this.OutputState = outputState;
+            this.OutputUtxo = outputUtxo;
+            this.TxBody = txBody;
         }
 
         /// <summary>
         /// Gets or Sets Assets
         /// </summary>
         [DataMember(Name = "assets", IsRequired = true, EmitDefaultValue = true)]
-        public Assets Assets
-        {
-            get{ return _Assets;}
-            set
-            {
-                _Assets = value;
-                _flagAssets = true;
-            }
-        }
-        private Assets _Assets;
-        private bool _flagAssets;
+        public Assets Assets { get; set; }
 
-        /// <summary>
-        /// Returns false as Assets should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeAssets()
-        {
-            return _flagAssets;
-        }
         /// <summary>
         /// Gets or Sets Block
         /// </summary>
         [DataMember(Name = "block", EmitDefaultValue = false)]
-        public BlockHeader Block
-        {
-            get{ return _Block;}
-            set
-            {
-                _Block = value;
-                _flagBlock = true;
-            }
-        }
-        private BlockHeader _Block;
-        private bool _flagBlock;
+        public BlockHeader Block { get; set; }
 
-        /// <summary>
-        /// Returns false as Block should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeBlock()
-        {
-            return _flagBlock;
-        }
         /// <summary>
         /// The hex-encoded identifier of a Cardano transaction
         /// </summary>
         /// <value>The hex-encoded identifier of a Cardano transaction</value>
         [DataMember(Name = "consumingTx", EmitDefaultValue = false)]
-        public string ConsumingTx
-        {
-            get{ return _ConsumingTx;}
-            set
-            {
-                _ConsumingTx = value;
-                _flagConsumingTx = true;
-            }
-        }
-        private string _ConsumingTx;
-        private bool _flagConsumingTx;
+        public string ConsumingTx { get; set; }
 
-        /// <summary>
-        /// Returns false as ConsumingTx should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeConsumingTx()
-        {
-            return _flagConsumingTx;
-        }
         /// <summary>
         /// Gets or Sets Continuations
         /// </summary>
         [DataMember(Name = "continuations", EmitDefaultValue = false)]
-        public string Continuations
-        {
-            get{ return _Continuations;}
-            set
-            {
-                _Continuations = value;
-                _flagContinuations = true;
-            }
-        }
-        private string _Continuations;
-        private bool _flagContinuations;
+        public string Continuations { get; set; }
 
-        /// <summary>
-        /// Returns false as Continuations should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeContinuations()
-        {
-            return _flagContinuations;
-        }
         /// <summary>
         /// A reference to a transaction output with a transaction ID and index.
         /// </summary>
         /// <value>A reference to a transaction output with a transaction ID and index.</value>
         /// <example>98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1</example>
         [DataMember(Name = "contractId", IsRequired = true, EmitDefaultValue = true)]
-        public string ContractId
-        {
-            get{ return _ContractId;}
-            set
-            {
-                _ContractId = value;
-                _flagContractId = true;
-            }
-        }
-        private string _ContractId;
-        private bool _flagContractId;
+        public string ContractId { get; set; }
 
-        /// <summary>
-        /// Returns false as ContractId should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeContractId()
-        {
-            return _flagContractId;
-        }
         /// <summary>
         /// Gets or Sets Inputs
         /// </summary>
         [DataMember(Name = "inputs", IsRequired = true, EmitDefaultValue = true)]
-        public List<Input> Inputs
-        {
-            get{ return _Inputs;}
-            set
-            {
-                _Inputs = value;
-                _flagInputs = true;
-            }
-        }
-        private List<Input> _Inputs;
-        private bool _flagInputs;
+        public List<Input> Inputs { get; set; }
 
-        /// <summary>
-        /// Returns false as Inputs should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeInputs()
-        {
-            return _flagInputs;
-        }
         /// <summary>
         /// A reference to a transaction output with a transaction ID and index.
         /// </summary>
         /// <value>A reference to a transaction output with a transaction ID and index.</value>
         /// <example>98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1</example>
         [DataMember(Name = "inputUtxo", IsRequired = true, EmitDefaultValue = true)]
-        public string InputUtxo
-        {
-            get{ return _InputUtxo;}
-            set
-            {
-                _InputUtxo = value;
-                _flagInputUtxo = true;
-            }
-        }
-        private string _InputUtxo;
-        private bool _flagInputUtxo;
+        public string InputUtxo { get; set; }
 
-        /// <summary>
-        /// Returns false as InputUtxo should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeInputUtxo()
-        {
-            return _flagInputUtxo;
-        }
         /// <summary>
         /// Gets or Sets InvalidBefore
         /// </summary>
         /// <example>2016-07-22T00:00:00Z</example>
         [DataMember(Name = "invalidBefore", IsRequired = true, EmitDefaultValue = true)]
-        public string InvalidBefore
-        {
-            get{ return _InvalidBefore;}
-            set
-            {
-                _InvalidBefore = value;
-                _flagInvalidBefore = true;
-            }
-        }
-        private string _InvalidBefore;
-        private bool _flagInvalidBefore;
+        public string InvalidBefore { get; set; }
 
-        /// <summary>
-        /// Returns false as InvalidBefore should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeInvalidBefore()
-        {
-            return _flagInvalidBefore;
-        }
         /// <summary>
         /// Gets or Sets InvalidHereafter
         /// </summary>
         /// <example>2016-07-22T00:00:00Z</example>
         [DataMember(Name = "invalidHereafter", IsRequired = true, EmitDefaultValue = true)]
-        public string InvalidHereafter
-        {
-            get{ return _InvalidHereafter;}
-            set
-            {
-                _InvalidHereafter = value;
-                _flagInvalidHereafter = true;
-            }
-        }
-        private string _InvalidHereafter;
-        private bool _flagInvalidHereafter;
+        public string InvalidHereafter { get; set; }
 
-        /// <summary>
-        /// Returns false as InvalidHereafter should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeInvalidHereafter()
-        {
-            return _flagInvalidHereafter;
-        }
         /// <summary>
         /// Gets or Sets Metadata
         /// </summary>
         [DataMember(Name = "metadata", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Metadata> Metadata
-        {
-            get{ return _Metadata;}
-            set
-            {
-                _Metadata = value;
-                _flagMetadata = true;
-            }
-        }
-        private Dictionary<string, Metadata> _Metadata;
-        private bool _flagMetadata;
+        public Dictionary<string, Metadata> Metadata { get; set; }
 
-        /// <summary>
-        /// Returns false as Metadata should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeMetadata()
-        {
-            return _flagMetadata;
-        }
         /// <summary>
         /// Gets or Sets OutputContract
         /// </summary>
         [DataMember(Name = "outputContract", EmitDefaultValue = false)]
-        public Contract OutputContract
-        {
-            get{ return _OutputContract;}
-            set
-            {
-                _OutputContract = value;
-                _flagOutputContract = true;
-            }
-        }
-        private Contract _OutputContract;
-        private bool _flagOutputContract;
+        public Contract OutputContract { get; set; }
 
-        /// <summary>
-        /// Returns false as OutputContract should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeOutputContract()
-        {
-            return _flagOutputContract;
-        }
         /// <summary>
         /// Gets or Sets OutputState
         /// </summary>
         [DataMember(Name = "outputState", EmitDefaultValue = false)]
-        public MarloweState OutputState
-        {
-            get{ return _OutputState;}
-            set
-            {
-                _OutputState = value;
-                _flagOutputState = true;
-            }
-        }
-        private MarloweState _OutputState;
-        private bool _flagOutputState;
+        public MarloweState OutputState { get; set; }
 
-        /// <summary>
-        /// Returns false as OutputState should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeOutputState()
-        {
-            return _flagOutputState;
-        }
         /// <summary>
         /// A reference to a transaction output with a transaction ID and index.
         /// </summary>
         /// <value>A reference to a transaction output with a transaction ID and index.</value>
         /// <example>98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1</example>
         [DataMember(Name = "outputUtxo", EmitDefaultValue = false)]
-        public string OutputUtxo
-        {
-            get{ return _OutputUtxo;}
-            set
-            {
-                _OutputUtxo = value;
-                _flagOutputUtxo = true;
-            }
-        }
-        private string _OutputUtxo;
-        private bool _flagOutputUtxo;
+        public string OutputUtxo { get; set; }
 
-        /// <summary>
-        /// Returns false as OutputUtxo should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeOutputUtxo()
-        {
-            return _flagOutputUtxo;
-        }
         /// <summary>
         /// Gets or Sets Payouts
         /// </summary>
         [DataMember(Name = "payouts", IsRequired = true, EmitDefaultValue = true)]
-        public List<Payout> Payouts
-        {
-            get{ return _Payouts;}
-            set
-            {
-                _Payouts = value;
-                _flagPayouts = true;
-            }
-        }
-        private List<Payout> _Payouts;
-        private bool _flagPayouts;
+        public List<Payout> Payouts { get; set; }
 
-        /// <summary>
-        /// Returns false as Payouts should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializePayouts()
-        {
-            return _flagPayouts;
-        }
         /// <summary>
         /// Gets or Sets Tags
         /// </summary>
         [DataMember(Name = "tags", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Metadata> Tags
-        {
-            get{ return _Tags;}
-            set
-            {
-                _Tags = value;
-                _flagTags = true;
-            }
-        }
-        private Dictionary<string, Metadata> _Tags;
-        private bool _flagTags;
+        public Dictionary<string, Metadata> Tags { get; set; }
 
-        /// <summary>
-        /// Returns false as Tags should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTags()
-        {
-            return _flagTags;
-        }
         /// <summary>
         /// The hex-encoded identifier of a Cardano transaction
         /// </summary>
         /// <value>The hex-encoded identifier of a Cardano transaction</value>
         [DataMember(Name = "transactionId", IsRequired = true, EmitDefaultValue = true)]
-        public string TransactionId
-        {
-            get{ return _TransactionId;}
-            set
-            {
-                _TransactionId = value;
-                _flagTransactionId = true;
-            }
-        }
-        private string _TransactionId;
-        private bool _flagTransactionId;
+        public string TransactionId { get; set; }
 
-        /// <summary>
-        /// Returns false as TransactionId should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTransactionId()
-        {
-            return _flagTransactionId;
-        }
         /// <summary>
         /// Gets or Sets TxBody
         /// </summary>
         [DataMember(Name = "txBody", EmitDefaultValue = false)]
-        public TextEnvelope TxBody
-        {
-            get{ return _TxBody;}
-            set
-            {
-                _TxBody = value;
-                _flagTxBody = true;
-            }
-        }
-        private TextEnvelope _TxBody;
-        private bool _flagTxBody;
+        public TextEnvelope TxBody { get; set; }
 
-        /// <summary>
-        /// Returns false as TxBody should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTxBody()
-        {
-            return _flagTxBody;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

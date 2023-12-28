@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("gt is a required property for GreaterObject and cannot be null");
             }
-            this._Gt = gt;
+            this.Gt = gt;
             // to ensure "value" is required (not null)
             if (value == null)
             {
                 throw new ArgumentNullException("value is a required property for GreaterObject and cannot be null");
             }
-            this._Value = value;
+            this.Value = value;
         }
 
         /// <summary>
         /// Gets or Sets Gt
         /// </summary>
         [DataMember(Name = "gt", IsRequired = true, EmitDefaultValue = true)]
-        public ValueObject Gt
-        {
-            get{ return _Gt;}
-            set
-            {
-                _Gt = value;
-                _flagGt = true;
-            }
-        }
-        private ValueObject _Gt;
-        private bool _flagGt;
+        public ValueObject Gt { get; set; }
 
-        /// <summary>
-        /// Returns false as Gt should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeGt()
-        {
-            return _flagGt;
-        }
         /// <summary>
         /// Gets or Sets Value
         /// </summary>
         [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
-        public ValueObject Value
-        {
-            get{ return _Value;}
-            set
-            {
-                _Value = value;
-                _flagValue = true;
-            }
-        }
-        private ValueObject _Value;
-        private bool _flagValue;
+        public ValueObject Value { get; set; }
 
-        /// <summary>
-        /// Returns false as Value should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeValue()
-        {
-            return _flagValue;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

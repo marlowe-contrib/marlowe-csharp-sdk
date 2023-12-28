@@ -47,33 +47,15 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("stakingHash is a required property for StakingPointer and cannot be null");
             }
-            this._StakingHash = stakingHash;
+            this.StakingHash = stakingHash;
         }
 
         /// <summary>
         /// Gets or Sets StakingHash
         /// </summary>
         [DataMember(Name = "stakingHash", IsRequired = true, EmitDefaultValue = true)]
-        public List<int> StakingHash
-        {
-            get{ return _StakingHash;}
-            set
-            {
-                _StakingHash = value;
-                _flagStakingHash = true;
-            }
-        }
-        private List<int> _StakingHash;
-        private bool _flagStakingHash;
+        public List<int> StakingHash { get; set; }
 
-        /// <summary>
-        /// Returns false as StakingHash should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeStakingHash()
-        {
-            return _flagStakingHash;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

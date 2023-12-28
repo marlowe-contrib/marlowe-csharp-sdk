@@ -47,33 +47,15 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("varUseValue is a required property for UseValue and cannot be null");
             }
-            this._VarUseValue = varUseValue;
+            this.VarUseValue = varUseValue;
         }
 
         /// <summary>
         /// Gets or Sets VarUseValue
         /// </summary>
         [DataMember(Name = "use_value", IsRequired = true, EmitDefaultValue = true)]
-        public string VarUseValue
-        {
-            get{ return _VarUseValue;}
-            set
-            {
-                _VarUseValue = value;
-                _flagVarUseValue = true;
-            }
-        }
-        private string _VarUseValue;
-        private bool _flagVarUseValue;
+        public string VarUseValue { get; set; }
 
-        /// <summary>
-        /// Returns false as VarUseValue should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarUseValue()
-        {
-            return _flagVarUseValue;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

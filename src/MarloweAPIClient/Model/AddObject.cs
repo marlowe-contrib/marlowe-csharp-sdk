@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("add is a required property for AddObject and cannot be null");
             }
-            this._Add = add;
+            this.Add = add;
             // to ensure "and" is required (not null)
             if (and == null)
             {
                 throw new ArgumentNullException("and is a required property for AddObject and cannot be null");
             }
-            this._And = and;
+            this.And = and;
         }
 
         /// <summary>
         /// Gets or Sets Add
         /// </summary>
         [DataMember(Name = "add", IsRequired = true, EmitDefaultValue = true)]
-        public ValueObject Add
-        {
-            get{ return _Add;}
-            set
-            {
-                _Add = value;
-                _flagAdd = true;
-            }
-        }
-        private ValueObject _Add;
-        private bool _flagAdd;
+        public ValueObject Add { get; set; }
 
-        /// <summary>
-        /// Returns false as Add should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeAdd()
-        {
-            return _flagAdd;
-        }
         /// <summary>
         /// Gets or Sets And
         /// </summary>
         [DataMember(Name = "and", IsRequired = true, EmitDefaultValue = true)]
-        public ValueObject And
-        {
-            get{ return _And;}
-            set
-            {
-                _And = value;
-                _flagAnd = true;
-            }
-        }
-        private ValueObject _And;
-        private bool _flagAnd;
+        public ValueObject And { get; set; }
 
-        /// <summary>
-        /// Returns false as And should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeAnd()
-        {
-            return _flagAnd;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

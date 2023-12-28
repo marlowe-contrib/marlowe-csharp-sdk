@@ -48,58 +48,22 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("forChoiceId is a required property for ChoiceInput and cannot be null");
             }
-            this._ForChoiceId = forChoiceId;
-            this._InputThatChoosesNum = inputThatChoosesNum;
+            this.ForChoiceId = forChoiceId;
+            this.InputThatChoosesNum = inputThatChoosesNum;
         }
 
         /// <summary>
         /// Gets or Sets ForChoiceId
         /// </summary>
         [DataMember(Name = "for_choice_id", IsRequired = true, EmitDefaultValue = true)]
-        public ChoiceId ForChoiceId
-        {
-            get{ return _ForChoiceId;}
-            set
-            {
-                _ForChoiceId = value;
-                _flagForChoiceId = true;
-            }
-        }
-        private ChoiceId _ForChoiceId;
-        private bool _flagForChoiceId;
+        public ChoiceId ForChoiceId { get; set; }
 
-        /// <summary>
-        /// Returns false as ForChoiceId should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeForChoiceId()
-        {
-            return _flagForChoiceId;
-        }
         /// <summary>
         /// Gets or Sets InputThatChoosesNum
         /// </summary>
         [DataMember(Name = "input_that_chooses_num", IsRequired = true, EmitDefaultValue = true)]
-        public int InputThatChoosesNum
-        {
-            get{ return _InputThatChoosesNum;}
-            set
-            {
-                _InputThatChoosesNum = value;
-                _flagInputThatChoosesNum = true;
-            }
-        }
-        private int _InputThatChoosesNum;
-        private bool _flagInputThatChoosesNum;
+        public int InputThatChoosesNum { get; set; }
 
-        /// <summary>
-        /// Returns false as InputThatChoosesNum should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeInputThatChoosesNum()
-        {
-            return _flagInputThatChoosesNum;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

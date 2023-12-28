@@ -42,7 +42,7 @@ namespace MarloweAPIClient.Model
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+            this.ActualInstance = actualInstance;
         }
 
         /// <summary>

@@ -41,8 +41,8 @@ namespace MarloweAPIClient.Model
         public Contract(Close actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+            this.SchemaType = "oneOf";
+            this.ActualInstance = actualInstance;
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace MarloweAPIClient.Model
         public Contract(Pay actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -65,7 +65,7 @@ namespace MarloweAPIClient.Model
         public Contract(If actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -77,7 +77,7 @@ namespace MarloweAPIClient.Model
         public Contract(When actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -89,7 +89,7 @@ namespace MarloweAPIClient.Model
         public Contract(Let actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -101,7 +101,7 @@ namespace MarloweAPIClient.Model
         public Contract(Assert actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -247,7 +247,6 @@ namespace MarloweAPIClient.Model
             }
             int match = 0;
             List<string> matchedTypes = new List<string>();
-
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
@@ -456,11 +455,27 @@ namespace MarloweAPIClient.Model
         /// <returns>The object converted from the JSON string</returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if(reader.TokenType != JsonToken.Null)
+            // Check the JSON token type
+            switch (reader.TokenType)
             {
-                return Contract.FromJson(JObject.Load(reader).ToString(Formatting.None));
+                case JsonToken.String:
+                    // If it's a string, try to parse it as a Close enum
+                    var enumString = (string)reader.Value;
+                    if (Enum.TryParse(typeof(Close), enumString, true, out object result))
+                    {
+                        return new Contract((Close)result);
+                    }
+                    else
+                    {
+                        throw new JsonSerializationException($"Cannot convert {enumString} to Close enum");
+                    }
+
+                case JsonToken.Null:
+                    return null;
+
+                default:
+                    return Contract.FromJson(JObject.Load(reader).ToString(Formatting.None));
             }
-            return null;
         }
 
         /// <summary>

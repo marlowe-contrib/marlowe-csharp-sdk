@@ -28,6 +28,7 @@ namespace MarloweAPIClient.Model
     /// <summary>
     /// DepositAction
     /// </summary>
+    [JsonConverter(typeof(DepositActionJsonConverter))]
     [DataContract(Name = "DepositAction")]
     public partial class DepositAction : IEquatable<DepositAction>, IValidatableObject
     {
@@ -141,22 +142,22 @@ namespace MarloweAPIClient.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Deposits == input.Deposits ||
                     (this.Deposits != null &&
                     this.Deposits.Equals(input.Deposits))
-                ) && 
+                ) &&
                 (
                     this.IntoAccount == input.IntoAccount ||
                     (this.IntoAccount != null &&
                     this.IntoAccount.Equals(input.IntoAccount))
-                ) && 
+                ) &&
                 (
                     this.OfToken == input.OfToken ||
                     (this.OfToken != null &&
                     this.OfToken.Equals(input.OfToken))
-                ) && 
+                ) &&
                 (
                     this.Party == input.Party ||
                     (this.Party != null &&
@@ -204,4 +205,45 @@ namespace MarloweAPIClient.Model
         }
     }
 
+    public class DepositActionJsonConverter : JsonConverter
+    {
+        public override bool CanWrite
+        {
+            get { return false; }
+        }
+
+        public override bool CanConvert(Type objectType)
+        {
+            return false;
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            JObject jsonObject = JObject.Load(reader);
+            Value deposits;
+
+            // Handle the 'deposits' field
+            JToken depositsToken = jsonObject["deposits"];
+            if (depositsToken.Type == JTokenType.Integer)
+            {
+                deposits = new Value((long)depositsToken);
+            }
+            else
+            {
+                deposits = depositsToken.ToObject<Value>();
+            }
+
+            // Deserialize the other fields as usual
+            var intoAccount = jsonObject["into_account"].ToObject<Party>();
+            var ofToken = jsonObject["of_token"].ToObject<Token>();
+            var party = jsonObject["party"].ToObject<Party>();
+
+            return new DepositAction(deposits, intoAccount, ofToken, party);
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            writer.WriteRawValue((string)(typeof(DepositAction).GetMethod("ToJson").Invoke(value, null)));
+        }
+    }
 }

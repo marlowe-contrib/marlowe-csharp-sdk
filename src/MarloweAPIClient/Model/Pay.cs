@@ -28,6 +28,7 @@ namespace MarloweAPIClient.Model
     /// <summary>
     /// A payment will be sent from an account to a payee.
     /// </summary>
+    [JsonConverter(typeof(PayJsonConverter))]
     [DataContract(Name = "Pay")]
     public partial class Pay : IEquatable<Pay>, IValidatableObject
     {
@@ -155,27 +156,27 @@ namespace MarloweAPIClient.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.FromAccount == input.FromAccount ||
                     (this.FromAccount != null &&
                     this.FromAccount.Equals(input.FromAccount))
-                ) && 
+                ) &&
                 (
                     this.VarPay == input.VarPay ||
                     (this.VarPay != null &&
                     this.VarPay.Equals(input.VarPay))
-                ) && 
+                ) &&
                 (
                     this.Then == input.Then ||
                     (this.Then != null &&
                     this.Then.Equals(input.Then))
-                ) && 
+                ) &&
                 (
                     this.To == input.To ||
                     (this.To != null &&
                     this.To.Equals(input.To))
-                ) && 
+                ) &&
                 (
                     this.Token == input.Token ||
                     (this.Token != null &&
@@ -227,4 +228,48 @@ namespace MarloweAPIClient.Model
         }
     }
 
+    public class PayJsonConverter : JsonConverter
+    {
+        public override bool CanWrite
+        {
+            get { return false; }
+        }
+
+        public override bool CanConvert(Type objectType)
+        {
+            return false;
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            JObject jsonObject = JObject.Load(reader);
+            Value pay;
+
+            // Handle the 'deposits' field
+            JToken payToken = jsonObject["pay"];
+            if (payToken.Type == JTokenType.Integer)
+            {
+                pay = new Value((long)payToken);
+            }
+            else
+            {
+                pay = payToken.ToObject<Value>();
+            }
+
+            // Deserialize the other fields as usual
+            var fromAccount = jsonObject["from_account"].ToObject<Party>();
+            var token = jsonObject["token"].ToObject<Token>();
+            var to = jsonObject["to"].ToObject<Payee>();
+            var then = jsonObject["then"].ToObject<Contract>();
+
+            return new Pay(fromAccount, pay, then, to, token);
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            writer.WriteRawValue((string)(typeof(Pay).GetMethod("ToJson").Invoke(value, null)));
+        }
+    }
 }
+
+

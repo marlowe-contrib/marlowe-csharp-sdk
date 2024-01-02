@@ -28,6 +28,7 @@ namespace MarloweAPIClient.Model
     /// <summary>
     /// NotifyAction
     /// </summary>
+    [JsonConverter(typeof(NotifyActionJsonConverter))]
     [DataContract(Name = "NotifyAction")]
     public partial class NotifyAction : IEquatable<NotifyAction>, IValidatableObject
     {
@@ -99,7 +100,7 @@ namespace MarloweAPIClient.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.NotifyIf == input.NotifyIf ||
                     (this.NotifyIf != null &&
@@ -132,6 +133,42 @@ namespace MarloweAPIClient.Model
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
+        }
+    }
+    public class NotifyActionJsonConverter : JsonConverter
+    {
+        public override bool CanWrite
+        {
+            get { return false; }
+        }
+
+        public override bool CanConvert(Type objectType)
+        {
+            return false;
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            JObject jsonObject = JObject.Load(reader);
+            Observation notifyIf;
+
+            // Handle the 'notify_if' field
+            JToken notifyToken = jsonObject["notify_if"];
+            if (notifyToken.Type == JTokenType.Boolean)
+            {
+                notifyIf = new Observation((bool)notifyToken);
+            }
+            else
+            {
+                notifyIf = notifyToken.ToObject<Observation>();
+            }
+
+            return new NotifyAction(notifyIf);
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            writer.WriteRawValue((string)(typeof(NotifyAction).GetMethod("ToJson").Invoke(value, null)));
         }
     }
 

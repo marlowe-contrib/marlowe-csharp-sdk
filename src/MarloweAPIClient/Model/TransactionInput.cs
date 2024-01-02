@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("txInputs is a required property for TransactionInput and cannot be null");
             }
-            this._TxInputs = txInputs;
+            this.TxInputs = txInputs;
             // to ensure "txInterval" is required (not null)
             if (txInterval == null)
             {
                 throw new ArgumentNullException("txInterval is a required property for TransactionInput and cannot be null");
             }
-            this._TxInterval = txInterval;
+            this.TxInterval = txInterval;
         }
 
         /// <summary>
         /// Gets or Sets TxInputs
         /// </summary>
         [DataMember(Name = "tx_inputs", IsRequired = true, EmitDefaultValue = true)]
-        public List<Input> TxInputs
-        {
-            get{ return _TxInputs;}
-            set
-            {
-                _TxInputs = value;
-                _flagTxInputs = true;
-            }
-        }
-        private List<Input> _TxInputs;
-        private bool _flagTxInputs;
+        public List<Input> TxInputs { get; set; }
 
-        /// <summary>
-        /// Returns false as TxInputs should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTxInputs()
-        {
-            return _flagTxInputs;
-        }
         /// <summary>
         /// Gets or Sets TxInterval
         /// </summary>
         [DataMember(Name = "tx_interval", IsRequired = true, EmitDefaultValue = true)]
-        public TransactionInputTxInterval TxInterval
-        {
-            get{ return _TxInterval;}
-            set
-            {
-                _TxInterval = value;
-                _flagTxInterval = true;
-            }
-        }
-        private TransactionInputTxInterval _TxInterval;
-        private bool _flagTxInterval;
+        public TransactionInputTxInterval TxInterval { get; set; }
 
-        /// <summary>
-        /// Returns false as TxInterval should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTxInterval()
-        {
-            return _flagTxInterval;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

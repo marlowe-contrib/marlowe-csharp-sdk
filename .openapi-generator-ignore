@@ -24,6 +24,6 @@
 git_push.sh
 appveyor.yml
 .gitignore
-README.md
-MarloweApiClient.sln
-src/MarloweAPIClient.Test/**
+# README.md
+#MarloweApiClient.sln
+#src/MarloweAPIClient.Test/**

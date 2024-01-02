@@ -40,7 +40,8 @@ jobs:
 
       - name: Generate csharp code from specs
         if: ENV.API_SPECS_CHANGED
-        run: npx @openapitools/openapi-generator-cli generate -i $FILE_PATH -g csharp --additional-properties=hideGenerationTimestamp=true,netCoreProjectFile=true,packageName=MarloweAPIClient,conditionalSerialization=true
+        run: npx @openapitools/openapi-generator-cli generate -i $FILE_PATH -g csharp --additional-properties=hideGenerationTimestamp=true,netCoreProjectFile=true,packageName=MarloweAPIClient,disallowAdditionalPropertiesIfNotPresent=true
+
 
       - name: API CLIENT CODEGEN
         if: ENV.API_SPECS_CHANGED

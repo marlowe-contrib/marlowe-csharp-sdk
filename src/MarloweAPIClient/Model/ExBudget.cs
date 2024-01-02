@@ -43,58 +43,22 @@ namespace MarloweAPIClient.Model
         /// <param name="exBudgetMemory">exBudgetMemory (required).</param>
         public ExBudget(decimal exBudgetCPU = default(decimal), decimal exBudgetMemory = default(decimal))
         {
-            this._ExBudgetCPU = exBudgetCPU;
-            this._ExBudgetMemory = exBudgetMemory;
+            this.ExBudgetCPU = exBudgetCPU;
+            this.ExBudgetMemory = exBudgetMemory;
         }
 
         /// <summary>
         /// Gets or Sets ExBudgetCPU
         /// </summary>
         [DataMember(Name = "exBudgetCPU", IsRequired = true, EmitDefaultValue = true)]
-        public decimal ExBudgetCPU
-        {
-            get{ return _ExBudgetCPU;}
-            set
-            {
-                _ExBudgetCPU = value;
-                _flagExBudgetCPU = true;
-            }
-        }
-        private decimal _ExBudgetCPU;
-        private bool _flagExBudgetCPU;
+        public decimal ExBudgetCPU { get; set; }
 
-        /// <summary>
-        /// Returns false as ExBudgetCPU should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeExBudgetCPU()
-        {
-            return _flagExBudgetCPU;
-        }
         /// <summary>
         /// Gets or Sets ExBudgetMemory
         /// </summary>
         [DataMember(Name = "exBudgetMemory", IsRequired = true, EmitDefaultValue = true)]
-        public decimal ExBudgetMemory
-        {
-            get{ return _ExBudgetMemory;}
-            set
-            {
-                _ExBudgetMemory = value;
-                _flagExBudgetMemory = true;
-            }
-        }
-        private decimal _ExBudgetMemory;
-        private bool _flagExBudgetMemory;
+        public decimal ExBudgetMemory { get; set; }
 
-        /// <summary>
-        /// Returns false as ExBudgetMemory should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeExBudgetMemory()
-        {
-            return _flagExBudgetMemory;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

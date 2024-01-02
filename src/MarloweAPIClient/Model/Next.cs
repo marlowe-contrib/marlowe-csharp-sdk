@@ -48,59 +48,23 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("applicableInputs is a required property for Next and cannot be null");
             }
-            this._ApplicableInputs = applicableInputs;
-            this._CanReduce = canReduce;
+            this.ApplicableInputs = applicableInputs;
+            this.CanReduce = canReduce;
         }
 
         /// <summary>
         /// Gets or Sets ApplicableInputs
         /// </summary>
         [DataMember(Name = "applicable_inputs", IsRequired = true, EmitDefaultValue = true)]
-        public ApplicableInputs ApplicableInputs
-        {
-            get{ return _ApplicableInputs;}
-            set
-            {
-                _ApplicableInputs = value;
-                _flagApplicableInputs = true;
-            }
-        }
-        private ApplicableInputs _ApplicableInputs;
-        private bool _flagApplicableInputs;
+        public ApplicableInputs ApplicableInputs { get; set; }
 
-        /// <summary>
-        /// Returns false as ApplicableInputs should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeApplicableInputs()
-        {
-            return _flagApplicableInputs;
-        }
         /// <summary>
         /// Indicates if a given contract can be reduced (apply []) or not.
         /// </summary>
         /// <value>Indicates if a given contract can be reduced (apply []) or not.</value>
         [DataMember(Name = "can_reduce", IsRequired = true, EmitDefaultValue = true)]
-        public bool CanReduce
-        {
-            get{ return _CanReduce;}
-            set
-            {
-                _CanReduce = value;
-                _flagCanReduce = true;
-            }
-        }
-        private bool _CanReduce;
-        private bool _flagCanReduce;
+        public bool CanReduce { get; set; }
 
-        /// <summary>
-        /// Returns false as CanReduce should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeCanReduce()
-        {
-            return _flagCanReduce;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

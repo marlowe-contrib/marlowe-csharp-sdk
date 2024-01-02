@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Token** | [**Token**](Token.md) |  | 
 **VarElse** | [**Contract**](Contract.md) |  | 
 **VarIf** | [**Observation**](Observation.md) |  | 
-**Timeout** | **int** |  | 
+**Timeout** | **long** |  | 
 **TimeoutContinuation** | [**Contract**](Contract.md) |  | 
 **When** | [**List&lt;Case&gt;**](Case.md) |  | 
 **Be** | [**Value**](Value.md) |  | 

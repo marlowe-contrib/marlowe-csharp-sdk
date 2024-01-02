@@ -35,7 +35,7 @@ Name | Type | Description | Notes
 **Pay** | [**ValueObject**](ValueObject.md) |  | 
 **To** | [**PayeeObject**](PayeeObject.md) |  | 
 **Token** | [**TokenObject**](TokenObject.md) |  | 
-**Timeout** | **int** |  | 
+**Timeout** | **long** |  | 
 **TimeoutContinuation** | [**ContractObject**](ContractObject.md) |  | 
 **When** | [**List&lt;CaseObject&gt;**](CaseObject.md) |  | 
 **Be** | [**ValueObject**](ValueObject.md) |  | 

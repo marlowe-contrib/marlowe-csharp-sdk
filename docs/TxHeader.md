@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **Block** | [**BlockHeader**](BlockHeader.md) |  | [optional] 
 **Continuations** | **string** |  | [optional] 
 **ContractId** | **string** | A reference to a transaction output with a transaction ID and index. | 
-**Metadata** | **Dictionary&lt;string, Object&gt;** |  | 
+**Metadata** | [**Dictionary&lt;string, Metadata&gt;**](Metadata.md) |  | 
 **Status** | **TxStatus** |  | 
-**Tags** | **Dictionary&lt;string, Object&gt;** |  | 
+**Tags** | [**Dictionary&lt;string, Metadata&gt;**](Metadata.md) |  | 
 **TransactionId** | **string** | The hex-encoded identifier of a Cardano transaction | 
 **Utxo** | **string** | A reference to a transaction output with a transaction ID and index. | [optional] 
 

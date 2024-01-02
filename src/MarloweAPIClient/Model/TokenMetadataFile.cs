@@ -29,113 +29,69 @@ namespace MarloweAPIClient.Model
     /// TokenMetadataFile
     /// </summary>
     [DataContract(Name = "TokenMetadataFile")]
-    public partial class TokenMetadataFile : IEquatable<TokenMetadataFile>, IValidatableObject
+    public partial class TokenMetadataFile : Dictionary<String, Metadata>, IEquatable<TokenMetadataFile>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenMetadataFile" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected TokenMetadataFile() { }
+        protected TokenMetadataFile()
+        {
+            this.AdditionalProperties = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenMetadataFile" /> class.
         /// </summary>
         /// <param name="mediaType">mediaType (required).</param>
         /// <param name="name">name (required).</param>
         /// <param name="src">src (required).</param>
-        public TokenMetadataFile(string mediaType = default(string), string name = default(string), string src = default(string))
+        public TokenMetadataFile(string mediaType = default(string), string name = default(string), string src = default(string)) : base()
         {
             // to ensure "mediaType" is required (not null)
             if (mediaType == null)
             {
                 throw new ArgumentNullException("mediaType is a required property for TokenMetadataFile and cannot be null");
             }
-            this._MediaType = mediaType;
+            this.MediaType = mediaType;
             // to ensure "name" is required (not null)
             if (name == null)
             {
                 throw new ArgumentNullException("name is a required property for TokenMetadataFile and cannot be null");
             }
-            this._Name = name;
+            this.Name = name;
             // to ensure "src" is required (not null)
             if (src == null)
             {
                 throw new ArgumentNullException("src is a required property for TokenMetadataFile and cannot be null");
             }
-            this._Src = src;
+            this.Src = src;
+            this.AdditionalProperties = new Dictionary<string, object>();
         }
 
         /// <summary>
         /// Gets or Sets MediaType
         /// </summary>
         [DataMember(Name = "mediaType", IsRequired = true, EmitDefaultValue = true)]
-        public string MediaType
-        {
-            get{ return _MediaType;}
-            set
-            {
-                _MediaType = value;
-                _flagMediaType = true;
-            }
-        }
-        private string _MediaType;
-        private bool _flagMediaType;
+        public string MediaType { get; set; }
 
-        /// <summary>
-        /// Returns false as MediaType should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeMediaType()
-        {
-            return _flagMediaType;
-        }
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
-        public string Name
-        {
-            get{ return _Name;}
-            set
-            {
-                _Name = value;
-                _flagName = true;
-            }
-        }
-        private string _Name;
-        private bool _flagName;
+        public string Name { get; set; }
 
-        /// <summary>
-        /// Returns false as Name should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeName()
-        {
-            return _flagName;
-        }
         /// <summary>
         /// Gets or Sets Src
         /// </summary>
         [DataMember(Name = "src", IsRequired = true, EmitDefaultValue = true)]
-        public string Src
-        {
-            get{ return _Src;}
-            set
-            {
-                _Src = value;
-                _flagSrc = true;
-            }
-        }
-        private string _Src;
-        private bool _flagSrc;
+        public string Src { get; set; }
 
         /// <summary>
-        /// Returns false as Src should not be serialized given that it's read-only.
+        /// Gets or Sets additional properties
         /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeSrc()
-        {
-            return _flagSrc;
-        }
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -144,9 +100,11 @@ namespace MarloweAPIClient.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class TokenMetadataFile {\n");
+            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  MediaType: ").Append(MediaType).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Src: ").Append(Src).Append("\n");
+            sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -155,7 +113,7 @@ namespace MarloweAPIClient.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
@@ -181,22 +139,23 @@ namespace MarloweAPIClient.Model
             {
                 return false;
             }
-            return 
+            return base.Equals(input) && 
                 (
                     this.MediaType == input.MediaType ||
                     (this.MediaType != null &&
                     this.MediaType.Equals(input.MediaType))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Src == input.Src ||
                     (this.Src != null &&
                     this.Src.Equals(input.Src))
-                );
+                )
+                && (this.AdditionalProperties.Count == input.AdditionalProperties.Count && !this.AdditionalProperties.Except(input.AdditionalProperties).Any());
         }
 
         /// <summary>
@@ -207,7 +166,7 @@ namespace MarloweAPIClient.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
+                int hashCode = base.GetHashCode();
                 if (this.MediaType != null)
                 {
                     hashCode = (hashCode * 59) + this.MediaType.GetHashCode();
@@ -220,6 +179,10 @@ namespace MarloweAPIClient.Model
                 {
                     hashCode = (hashCode * 59) + this.Src.GetHashCode();
                 }
+                if (this.AdditionalProperties != null)
+                {
+                    hashCode = (hashCode * 59) + this.AdditionalProperties.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -230,6 +193,16 @@ namespace MarloweAPIClient.Model
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            return this.BaseValidate(validationContext);
+        }
+
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        protected IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> BaseValidate(ValidationContext validationContext)
         {
             yield break;
         }

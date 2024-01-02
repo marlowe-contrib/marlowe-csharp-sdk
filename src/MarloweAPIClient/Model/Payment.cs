@@ -45,123 +45,51 @@ namespace MarloweAPIClient.Model
         /// <param name="token">token (required).</param>
         public Payment(int amount = default(int), Party paymentFrom = default(Party), Payee to = default(Payee), Token token = default(Token))
         {
-            this._Amount = amount;
+            this.Amount = amount;
             // to ensure "paymentFrom" is required (not null)
             if (paymentFrom == null)
             {
                 throw new ArgumentNullException("paymentFrom is a required property for Payment and cannot be null");
             }
-            this._PaymentFrom = paymentFrom;
+            this.PaymentFrom = paymentFrom;
             // to ensure "to" is required (not null)
             if (to == null)
             {
                 throw new ArgumentNullException("to is a required property for Payment and cannot be null");
             }
-            this._To = to;
+            this.To = to;
             // to ensure "token" is required (not null)
             if (token == null)
             {
                 throw new ArgumentNullException("token is a required property for Payment and cannot be null");
             }
-            this._Token = token;
+            this.Token = token;
         }
 
         /// <summary>
         /// Gets or Sets Amount
         /// </summary>
         [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = true)]
-        public int Amount
-        {
-            get{ return _Amount;}
-            set
-            {
-                _Amount = value;
-                _flagAmount = true;
-            }
-        }
-        private int _Amount;
-        private bool _flagAmount;
+        public int Amount { get; set; }
 
-        /// <summary>
-        /// Returns false as Amount should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeAmount()
-        {
-            return _flagAmount;
-        }
         /// <summary>
         /// Gets or Sets PaymentFrom
         /// </summary>
         [DataMember(Name = "payment_from", IsRequired = true, EmitDefaultValue = true)]
-        public Party PaymentFrom
-        {
-            get{ return _PaymentFrom;}
-            set
-            {
-                _PaymentFrom = value;
-                _flagPaymentFrom = true;
-            }
-        }
-        private Party _PaymentFrom;
-        private bool _flagPaymentFrom;
+        public Party PaymentFrom { get; set; }
 
-        /// <summary>
-        /// Returns false as PaymentFrom should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializePaymentFrom()
-        {
-            return _flagPaymentFrom;
-        }
         /// <summary>
         /// Gets or Sets To
         /// </summary>
         [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = true)]
-        public Payee To
-        {
-            get{ return _To;}
-            set
-            {
-                _To = value;
-                _flagTo = true;
-            }
-        }
-        private Payee _To;
-        private bool _flagTo;
+        public Payee To { get; set; }
 
-        /// <summary>
-        /// Returns false as To should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTo()
-        {
-            return _flagTo;
-        }
         /// <summary>
         /// Gets or Sets Token
         /// </summary>
         [DataMember(Name = "token", IsRequired = true, EmitDefaultValue = true)]
-        public Token Token
-        {
-            get{ return _Token;}
-            set
-            {
-                _Token = value;
-                _flagToken = true;
-            }
-        }
-        private Token _Token;
-        private bool _flagToken;
+        public Token Token { get; set; }
 
-        /// <summary>
-        /// Returns false as Token should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeToken()
-        {
-            return _flagToken;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

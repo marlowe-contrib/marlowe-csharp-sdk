@@ -38,66 +38,22 @@ namespace MarloweAPIClient.Model
         /// <param name="transactions">transactions.</param>
         public GetContractsResponseResultsInnerLinks(string contract = default(string), string transactions = default(string))
         {
-            this._Contract = contract;
-            if (this.Contract != null)
-            {
-                this._flagContract = true;
-            }
-            this._Transactions = transactions;
-            if (this.Transactions != null)
-            {
-                this._flagTransactions = true;
-            }
+            this.Contract = contract;
+            this.Transactions = transactions;
         }
 
         /// <summary>
         /// Gets or Sets Contract
         /// </summary>
         [DataMember(Name = "contract", EmitDefaultValue = false)]
-        public string Contract
-        {
-            get{ return _Contract;}
-            set
-            {
-                _Contract = value;
-                _flagContract = true;
-            }
-        }
-        private string _Contract;
-        private bool _flagContract;
+        public string Contract { get; set; }
 
-        /// <summary>
-        /// Returns false as Contract should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeContract()
-        {
-            return _flagContract;
-        }
         /// <summary>
         /// Gets or Sets Transactions
         /// </summary>
         [DataMember(Name = "transactions", EmitDefaultValue = false)]
-        public string Transactions
-        {
-            get{ return _Transactions;}
-            set
-            {
-                _Transactions = value;
-                _flagTransactions = true;
-            }
-        }
-        private string _Transactions;
-        private bool _flagTransactions;
+        public string Transactions { get; set; }
 
-        /// <summary>
-        /// Returns false as Transactions should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTransactions()
-        {
-            return _flagTransactions;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

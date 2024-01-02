@@ -63,494 +63,132 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("detail is a required property for SafetyError and cannot be null");
             }
-            this._Detail = detail;
+            this.Detail = detail;
             // to ensure "error" is required (not null)
             if (error == null)
             {
                 throw new ArgumentNullException("error is a required property for SafetyError and cannot be null");
             }
-            this._Error = error;
-            this._Fatal = fatal;
-            this._AccountId = accountId;
-            if (this.AccountId != null)
-            {
-                this._flagAccountId = true;
-            }
-            this._Address = address;
-            if (this.Address != null)
-            {
-                this._flagAddress = true;
-            }
-            this._Bytes = bytes;
-            if (this.Bytes != null)
-            {
-                this._flagBytes = true;
-            }
-            this._ChoiceId = choiceId;
-            if (this.ChoiceId != null)
-            {
-                this._flagChoiceId = true;
-            }
-            this._Cost = cost;
-            if (this.Cost != null)
-            {
-                this._flagCost = true;
-            }
-            this._CurrencySymbol = currencySymbol;
-            if (this.CurrencySymbol != null)
-            {
-                this._flagCurrencySymbol = true;
-            }
-            this._Hash = hash;
-            if (this.Hash != null)
-            {
-                this._flagHash = true;
-            }
-            this._Message = message;
-            if (this.Message != null)
-            {
-                this._flagMessage = true;
-            }
-            this._RoleName = roleName;
-            if (this.RoleName != null)
-            {
-                this._flagRoleName = true;
-            }
-            this._Token = token;
-            if (this.Token != null)
-            {
-                this._flagToken = true;
-            }
-            this._TokenName = tokenName;
-            if (this.TokenName != null)
-            {
-                this._flagTokenName = true;
-            }
-            this._Transaction = transaction;
-            if (this.Transaction != null)
-            {
-                this._flagTransaction = true;
-            }
-            this._ValueId = valueId;
-            if (this.ValueId != null)
-            {
-                this._flagValueId = true;
-            }
-            this._Warning = warning;
-            if (this.Warning != null)
-            {
-                this._flagWarning = true;
-            }
+            this.Error = error;
+            this.Fatal = fatal;
+            this.AccountId = accountId;
+            this.Address = address;
+            this.Bytes = bytes;
+            this.ChoiceId = choiceId;
+            this.Cost = cost;
+            this.CurrencySymbol = currencySymbol;
+            this.Hash = hash;
+            this.Message = message;
+            this.RoleName = roleName;
+            this.Token = token;
+            this.TokenName = tokenName;
+            this.Transaction = transaction;
+            this.ValueId = valueId;
+            this.Warning = warning;
         }
 
         /// <summary>
         /// Gets or Sets AccountId
         /// </summary>
         [DataMember(Name = "account-id", EmitDefaultValue = false)]
-        public Party AccountId
-        {
-            get{ return _AccountId;}
-            set
-            {
-                _AccountId = value;
-                _flagAccountId = true;
-            }
-        }
-        private Party _AccountId;
-        private bool _flagAccountId;
+        public Party AccountId { get; set; }
 
-        /// <summary>
-        /// Returns false as AccountId should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeAccountId()
-        {
-            return _flagAccountId;
-        }
         /// <summary>
         /// Gets or Sets Address
         /// </summary>
         [DataMember(Name = "address", EmitDefaultValue = false)]
-        public PlutusAddress Address
-        {
-            get{ return _Address;}
-            set
-            {
-                _Address = value;
-                _flagAddress = true;
-            }
-        }
-        private PlutusAddress _Address;
-        private bool _flagAddress;
+        public PlutusAddress Address { get; set; }
 
-        /// <summary>
-        /// Returns false as Address should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeAddress()
-        {
-            return _flagAddress;
-        }
         /// <summary>
         /// Gets or Sets Bytes
         /// </summary>
         [DataMember(Name = "bytes", EmitDefaultValue = false)]
-        public int Bytes
-        {
-            get{ return _Bytes;}
-            set
-            {
-                _Bytes = value;
-                _flagBytes = true;
-            }
-        }
-        private int _Bytes;
-        private bool _flagBytes;
+        public int Bytes { get; set; }
 
-        /// <summary>
-        /// Returns false as Bytes should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeBytes()
-        {
-            return _flagBytes;
-        }
         /// <summary>
         /// Gets or Sets ChoiceId
         /// </summary>
         [DataMember(Name = "choice-id", EmitDefaultValue = false)]
-        public ChoiceId ChoiceId
-        {
-            get{ return _ChoiceId;}
-            set
-            {
-                _ChoiceId = value;
-                _flagChoiceId = true;
-            }
-        }
-        private ChoiceId _ChoiceId;
-        private bool _flagChoiceId;
+        public ChoiceId ChoiceId { get; set; }
 
-        /// <summary>
-        /// Returns false as ChoiceId should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeChoiceId()
-        {
-            return _flagChoiceId;
-        }
         /// <summary>
         /// Gets or Sets Cost
         /// </summary>
         [DataMember(Name = "cost", EmitDefaultValue = false)]
-        public ExBudget Cost
-        {
-            get{ return _Cost;}
-            set
-            {
-                _Cost = value;
-                _flagCost = true;
-            }
-        }
-        private ExBudget _Cost;
-        private bool _flagCost;
+        public ExBudget Cost { get; set; }
 
-        /// <summary>
-        /// Returns false as Cost should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeCost()
-        {
-            return _flagCost;
-        }
         /// <summary>
         /// Gets or Sets CurrencySymbol
         /// </summary>
         [DataMember(Name = "currency-symbol", EmitDefaultValue = false)]
-        public string CurrencySymbol
-        {
-            get{ return _CurrencySymbol;}
-            set
-            {
-                _CurrencySymbol = value;
-                _flagCurrencySymbol = true;
-            }
-        }
-        private string _CurrencySymbol;
-        private bool _flagCurrencySymbol;
+        public string CurrencySymbol { get; set; }
 
-        /// <summary>
-        /// Returns false as CurrencySymbol should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeCurrencySymbol()
-        {
-            return _flagCurrencySymbol;
-        }
         /// <summary>
         /// Gets or Sets Detail
         /// </summary>
         [DataMember(Name = "detail", IsRequired = true, EmitDefaultValue = true)]
-        public string Detail
-        {
-            get{ return _Detail;}
-            set
-            {
-                _Detail = value;
-                _flagDetail = true;
-            }
-        }
-        private string _Detail;
-        private bool _flagDetail;
+        public string Detail { get; set; }
 
-        /// <summary>
-        /// Returns false as Detail should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeDetail()
-        {
-            return _flagDetail;
-        }
         /// <summary>
         /// Gets or Sets Error
         /// </summary>
         [DataMember(Name = "error", IsRequired = true, EmitDefaultValue = true)]
-        public string Error
-        {
-            get{ return _Error;}
-            set
-            {
-                _Error = value;
-                _flagError = true;
-            }
-        }
-        private string _Error;
-        private bool _flagError;
+        public string Error { get; set; }
 
-        /// <summary>
-        /// Returns false as Error should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeError()
-        {
-            return _flagError;
-        }
         /// <summary>
         /// Gets or Sets Fatal
         /// </summary>
         [DataMember(Name = "fatal", IsRequired = true, EmitDefaultValue = true)]
-        public bool Fatal
-        {
-            get{ return _Fatal;}
-            set
-            {
-                _Fatal = value;
-                _flagFatal = true;
-            }
-        }
-        private bool _Fatal;
-        private bool _flagFatal;
+        public bool Fatal { get; set; }
 
-        /// <summary>
-        /// Returns false as Fatal should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeFatal()
-        {
-            return _flagFatal;
-        }
         /// <summary>
         /// Gets or Sets Hash
         /// </summary>
         [DataMember(Name = "hash", EmitDefaultValue = false)]
-        public string Hash
-        {
-            get{ return _Hash;}
-            set
-            {
-                _Hash = value;
-                _flagHash = true;
-            }
-        }
-        private string _Hash;
-        private bool _flagHash;
+        public string Hash { get; set; }
 
-        /// <summary>
-        /// Returns false as Hash should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeHash()
-        {
-            return _flagHash;
-        }
         /// <summary>
         /// Gets or Sets Message
         /// </summary>
         [DataMember(Name = "message", EmitDefaultValue = false)]
-        public string Message
-        {
-            get{ return _Message;}
-            set
-            {
-                _Message = value;
-                _flagMessage = true;
-            }
-        }
-        private string _Message;
-        private bool _flagMessage;
+        public string Message { get; set; }
 
-        /// <summary>
-        /// Returns false as Message should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeMessage()
-        {
-            return _flagMessage;
-        }
         /// <summary>
         /// Gets or Sets RoleName
         /// </summary>
         [DataMember(Name = "role-name", EmitDefaultValue = false)]
-        public string RoleName
-        {
-            get{ return _RoleName;}
-            set
-            {
-                _RoleName = value;
-                _flagRoleName = true;
-            }
-        }
-        private string _RoleName;
-        private bool _flagRoleName;
+        public string RoleName { get; set; }
 
-        /// <summary>
-        /// Returns false as RoleName should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeRoleName()
-        {
-            return _flagRoleName;
-        }
         /// <summary>
         /// Gets or Sets Token
         /// </summary>
         [DataMember(Name = "token", EmitDefaultValue = false)]
-        public Token Token
-        {
-            get{ return _Token;}
-            set
-            {
-                _Token = value;
-                _flagToken = true;
-            }
-        }
-        private Token _Token;
-        private bool _flagToken;
+        public Token Token { get; set; }
 
-        /// <summary>
-        /// Returns false as Token should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeToken()
-        {
-            return _flagToken;
-        }
         /// <summary>
         /// Gets or Sets TokenName
         /// </summary>
         [DataMember(Name = "token-name", EmitDefaultValue = false)]
-        public string TokenName
-        {
-            get{ return _TokenName;}
-            set
-            {
-                _TokenName = value;
-                _flagTokenName = true;
-            }
-        }
-        private string _TokenName;
-        private bool _flagTokenName;
+        public string TokenName { get; set; }
 
-        /// <summary>
-        /// Returns false as TokenName should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTokenName()
-        {
-            return _flagTokenName;
-        }
         /// <summary>
         /// Gets or Sets Transaction
         /// </summary>
         [DataMember(Name = "transaction", EmitDefaultValue = false)]
-        public Transaction Transaction
-        {
-            get{ return _Transaction;}
-            set
-            {
-                _Transaction = value;
-                _flagTransaction = true;
-            }
-        }
-        private Transaction _Transaction;
-        private bool _flagTransaction;
+        public Transaction Transaction { get; set; }
 
-        /// <summary>
-        /// Returns false as Transaction should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTransaction()
-        {
-            return _flagTransaction;
-        }
         /// <summary>
         /// Gets or Sets ValueId
         /// </summary>
         [DataMember(Name = "value-id", EmitDefaultValue = false)]
-        public string ValueId
-        {
-            get{ return _ValueId;}
-            set
-            {
-                _ValueId = value;
-                _flagValueId = true;
-            }
-        }
-        private string _ValueId;
-        private bool _flagValueId;
+        public string ValueId { get; set; }
 
-        /// <summary>
-        /// Returns false as ValueId should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeValueId()
-        {
-            return _flagValueId;
-        }
         /// <summary>
         /// Gets or Sets Warning
         /// </summary>
         [DataMember(Name = "warning", EmitDefaultValue = false)]
-        public TransactionWarning Warning
-        {
-            get{ return _Warning;}
-            set
-            {
-                _Warning = value;
-                _flagWarning = true;
-            }
-        }
-        private TransactionWarning _Warning;
-        private bool _flagWarning;
+        public TransactionWarning Warning { get; set; }
 
-        /// <summary>
-        /// Returns false as Warning should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeWarning()
-        {
-            return _flagWarning;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

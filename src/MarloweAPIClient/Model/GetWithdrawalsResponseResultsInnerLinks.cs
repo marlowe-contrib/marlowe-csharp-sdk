@@ -37,37 +37,15 @@ namespace MarloweAPIClient.Model
         /// <param name="withdrawal">withdrawal.</param>
         public GetWithdrawalsResponseResultsInnerLinks(string withdrawal = default(string))
         {
-            this._Withdrawal = withdrawal;
-            if (this.Withdrawal != null)
-            {
-                this._flagWithdrawal = true;
-            }
+            this.Withdrawal = withdrawal;
         }
 
         /// <summary>
         /// Gets or Sets Withdrawal
         /// </summary>
         [DataMember(Name = "withdrawal", EmitDefaultValue = false)]
-        public string Withdrawal
-        {
-            get{ return _Withdrawal;}
-            set
-            {
-                _Withdrawal = value;
-                _flagWithdrawal = true;
-            }
-        }
-        private string _Withdrawal;
-        private bool _flagWithdrawal;
+        public string Withdrawal { get; set; }
 
-        /// <summary>
-        /// Returns false as Withdrawal should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeWithdrawal()
-        {
-            return _flagWithdrawal;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

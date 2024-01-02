@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("currencySymbol is a required property for Token and cannot be null");
             }
-            this._CurrencySymbol = currencySymbol;
+            this.CurrencySymbol = currencySymbol;
             // to ensure "tokenName" is required (not null)
             if (tokenName == null)
             {
                 throw new ArgumentNullException("tokenName is a required property for Token and cannot be null");
             }
-            this._TokenName = tokenName;
+            this.TokenName = tokenName;
         }
 
         /// <summary>
         /// Gets or Sets CurrencySymbol
         /// </summary>
         [DataMember(Name = "currency_symbol", IsRequired = true, EmitDefaultValue = true)]
-        public string CurrencySymbol
-        {
-            get{ return _CurrencySymbol;}
-            set
-            {
-                _CurrencySymbol = value;
-                _flagCurrencySymbol = true;
-            }
-        }
-        private string _CurrencySymbol;
-        private bool _flagCurrencySymbol;
+        public string CurrencySymbol { get; set; }
 
-        /// <summary>
-        /// Returns false as CurrencySymbol should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeCurrencySymbol()
-        {
-            return _flagCurrencySymbol;
-        }
         /// <summary>
         /// Gets or Sets TokenName
         /// </summary>
         [DataMember(Name = "token_name", IsRequired = true, EmitDefaultValue = true)]
-        public string TokenName
-        {
-            get{ return _TokenName;}
-            set
-            {
-                _TokenName = value;
-                _flagTokenName = true;
-            }
-        }
-        private string _TokenName;
-        private bool _flagTokenName;
+        public string TokenName { get; set; }
 
-        /// <summary>
-        /// Returns false as TokenName should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTokenName()
-        {
-            return _flagTokenName;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

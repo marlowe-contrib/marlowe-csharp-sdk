@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("links is a required property for GetPayoutResponse and cannot be null");
             }
-            this._Links = links;
+            this.Links = links;
             // to ensure "resource" is required (not null)
             if (resource == null)
             {
                 throw new ArgumentNullException("resource is a required property for GetPayoutResponse and cannot be null");
             }
-            this._Resource = resource;
+            this.Resource = resource;
         }
 
         /// <summary>
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "links", IsRequired = true, EmitDefaultValue = true)]
-        public GetPayoutResponseLinks Links
-        {
-            get{ return _Links;}
-            set
-            {
-                _Links = value;
-                _flagLinks = true;
-            }
-        }
-        private GetPayoutResponseLinks _Links;
-        private bool _flagLinks;
+        public GetPayoutResponseLinks Links { get; set; }
 
-        /// <summary>
-        /// Returns false as Links should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeLinks()
-        {
-            return _flagLinks;
-        }
         /// <summary>
         /// Gets or Sets Resource
         /// </summary>
         [DataMember(Name = "resource", IsRequired = true, EmitDefaultValue = true)]
-        public PayoutState Resource
-        {
-            get{ return _Resource;}
-            set
-            {
-                _Resource = value;
-                _flagResource = true;
-            }
-        }
-        private PayoutState _Resource;
-        private bool _flagResource;
+        public PayoutState Resource { get; set; }
 
-        /// <summary>
-        /// Returns false as Resource should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeResource()
-        {
-            return _flagResource;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

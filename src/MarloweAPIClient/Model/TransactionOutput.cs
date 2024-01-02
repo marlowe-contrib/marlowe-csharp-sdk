@@ -35,10 +35,10 @@ namespace MarloweAPIClient.Model
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionOutput" /> class
-        /// with the <see cref="TransactionOutputOneOf" /> class
+        /// with the <see cref="TxOutputSuccess" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of TransactionOutputOneOf.</param>
-        public TransactionOutput(TransactionOutputOneOf actualInstance)
+        /// <param name="actualInstance">An instance of TxOutputSuccess.</param>
+        public TransactionOutput(TxOutputSuccess actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -47,10 +47,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionOutput" /> class
-        /// with the <see cref="TransactionOutputOneOf1" /> class
+        /// with the <see cref="TxOutputError" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of TransactionOutputOneOf1.</param>
-        public TransactionOutput(TransactionOutputOneOf1 actualInstance)
+        /// <param name="actualInstance">An instance of TxOutputError.</param>
+        public TransactionOutput(TxOutputError actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -71,39 +71,39 @@ namespace MarloweAPIClient.Model
             }
             set
             {
-                if (value.GetType() == typeof(TransactionOutputOneOf))
+                if (value.GetType() == typeof(TxOutputError))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(TransactionOutputOneOf1))
+                else if (value.GetType() == typeof(TxOutputSuccess))
                 {
                     this._actualInstance = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: TransactionOutputOneOf, TransactionOutputOneOf1");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: TxOutputError, TxOutputSuccess");
                 }
             }
         }
 
         /// <summary>
-        /// Get the actual instance of `TransactionOutputOneOf`. If the actual instance is not `TransactionOutputOneOf`,
+        /// Get the actual instance of `TxOutputSuccess`. If the actual instance is not `TxOutputSuccess`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of TransactionOutputOneOf</returns>
-        public TransactionOutputOneOf GetTransactionOutputOneOf()
+        /// <returns>An instance of TxOutputSuccess</returns>
+        public TxOutputSuccess GetTxOutputSuccess()
         {
-            return (TransactionOutputOneOf)this.ActualInstance;
+            return (TxOutputSuccess)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `TransactionOutputOneOf1`. If the actual instance is not `TransactionOutputOneOf1`,
+        /// Get the actual instance of `TxOutputError`. If the actual instance is not `TxOutputError`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of TransactionOutputOneOf1</returns>
-        public TransactionOutputOneOf1 GetTransactionOutputOneOf1()
+        /// <returns>An instance of TxOutputError</returns>
+        public TxOutputError GetTxOutputError()
         {
-            return (TransactionOutputOneOf1)this.ActualInstance;
+            return (TxOutputError)this.ActualInstance;
         }
 
         /// <summary>
@@ -147,41 +147,41 @@ namespace MarloweAPIClient.Model
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(TransactionOutputOneOf).GetProperty("AdditionalProperties") == null)
+                if (typeof(TxOutputError).GetProperty("AdditionalProperties") == null)
                 {
-                    newTransactionOutput = new TransactionOutput(JsonConvert.DeserializeObject<TransactionOutputOneOf>(jsonString, TransactionOutput.SerializerSettings));
+                    newTransactionOutput = new TransactionOutput(JsonConvert.DeserializeObject<TxOutputError>(jsonString, TransactionOutput.SerializerSettings));
                 }
                 else
                 {
-                    newTransactionOutput = new TransactionOutput(JsonConvert.DeserializeObject<TransactionOutputOneOf>(jsonString, TransactionOutput.AdditionalPropertiesSerializerSettings));
+                    newTransactionOutput = new TransactionOutput(JsonConvert.DeserializeObject<TxOutputError>(jsonString, TransactionOutput.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("TransactionOutputOneOf");
+                matchedTypes.Add("TxOutputError");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into TransactionOutputOneOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into TxOutputError: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(TransactionOutputOneOf1).GetProperty("AdditionalProperties") == null)
+                if (typeof(TxOutputSuccess).GetProperty("AdditionalProperties") == null)
                 {
-                    newTransactionOutput = new TransactionOutput(JsonConvert.DeserializeObject<TransactionOutputOneOf1>(jsonString, TransactionOutput.SerializerSettings));
+                    newTransactionOutput = new TransactionOutput(JsonConvert.DeserializeObject<TxOutputSuccess>(jsonString, TransactionOutput.SerializerSettings));
                 }
                 else
                 {
-                    newTransactionOutput = new TransactionOutput(JsonConvert.DeserializeObject<TransactionOutputOneOf1>(jsonString, TransactionOutput.AdditionalPropertiesSerializerSettings));
+                    newTransactionOutput = new TransactionOutput(JsonConvert.DeserializeObject<TxOutputSuccess>(jsonString, TransactionOutput.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("TransactionOutputOneOf1");
+                matchedTypes.Add("TxOutputSuccess");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into TransactionOutputOneOf1: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into TxOutputSuccess: {1}", jsonString, exception.ToString()));
             }
 
             if (match == 0)

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Token** | [**TokenObject**](TokenObject.md) |  | 
 **VarElse** | [**ContractObject**](ContractObject.md) |  | 
 **VarIf** | [**ObservationObject**](ObservationObject.md) |  | 
-**Timeout** | **int** |  | 
+**Timeout** | **long** |  | 
 **TimeoutContinuation** | [**ContractObject**](ContractObject.md) |  | 
 **When** | [**List&lt;CaseObject&gt;**](CaseObject.md) |  | 
 **Be** | [**ValueObject**](ValueObject.md) |  | 

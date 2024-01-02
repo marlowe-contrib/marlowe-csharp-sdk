@@ -35,10 +35,10 @@ namespace MarloweAPIClient.Model
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MarloweStateAccountsInnerInner" /> class
-        /// with the <see cref="List{MarloweStateAccountsInnerInnerOneOfInner}" /> class
+        /// with the <see cref="List{AccountTokenTupleInner}" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of List&lt;MarloweStateAccountsInnerInnerOneOfInner&gt;.</param>
-        public MarloweStateAccountsInnerInner(List<MarloweStateAccountsInnerInnerOneOfInner> actualInstance)
+        /// <param name="actualInstance">An instance of List&lt;AccountTokenTupleInner&gt;.</param>
+        public MarloweStateAccountsInnerInner(List<AccountTokenTupleInner> actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -71,7 +71,7 @@ namespace MarloweAPIClient.Model
             }
             set
             {
-                if (value.GetType() == typeof(List<MarloweStateAccountsInnerInnerOneOfInner>))
+                if (value.GetType() == typeof(List<AccountTokenTupleInner>))
                 {
                     this._actualInstance = value;
                 }
@@ -81,19 +81,19 @@ namespace MarloweAPIClient.Model
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: List<MarloweStateAccountsInnerInnerOneOfInner>, int");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: List<AccountTokenTupleInner>, int");
                 }
             }
         }
 
         /// <summary>
-        /// Get the actual instance of `List&lt;MarloweStateAccountsInnerInnerOneOfInner&gt;`. If the actual instance is not `List&lt;MarloweStateAccountsInnerInnerOneOfInner&gt;`,
+        /// Get the actual instance of `List&lt;AccountTokenTupleInner&gt;`. If the actual instance is not `List&lt;AccountTokenTupleInner&gt;`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of List&lt;MarloweStateAccountsInnerInnerOneOfInner&gt;</returns>
-        public List<MarloweStateAccountsInnerInnerOneOfInner> GetList()
+        /// <returns>An instance of List&lt;AccountTokenTupleInner&gt;</returns>
+        public List<AccountTokenTupleInner> GetList()
         {
-            return (List<MarloweStateAccountsInnerInnerOneOfInner>)this.ActualInstance;
+            return (List<AccountTokenTupleInner>)this.ActualInstance;
         }
 
         /// <summary>
@@ -147,21 +147,21 @@ namespace MarloweAPIClient.Model
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(List<MarloweStateAccountsInnerInnerOneOfInner>).GetProperty("AdditionalProperties") == null)
+                if (typeof(List<AccountTokenTupleInner>).GetProperty("AdditionalProperties") == null)
                 {
-                    newMarloweStateAccountsInnerInner = new MarloweStateAccountsInnerInner(JsonConvert.DeserializeObject<List<MarloweStateAccountsInnerInnerOneOfInner>>(jsonString, MarloweStateAccountsInnerInner.SerializerSettings));
+                    newMarloweStateAccountsInnerInner = new MarloweStateAccountsInnerInner(JsonConvert.DeserializeObject<List<AccountTokenTupleInner>>(jsonString, MarloweStateAccountsInnerInner.SerializerSettings));
                 }
                 else
                 {
-                    newMarloweStateAccountsInnerInner = new MarloweStateAccountsInnerInner(JsonConvert.DeserializeObject<List<MarloweStateAccountsInnerInnerOneOfInner>>(jsonString, MarloweStateAccountsInnerInner.AdditionalPropertiesSerializerSettings));
+                    newMarloweStateAccountsInnerInner = new MarloweStateAccountsInnerInner(JsonConvert.DeserializeObject<List<AccountTokenTupleInner>>(jsonString, MarloweStateAccountsInnerInner.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("List<MarloweStateAccountsInnerInnerOneOfInner>");
+                matchedTypes.Add("List<AccountTokenTupleInner>");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into List<MarloweStateAccountsInnerInnerOneOfInner>: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into List<AccountTokenTupleInner>: {1}", jsonString, exception.ToString()));
             }
 
             try

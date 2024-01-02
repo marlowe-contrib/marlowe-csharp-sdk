@@ -47,33 +47,15 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("payouts is a required property for PostWithdrawalsRequest and cannot be null");
             }
-            this._Payouts = payouts;
+            this.Payouts = payouts;
         }
 
         /// <summary>
         /// Gets or Sets Payouts
         /// </summary>
         [DataMember(Name = "payouts", IsRequired = true, EmitDefaultValue = true)]
-        public List<string> Payouts
-        {
-            get{ return _Payouts;}
-            set
-            {
-                _Payouts = value;
-                _flagPayouts = true;
-            }
-        }
-        private List<string> _Payouts;
-        private bool _flagPayouts;
+        public List<string> Payouts { get; set; }
 
-        /// <summary>
-        /// Returns false as Payouts should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializePayouts()
-        {
-            return _flagPayouts;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

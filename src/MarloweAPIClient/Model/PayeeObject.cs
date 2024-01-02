@@ -35,10 +35,10 @@ namespace MarloweAPIClient.Model
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PayeeObject" /> class
-        /// with the <see cref="PayeeObjectOneOf" /> class
+        /// with the <see cref="PayToAccountObject" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of PayeeObjectOneOf.</param>
-        public PayeeObject(PayeeObjectOneOf actualInstance)
+        /// <param name="actualInstance">An instance of PayToAccountObject.</param>
+        public PayeeObject(PayToAccountObject actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -47,10 +47,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PayeeObject" /> class
-        /// with the <see cref="PayeeObjectOneOf1" /> class
+        /// with the <see cref="PayToPartyObject" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of PayeeObjectOneOf1.</param>
-        public PayeeObject(PayeeObjectOneOf1 actualInstance)
+        /// <param name="actualInstance">An instance of PayToPartyObject.</param>
+        public PayeeObject(PayToPartyObject actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -71,39 +71,39 @@ namespace MarloweAPIClient.Model
             }
             set
             {
-                if (value.GetType() == typeof(PayeeObjectOneOf))
+                if (value.GetType() == typeof(PayToAccountObject))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(PayeeObjectOneOf1))
+                else if (value.GetType() == typeof(PayToPartyObject))
                 {
                     this._actualInstance = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: PayeeObjectOneOf, PayeeObjectOneOf1");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: PayToAccountObject, PayToPartyObject");
                 }
             }
         }
 
         /// <summary>
-        /// Get the actual instance of `PayeeObjectOneOf`. If the actual instance is not `PayeeObjectOneOf`,
+        /// Get the actual instance of `PayToAccountObject`. If the actual instance is not `PayToAccountObject`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of PayeeObjectOneOf</returns>
-        public PayeeObjectOneOf GetPayeeObjectOneOf()
+        /// <returns>An instance of PayToAccountObject</returns>
+        public PayToAccountObject GetPayToAccountObject()
         {
-            return (PayeeObjectOneOf)this.ActualInstance;
+            return (PayToAccountObject)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `PayeeObjectOneOf1`. If the actual instance is not `PayeeObjectOneOf1`,
+        /// Get the actual instance of `PayToPartyObject`. If the actual instance is not `PayToPartyObject`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of PayeeObjectOneOf1</returns>
-        public PayeeObjectOneOf1 GetPayeeObjectOneOf1()
+        /// <returns>An instance of PayToPartyObject</returns>
+        public PayToPartyObject GetPayToPartyObject()
         {
-            return (PayeeObjectOneOf1)this.ActualInstance;
+            return (PayToPartyObject)this.ActualInstance;
         }
 
         /// <summary>
@@ -147,41 +147,41 @@ namespace MarloweAPIClient.Model
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(PayeeObjectOneOf).GetProperty("AdditionalProperties") == null)
+                if (typeof(PayToAccountObject).GetProperty("AdditionalProperties") == null)
                 {
-                    newPayeeObject = new PayeeObject(JsonConvert.DeserializeObject<PayeeObjectOneOf>(jsonString, PayeeObject.SerializerSettings));
+                    newPayeeObject = new PayeeObject(JsonConvert.DeserializeObject<PayToAccountObject>(jsonString, PayeeObject.SerializerSettings));
                 }
                 else
                 {
-                    newPayeeObject = new PayeeObject(JsonConvert.DeserializeObject<PayeeObjectOneOf>(jsonString, PayeeObject.AdditionalPropertiesSerializerSettings));
+                    newPayeeObject = new PayeeObject(JsonConvert.DeserializeObject<PayToAccountObject>(jsonString, PayeeObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("PayeeObjectOneOf");
+                matchedTypes.Add("PayToAccountObject");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into PayeeObjectOneOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into PayToAccountObject: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(PayeeObjectOneOf1).GetProperty("AdditionalProperties") == null)
+                if (typeof(PayToPartyObject).GetProperty("AdditionalProperties") == null)
                 {
-                    newPayeeObject = new PayeeObject(JsonConvert.DeserializeObject<PayeeObjectOneOf1>(jsonString, PayeeObject.SerializerSettings));
+                    newPayeeObject = new PayeeObject(JsonConvert.DeserializeObject<PayToPartyObject>(jsonString, PayeeObject.SerializerSettings));
                 }
                 else
                 {
-                    newPayeeObject = new PayeeObject(JsonConvert.DeserializeObject<PayeeObjectOneOf1>(jsonString, PayeeObject.AdditionalPropertiesSerializerSettings));
+                    newPayeeObject = new PayeeObject(JsonConvert.DeserializeObject<PayToPartyObject>(jsonString, PayeeObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("PayeeObjectOneOf1");
+                matchedTypes.Add("PayToPartyObject");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into PayeeObjectOneOf1: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into PayToPartyObject: {1}", jsonString, exception.ToString()));
             }
 
             if (match == 0)

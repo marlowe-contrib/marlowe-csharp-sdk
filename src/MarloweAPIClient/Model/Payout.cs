@@ -49,95 +49,41 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("assets is a required property for Payout and cannot be null");
             }
-            this._Assets = assets;
+            this.Assets = assets;
             // to ensure "payoutId" is required (not null)
             if (payoutId == null)
             {
                 throw new ArgumentNullException("payoutId is a required property for Payout and cannot be null");
             }
-            this._PayoutId = payoutId;
+            this.PayoutId = payoutId;
             // to ensure "role" is required (not null)
             if (role == null)
             {
                 throw new ArgumentNullException("role is a required property for Payout and cannot be null");
             }
-            this._Role = role;
+            this.Role = role;
         }
 
         /// <summary>
         /// Gets or Sets Assets
         /// </summary>
         [DataMember(Name = "assets", IsRequired = true, EmitDefaultValue = true)]
-        public Assets Assets
-        {
-            get{ return _Assets;}
-            set
-            {
-                _Assets = value;
-                _flagAssets = true;
-            }
-        }
-        private Assets _Assets;
-        private bool _flagAssets;
+        public Assets Assets { get; set; }
 
-        /// <summary>
-        /// Returns false as Assets should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeAssets()
-        {
-            return _flagAssets;
-        }
         /// <summary>
         /// A reference to a transaction output with a transaction ID and index.
         /// </summary>
         /// <value>A reference to a transaction output with a transaction ID and index.</value>
         /// <example>98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1</example>
         [DataMember(Name = "payoutId", IsRequired = true, EmitDefaultValue = true)]
-        public string PayoutId
-        {
-            get{ return _PayoutId;}
-            set
-            {
-                _PayoutId = value;
-                _flagPayoutId = true;
-            }
-        }
-        private string _PayoutId;
-        private bool _flagPayoutId;
+        public string PayoutId { get; set; }
 
-        /// <summary>
-        /// Returns false as PayoutId should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializePayoutId()
-        {
-            return _flagPayoutId;
-        }
         /// <summary>
         /// Gets or Sets Role
         /// </summary>
         [DataMember(Name = "role", IsRequired = true, EmitDefaultValue = true)]
-        public string Role
-        {
-            get{ return _Role;}
-            set
-            {
-                _Role = value;
-                _flagRole = true;
-            }
-        }
-        private string _Role;
-        private bool _flagRole;
+        public string Role { get; set; }
 
-        /// <summary>
-        /// Returns false as Role should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeRole()
-        {
-            return _flagRole;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

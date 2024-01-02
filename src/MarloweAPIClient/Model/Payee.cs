@@ -35,10 +35,10 @@ namespace MarloweAPIClient.Model
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Payee" /> class
-        /// with the <see cref="PayeeOneOf" /> class
+        /// with the <see cref="PayToAccount" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of PayeeOneOf.</param>
-        public Payee(PayeeOneOf actualInstance)
+        /// <param name="actualInstance">An instance of PayToAccount.</param>
+        public Payee(PayToAccount actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -47,10 +47,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Payee" /> class
-        /// with the <see cref="PayeeOneOf1" /> class
+        /// with the <see cref="PayToParty" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of PayeeOneOf1.</param>
-        public Payee(PayeeOneOf1 actualInstance)
+        /// <param name="actualInstance">An instance of PayToParty.</param>
+        public Payee(PayToParty actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -71,39 +71,39 @@ namespace MarloweAPIClient.Model
             }
             set
             {
-                if (value.GetType() == typeof(PayeeOneOf))
+                if (value.GetType() == typeof(PayToAccount))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(PayeeOneOf1))
+                else if (value.GetType() == typeof(PayToParty))
                 {
                     this._actualInstance = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: PayeeOneOf, PayeeOneOf1");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: PayToAccount, PayToParty");
                 }
             }
         }
 
         /// <summary>
-        /// Get the actual instance of `PayeeOneOf`. If the actual instance is not `PayeeOneOf`,
+        /// Get the actual instance of `PayToAccount`. If the actual instance is not `PayToAccount`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of PayeeOneOf</returns>
-        public PayeeOneOf GetPayeeOneOf()
+        /// <returns>An instance of PayToAccount</returns>
+        public PayToAccount GetPayToAccount()
         {
-            return (PayeeOneOf)this.ActualInstance;
+            return (PayToAccount)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `PayeeOneOf1`. If the actual instance is not `PayeeOneOf1`,
+        /// Get the actual instance of `PayToParty`. If the actual instance is not `PayToParty`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of PayeeOneOf1</returns>
-        public PayeeOneOf1 GetPayeeOneOf1()
+        /// <returns>An instance of PayToParty</returns>
+        public PayToParty GetPayToParty()
         {
-            return (PayeeOneOf1)this.ActualInstance;
+            return (PayToParty)this.ActualInstance;
         }
 
         /// <summary>
@@ -147,41 +147,41 @@ namespace MarloweAPIClient.Model
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(PayeeOneOf).GetProperty("AdditionalProperties") == null)
+                if (typeof(PayToAccount).GetProperty("AdditionalProperties") == null)
                 {
-                    newPayee = new Payee(JsonConvert.DeserializeObject<PayeeOneOf>(jsonString, Payee.SerializerSettings));
+                    newPayee = new Payee(JsonConvert.DeserializeObject<PayToAccount>(jsonString, Payee.SerializerSettings));
                 }
                 else
                 {
-                    newPayee = new Payee(JsonConvert.DeserializeObject<PayeeOneOf>(jsonString, Payee.AdditionalPropertiesSerializerSettings));
+                    newPayee = new Payee(JsonConvert.DeserializeObject<PayToAccount>(jsonString, Payee.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("PayeeOneOf");
+                matchedTypes.Add("PayToAccount");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into PayeeOneOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into PayToAccount: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(PayeeOneOf1).GetProperty("AdditionalProperties") == null)
+                if (typeof(PayToParty).GetProperty("AdditionalProperties") == null)
                 {
-                    newPayee = new Payee(JsonConvert.DeserializeObject<PayeeOneOf1>(jsonString, Payee.SerializerSettings));
+                    newPayee = new Payee(JsonConvert.DeserializeObject<PayToParty>(jsonString, Payee.SerializerSettings));
                 }
                 else
                 {
-                    newPayee = new Payee(JsonConvert.DeserializeObject<PayeeOneOf1>(jsonString, Payee.AdditionalPropertiesSerializerSettings));
+                    newPayee = new Payee(JsonConvert.DeserializeObject<PayToParty>(jsonString, Payee.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("PayeeOneOf1");
+                matchedTypes.Add("PayToParty");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into PayeeOneOf1: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into PayToParty: {1}", jsonString, exception.ToString()));
             }
 
             if (match == 0)

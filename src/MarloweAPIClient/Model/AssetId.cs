@@ -48,64 +48,28 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("assetName is a required property for AssetId and cannot be null");
             }
-            this._AssetName = assetName;
+            this.AssetName = assetName;
             // to ensure "policyId" is required (not null)
             if (policyId == null)
             {
                 throw new ArgumentNullException("policyId is a required property for AssetId and cannot be null");
             }
-            this._PolicyId = policyId;
+            this.PolicyId = policyId;
         }
 
         /// <summary>
         /// Gets or Sets AssetName
         /// </summary>
         [DataMember(Name = "assetName", IsRequired = true, EmitDefaultValue = true)]
-        public string AssetName
-        {
-            get{ return _AssetName;}
-            set
-            {
-                _AssetName = value;
-                _flagAssetName = true;
-            }
-        }
-        private string _AssetName;
-        private bool _flagAssetName;
+        public string AssetName { get; set; }
 
-        /// <summary>
-        /// Returns false as AssetName should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeAssetName()
-        {
-            return _flagAssetName;
-        }
         /// <summary>
         /// The hex-encoded minting policy ID for a native Cardano token
         /// </summary>
         /// <value>The hex-encoded minting policy ID for a native Cardano token</value>
         [DataMember(Name = "policyId", IsRequired = true, EmitDefaultValue = true)]
-        public string PolicyId
-        {
-            get{ return _PolicyId;}
-            set
-            {
-                _PolicyId = value;
-                _flagPolicyId = true;
-            }
-        }
-        private string _PolicyId;
-        private bool _flagPolicyId;
+        public string PolicyId { get; set; }
 
-        /// <summary>
-        /// Returns false as PolicyId should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializePolicyId()
-        {
-            return _flagPolicyId;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

@@ -35,28 +35,8 @@ namespace MarloweAPIClient.Model
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-
         [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
-        public PayoutStatus Status
-        {
-            get{ return _Status;}
-            set
-            {
-                _Status = value;
-                _flagStatus = true;
-            }
-        }
-        private PayoutStatus _Status;
-        private bool _flagStatus;
-
-        /// <summary>
-        /// Returns false as Status should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeStatus()
-        {
-            return _flagStatus;
-        }
+        public PayoutStatus Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PayoutHeader" /> class.
         /// </summary>
@@ -77,25 +57,21 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("contractId is a required property for PayoutHeader and cannot be null");
             }
-            this._ContractId = contractId;
+            this.ContractId = contractId;
             // to ensure "payoutId" is required (not null)
             if (payoutId == null)
             {
                 throw new ArgumentNullException("payoutId is a required property for PayoutHeader and cannot be null");
             }
-            this._PayoutId = payoutId;
+            this.PayoutId = payoutId;
             // to ensure "role" is required (not null)
             if (role == null)
             {
                 throw new ArgumentNullException("role is a required property for PayoutHeader and cannot be null");
             }
-            this._Role = role;
-            this._Status = status;
-            this._WithdrawalId = withdrawalId;
-            if (this.WithdrawalId != null)
-            {
-                this._flagWithdrawalId = true;
-            }
+            this.Role = role;
+            this.Status = status;
+            this.WithdrawalId = withdrawalId;
         }
 
         /// <summary>
@@ -104,101 +80,29 @@ namespace MarloweAPIClient.Model
         /// <value>A reference to a transaction output with a transaction ID and index.</value>
         /// <example>98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1</example>
         [DataMember(Name = "contractId", IsRequired = true, EmitDefaultValue = true)]
-        public string ContractId
-        {
-            get{ return _ContractId;}
-            set
-            {
-                _ContractId = value;
-                _flagContractId = true;
-            }
-        }
-        private string _ContractId;
-        private bool _flagContractId;
+        public string ContractId { get; set; }
 
-        /// <summary>
-        /// Returns false as ContractId should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeContractId()
-        {
-            return _flagContractId;
-        }
         /// <summary>
         /// A reference to a transaction output with a transaction ID and index.
         /// </summary>
         /// <value>A reference to a transaction output with a transaction ID and index.</value>
         /// <example>98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1</example>
         [DataMember(Name = "payoutId", IsRequired = true, EmitDefaultValue = true)]
-        public string PayoutId
-        {
-            get{ return _PayoutId;}
-            set
-            {
-                _PayoutId = value;
-                _flagPayoutId = true;
-            }
-        }
-        private string _PayoutId;
-        private bool _flagPayoutId;
+        public string PayoutId { get; set; }
 
-        /// <summary>
-        /// Returns false as PayoutId should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializePayoutId()
-        {
-            return _flagPayoutId;
-        }
         /// <summary>
         /// Gets or Sets Role
         /// </summary>
         [DataMember(Name = "role", IsRequired = true, EmitDefaultValue = true)]
-        public AssetId Role
-        {
-            get{ return _Role;}
-            set
-            {
-                _Role = value;
-                _flagRole = true;
-            }
-        }
-        private AssetId _Role;
-        private bool _flagRole;
+        public AssetId Role { get; set; }
 
-        /// <summary>
-        /// Returns false as Role should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeRole()
-        {
-            return _flagRole;
-        }
         /// <summary>
         /// The hex-encoded identifier of a Cardano transaction
         /// </summary>
         /// <value>The hex-encoded identifier of a Cardano transaction</value>
         [DataMember(Name = "withdrawalId", EmitDefaultValue = false)]
-        public string WithdrawalId
-        {
-            get{ return _WithdrawalId;}
-            set
-            {
-                _WithdrawalId = value;
-                _flagWithdrawalId = true;
-            }
-        }
-        private string _WithdrawalId;
-        private bool _flagWithdrawalId;
+        public string WithdrawalId { get; set; }
 
-        /// <summary>
-        /// Returns false as WithdrawalId should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeWithdrawalId()
-        {
-            return _flagWithdrawalId;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

@@ -49,83 +49,29 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("blockHeaderHash is a required property for BlockHeader and cannot be null");
             }
-            this._BlockHeaderHash = blockHeaderHash;
-            this._BlockNo = blockNo;
-            this._SlotNo = slotNo;
+            this.BlockHeaderHash = blockHeaderHash;
+            this.BlockNo = blockNo;
+            this.SlotNo = slotNo;
         }
 
         /// <summary>
         /// Gets or Sets BlockHeaderHash
         /// </summary>
         [DataMember(Name = "blockHeaderHash", IsRequired = true, EmitDefaultValue = true)]
-        public string BlockHeaderHash
-        {
-            get{ return _BlockHeaderHash;}
-            set
-            {
-                _BlockHeaderHash = value;
-                _flagBlockHeaderHash = true;
-            }
-        }
-        private string _BlockHeaderHash;
-        private bool _flagBlockHeaderHash;
+        public string BlockHeaderHash { get; set; }
 
-        /// <summary>
-        /// Returns false as BlockHeaderHash should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeBlockHeaderHash()
-        {
-            return _flagBlockHeaderHash;
-        }
         /// <summary>
         /// Gets or Sets BlockNo
         /// </summary>
         [DataMember(Name = "blockNo", IsRequired = true, EmitDefaultValue = true)]
-        public long BlockNo
-        {
-            get{ return _BlockNo;}
-            set
-            {
-                _BlockNo = value;
-                _flagBlockNo = true;
-            }
-        }
-        private long _BlockNo;
-        private bool _flagBlockNo;
+        public long BlockNo { get; set; }
 
-        /// <summary>
-        /// Returns false as BlockNo should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeBlockNo()
-        {
-            return _flagBlockNo;
-        }
         /// <summary>
         /// Gets or Sets SlotNo
         /// </summary>
         [DataMember(Name = "slotNo", IsRequired = true, EmitDefaultValue = true)]
-        public long SlotNo
-        {
-            get{ return _SlotNo;}
-            set
-            {
-                _SlotNo = value;
-                _flagSlotNo = true;
-            }
-        }
-        private long _SlotNo;
-        private bool _flagSlotNo;
+        public long SlotNo { get; set; }
 
-        /// <summary>
-        /// Returns false as SlotNo should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeSlotNo()
-        {
-            return _flagSlotNo;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -214,9 +160,9 @@ namespace MarloweAPIClient.Model
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // BlockNo (long) maximum
-            if (this.BlockNo > (long)9223372036854775807)
+            if (this.BlockNo > (long)384)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for BlockNo, must be a value less than or equal to 9223372036854775807.", new [] { "BlockNo" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for BlockNo, must be a value less than or equal to 384.", new [] { "BlockNo" });
             }
 
             // BlockNo (long) minimum
@@ -226,9 +172,9 @@ namespace MarloweAPIClient.Model
             }
 
             // SlotNo (long) maximum
-            if (this.SlotNo > (long)9223372036854775807)
+            if (this.SlotNo > (long)384)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SlotNo, must be a value less than or equal to 9223372036854775807.", new [] { "SlotNo" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SlotNo, must be a value less than or equal to 384.", new [] { "SlotNo" });
             }
 
             // SlotNo (long) minimum

@@ -49,19 +49,19 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("contractId is a required property for ApplyInputsTxEnvelope and cannot be null");
             }
-            this._ContractId = contractId;
+            this.ContractId = contractId;
             // to ensure "transactionId" is required (not null)
             if (transactionId == null)
             {
                 throw new ArgumentNullException("transactionId is a required property for ApplyInputsTxEnvelope and cannot be null");
             }
-            this._TransactionId = transactionId;
+            this.TransactionId = transactionId;
             // to ensure "tx" is required (not null)
             if (tx == null)
             {
                 throw new ArgumentNullException("tx is a required property for ApplyInputsTxEnvelope and cannot be null");
             }
-            this._Tx = tx;
+            this.Tx = tx;
         }
 
         /// <summary>
@@ -70,75 +70,21 @@ namespace MarloweAPIClient.Model
         /// <value>A reference to a transaction output with a transaction ID and index.</value>
         /// <example>98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1</example>
         [DataMember(Name = "contractId", IsRequired = true, EmitDefaultValue = true)]
-        public string ContractId
-        {
-            get{ return _ContractId;}
-            set
-            {
-                _ContractId = value;
-                _flagContractId = true;
-            }
-        }
-        private string _ContractId;
-        private bool _flagContractId;
+        public string ContractId { get; set; }
 
-        /// <summary>
-        /// Returns false as ContractId should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeContractId()
-        {
-            return _flagContractId;
-        }
         /// <summary>
         /// The hex-encoded identifier of a Cardano transaction
         /// </summary>
         /// <value>The hex-encoded identifier of a Cardano transaction</value>
         [DataMember(Name = "transactionId", IsRequired = true, EmitDefaultValue = true)]
-        public string TransactionId
-        {
-            get{ return _TransactionId;}
-            set
-            {
-                _TransactionId = value;
-                _flagTransactionId = true;
-            }
-        }
-        private string _TransactionId;
-        private bool _flagTransactionId;
+        public string TransactionId { get; set; }
 
-        /// <summary>
-        /// Returns false as TransactionId should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTransactionId()
-        {
-            return _flagTransactionId;
-        }
         /// <summary>
         /// Gets or Sets Tx
         /// </summary>
         [DataMember(Name = "tx", IsRequired = true, EmitDefaultValue = true)]
-        public TextEnvelope Tx
-        {
-            get{ return _Tx;}
-            set
-            {
-                _Tx = value;
-                _flagTx = true;
-            }
-        }
-        private TextEnvelope _Tx;
-        private bool _flagTx;
+        public TextEnvelope Tx { get; set; }
 
-        /// <summary>
-        /// Returns false as Tx should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTx()
-        {
-            return _flagTx;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

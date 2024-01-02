@@ -35,10 +35,10 @@ namespace MarloweAPIClient.Model
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Case" /> class
-        /// with the <see cref="CaseOneOf" /> class
+        /// with the <see cref="CaseThen" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of CaseOneOf.</param>
-        public Case(CaseOneOf actualInstance)
+        /// <param name="actualInstance">An instance of CaseThen.</param>
+        public Case(CaseThen actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -47,10 +47,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Case" /> class
-        /// with the <see cref="CaseOneOf1" /> class
+        /// with the <see cref="CaseMerkleizedThen" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of CaseOneOf1.</param>
-        public Case(CaseOneOf1 actualInstance)
+        /// <param name="actualInstance">An instance of CaseMerkleizedThen.</param>
+        public Case(CaseMerkleizedThen actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -71,39 +71,39 @@ namespace MarloweAPIClient.Model
             }
             set
             {
-                if (value.GetType() == typeof(CaseOneOf))
+                if (value.GetType() == typeof(CaseMerkleizedThen))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(CaseOneOf1))
+                else if (value.GetType() == typeof(CaseThen))
                 {
                     this._actualInstance = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: CaseOneOf, CaseOneOf1");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: CaseMerkleizedThen, CaseThen");
                 }
             }
         }
 
         /// <summary>
-        /// Get the actual instance of `CaseOneOf`. If the actual instance is not `CaseOneOf`,
+        /// Get the actual instance of `CaseThen`. If the actual instance is not `CaseThen`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of CaseOneOf</returns>
-        public CaseOneOf GetCaseOneOf()
+        /// <returns>An instance of CaseThen</returns>
+        public CaseThen GetCaseThen()
         {
-            return (CaseOneOf)this.ActualInstance;
+            return (CaseThen)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `CaseOneOf1`. If the actual instance is not `CaseOneOf1`,
+        /// Get the actual instance of `CaseMerkleizedThen`. If the actual instance is not `CaseMerkleizedThen`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of CaseOneOf1</returns>
-        public CaseOneOf1 GetCaseOneOf1()
+        /// <returns>An instance of CaseMerkleizedThen</returns>
+        public CaseMerkleizedThen GetCaseMerkleizedThen()
         {
-            return (CaseOneOf1)this.ActualInstance;
+            return (CaseMerkleizedThen)this.ActualInstance;
         }
 
         /// <summary>
@@ -147,41 +147,41 @@ namespace MarloweAPIClient.Model
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(CaseOneOf).GetProperty("AdditionalProperties") == null)
+                if (typeof(CaseMerkleizedThen).GetProperty("AdditionalProperties") == null)
                 {
-                    newCase = new Case(JsonConvert.DeserializeObject<CaseOneOf>(jsonString, Case.SerializerSettings));
+                    newCase = new Case(JsonConvert.DeserializeObject<CaseMerkleizedThen>(jsonString, Case.SerializerSettings));
                 }
                 else
                 {
-                    newCase = new Case(JsonConvert.DeserializeObject<CaseOneOf>(jsonString, Case.AdditionalPropertiesSerializerSettings));
+                    newCase = new Case(JsonConvert.DeserializeObject<CaseMerkleizedThen>(jsonString, Case.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("CaseOneOf");
+                matchedTypes.Add("CaseMerkleizedThen");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into CaseOneOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into CaseMerkleizedThen: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(CaseOneOf1).GetProperty("AdditionalProperties") == null)
+                if (typeof(CaseThen).GetProperty("AdditionalProperties") == null)
                 {
-                    newCase = new Case(JsonConvert.DeserializeObject<CaseOneOf1>(jsonString, Case.SerializerSettings));
+                    newCase = new Case(JsonConvert.DeserializeObject<CaseThen>(jsonString, Case.SerializerSettings));
                 }
                 else
                 {
-                    newCase = new Case(JsonConvert.DeserializeObject<CaseOneOf1>(jsonString, Case.AdditionalPropertiesSerializerSettings));
+                    newCase = new Case(JsonConvert.DeserializeObject<CaseThen>(jsonString, Case.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("CaseOneOf1");
+                matchedTypes.Add("CaseThen");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into CaseOneOf1: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into CaseThen: {1}", jsonString, exception.ToString()));
             }
 
             if (match == 0)

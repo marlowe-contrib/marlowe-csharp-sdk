@@ -35,10 +35,10 @@ namespace MarloweAPIClient.Model
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Action" /> class
-        /// with the <see cref="ActionOneOf" /> class
+        /// with the <see cref="DepositAction" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ActionOneOf.</param>
-        public Action(ActionOneOf actualInstance)
+        /// <param name="actualInstance">An instance of DepositAction.</param>
+        public Action(DepositAction actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -47,10 +47,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Action" /> class
-        /// with the <see cref="ActionOneOf1" /> class
+        /// with the <see cref="ChoiceAction" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ActionOneOf1.</param>
-        public Action(ActionOneOf1 actualInstance)
+        /// <param name="actualInstance">An instance of ChoiceAction.</param>
+        public Action(ChoiceAction actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -59,10 +59,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Action" /> class
-        /// with the <see cref="ActionOneOf2" /> class
+        /// with the <see cref="NotifyAction" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ActionOneOf2.</param>
-        public Action(ActionOneOf2 actualInstance)
+        /// <param name="actualInstance">An instance of NotifyAction.</param>
+        public Action(NotifyAction actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -83,53 +83,53 @@ namespace MarloweAPIClient.Model
             }
             set
             {
-                if (value.GetType() == typeof(ActionOneOf))
+                if (value.GetType() == typeof(ChoiceAction))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ActionOneOf1))
+                else if (value.GetType() == typeof(DepositAction))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ActionOneOf2))
+                else if (value.GetType() == typeof(NotifyAction))
                 {
                     this._actualInstance = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: ActionOneOf, ActionOneOf1, ActionOneOf2");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: ChoiceAction, DepositAction, NotifyAction");
                 }
             }
         }
 
         /// <summary>
-        /// Get the actual instance of `ActionOneOf`. If the actual instance is not `ActionOneOf`,
+        /// Get the actual instance of `DepositAction`. If the actual instance is not `DepositAction`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ActionOneOf</returns>
-        public ActionOneOf GetActionOneOf()
+        /// <returns>An instance of DepositAction</returns>
+        public DepositAction GetDepositAction()
         {
-            return (ActionOneOf)this.ActualInstance;
+            return (DepositAction)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ActionOneOf1`. If the actual instance is not `ActionOneOf1`,
+        /// Get the actual instance of `ChoiceAction`. If the actual instance is not `ChoiceAction`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ActionOneOf1</returns>
-        public ActionOneOf1 GetActionOneOf1()
+        /// <returns>An instance of ChoiceAction</returns>
+        public ChoiceAction GetChoiceAction()
         {
-            return (ActionOneOf1)this.ActualInstance;
+            return (ChoiceAction)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ActionOneOf2`. If the actual instance is not `ActionOneOf2`,
+        /// Get the actual instance of `NotifyAction`. If the actual instance is not `NotifyAction`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ActionOneOf2</returns>
-        public ActionOneOf2 GetActionOneOf2()
+        /// <returns>An instance of NotifyAction</returns>
+        public NotifyAction GetNotifyAction()
         {
-            return (ActionOneOf2)this.ActualInstance;
+            return (NotifyAction)this.ActualInstance;
         }
 
         /// <summary>
@@ -173,61 +173,61 @@ namespace MarloweAPIClient.Model
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ActionOneOf).GetProperty("AdditionalProperties") == null)
+                if (typeof(ChoiceAction).GetProperty("AdditionalProperties") == null)
                 {
-                    newAction = new Action(JsonConvert.DeserializeObject<ActionOneOf>(jsonString, Action.SerializerSettings));
+                    newAction = new Action(JsonConvert.DeserializeObject<ChoiceAction>(jsonString, Action.SerializerSettings));
                 }
                 else
                 {
-                    newAction = new Action(JsonConvert.DeserializeObject<ActionOneOf>(jsonString, Action.AdditionalPropertiesSerializerSettings));
+                    newAction = new Action(JsonConvert.DeserializeObject<ChoiceAction>(jsonString, Action.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ActionOneOf");
+                matchedTypes.Add("ChoiceAction");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ActionOneOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ChoiceAction: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ActionOneOf1).GetProperty("AdditionalProperties") == null)
+                if (typeof(DepositAction).GetProperty("AdditionalProperties") == null)
                 {
-                    newAction = new Action(JsonConvert.DeserializeObject<ActionOneOf1>(jsonString, Action.SerializerSettings));
+                    newAction = new Action(JsonConvert.DeserializeObject<DepositAction>(jsonString, Action.SerializerSettings));
                 }
                 else
                 {
-                    newAction = new Action(JsonConvert.DeserializeObject<ActionOneOf1>(jsonString, Action.AdditionalPropertiesSerializerSettings));
+                    newAction = new Action(JsonConvert.DeserializeObject<DepositAction>(jsonString, Action.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ActionOneOf1");
+                matchedTypes.Add("DepositAction");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ActionOneOf1: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into DepositAction: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ActionOneOf2).GetProperty("AdditionalProperties") == null)
+                if (typeof(NotifyAction).GetProperty("AdditionalProperties") == null)
                 {
-                    newAction = new Action(JsonConvert.DeserializeObject<ActionOneOf2>(jsonString, Action.SerializerSettings));
+                    newAction = new Action(JsonConvert.DeserializeObject<NotifyAction>(jsonString, Action.SerializerSettings));
                 }
                 else
                 {
-                    newAction = new Action(JsonConvert.DeserializeObject<ActionOneOf2>(jsonString, Action.AdditionalPropertiesSerializerSettings));
+                    newAction = new Action(JsonConvert.DeserializeObject<NotifyAction>(jsonString, Action.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ActionOneOf2");
+                matchedTypes.Add("NotifyAction");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ActionOneOf2: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into NotifyAction: {1}", jsonString, exception.ToString()));
             }
 
             if (match == 0)

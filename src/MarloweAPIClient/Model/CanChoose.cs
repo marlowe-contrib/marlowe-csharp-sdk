@@ -50,115 +50,43 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("canChooseBetween is a required property for CanChoose and cannot be null");
             }
-            this._CanChooseBetween = canChooseBetween;
-            this._CaseIndex = caseIndex;
+            this.CanChooseBetween = canChooseBetween;
+            this.CaseIndex = caseIndex;
             // to ensure "forChoice" is required (not null)
             if (forChoice == null)
             {
                 throw new ArgumentNullException("forChoice is a required property for CanChoose and cannot be null");
             }
-            this._ForChoice = forChoice;
-            this._IsMerkleizedContinuation = isMerkleizedContinuation;
+            this.ForChoice = forChoice;
+            this.IsMerkleizedContinuation = isMerkleizedContinuation;
         }
 
         /// <summary>
         /// Gets or Sets CanChooseBetween
         /// </summary>
         [DataMember(Name = "can_choose_between", IsRequired = true, EmitDefaultValue = true)]
-        public List<Bound> CanChooseBetween
-        {
-            get{ return _CanChooseBetween;}
-            set
-            {
-                _CanChooseBetween = value;
-                _flagCanChooseBetween = true;
-            }
-        }
-        private List<Bound> _CanChooseBetween;
-        private bool _flagCanChooseBetween;
+        public List<Bound> CanChooseBetween { get; set; }
 
-        /// <summary>
-        /// Returns false as CanChooseBetween should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeCanChooseBetween()
-        {
-            return _flagCanChooseBetween;
-        }
         /// <summary>
         /// Index of a \&quot;Case Action\&quot; in a \&quot;When\&quot;
         /// </summary>
         /// <value>Index of a \&quot;Case Action\&quot; in a \&quot;When\&quot;</value>
         [DataMember(Name = "case_index", IsRequired = true, EmitDefaultValue = true)]
-        public int CaseIndex
-        {
-            get{ return _CaseIndex;}
-            set
-            {
-                _CaseIndex = value;
-                _flagCaseIndex = true;
-            }
-        }
-        private int _CaseIndex;
-        private bool _flagCaseIndex;
+        public int CaseIndex { get; set; }
 
-        /// <summary>
-        /// Returns false as CaseIndex should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeCaseIndex()
-        {
-            return _flagCaseIndex;
-        }
         /// <summary>
         /// Gets or Sets ForChoice
         /// </summary>
         [DataMember(Name = "for_choice", IsRequired = true, EmitDefaultValue = true)]
-        public ChoiceId ForChoice
-        {
-            get{ return _ForChoice;}
-            set
-            {
-                _ForChoice = value;
-                _flagForChoice = true;
-            }
-        }
-        private ChoiceId _ForChoice;
-        private bool _flagForChoice;
+        public ChoiceId ForChoice { get; set; }
 
-        /// <summary>
-        /// Returns false as ForChoice should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeForChoice()
-        {
-            return _flagForChoice;
-        }
         /// <summary>
         /// Indicates if a given contract continuation is merkleized
         /// </summary>
         /// <value>Indicates if a given contract continuation is merkleized</value>
         [DataMember(Name = "is_merkleized_continuation", IsRequired = true, EmitDefaultValue = true)]
-        public bool IsMerkleizedContinuation
-        {
-            get{ return _IsMerkleizedContinuation;}
-            set
-            {
-                _IsMerkleizedContinuation = value;
-                _flagIsMerkleizedContinuation = true;
-            }
-        }
-        private bool _IsMerkleizedContinuation;
-        private bool _flagIsMerkleizedContinuation;
+        public bool IsMerkleizedContinuation { get; set; }
 
-        /// <summary>
-        /// Returns false as IsMerkleizedContinuation should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeIsMerkleizedContinuation()
-        {
-            return _flagIsMerkleizedContinuation;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

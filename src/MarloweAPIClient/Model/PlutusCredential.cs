@@ -35,10 +35,10 @@ namespace MarloweAPIClient.Model
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PlutusCredential" /> class
-        /// with the <see cref="PlutusCredentialOneOf" /> class
+        /// with the <see cref="PubKeyCredential" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of PlutusCredentialOneOf.</param>
-        public PlutusCredential(PlutusCredentialOneOf actualInstance)
+        /// <param name="actualInstance">An instance of PubKeyCredential.</param>
+        public PlutusCredential(PubKeyCredential actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -47,10 +47,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PlutusCredential" /> class
-        /// with the <see cref="PlutusCredentialOneOf1" /> class
+        /// with the <see cref="ScriptCredential" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of PlutusCredentialOneOf1.</param>
-        public PlutusCredential(PlutusCredentialOneOf1 actualInstance)
+        /// <param name="actualInstance">An instance of ScriptCredential.</param>
+        public PlutusCredential(ScriptCredential actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -71,39 +71,39 @@ namespace MarloweAPIClient.Model
             }
             set
             {
-                if (value.GetType() == typeof(PlutusCredentialOneOf))
+                if (value.GetType() == typeof(PubKeyCredential))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(PlutusCredentialOneOf1))
+                else if (value.GetType() == typeof(ScriptCredential))
                 {
                     this._actualInstance = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: PlutusCredentialOneOf, PlutusCredentialOneOf1");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: PubKeyCredential, ScriptCredential");
                 }
             }
         }
 
         /// <summary>
-        /// Get the actual instance of `PlutusCredentialOneOf`. If the actual instance is not `PlutusCredentialOneOf`,
+        /// Get the actual instance of `PubKeyCredential`. If the actual instance is not `PubKeyCredential`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of PlutusCredentialOneOf</returns>
-        public PlutusCredentialOneOf GetPlutusCredentialOneOf()
+        /// <returns>An instance of PubKeyCredential</returns>
+        public PubKeyCredential GetPubKeyCredential()
         {
-            return (PlutusCredentialOneOf)this.ActualInstance;
+            return (PubKeyCredential)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `PlutusCredentialOneOf1`. If the actual instance is not `PlutusCredentialOneOf1`,
+        /// Get the actual instance of `ScriptCredential`. If the actual instance is not `ScriptCredential`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of PlutusCredentialOneOf1</returns>
-        public PlutusCredentialOneOf1 GetPlutusCredentialOneOf1()
+        /// <returns>An instance of ScriptCredential</returns>
+        public ScriptCredential GetScriptCredential()
         {
-            return (PlutusCredentialOneOf1)this.ActualInstance;
+            return (ScriptCredential)this.ActualInstance;
         }
 
         /// <summary>
@@ -147,41 +147,41 @@ namespace MarloweAPIClient.Model
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(PlutusCredentialOneOf).GetProperty("AdditionalProperties") == null)
+                if (typeof(PubKeyCredential).GetProperty("AdditionalProperties") == null)
                 {
-                    newPlutusCredential = new PlutusCredential(JsonConvert.DeserializeObject<PlutusCredentialOneOf>(jsonString, PlutusCredential.SerializerSettings));
+                    newPlutusCredential = new PlutusCredential(JsonConvert.DeserializeObject<PubKeyCredential>(jsonString, PlutusCredential.SerializerSettings));
                 }
                 else
                 {
-                    newPlutusCredential = new PlutusCredential(JsonConvert.DeserializeObject<PlutusCredentialOneOf>(jsonString, PlutusCredential.AdditionalPropertiesSerializerSettings));
+                    newPlutusCredential = new PlutusCredential(JsonConvert.DeserializeObject<PubKeyCredential>(jsonString, PlutusCredential.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("PlutusCredentialOneOf");
+                matchedTypes.Add("PubKeyCredential");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into PlutusCredentialOneOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into PubKeyCredential: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(PlutusCredentialOneOf1).GetProperty("AdditionalProperties") == null)
+                if (typeof(ScriptCredential).GetProperty("AdditionalProperties") == null)
                 {
-                    newPlutusCredential = new PlutusCredential(JsonConvert.DeserializeObject<PlutusCredentialOneOf1>(jsonString, PlutusCredential.SerializerSettings));
+                    newPlutusCredential = new PlutusCredential(JsonConvert.DeserializeObject<ScriptCredential>(jsonString, PlutusCredential.SerializerSettings));
                 }
                 else
                 {
-                    newPlutusCredential = new PlutusCredential(JsonConvert.DeserializeObject<PlutusCredentialOneOf1>(jsonString, PlutusCredential.AdditionalPropertiesSerializerSettings));
+                    newPlutusCredential = new PlutusCredential(JsonConvert.DeserializeObject<ScriptCredential>(jsonString, PlutusCredential.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("PlutusCredentialOneOf1");
+                matchedTypes.Add("ScriptCredential");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into PlutusCredentialOneOf1: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ScriptCredential: {1}", jsonString, exception.ToString()));
             }
 
             if (match == 0)

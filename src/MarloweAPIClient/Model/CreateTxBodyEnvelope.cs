@@ -49,18 +49,14 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("contractId is a required property for CreateTxBodyEnvelope and cannot be null");
             }
-            this._ContractId = contractId;
+            this.ContractId = contractId;
             // to ensure "txBody" is required (not null)
             if (txBody == null)
             {
                 throw new ArgumentNullException("txBody is a required property for CreateTxBodyEnvelope and cannot be null");
             }
-            this._TxBody = txBody;
-            this._SafetyErrors = safetyErrors;
-            if (this.SafetyErrors != null)
-            {
-                this._flagSafetyErrors = true;
-            }
+            this.TxBody = txBody;
+            this.SafetyErrors = safetyErrors;
         }
 
         /// <summary>
@@ -69,74 +65,20 @@ namespace MarloweAPIClient.Model
         /// <value>A reference to a transaction output with a transaction ID and index.</value>
         /// <example>98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1</example>
         [DataMember(Name = "contractId", IsRequired = true, EmitDefaultValue = true)]
-        public string ContractId
-        {
-            get{ return _ContractId;}
-            set
-            {
-                _ContractId = value;
-                _flagContractId = true;
-            }
-        }
-        private string _ContractId;
-        private bool _flagContractId;
+        public string ContractId { get; set; }
 
-        /// <summary>
-        /// Returns false as ContractId should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeContractId()
-        {
-            return _flagContractId;
-        }
         /// <summary>
         /// Gets or Sets SafetyErrors
         /// </summary>
         [DataMember(Name = "safetyErrors", EmitDefaultValue = false)]
-        public List<SafetyError> SafetyErrors
-        {
-            get{ return _SafetyErrors;}
-            set
-            {
-                _SafetyErrors = value;
-                _flagSafetyErrors = true;
-            }
-        }
-        private List<SafetyError> _SafetyErrors;
-        private bool _flagSafetyErrors;
+        public List<SafetyError> SafetyErrors { get; set; }
 
-        /// <summary>
-        /// Returns false as SafetyErrors should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeSafetyErrors()
-        {
-            return _flagSafetyErrors;
-        }
         /// <summary>
         /// Gets or Sets TxBody
         /// </summary>
         [DataMember(Name = "txBody", IsRequired = true, EmitDefaultValue = true)]
-        public TextEnvelope TxBody
-        {
-            get{ return _TxBody;}
-            set
-            {
-                _TxBody = value;
-                _flagTxBody = true;
-            }
-        }
-        private TextEnvelope _TxBody;
-        private bool _flagTxBody;
+        public TextEnvelope TxBody { get; set; }
 
-        /// <summary>
-        /// Returns false as TxBody should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTxBody()
-        {
-            return _flagTxBody;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

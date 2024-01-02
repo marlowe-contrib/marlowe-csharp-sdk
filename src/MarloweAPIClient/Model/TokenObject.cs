@@ -47,10 +47,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenObject" /> class
-        /// with the <see cref="ActionObjectOneOf" /> class
+        /// with the <see cref="LabelRef" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ActionObjectOneOf.</param>
-        public TokenObject(ActionObjectOneOf actualInstance)
+        /// <param name="actualInstance">An instance of LabelRef.</param>
+        public TokenObject(LabelRef actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -71,7 +71,7 @@ namespace MarloweAPIClient.Model
             }
             set
             {
-                if (value.GetType() == typeof(ActionObjectOneOf))
+                if (value.GetType() == typeof(LabelRef))
                 {
                     this._actualInstance = value;
                 }
@@ -81,7 +81,7 @@ namespace MarloweAPIClient.Model
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: ActionObjectOneOf, Token");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: LabelRef, Token");
                 }
             }
         }
@@ -97,13 +97,13 @@ namespace MarloweAPIClient.Model
         }
 
         /// <summary>
-        /// Get the actual instance of `ActionObjectOneOf`. If the actual instance is not `ActionObjectOneOf`,
+        /// Get the actual instance of `LabelRef`. If the actual instance is not `LabelRef`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ActionObjectOneOf</returns>
-        public ActionObjectOneOf GetActionObjectOneOf()
+        /// <returns>An instance of LabelRef</returns>
+        public LabelRef GetLabelRef()
         {
-            return (ActionObjectOneOf)this.ActualInstance;
+            return (LabelRef)this.ActualInstance;
         }
 
         /// <summary>
@@ -147,21 +147,21 @@ namespace MarloweAPIClient.Model
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ActionObjectOneOf).GetProperty("AdditionalProperties") == null)
+                if (typeof(LabelRef).GetProperty("AdditionalProperties") == null)
                 {
-                    newTokenObject = new TokenObject(JsonConvert.DeserializeObject<ActionObjectOneOf>(jsonString, TokenObject.SerializerSettings));
+                    newTokenObject = new TokenObject(JsonConvert.DeserializeObject<LabelRef>(jsonString, TokenObject.SerializerSettings));
                 }
                 else
                 {
-                    newTokenObject = new TokenObject(JsonConvert.DeserializeObject<ActionObjectOneOf>(jsonString, TokenObject.AdditionalPropertiesSerializerSettings));
+                    newTokenObject = new TokenObject(JsonConvert.DeserializeObject<LabelRef>(jsonString, TokenObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ActionObjectOneOf");
+                matchedTypes.Add("LabelRef");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ActionObjectOneOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into LabelRef: {1}", jsonString, exception.ToString()));
             }
 
             try

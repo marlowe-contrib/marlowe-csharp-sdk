@@ -78,28 +78,8 @@ namespace MarloweAPIClient.Model
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-
         [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
-        public TypeEnum Type
-        {
-            get{ return _Type;}
-            set
-            {
-                _Type = value;
-                _flagType = true;
-            }
-        }
-        private TypeEnum _Type;
-        private bool _flagType;
-
-        /// <summary>
-        /// Returns false as Type should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeType()
-        {
-            return _flagType;
-        }
+        public TypeEnum Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="LabelledObject" /> class.
         /// </summary>
@@ -118,14 +98,14 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("label is a required property for LabelledObject and cannot be null");
             }
-            this._Label = label;
-            this._Type = type;
+            this.Label = label;
+            this.Type = type;
             // to ensure "value" is required (not null)
             if (value == null)
             {
                 throw new ArgumentNullException("value is a required property for LabelledObject and cannot be null");
             }
-            this._Value = value;
+            this.Value = value;
         }
 
         /// <summary>
@@ -133,50 +113,14 @@ namespace MarloweAPIClient.Model
         /// </summary>
         /// <value>An arbitrary text identifier for an object in a Marlowe object bundle.</value>
         [DataMember(Name = "label", IsRequired = true, EmitDefaultValue = true)]
-        public string Label
-        {
-            get{ return _Label;}
-            set
-            {
-                _Label = value;
-                _flagLabel = true;
-            }
-        }
-        private string _Label;
-        private bool _flagLabel;
+        public string Label { get; set; }
 
-        /// <summary>
-        /// Returns false as Label should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeLabel()
-        {
-            return _flagLabel;
-        }
         /// <summary>
         /// Gets or Sets Value
         /// </summary>
         [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
-        public LabelledObjectValue Value
-        {
-            get{ return _Value;}
-            set
-            {
-                _Value = value;
-                _flagValue = true;
-            }
-        }
-        private LabelledObjectValue _Value;
-        private bool _flagValue;
+        public LabelledObjectValue Value { get; set; }
 
-        /// <summary>
-        /// Returns false as Value should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeValue()
-        {
-            return _flagValue;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

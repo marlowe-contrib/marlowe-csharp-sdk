@@ -48,63 +48,27 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("choiceName is a required property for ChoiceId and cannot be null");
             }
-            this._ChoiceName = choiceName;
+            this.ChoiceName = choiceName;
             // to ensure "choiceOwner" is required (not null)
             if (choiceOwner == null)
             {
                 throw new ArgumentNullException("choiceOwner is a required property for ChoiceId and cannot be null");
             }
-            this._ChoiceOwner = choiceOwner;
+            this.ChoiceOwner = choiceOwner;
         }
 
         /// <summary>
         /// Gets or Sets ChoiceName
         /// </summary>
         [DataMember(Name = "choice_name", IsRequired = true, EmitDefaultValue = true)]
-        public string ChoiceName
-        {
-            get{ return _ChoiceName;}
-            set
-            {
-                _ChoiceName = value;
-                _flagChoiceName = true;
-            }
-        }
-        private string _ChoiceName;
-        private bool _flagChoiceName;
+        public string ChoiceName { get; set; }
 
-        /// <summary>
-        /// Returns false as ChoiceName should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeChoiceName()
-        {
-            return _flagChoiceName;
-        }
         /// <summary>
         /// Gets or Sets ChoiceOwner
         /// </summary>
         [DataMember(Name = "choice_owner", IsRequired = true, EmitDefaultValue = true)]
-        public Party ChoiceOwner
-        {
-            get{ return _ChoiceOwner;}
-            set
-            {
-                _ChoiceOwner = value;
-                _flagChoiceOwner = true;
-            }
-        }
-        private Party _ChoiceOwner;
-        private bool _flagChoiceOwner;
+        public Party ChoiceOwner { get; set; }
 
-        /// <summary>
-        /// Returns false as ChoiceOwner should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeChoiceOwner()
-        {
-            return _flagChoiceOwner;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

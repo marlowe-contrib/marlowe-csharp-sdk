@@ -35,28 +35,8 @@ namespace MarloweAPIClient.Model
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-
         [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
-        public TxStatus Status
-        {
-            get{ return _Status;}
-            set
-            {
-                _Status = value;
-                _flagStatus = true;
-            }
-        }
-        private TxStatus _Status;
-        private bool _flagStatus;
-
-        /// <summary>
-        /// Returns false as Status should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeStatus()
-        {
-            return _flagStatus;
-        }
+        public TxStatus Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TxHeader" /> class.
         /// </summary>
@@ -73,223 +53,85 @@ namespace MarloweAPIClient.Model
         /// <param name="tags">tags (required).</param>
         /// <param name="transactionId">The hex-encoded identifier of a Cardano transaction (required).</param>
         /// <param name="utxo">A reference to a transaction output with a transaction ID and index..</param>
-        public TxHeader(BlockHeader block = default(BlockHeader), string continuations = default(string), string contractId = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), TxStatus status = default(TxStatus), Dictionary<string, Object> tags = default(Dictionary<string, Object>), string transactionId = default(string), string utxo = default(string))
+        public TxHeader(BlockHeader block = default(BlockHeader), string continuations = default(string), string contractId = default(string), Dictionary<string, Metadata> metadata = default(Dictionary<string, Metadata>), TxStatus status = default(TxStatus), Dictionary<string, Metadata> tags = default(Dictionary<string, Metadata>), string transactionId = default(string), string utxo = default(string))
         {
             // to ensure "contractId" is required (not null)
             if (contractId == null)
             {
                 throw new ArgumentNullException("contractId is a required property for TxHeader and cannot be null");
             }
-            this._ContractId = contractId;
+            this.ContractId = contractId;
             // to ensure "metadata" is required (not null)
             if (metadata == null)
             {
                 throw new ArgumentNullException("metadata is a required property for TxHeader and cannot be null");
             }
-            this._Metadata = metadata;
-            this._Status = status;
+            this.Metadata = metadata;
+            this.Status = status;
             // to ensure "tags" is required (not null)
             if (tags == null)
             {
                 throw new ArgumentNullException("tags is a required property for TxHeader and cannot be null");
             }
-            this._Tags = tags;
+            this.Tags = tags;
             // to ensure "transactionId" is required (not null)
             if (transactionId == null)
             {
                 throw new ArgumentNullException("transactionId is a required property for TxHeader and cannot be null");
             }
-            this._TransactionId = transactionId;
-            this._Block = block;
-            if (this.Block != null)
-            {
-                this._flagBlock = true;
-            }
-            this._Continuations = continuations;
-            if (this.Continuations != null)
-            {
-                this._flagContinuations = true;
-            }
-            this._Utxo = utxo;
-            if (this.Utxo != null)
-            {
-                this._flagUtxo = true;
-            }
+            this.TransactionId = transactionId;
+            this.Block = block;
+            this.Continuations = continuations;
+            this.Utxo = utxo;
         }
 
         /// <summary>
         /// Gets or Sets Block
         /// </summary>
         [DataMember(Name = "block", EmitDefaultValue = false)]
-        public BlockHeader Block
-        {
-            get{ return _Block;}
-            set
-            {
-                _Block = value;
-                _flagBlock = true;
-            }
-        }
-        private BlockHeader _Block;
-        private bool _flagBlock;
+        public BlockHeader Block { get; set; }
 
-        /// <summary>
-        /// Returns false as Block should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeBlock()
-        {
-            return _flagBlock;
-        }
         /// <summary>
         /// Gets or Sets Continuations
         /// </summary>
         [DataMember(Name = "continuations", EmitDefaultValue = false)]
-        public string Continuations
-        {
-            get{ return _Continuations;}
-            set
-            {
-                _Continuations = value;
-                _flagContinuations = true;
-            }
-        }
-        private string _Continuations;
-        private bool _flagContinuations;
+        public string Continuations { get; set; }
 
-        /// <summary>
-        /// Returns false as Continuations should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeContinuations()
-        {
-            return _flagContinuations;
-        }
         /// <summary>
         /// A reference to a transaction output with a transaction ID and index.
         /// </summary>
         /// <value>A reference to a transaction output with a transaction ID and index.</value>
         /// <example>98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1</example>
         [DataMember(Name = "contractId", IsRequired = true, EmitDefaultValue = true)]
-        public string ContractId
-        {
-            get{ return _ContractId;}
-            set
-            {
-                _ContractId = value;
-                _flagContractId = true;
-            }
-        }
-        private string _ContractId;
-        private bool _flagContractId;
+        public string ContractId { get; set; }
 
-        /// <summary>
-        /// Returns false as ContractId should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeContractId()
-        {
-            return _flagContractId;
-        }
         /// <summary>
         /// Gets or Sets Metadata
         /// </summary>
         [DataMember(Name = "metadata", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Object> Metadata
-        {
-            get{ return _Metadata;}
-            set
-            {
-                _Metadata = value;
-                _flagMetadata = true;
-            }
-        }
-        private Dictionary<string, Object> _Metadata;
-        private bool _flagMetadata;
+        public Dictionary<string, Metadata> Metadata { get; set; }
 
-        /// <summary>
-        /// Returns false as Metadata should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeMetadata()
-        {
-            return _flagMetadata;
-        }
         /// <summary>
         /// Gets or Sets Tags
         /// </summary>
         [DataMember(Name = "tags", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Object> Tags
-        {
-            get{ return _Tags;}
-            set
-            {
-                _Tags = value;
-                _flagTags = true;
-            }
-        }
-        private Dictionary<string, Object> _Tags;
-        private bool _flagTags;
+        public Dictionary<string, Metadata> Tags { get; set; }
 
-        /// <summary>
-        /// Returns false as Tags should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTags()
-        {
-            return _flagTags;
-        }
         /// <summary>
         /// The hex-encoded identifier of a Cardano transaction
         /// </summary>
         /// <value>The hex-encoded identifier of a Cardano transaction</value>
         [DataMember(Name = "transactionId", IsRequired = true, EmitDefaultValue = true)]
-        public string TransactionId
-        {
-            get{ return _TransactionId;}
-            set
-            {
-                _TransactionId = value;
-                _flagTransactionId = true;
-            }
-        }
-        private string _TransactionId;
-        private bool _flagTransactionId;
+        public string TransactionId { get; set; }
 
-        /// <summary>
-        /// Returns false as TransactionId should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTransactionId()
-        {
-            return _flagTransactionId;
-        }
         /// <summary>
         /// A reference to a transaction output with a transaction ID and index.
         /// </summary>
         /// <value>A reference to a transaction output with a transaction ID and index.</value>
         /// <example>98d601c9307dd43307cf68a03aad0086d4e07a789b66919ccf9f7f7676577eb7#1</example>
         [DataMember(Name = "utxo", EmitDefaultValue = false)]
-        public string Utxo
-        {
-            get{ return _Utxo;}
-            set
-            {
-                _Utxo = value;
-                _flagUtxo = true;
-            }
-        }
-        private string _Utxo;
-        private bool _flagUtxo;
+        public string Utxo { get; set; }
 
-        /// <summary>
-        /// Returns false as Utxo should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeUtxo()
-        {
-            return _flagUtxo;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

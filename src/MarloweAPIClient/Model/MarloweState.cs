@@ -43,125 +43,53 @@ namespace MarloweAPIClient.Model
         /// <param name="boundValues">boundValues (required).</param>
         /// <param name="choices">choices (required).</param>
         /// <param name="minTime">minTime (required).</param>
-        public MarloweState(List<List<MarloweStateAccountsInnerInner>> accounts = default(List<List<MarloweStateAccountsInnerInner>>), List<List<MarloweStateBoundValuesInnerInner>> boundValues = default(List<List<MarloweStateBoundValuesInnerInner>>), List<List<MarloweStateChoicesInnerInner>> choices = default(List<List<MarloweStateChoicesInnerInner>>), int minTime = default(int))
+        public MarloweState(List<List<MarloweStateAccountsInnerInner>> accounts = default(List<List<MarloweStateAccountsInnerInner>>), List<List<MarloweStateBoundValuesInnerInner>> boundValues = default(List<List<MarloweStateBoundValuesInnerInner>>), List<List<MarloweStateChoicesInnerInner>> choices = default(List<List<MarloweStateChoicesInnerInner>>), long minTime = default(long))
         {
             // to ensure "accounts" is required (not null)
             if (accounts == null)
             {
                 throw new ArgumentNullException("accounts is a required property for MarloweState and cannot be null");
             }
-            this._Accounts = accounts;
+            this.Accounts = accounts;
             // to ensure "boundValues" is required (not null)
             if (boundValues == null)
             {
                 throw new ArgumentNullException("boundValues is a required property for MarloweState and cannot be null");
             }
-            this._BoundValues = boundValues;
+            this.BoundValues = boundValues;
             // to ensure "choices" is required (not null)
             if (choices == null)
             {
                 throw new ArgumentNullException("choices is a required property for MarloweState and cannot be null");
             }
-            this._Choices = choices;
-            this._MinTime = minTime;
+            this.Choices = choices;
+            this.MinTime = minTime;
         }
 
         /// <summary>
         /// Gets or Sets Accounts
         /// </summary>
         [DataMember(Name = "accounts", IsRequired = true, EmitDefaultValue = true)]
-        public List<List<MarloweStateAccountsInnerInner>> Accounts
-        {
-            get{ return _Accounts;}
-            set
-            {
-                _Accounts = value;
-                _flagAccounts = true;
-            }
-        }
-        private List<List<MarloweStateAccountsInnerInner>> _Accounts;
-        private bool _flagAccounts;
+        public List<List<MarloweStateAccountsInnerInner>> Accounts { get; set; }
 
-        /// <summary>
-        /// Returns false as Accounts should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeAccounts()
-        {
-            return _flagAccounts;
-        }
         /// <summary>
         /// Gets or Sets BoundValues
         /// </summary>
         [DataMember(Name = "boundValues", IsRequired = true, EmitDefaultValue = true)]
-        public List<List<MarloweStateBoundValuesInnerInner>> BoundValues
-        {
-            get{ return _BoundValues;}
-            set
-            {
-                _BoundValues = value;
-                _flagBoundValues = true;
-            }
-        }
-        private List<List<MarloweStateBoundValuesInnerInner>> _BoundValues;
-        private bool _flagBoundValues;
+        public List<List<MarloweStateBoundValuesInnerInner>> BoundValues { get; set; }
 
-        /// <summary>
-        /// Returns false as BoundValues should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeBoundValues()
-        {
-            return _flagBoundValues;
-        }
         /// <summary>
         /// Gets or Sets Choices
         /// </summary>
         [DataMember(Name = "choices", IsRequired = true, EmitDefaultValue = true)]
-        public List<List<MarloweStateChoicesInnerInner>> Choices
-        {
-            get{ return _Choices;}
-            set
-            {
-                _Choices = value;
-                _flagChoices = true;
-            }
-        }
-        private List<List<MarloweStateChoicesInnerInner>> _Choices;
-        private bool _flagChoices;
+        public List<List<MarloweStateChoicesInnerInner>> Choices { get; set; }
 
-        /// <summary>
-        /// Returns false as Choices should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeChoices()
-        {
-            return _flagChoices;
-        }
         /// <summary>
         /// Gets or Sets MinTime
         /// </summary>
         [DataMember(Name = "minTime", IsRequired = true, EmitDefaultValue = true)]
-        public int MinTime
-        {
-            get{ return _MinTime;}
-            set
-            {
-                _MinTime = value;
-                _flagMinTime = true;
-            }
-        }
-        private int _MinTime;
-        private bool _flagMinTime;
+        public long MinTime { get; set; }
 
-        /// <summary>
-        /// Returns false as MinTime should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeMinTime()
-        {
-            return _flagMinTime;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

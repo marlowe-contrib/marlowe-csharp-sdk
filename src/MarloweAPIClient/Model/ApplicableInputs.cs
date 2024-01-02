@@ -49,92 +49,34 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("choices is a required property for ApplicableInputs and cannot be null");
             }
-            this._Choices = choices;
+            this.Choices = choices;
             // to ensure "deposits" is required (not null)
             if (deposits == null)
             {
                 throw new ArgumentNullException("deposits is a required property for ApplicableInputs and cannot be null");
             }
-            this._Deposits = deposits;
-            this._Notify = notify;
-            if (this.Notify != null)
-            {
-                this._flagNotify = true;
-            }
+            this.Deposits = deposits;
+            this.Notify = notify;
         }
 
         /// <summary>
         /// Gets or Sets Choices
         /// </summary>
         [DataMember(Name = "choices", IsRequired = true, EmitDefaultValue = true)]
-        public List<CanChoose> Choices
-        {
-            get{ return _Choices;}
-            set
-            {
-                _Choices = value;
-                _flagChoices = true;
-            }
-        }
-        private List<CanChoose> _Choices;
-        private bool _flagChoices;
+        public List<CanChoose> Choices { get; set; }
 
-        /// <summary>
-        /// Returns false as Choices should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeChoices()
-        {
-            return _flagChoices;
-        }
         /// <summary>
         /// Gets or Sets Deposits
         /// </summary>
         [DataMember(Name = "deposits", IsRequired = true, EmitDefaultValue = true)]
-        public List<CanDeposit> Deposits
-        {
-            get{ return _Deposits;}
-            set
-            {
-                _Deposits = value;
-                _flagDeposits = true;
-            }
-        }
-        private List<CanDeposit> _Deposits;
-        private bool _flagDeposits;
+        public List<CanDeposit> Deposits { get; set; }
 
-        /// <summary>
-        /// Returns false as Deposits should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeDeposits()
-        {
-            return _flagDeposits;
-        }
         /// <summary>
         /// Gets or Sets Notify
         /// </summary>
         [DataMember(Name = "notify", EmitDefaultValue = false)]
-        public CanNotify Notify
-        {
-            get{ return _Notify;}
-            set
-            {
-                _Notify = value;
-                _flagNotify = true;
-            }
-        }
-        private CanNotify _Notify;
-        private bool _flagNotify;
+        public CanNotify Notify { get; set; }
 
-        /// <summary>
-        /// Returns false as Notify should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeNotify()
-        {
-            return _flagNotify;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

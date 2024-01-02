@@ -47,175 +47,67 @@ namespace MarloweAPIClient.Model
         /// <param name="party">party (required).</param>
         public CanDeposit(int varCanDeposit = default(int), int caseIndex = default(int), Party intoAccount = default(Party), bool isMerkleizedContinuation = default(bool), Token ofToken = default(Token), Party party = default(Party))
         {
-            this._VarCanDeposit = varCanDeposit;
-            this._CaseIndex = caseIndex;
+            this.VarCanDeposit = varCanDeposit;
+            this.CaseIndex = caseIndex;
             // to ensure "intoAccount" is required (not null)
             if (intoAccount == null)
             {
                 throw new ArgumentNullException("intoAccount is a required property for CanDeposit and cannot be null");
             }
-            this._IntoAccount = intoAccount;
-            this._IsMerkleizedContinuation = isMerkleizedContinuation;
+            this.IntoAccount = intoAccount;
+            this.IsMerkleizedContinuation = isMerkleizedContinuation;
             // to ensure "ofToken" is required (not null)
             if (ofToken == null)
             {
                 throw new ArgumentNullException("ofToken is a required property for CanDeposit and cannot be null");
             }
-            this._OfToken = ofToken;
+            this.OfToken = ofToken;
             // to ensure "party" is required (not null)
             if (party == null)
             {
                 throw new ArgumentNullException("party is a required property for CanDeposit and cannot be null");
             }
-            this._Party = party;
+            this.Party = party;
         }
 
         /// <summary>
         /// Gets or Sets VarCanDeposit
         /// </summary>
         [DataMember(Name = "can_deposit", IsRequired = true, EmitDefaultValue = true)]
-        public int VarCanDeposit
-        {
-            get{ return _VarCanDeposit;}
-            set
-            {
-                _VarCanDeposit = value;
-                _flagVarCanDeposit = true;
-            }
-        }
-        private int _VarCanDeposit;
-        private bool _flagVarCanDeposit;
+        public int VarCanDeposit { get; set; }
 
-        /// <summary>
-        /// Returns false as VarCanDeposit should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarCanDeposit()
-        {
-            return _flagVarCanDeposit;
-        }
         /// <summary>
         /// Index of a \&quot;Case Action\&quot; in a \&quot;When\&quot;
         /// </summary>
         /// <value>Index of a \&quot;Case Action\&quot; in a \&quot;When\&quot;</value>
         [DataMember(Name = "case_index", IsRequired = true, EmitDefaultValue = true)]
-        public int CaseIndex
-        {
-            get{ return _CaseIndex;}
-            set
-            {
-                _CaseIndex = value;
-                _flagCaseIndex = true;
-            }
-        }
-        private int _CaseIndex;
-        private bool _flagCaseIndex;
+        public int CaseIndex { get; set; }
 
-        /// <summary>
-        /// Returns false as CaseIndex should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeCaseIndex()
-        {
-            return _flagCaseIndex;
-        }
         /// <summary>
         /// Gets or Sets IntoAccount
         /// </summary>
         [DataMember(Name = "into_account", IsRequired = true, EmitDefaultValue = true)]
-        public Party IntoAccount
-        {
-            get{ return _IntoAccount;}
-            set
-            {
-                _IntoAccount = value;
-                _flagIntoAccount = true;
-            }
-        }
-        private Party _IntoAccount;
-        private bool _flagIntoAccount;
+        public Party IntoAccount { get; set; }
 
-        /// <summary>
-        /// Returns false as IntoAccount should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeIntoAccount()
-        {
-            return _flagIntoAccount;
-        }
         /// <summary>
         /// Indicates if a given contract continuation is merkleized
         /// </summary>
         /// <value>Indicates if a given contract continuation is merkleized</value>
         [DataMember(Name = "is_merkleized_continuation", IsRequired = true, EmitDefaultValue = true)]
-        public bool IsMerkleizedContinuation
-        {
-            get{ return _IsMerkleizedContinuation;}
-            set
-            {
-                _IsMerkleizedContinuation = value;
-                _flagIsMerkleizedContinuation = true;
-            }
-        }
-        private bool _IsMerkleizedContinuation;
-        private bool _flagIsMerkleizedContinuation;
+        public bool IsMerkleizedContinuation { get; set; }
 
-        /// <summary>
-        /// Returns false as IsMerkleizedContinuation should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeIsMerkleizedContinuation()
-        {
-            return _flagIsMerkleizedContinuation;
-        }
         /// <summary>
         /// Gets or Sets OfToken
         /// </summary>
         [DataMember(Name = "of_token", IsRequired = true, EmitDefaultValue = true)]
-        public Token OfToken
-        {
-            get{ return _OfToken;}
-            set
-            {
-                _OfToken = value;
-                _flagOfToken = true;
-            }
-        }
-        private Token _OfToken;
-        private bool _flagOfToken;
+        public Token OfToken { get; set; }
 
-        /// <summary>
-        /// Returns false as OfToken should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeOfToken()
-        {
-            return _flagOfToken;
-        }
         /// <summary>
         /// Gets or Sets Party
         /// </summary>
         [DataMember(Name = "party", IsRequired = true, EmitDefaultValue = true)]
-        public Party Party
-        {
-            get{ return _Party;}
-            set
-            {
-                _Party = value;
-                _flagParty = true;
-            }
-        }
-        private Party _Party;
-        private bool _flagParty;
+        public Party Party { get; set; }
 
-        /// <summary>
-        /// Returns false as Party should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeParty()
-        {
-            return _flagParty;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

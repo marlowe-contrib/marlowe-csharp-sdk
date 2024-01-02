@@ -43,63 +43,27 @@ namespace MarloweAPIClient.Model
         /// <param name="tokens">tokens (required).</param>
         public Assets(int lovelace = default(int), Dictionary<string, Dictionary<string, int>> tokens = default(Dictionary<string, Dictionary<string, int>>))
         {
-            this._Lovelace = lovelace;
+            this.Lovelace = lovelace;
             // to ensure "tokens" is required (not null)
             if (tokens == null)
             {
                 throw new ArgumentNullException("tokens is a required property for Assets and cannot be null");
             }
-            this._Tokens = tokens;
+            this.Tokens = tokens;
         }
 
         /// <summary>
         /// Gets or Sets Lovelace
         /// </summary>
         [DataMember(Name = "lovelace", IsRequired = true, EmitDefaultValue = true)]
-        public int Lovelace
-        {
-            get{ return _Lovelace;}
-            set
-            {
-                _Lovelace = value;
-                _flagLovelace = true;
-            }
-        }
-        private int _Lovelace;
-        private bool _flagLovelace;
+        public int Lovelace { get; set; }
 
-        /// <summary>
-        /// Returns false as Lovelace should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeLovelace()
-        {
-            return _flagLovelace;
-        }
         /// <summary>
         /// Gets or Sets Tokens
         /// </summary>
         [DataMember(Name = "tokens", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Dictionary<string, int>> Tokens
-        {
-            get{ return _Tokens;}
-            set
-            {
-                _Tokens = value;
-                _flagTokens = true;
-            }
-        }
-        private Dictionary<string, Dictionary<string, int>> _Tokens;
-        private bool _flagTokens;
+        public Dictionary<string, Dictionary<string, int>> Tokens { get; set; }
 
-        /// <summary>
-        /// Returns false as Tokens should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTokens()
-        {
-            return _flagTokens;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

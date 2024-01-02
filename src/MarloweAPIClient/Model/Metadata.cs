@@ -41,7 +41,7 @@ namespace MarloweAPIClient.Model
         public Metadata(int actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance;
         }
 
@@ -53,7 +53,7 @@ namespace MarloweAPIClient.Model
         public Metadata(string actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -65,7 +65,7 @@ namespace MarloweAPIClient.Model
         public Metadata(List<Metadata> actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -77,7 +77,7 @@ namespace MarloweAPIClient.Model
         public Metadata(Dictionary<string, Metadata> actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -364,11 +364,36 @@ namespace MarloweAPIClient.Model
         /// <returns>The object converted from the JSON string</returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if(reader.TokenType != JsonToken.Null)
+            switch (reader.TokenType)
             {
-                return Metadata.FromJson(JObject.Load(reader).ToString(Formatting.None));
+                case JsonToken.StartArray:
+                    // Handle array of items
+                    var array = JArray.Load(reader);
+                    // parse recursively
+                    return new Metadata(array.Select(item => serializer.Deserialize<Metadata>(
+                                    item.CreateReader()
+                                    )
+                                ).ToList());
+
+                case JsonToken.StartObject:
+                    // Handle regular object
+                    var obj = JObject.Load(reader);
+                    // parse recursively
+                    var dictionary = obj.Properties().ToDictionary(prop => prop.Name, prop => serializer.Deserialize<Metadata>(prop.CreateReader()));
+
+                    return new Metadata(dictionary);
+
+                case JsonToken.Integer:
+                    // If it's an integer, parse it as int
+                    return new Metadata(Convert.ToInt32(reader.Value));
+
+                case JsonToken.String:
+                    // If it's a string, parse it as a string
+                    return new Metadata(reader.Value.ToString());
+
+                default:
+                    return null;
             }
-            return null;
         }
 
         /// <summary>

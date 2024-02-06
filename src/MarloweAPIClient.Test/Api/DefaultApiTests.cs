@@ -8,14 +8,15 @@
  */
 
 using System;
-using System.Reflection;
-using Xunit;
-using System.Text;
-using MarloweAPIClient.Client;
-using MarloweAPIClient.Api;
-using Newtonsoft.Json;
 using System.Collections.Generic;
-
+using System.Data;
+using System.Diagnostics;
+using System.Reflection;
+using System.Text;
+using MarloweAPIClient.Api;
+using MarloweAPIClient.Client;
+using Newtonsoft.Json;
+using Xunit;
 
 // uncomment below to import models
 //using MarloweAPIClient.Model;
@@ -36,22 +37,13 @@ namespace MarloweAPIClient.Test.Api
         public DefaultApiTests()
         {
             Configuration config = new Configuration();
-            config.BasePath = "";
+            config.BasePath = "https://marlowe-runtime-preprod-web.scdev.aws.iohkdev.io";
             instance = new DefaultApi(config);
         }
+
         public void Dispose()
         {
             // Cleanup when everything is done.
-        }
-
-        /// <summary>
-        /// Test an instance of DefaultApi
-        /// </summary>
-        [Fact]
-        public void InstanceTest()
-        {
-            // TODO uncomment below to test 'IsType' DefaultApi
-            //Assert.IsType<DefaultApi>(instance);
         }
 
         /// <summary>
@@ -60,14 +52,43 @@ namespace MarloweAPIClient.Test.Api
         [Fact]
         public void ApplyInputsToContractTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string contractId = null;
-            //string xChangeAddress = null;
-            //string? xAddress = null;
-            //string? xCollateralUTxO = null;
-            //PostTransactionsRequest? postTransactionsRequest = null;
-            //var response = instance.ApplyInputsToContract(contractId, xChangeAddress, xAddress, xCollateralUTxO, postTransactionsRequest);
-            //Assert.IsType<ApplyInputsResponse>(response);
+            string contractId =
+                "db55101924ff2ecbdf39c3b909b6eb2eb62e85331ba4dff456ca4cbd236274b5#1";
+            string xChangeAddress =
+                "addr_test1vzuqvqzcnuy9pmrh2sy7tjucufmpwh8gzssz7v6scn0e04gxdvna9";
+            string? xAddress = null;
+            string? xCollateralUTxO = null;
+            var postTransactionsRequest = new MarloweAPIClient.Model.PostTransactionsRequest(
+                new List<MarloweAPIClient.Model.Input>()
+                {
+                    new MarloweAPIClient.Model.Input(
+                        new MarloweAPIClient.Model.DepositInput(
+                            new MarloweAPIClient.Model.Party(
+                                new MarloweAPIClient.Model.PartyRoleName("swapper")
+                            ),
+                            new MarloweAPIClient.Model.Party(
+                                new MarloweAPIClient.Model.PartyRoleName("swapper")
+                            ),
+                            new MarloweAPIClient.Model.Token("", ""),
+                            3_000_000
+                        )
+                    )
+                },
+                null,
+                null,
+                new Dictionary<string, MarloweAPIClient.Model.Metadata>(),
+                new Dictionary<string, MarloweAPIClient.Model.Metadata>(),
+                MarloweAPIClient.Model.MarloweVersion.V1
+            );
+            // This needs manual testing because we have no signing tool for the automatic tests
+            //var response = instance.ApplyInputsToContract(
+            //    contractId,
+            //    xChangeAddress,
+            //    xAddress,
+            //    xCollateralUTxO,
+            //    postTransactionsRequest
+            //);
+            //Assert.IsType<MarloweAPIClient.Model.ApplyInputsResponse>(response);
         }
 
         /// <summary>
@@ -76,29 +97,199 @@ namespace MarloweAPIClient.Test.Api
         [Fact]
         public void CreateContractTest()
         {
-            //string xChangeAddress = "addr_test1vzuqvqzcnuy9pmrh2sy7tjucufmpwh8gzssz7v6scn0e04gxdvna9";
-            //string? xStakeAddress = null;
-            //string? xAddress = null;
-            //string? xCollateralUTxO = null;
-            //MarloweAPIClient.Model.PostContractsRequestContract
-            //    contract = new MarloweAPIClient.Model.PostContractsRequestContract(
-            //            new MarloweAPIClient.Model.Contract(
-            //                MarloweAPIClient.Model.Close.Close
-            //           )
-            //    );
+            string xChangeAddress =
+                "addr_test1vzuqvqzcnuy9pmrh2sy7tjucufmpwh8gzssz7v6scn0e04gxdvna9";
+            string? xStakeAddress = null;
+            string? xAddress = null;
+            string? xCollateralUTxO = null;
+            MarloweAPIClient.Model.PostContractsRequestContract swapContract =
+                new MarloweAPIClient.Model.PostContractsRequestContract(
+                    new MarloweAPIClient.Model.Contract(
+                        new MarloweAPIClient.Model.When(
+                            2556057600000,
+                            new MarloweAPIClient.Model.Contract(MarloweAPIClient.Model.Close.Close),
+                            new List<MarloweAPIClient.Model.Case>()
+                            {
+                                new MarloweAPIClient.Model.Case(
+                                    new MarloweAPIClient.Model.CaseThen(
+                                        new MarloweAPIClient.Model.Action(
+                                            new MarloweAPIClient.Model.DepositAction(
+                                                new MarloweAPIClient.Model.Value(3_000_000),
+                                                new MarloweAPIClient.Model.Party(
+                                                    new MarloweAPIClient.Model.PartyRoleName(
+                                                        "provider"
+                                                    )
+                                                ),
+                                                new MarloweAPIClient.Model.Token("", ""),
+                                                new MarloweAPIClient.Model.Party(
+                                                    new MarloweAPIClient.Model.PartyRoleName(
+                                                        "provider"
+                                                    )
+                                                )
+                                            )
+                                        ),
+                                        new MarloweAPIClient.Model.Contract(
+                                            new MarloweAPIClient.Model.When(
+                                                2556057600000,
+                                                new MarloweAPIClient.Model.Contract(
+                                                    new MarloweAPIClient.Model.Pay(
+                                                        new MarloweAPIClient.Model.Party(
+                                                            new MarloweAPIClient.Model.PartyRoleName(
+                                                                "provider"
+                                                            )
+                                                        ),
+                                                        new MarloweAPIClient.Model.Value(3_000_000),
+                                                        new MarloweAPIClient.Model.Contract(
+                                                            MarloweAPIClient.Model.Close.Close
+                                                        ),
+                                                        new MarloweAPIClient.Model.Payee(
+                                                            new MarloweAPIClient.Model.PayToParty(
+                                                                new MarloweAPIClient.Model.Party(
+                                                                    new MarloweAPIClient.Model.PartyRoleName(
+                                                                        "provider"
+                                                                    )
+                                                                )
+                                                            )
+                                                        ),
+                                                        new MarloweAPIClient.Model.Token("", "")
+                                                    )
+                                                ),
+                                                new List<MarloweAPIClient.Model.Case>()
+                                                {
+                                                    new MarloweAPIClient.Model.Case(
+                                                        new MarloweAPIClient.Model.CaseThen(
+                                                            new MarloweAPIClient.Model.Action(
+                                                                new MarloweAPIClient.Model.DepositAction(
+                                                                    new MarloweAPIClient.Model.Value(
+                                                                        3_000_000
+                                                                    ),
+                                                                    new MarloweAPIClient.Model.Party(
+                                                                        new MarloweAPIClient.Model.PartyRoleName(
+                                                                            "swapper"
+                                                                        )
+                                                                    ),
+                                                                    new MarloweAPIClient.Model.Token(
+                                                                        "",
+                                                                        ""
+                                                                    ),
+                                                                    new MarloweAPIClient.Model.Party(
+                                                                        new MarloweAPIClient.Model.PartyRoleName(
+                                                                            "swapper"
+                                                                        )
+                                                                    )
+                                                                )
+                                                            ),
+                                                            new MarloweAPIClient.Model.Contract(
+                                                                new MarloweAPIClient.Model.Pay(
+                                                                    new MarloweAPIClient.Model.Party(
+                                                                        new MarloweAPIClient.Model.PartyRoleName(
+                                                                            "provider"
+                                                                        )
+                                                                    ),
+                                                                    new MarloweAPIClient.Model.Value(
+                                                                        3_000_000
+                                                                    ),
+                                                                    new MarloweAPIClient.Model.Contract(
+                                                                        new MarloweAPIClient.Model.Pay(
+                                                                            new MarloweAPIClient.Model.Party(
+                                                                                new MarloweAPIClient.Model.PartyRoleName(
+                                                                                    "swapper"
+                                                                                )
+                                                                            ),
+                                                                            new MarloweAPIClient.Model.Value(
+                                                                                3_000_000
+                                                                            ),
+                                                                            new MarloweAPIClient.Model.Contract(
+                                                                                MarloweAPIClient
+                                                                                    .Model
+                                                                                    .Close
+                                                                                    .Close
+                                                                            ),
+                                                                            new MarloweAPIClient.Model.Payee(
+                                                                                new MarloweAPIClient.Model.PayToParty(
+                                                                                    new MarloweAPIClient.Model.Party(
+                                                                                        new MarloweAPIClient.Model.PartyRoleName(
+                                                                                            "swapper"
+                                                                                        )
+                                                                                    )
+                                                                                )
+                                                                            ),
+                                                                            new MarloweAPIClient.Model.Token(
+                                                                                "",
+                                                                                ""
+                                                                            )
+                                                                        )
+                                                                    ),
+                                                                    new MarloweAPIClient.Model.Payee(
+                                                                        new MarloweAPIClient.Model.PayToParty(
+                                                                            new MarloweAPIClient.Model.Party(
+                                                                                new MarloweAPIClient.Model.PartyRoleName(
+                                                                                    "swapper"
+                                                                                )
+                                                                            )
+                                                                        )
+                                                                    ),
+                                                                    new MarloweAPIClient.Model.Token(
+                                                                        "",
+                                                                        ""
+                                                                    )
+                                                                )
+                                                            )
+                                                        )
+                                                    ),
+                                                }
+                                            )
+                                        )
+                                    )
+                                )
+                            }
+                        )
+                    )
+                );
 
-            //var tags = new System.Collections.Generic.Dictionary<string, MarloweAPIClient.Model.Metadata>();
-            //var metadata = new System.Collections.Generic.Dictionary<string, MarloweAPIClient.Model.Metadata>();
-            //var minUTxODeposit = 3_000_000;
-            //MarloweAPIClient.Model.PostContractsRequest postContractsRequest = new MarloweAPIClient.Model.PostContractsRequest(contract, metadata, minUTxODeposit, null, tags, null, MarloweAPIClient.Model.MarloweVersion.V1);
-            //var response = instance.CreateContract(
-            //    xChangeAddress,
-            //    xStakeAddress,
-            //    xAddress,
-            //    xCollateralUTxO,
-            //    postContractsRequest
-            //);
-            //Assert.IsType<MarloweAPIClient.Model.CreateContractResponse>(response);
+            var tags = new System.Collections.Generic.Dictionary<
+                string,
+                MarloweAPIClient.Model.Metadata
+            >();
+            var metadata = new System.Collections.Generic.Dictionary<
+                string,
+                MarloweAPIClient.Model.Metadata
+            >();
+            var minUTxODeposit = 3_000_000;
+            MarloweAPIClient.Model.PostContractsRequest postContractsRequest =
+                new MarloweAPIClient.Model.PostContractsRequest(
+                    swapContract,
+                    metadata,
+                    minUTxODeposit,
+                    new MarloweAPIClient.Model.RolesConfig(
+                        new Dictionary<string, MarloweAPIClient.Model.RoleTokenConfig>()
+                        {
+                            {
+                                "provider",
+                                new MarloweAPIClient.Model.RoleTokenConfig(
+                                    "addr_test1vzuqvqzcnuy9pmrh2sy7tjucufmpwh8gzssz7v6scn0e04gxdvna9"
+                                )
+                            },
+                            {
+                                "swapper",
+                                new MarloweAPIClient.Model.RoleTokenConfig(
+                                    "addr_test1vzuqvqzcnuy9pmrh2sy7tjucufmpwh8gzssz7v6scn0e04gxdvna9"
+                                )
+                            }
+                        }
+                    ),
+                    tags,
+                    null,
+                    MarloweAPIClient.Model.MarloweVersion.V1
+                );
+            var response = instance.CreateContract(
+                xChangeAddress,
+                xStakeAddress,
+                xAddress,
+                xCollateralUTxO,
+                postContractsRequest
+            );
+            Assert.IsType<MarloweAPIClient.Model.CreateContractResponse>(response);
         }
 
         /// <summary>
@@ -107,23 +298,29 @@ namespace MarloweAPIClient.Test.Api
         [Fact]
         public void CreateContractSourcesTest()
         {
-            //    string main = "contract1";
-            //    var label1 = "contract1";
-            //    var label2 = "contract";
-            //    var type1 = MarloweAPIClient.Model.LabelledObject.TypeEnum.Contract;
-            //    var type2 = MarloweAPIClient.Model.LabelledObject.TypeEnum.Contract;
-            //    var closeContract = new MarloweAPIClient.Model.LabelledObjectValue(
-            //             new MarloweAPIClient.Model.ContractObject(
-            //                 MarloweAPIClient.Model.CloseObject.Close
-            //             )
-            //    );
-            //    var labelledObject1 = new MarloweAPIClient.Model.LabelledObject(label1, type1, closeContract);
-            //    var labelledObject2 = new MarloweAPIClient.Model.LabelledObject(label2, type2, closeContract);
-            //    var labelledObjects = new List<MarloweAPIClient.Model.LabelledObject>();
-            //    labelledObjects.Add(labelledObject1);
-            //    labelledObjects.Add(labelledObject2);
-            //    var response = instance.CreateContractSources(main, labelledObjects);
-            //    Assert.IsType<MarloweAPIClient.Model.PostContractSourceResponse>(response);
+            string main = "contract1";
+            var label1 = "contract1";
+            var label2 = "contract";
+            var type1 = MarloweAPIClient.Model.LabelledObject.TypeEnum.Contract;
+            var type2 = MarloweAPIClient.Model.LabelledObject.TypeEnum.Contract;
+            var closeContract = new MarloweAPIClient.Model.LabelledObjectValue(
+                new MarloweAPIClient.Model.ContractObject(MarloweAPIClient.Model.CloseObject.Close)
+            );
+            var labelledObject1 = new MarloweAPIClient.Model.LabelledObject(
+                label1,
+                type1,
+                closeContract
+            );
+            var labelledObject2 = new MarloweAPIClient.Model.LabelledObject(
+                label2,
+                type2,
+                closeContract
+            );
+            var labelledObjects = new List<MarloweAPIClient.Model.LabelledObject>();
+            labelledObjects.Add(labelledObject1);
+            labelledObjects.Add(labelledObject2);
+            var response = instance.CreateContractSources(main, labelledObjects);
+            Assert.IsType<MarloweAPIClient.Model.PostContractSourceResponse>(response);
         }
 
         /// <summary>
@@ -132,10 +329,11 @@ namespace MarloweAPIClient.Test.Api
         [Fact]
         public void GetContractByIdTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string contractId = null;
-            //var response = instance.GetContractById(contractId);
-            //Assert.IsType<GetContractResponse>(response);
+            string contractId =
+                "ec15b11dc3f85bcce51ddaf0d0073a23867b069934f0de499efa3291dc4ad235#1";
+            var response = instance.GetContractById(contractId);
+            Assert.NotNull(response);
+            Assert.IsType<MarloweAPIClient.Model.GetContractResponse>(response);
         }
 
         /// <summary>
@@ -144,10 +342,10 @@ namespace MarloweAPIClient.Test.Api
         [Fact]
         public void GetContractSourceAdjacencyTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string contractSourceId = null;
-            //var response = instance.GetContractSourceAdjacency(contractSourceId);
-            //Assert.IsType<ContractSourceIds>(response);
+            string contractSourceId =
+                "705f33bb023b560f458a277c12130487f8dbca1b9e4dc50c4ed1596e00944996";
+            var response = instance.GetContractSourceAdjacency(contractSourceId);
+            Assert.IsType<MarloweAPIClient.Model.ContractSourceIds>(response);
         }
 
         /// <summary>
@@ -156,30 +354,9 @@ namespace MarloweAPIClient.Test.Api
         [Fact]
         public void GetContractSourceByIdTest()
         {
-            //var swapJSON = "{\"timeout\":1704288420000,\"timeout_continuation\":\"close\",\"when\":[{\"case\":{\"deposits\":3000000,\"into_account\":{\"role_token\":\"provider\"},\"of_token\":{\"currency_symbol\":\"\",\"token_name\":\"\"},\"party\":{\"role_token\":\"provider\"}},\"merkleized_then\":\"2d41ea20c87de8ef1d553c19c661afdcff141a09bc9c0febbc3913642e1e8208\"}]}";
-            var closeJsonString = "\"close\"";
-
-            //var swapJSON = "{\"currency_symbol\":\"\",\"token_name\":\"\"}";
-
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            //var newContract = JsonConvert.DeserializeObject<MarloweAPIClient.Model.Close>(swapJSON);
-            var closeDeser = JsonConvert.DeserializeObject<MarloweAPIClient.Model.Contract>(closeJsonString);
-
-            //var contract = MarloweAPIClient.Model.Contract.FromJson(swapJSON);
-
-            //var newContract = new Contract(JsonConvert.DeserializeObject<If>(jsonString, Contract.AdditionalPropertiesSerializerSettings));
-            //}
-            //jmatchedTypes.Add("If");
-            //Console.WriteLine(JsonConvert.SerializeObject(newContract));
-            //match++;
-
-            //var swapJSON = "{\"role_token\":\"provider\"}";
-            //Console.WriteLine(JsonConvert.DeserializeObject(swapJSON));
-            //var contract = MarloweAPIClient.Model.Token.FromJson(swapJSON);
-            //Console.WriteLine(JsonConvert.SerializeObject(contract));
-
-            string contractSourceId = "705f33bb023b560f458a277c12130487f8dbca1b9e4dc50c4ed1596e00944996";
-            bool? expand = false;
+            string contractSourceId =
+                "705f33bb023b560f458a277c12130487f8dbca1b9e4dc50c4ed1596e00944996";
+            bool? expand = true;
             var response = instance.GetContractSourceById(contractSourceId, expand);
             Assert.IsType<MarloweAPIClient.Model.Contract>(response);
         }
@@ -190,10 +367,10 @@ namespace MarloweAPIClient.Test.Api
         [Fact]
         public void GetContractSourceClosureTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string contractSourceId = null;
-            //var response = instance.GetContractSourceClosure(contractSourceId);
-            //Assert.IsType<ContractSourceIds>(response);
+            string contractSourceId =
+                "705f33bb023b560f458a277c12130487f8dbca1b9e4dc50c4ed1596e00944996";
+            var response = instance.GetContractSourceClosure(contractSourceId);
+            Assert.IsType<MarloweAPIClient.Model.ContractSourceIds>(response);
         }
 
         /// <summary>
@@ -202,11 +379,12 @@ namespace MarloweAPIClient.Test.Api
         [Fact]
         public void GetContractTransactionByIdTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string contractId = null;
-            //string transactionId = null;
-            //var response = instance.GetContractTransactionById(contractId, transactionId);
-            //Assert.IsType<GetTransactionResponse>(response);
+            string contractId =
+                "06fb28e1322bb2d366617e6fbaed22ed93a8ca2b813964ade5621c4b8fba1ee8#1";
+            string transactionId =
+                "981455f49fe566765d8380ad2199ee265ab9128902630780d4d7258a40c9d310";
+            var response = instance.GetContractTransactionById(contractId, transactionId);
+            Assert.IsType<MarloweAPIClient.Model.GetTransactionResponse>(response);
         }
 
         /// <summary>
@@ -216,7 +394,9 @@ namespace MarloweAPIClient.Test.Api
         public void GetContractsTest()
         {
             var response = instance.GetContractsWithHttpInfo();
-            Assert.IsType<MarloweAPIClient.Client.ApiResponse<MarloweAPIClient.Model.GetContractsResponse>>(response);
+            Assert.IsType<MarloweAPIClient.Client.ApiResponse<MarloweAPIClient.Model.GetContractsResponse>>(
+                response
+            );
         }
 
         /// <summary>
@@ -225,25 +405,34 @@ namespace MarloweAPIClient.Test.Api
         [Fact]
         public void GetNextStepsForContractTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string contractId = null;
-            //string validityStart = null;
-            //string validityEnd = null;
-            //List<string>? party = null;
-            //var response = instance.GetNextStepsForContract(contractId, validityStart, validityEnd, party);
-            //Assert.IsType<Next>(response);
+            // This is the one that's should be commited
+            //var contractId = "26a9d99e3a014b7dafc21642c829b5f51edd8f74f45f13d965e967df182156eb#1";
+            // This is the one I'm using to apply inputs and withdraw :) so just delete it afterwards
+            string contractId =
+                "4eb7e4228118af94b17aa02611a32393e1c0845dcde5cc6ae01e8e90649e3d30#1";
+            string validityStart = "1970-12-06T00:00:00.000Z";
+            string validityEnd = "2050-01-01T00:00:00.000Z";
+
+            List<string>? party = null;
+            var response = instance.GetNextStepsForContract(
+                contractId,
+                validityStart,
+                validityEnd,
+                party
+            );
+            Assert.NotNull(response);
+            Assert.IsType<MarloweAPIClient.Model.Next>(response);
         }
 
         /// <summary>
         /// Test GetPayoutById
-        /// </summary>
+        /// </summary
         [Fact]
         public void GetPayoutByIdTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string payoutId = null;
-            //var response = instance.GetPayoutById(payoutId);
-            //Assert.IsType<GetPayoutResponse>(response);
+            string payoutId = "924e28e8a44e7c7e0b3eab485a79efcc307f316b45f6c7a518390ce5cbaa9136#2";
+            var response = instance.GetPayoutById(payoutId);
+            Assert.IsType<MarloweAPIClient.Model.GetPayoutResponse>(response);
         }
 
         /// <summary>
@@ -252,13 +441,15 @@ namespace MarloweAPIClient.Test.Api
         [Fact]
         public void GetPayoutsTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //List<string>? contractId = null;
-            //List<string>? roleToken = null;
-            //string? status = null;
-            //string? range = null;
-            //var response = instance.GetPayouts(contractId, roleToken, status, range);
-            //Assert.IsType<GetPayoutsResponse>(response);
+            List<string>? contractId = new List<string>
+            {
+                "db55101924ff2ecbdf39c3b909b6eb2eb62e85331ba4dff456ca4cbd236274b5#1"
+            };
+            List<string>? roleToken = null;
+            string? status = null;
+            string? range = null;
+            var response = instance.GetPayouts(contractId, roleToken, status, range);
+            Assert.IsType<MarloweAPIClient.Model.GetPayoutsResponse>(response);
         }
 
         /// <summary>
@@ -267,11 +458,12 @@ namespace MarloweAPIClient.Test.Api
         [Fact]
         public void GetTransactionsForContractTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string contractId = null;
-            //string? range = null;
-            //var response = instance.GetTransactionsForContract(contractId, range);
-            //Assert.IsType<GetTransactionsResponse>(response);
+            string contractId =
+                "06fb28e1322bb2d366617e6fbaed22ed93a8ca2b813964ade5621c4b8fba1ee8#1";
+            string? range = null;
+            var response = instance.GetTransactionsForContract(contractId, range);
+            Assert.NotNull(response);
+            Assert.IsType<MarloweAPIClient.Model.GetTransactionsResponse>(response);
         }
 
         /// <summary>
@@ -280,10 +472,10 @@ namespace MarloweAPIClient.Test.Api
         [Fact]
         public void GetWithdrawalByIdTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string withdrawalId = null;
-            //var response = instance.GetWithdrawalById(withdrawalId);
-            //Assert.IsType<Withdrawal>(response);
+            string withdrawalId =
+                "e68b8034f4d93c4e53468198abdcbe938d067605310ece35ebe681d61c961e1c";
+            var response = instance.GetWithdrawalById(withdrawalId);
+            Assert.IsType<MarloweAPIClient.Model.Withdrawal>(response);
         }
 
         /// <summary>
@@ -292,11 +484,10 @@ namespace MarloweAPIClient.Test.Api
         [Fact]
         public void GetWithdrawalsTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //List<string>? roleCurrency = null;
-            //string? range = null;
-            //var response = instance.GetWithdrawals(roleCurrency, range);
-            //Assert.IsType<GetWithdrawalsResponse>(response);
+            List<string>? roleCurrency = null;
+            string? range = null;
+            var response = instance.GetWithdrawals(roleCurrency, range);
+            Assert.IsType<MarloweAPIClient.Model.GetWithdrawalsResponse>(response);
         }
 
         /// <summary>
@@ -305,60 +496,7 @@ namespace MarloweAPIClient.Test.Api
         [Fact]
         public void HealthcheckTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //instance.Healthcheck();
-        }
-
-        /// <summary>
-        /// Test SubmitContract
-        /// </summary>
-        [Fact]
-        public void SubmitContractTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string contractId = null;
-            //TextEnvelope? textEnvelope = null;
-            //instance.SubmitContract(contractId, textEnvelope);
-        }
-
-        /// <summary>
-        /// Test SubmitContractTransaction
-        /// </summary>
-        [Fact]
-        public void SubmitContractTransactionTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string contractId = null;
-            //string transactionId = null;
-            //TextEnvelope? textEnvelope = null;
-            //instance.SubmitContractTransaction(contractId, transactionId, textEnvelope);
-        }
-
-        /// <summary>
-        /// Test SubmitWithdrawal
-        /// </summary>
-        [Fact]
-        public void SubmitWithdrawalTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string withdrawalId = null;
-            //TextEnvelope? textEnvelope = null;
-            //instance.SubmitWithdrawal(withdrawalId, textEnvelope);
-        }
-
-        /// <summary>
-        /// Test WithdrawPayouts
-        /// </summary>
-        [Fact]
-        public void WithdrawPayoutsTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string xChangeAddress = null;
-            //string? xAddress = null;
-            //string? xCollateralUTxO = null;
-            //PostWithdrawalsRequest? postWithdrawalsRequest = null;
-            //var response = instance.WithdrawPayouts(xChangeAddress, xAddress, xCollateralUTxO, postWithdrawalsRequest);
-            //Assert.IsType<WithdrawPayoutsResponse>(response);
+            instance.Healthcheck();
         }
     }
 }

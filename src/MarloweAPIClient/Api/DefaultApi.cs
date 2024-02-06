@@ -16,6 +16,7 @@ using System.Net;
 using System.Net.Mime;
 using MarloweAPIClient.Client;
 using MarloweAPIClient.Model;
+using Newtonsoft.Json;
 
 namespace MarloweAPIClient.Api
 {

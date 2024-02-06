@@ -47,10 +47,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ObservationObject" /> class
-        /// with the <see cref="ObservationObjectOneOf" /> class
+        /// with the <see cref="AndObject" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ObservationObjectOneOf.</param>
-        public ObservationObject(ObservationObjectOneOf actualInstance)
+        /// <param name="actualInstance">An instance of AndObject.</param>
+        public ObservationObject(AndObject actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -59,10 +59,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ObservationObject" /> class
-        /// with the <see cref="ObservationObjectOneOf1" /> class
+        /// with the <see cref="OrObject" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ObservationObjectOneOf1.</param>
-        public ObservationObject(ObservationObjectOneOf1 actualInstance)
+        /// <param name="actualInstance">An instance of OrObject.</param>
+        public ObservationObject(OrObject actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -71,10 +71,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ObservationObject" /> class
-        /// with the <see cref="ObservationObjectOneOf2" /> class
+        /// with the <see cref="NotObject" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ObservationObjectOneOf2.</param>
-        public ObservationObject(ObservationObjectOneOf2 actualInstance)
+        /// <param name="actualInstance">An instance of NotObject.</param>
+        public ObservationObject(NotObject actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -83,10 +83,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ObservationObject" /> class
-        /// with the <see cref="ObservationObjectOneOf3" /> class
+        /// with the <see cref="ChooseForObject" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ObservationObjectOneOf3.</param>
-        public ObservationObject(ObservationObjectOneOf3 actualInstance)
+        /// <param name="actualInstance">An instance of ChooseForObject.</param>
+        public ObservationObject(ChooseForObject actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -95,10 +95,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ObservationObject" /> class
-        /// with the <see cref="ObservationObjectOneOf4" /> class
+        /// with the <see cref="GreaterOrEqualObject" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ObservationObjectOneOf4.</param>
-        public ObservationObject(ObservationObjectOneOf4 actualInstance)
+        /// <param name="actualInstance">An instance of GreaterOrEqualObject.</param>
+        public ObservationObject(GreaterOrEqualObject actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -107,10 +107,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ObservationObject" /> class
-        /// with the <see cref="ObservationObjectOneOf5" /> class
+        /// with the <see cref="GreaterObject" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ObservationObjectOneOf5.</param>
-        public ObservationObject(ObservationObjectOneOf5 actualInstance)
+        /// <param name="actualInstance">An instance of GreaterObject.</param>
+        public ObservationObject(GreaterObject actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -119,10 +119,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ObservationObject" /> class
-        /// with the <see cref="ObservationObjectOneOf6" /> class
+        /// with the <see cref="LesserObject" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ObservationObjectOneOf6.</param>
-        public ObservationObject(ObservationObjectOneOf6 actualInstance)
+        /// <param name="actualInstance">An instance of LesserObject.</param>
+        public ObservationObject(LesserObject actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -131,10 +131,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ObservationObject" /> class
-        /// with the <see cref="ObservationObjectOneOf7" /> class
+        /// with the <see cref="LesserOrEqualObject" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ObservationObjectOneOf7.</param>
-        public ObservationObject(ObservationObjectOneOf7 actualInstance)
+        /// <param name="actualInstance">An instance of LesserOrEqualObject.</param>
+        public ObservationObject(LesserOrEqualObject actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -143,10 +143,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ObservationObject" /> class
-        /// with the <see cref="ObservationObjectOneOf8" /> class
+        /// with the <see cref="EqualObject" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ObservationObjectOneOf8.</param>
-        public ObservationObject(ObservationObjectOneOf8 actualInstance)
+        /// <param name="actualInstance">An instance of EqualObject.</param>
+        public ObservationObject(EqualObject actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -155,10 +155,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ObservationObject" /> class
-        /// with the <see cref="ActionObjectOneOf" /> class
+        /// with the <see cref="LabelRef" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ActionObjectOneOf.</param>
-        public ObservationObject(ActionObjectOneOf actualInstance)
+        /// <param name="actualInstance">An instance of LabelRef.</param>
+        public ObservationObject(LabelRef actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -179,43 +179,43 @@ namespace MarloweAPIClient.Model
             }
             set
             {
-                if (value.GetType() == typeof(ActionObjectOneOf))
+                if (value.GetType() == typeof(AndObject))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ObservationObjectOneOf))
+                else if (value.GetType() == typeof(ChooseForObject))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ObservationObjectOneOf1))
+                else if (value.GetType() == typeof(EqualObject))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ObservationObjectOneOf2))
+                else if (value.GetType() == typeof(GreaterObject))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ObservationObjectOneOf3))
+                else if (value.GetType() == typeof(GreaterOrEqualObject))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ObservationObjectOneOf4))
+                else if (value.GetType() == typeof(LabelRef))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ObservationObjectOneOf5))
+                else if (value.GetType() == typeof(LesserObject))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ObservationObjectOneOf6))
+                else if (value.GetType() == typeof(LesserOrEqualObject))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ObservationObjectOneOf7))
+                else if (value.GetType() == typeof(NotObject))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ObservationObjectOneOf8))
+                else if (value.GetType() == typeof(OrObject))
                 {
                     this._actualInstance = value;
                 }
@@ -225,7 +225,7 @@ namespace MarloweAPIClient.Model
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: ActionObjectOneOf, ObservationObjectOneOf, ObservationObjectOneOf1, ObservationObjectOneOf2, ObservationObjectOneOf3, ObservationObjectOneOf4, ObservationObjectOneOf5, ObservationObjectOneOf6, ObservationObjectOneOf7, ObservationObjectOneOf8, bool");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: AndObject, ChooseForObject, EqualObject, GreaterObject, GreaterOrEqualObject, LabelRef, LesserObject, LesserOrEqualObject, NotObject, OrObject, bool");
                 }
             }
         }
@@ -241,103 +241,103 @@ namespace MarloweAPIClient.Model
         }
 
         /// <summary>
-        /// Get the actual instance of `ObservationObjectOneOf`. If the actual instance is not `ObservationObjectOneOf`,
+        /// Get the actual instance of `AndObject`. If the actual instance is not `AndObject`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ObservationObjectOneOf</returns>
-        public ObservationObjectOneOf GetObservationObjectOneOf()
+        /// <returns>An instance of AndObject</returns>
+        public AndObject GetAndObject()
         {
-            return (ObservationObjectOneOf)this.ActualInstance;
+            return (AndObject)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ObservationObjectOneOf1`. If the actual instance is not `ObservationObjectOneOf1`,
+        /// Get the actual instance of `OrObject`. If the actual instance is not `OrObject`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ObservationObjectOneOf1</returns>
-        public ObservationObjectOneOf1 GetObservationObjectOneOf1()
+        /// <returns>An instance of OrObject</returns>
+        public OrObject GetOrObject()
         {
-            return (ObservationObjectOneOf1)this.ActualInstance;
+            return (OrObject)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ObservationObjectOneOf2`. If the actual instance is not `ObservationObjectOneOf2`,
+        /// Get the actual instance of `NotObject`. If the actual instance is not `NotObject`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ObservationObjectOneOf2</returns>
-        public ObservationObjectOneOf2 GetObservationObjectOneOf2()
+        /// <returns>An instance of NotObject</returns>
+        public NotObject GetNotObject()
         {
-            return (ObservationObjectOneOf2)this.ActualInstance;
+            return (NotObject)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ObservationObjectOneOf3`. If the actual instance is not `ObservationObjectOneOf3`,
+        /// Get the actual instance of `ChooseForObject`. If the actual instance is not `ChooseForObject`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ObservationObjectOneOf3</returns>
-        public ObservationObjectOneOf3 GetObservationObjectOneOf3()
+        /// <returns>An instance of ChooseForObject</returns>
+        public ChooseForObject GetChooseForObject()
         {
-            return (ObservationObjectOneOf3)this.ActualInstance;
+            return (ChooseForObject)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ObservationObjectOneOf4`. If the actual instance is not `ObservationObjectOneOf4`,
+        /// Get the actual instance of `GreaterOrEqualObject`. If the actual instance is not `GreaterOrEqualObject`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ObservationObjectOneOf4</returns>
-        public ObservationObjectOneOf4 GetObservationObjectOneOf4()
+        /// <returns>An instance of GreaterOrEqualObject</returns>
+        public GreaterOrEqualObject GetGreaterOrEqualObject()
         {
-            return (ObservationObjectOneOf4)this.ActualInstance;
+            return (GreaterOrEqualObject)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ObservationObjectOneOf5`. If the actual instance is not `ObservationObjectOneOf5`,
+        /// Get the actual instance of `GreaterObject`. If the actual instance is not `GreaterObject`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ObservationObjectOneOf5</returns>
-        public ObservationObjectOneOf5 GetObservationObjectOneOf5()
+        /// <returns>An instance of GreaterObject</returns>
+        public GreaterObject GetGreaterObject()
         {
-            return (ObservationObjectOneOf5)this.ActualInstance;
+            return (GreaterObject)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ObservationObjectOneOf6`. If the actual instance is not `ObservationObjectOneOf6`,
+        /// Get the actual instance of `LesserObject`. If the actual instance is not `LesserObject`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ObservationObjectOneOf6</returns>
-        public ObservationObjectOneOf6 GetObservationObjectOneOf6()
+        /// <returns>An instance of LesserObject</returns>
+        public LesserObject GetLesserObject()
         {
-            return (ObservationObjectOneOf6)this.ActualInstance;
+            return (LesserObject)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ObservationObjectOneOf7`. If the actual instance is not `ObservationObjectOneOf7`,
+        /// Get the actual instance of `LesserOrEqualObject`. If the actual instance is not `LesserOrEqualObject`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ObservationObjectOneOf7</returns>
-        public ObservationObjectOneOf7 GetObservationObjectOneOf7()
+        /// <returns>An instance of LesserOrEqualObject</returns>
+        public LesserOrEqualObject GetLesserOrEqualObject()
         {
-            return (ObservationObjectOneOf7)this.ActualInstance;
+            return (LesserOrEqualObject)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ObservationObjectOneOf8`. If the actual instance is not `ObservationObjectOneOf8`,
+        /// Get the actual instance of `EqualObject`. If the actual instance is not `EqualObject`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ObservationObjectOneOf8</returns>
-        public ObservationObjectOneOf8 GetObservationObjectOneOf8()
+        /// <returns>An instance of EqualObject</returns>
+        public EqualObject GetEqualObject()
         {
-            return (ObservationObjectOneOf8)this.ActualInstance;
+            return (EqualObject)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ActionObjectOneOf`. If the actual instance is not `ActionObjectOneOf`,
+        /// Get the actual instance of `LabelRef`. If the actual instance is not `LabelRef`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ActionObjectOneOf</returns>
-        public ActionObjectOneOf GetActionObjectOneOf()
+        /// <returns>An instance of LabelRef</returns>
+        public LabelRef GetLabelRef()
         {
-            return (ActionObjectOneOf)this.ActualInstance;
+            return (LabelRef)this.ActualInstance;
         }
 
         /// <summary>
@@ -381,201 +381,201 @@ namespace MarloweAPIClient.Model
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ActionObjectOneOf).GetProperty("AdditionalProperties") == null)
+                if (typeof(AndObject).GetProperty("AdditionalProperties") == null)
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ActionObjectOneOf>(jsonString, ObservationObject.SerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<AndObject>(jsonString, ObservationObject.SerializerSettings));
                 }
                 else
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ActionObjectOneOf>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<AndObject>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ActionObjectOneOf");
+                matchedTypes.Add("AndObject");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ActionObjectOneOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into AndObject: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ObservationObjectOneOf).GetProperty("AdditionalProperties") == null)
+                if (typeof(ChooseForObject).GetProperty("AdditionalProperties") == null)
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ObservationObjectOneOf>(jsonString, ObservationObject.SerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ChooseForObject>(jsonString, ObservationObject.SerializerSettings));
                 }
                 else
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ObservationObjectOneOf>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ChooseForObject>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ObservationObjectOneOf");
+                matchedTypes.Add("ChooseForObject");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ObservationObjectOneOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ChooseForObject: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ObservationObjectOneOf1).GetProperty("AdditionalProperties") == null)
+                if (typeof(EqualObject).GetProperty("AdditionalProperties") == null)
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ObservationObjectOneOf1>(jsonString, ObservationObject.SerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<EqualObject>(jsonString, ObservationObject.SerializerSettings));
                 }
                 else
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ObservationObjectOneOf1>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<EqualObject>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ObservationObjectOneOf1");
+                matchedTypes.Add("EqualObject");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ObservationObjectOneOf1: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into EqualObject: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ObservationObjectOneOf2).GetProperty("AdditionalProperties") == null)
+                if (typeof(GreaterObject).GetProperty("AdditionalProperties") == null)
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ObservationObjectOneOf2>(jsonString, ObservationObject.SerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<GreaterObject>(jsonString, ObservationObject.SerializerSettings));
                 }
                 else
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ObservationObjectOneOf2>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<GreaterObject>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ObservationObjectOneOf2");
+                matchedTypes.Add("GreaterObject");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ObservationObjectOneOf2: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into GreaterObject: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ObservationObjectOneOf3).GetProperty("AdditionalProperties") == null)
+                if (typeof(GreaterOrEqualObject).GetProperty("AdditionalProperties") == null)
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ObservationObjectOneOf3>(jsonString, ObservationObject.SerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<GreaterOrEqualObject>(jsonString, ObservationObject.SerializerSettings));
                 }
                 else
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ObservationObjectOneOf3>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<GreaterOrEqualObject>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ObservationObjectOneOf3");
+                matchedTypes.Add("GreaterOrEqualObject");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ObservationObjectOneOf3: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into GreaterOrEqualObject: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ObservationObjectOneOf4).GetProperty("AdditionalProperties") == null)
+                if (typeof(LabelRef).GetProperty("AdditionalProperties") == null)
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ObservationObjectOneOf4>(jsonString, ObservationObject.SerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<LabelRef>(jsonString, ObservationObject.SerializerSettings));
                 }
                 else
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ObservationObjectOneOf4>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<LabelRef>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ObservationObjectOneOf4");
+                matchedTypes.Add("LabelRef");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ObservationObjectOneOf4: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into LabelRef: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ObservationObjectOneOf5).GetProperty("AdditionalProperties") == null)
+                if (typeof(LesserObject).GetProperty("AdditionalProperties") == null)
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ObservationObjectOneOf5>(jsonString, ObservationObject.SerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<LesserObject>(jsonString, ObservationObject.SerializerSettings));
                 }
                 else
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ObservationObjectOneOf5>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<LesserObject>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ObservationObjectOneOf5");
+                matchedTypes.Add("LesserObject");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ObservationObjectOneOf5: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into LesserObject: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ObservationObjectOneOf6).GetProperty("AdditionalProperties") == null)
+                if (typeof(LesserOrEqualObject).GetProperty("AdditionalProperties") == null)
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ObservationObjectOneOf6>(jsonString, ObservationObject.SerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<LesserOrEqualObject>(jsonString, ObservationObject.SerializerSettings));
                 }
                 else
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ObservationObjectOneOf6>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<LesserOrEqualObject>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ObservationObjectOneOf6");
+                matchedTypes.Add("LesserOrEqualObject");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ObservationObjectOneOf6: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into LesserOrEqualObject: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ObservationObjectOneOf7).GetProperty("AdditionalProperties") == null)
+                if (typeof(NotObject).GetProperty("AdditionalProperties") == null)
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ObservationObjectOneOf7>(jsonString, ObservationObject.SerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<NotObject>(jsonString, ObservationObject.SerializerSettings));
                 }
                 else
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ObservationObjectOneOf7>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<NotObject>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ObservationObjectOneOf7");
+                matchedTypes.Add("NotObject");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ObservationObjectOneOf7: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into NotObject: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ObservationObjectOneOf8).GetProperty("AdditionalProperties") == null)
+                if (typeof(OrObject).GetProperty("AdditionalProperties") == null)
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ObservationObjectOneOf8>(jsonString, ObservationObject.SerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<OrObject>(jsonString, ObservationObject.SerializerSettings));
                 }
                 else
                 {
-                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<ObservationObjectOneOf8>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
+                    newObservationObject = new ObservationObject(JsonConvert.DeserializeObject<OrObject>(jsonString, ObservationObject.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ObservationObjectOneOf8");
+                matchedTypes.Add("OrObject");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ObservationObjectOneOf8: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into OrObject: {1}", jsonString, exception.ToString()));
             }
 
             try

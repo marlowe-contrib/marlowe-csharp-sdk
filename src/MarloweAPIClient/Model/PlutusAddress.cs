@@ -48,62 +48,22 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("addressCredential is a required property for PlutusAddress and cannot be null");
             }
-            this._AddressCredential = addressCredential;
-            this._AddressStakingCredential = addressStakingCredential;
-            if (this.AddressStakingCredential != null)
-            {
-                this._flagAddressStakingCredential = true;
-            }
+            this.AddressCredential = addressCredential;
+            this.AddressStakingCredential = addressStakingCredential;
         }
 
         /// <summary>
         /// Gets or Sets AddressCredential
         /// </summary>
         [DataMember(Name = "addressCredential", IsRequired = true, EmitDefaultValue = true)]
-        public PlutusCredential AddressCredential
-        {
-            get{ return _AddressCredential;}
-            set
-            {
-                _AddressCredential = value;
-                _flagAddressCredential = true;
-            }
-        }
-        private PlutusCredential _AddressCredential;
-        private bool _flagAddressCredential;
+        public PlutusCredential AddressCredential { get; set; }
 
-        /// <summary>
-        /// Returns false as AddressCredential should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeAddressCredential()
-        {
-            return _flagAddressCredential;
-        }
         /// <summary>
         /// Gets or Sets AddressStakingCredential
         /// </summary>
         [DataMember(Name = "addressStakingCredential", EmitDefaultValue = false)]
-        public PlutusStakingCredential AddressStakingCredential
-        {
-            get{ return _AddressStakingCredential;}
-            set
-            {
-                _AddressStakingCredential = value;
-                _flagAddressStakingCredential = true;
-            }
-        }
-        private PlutusStakingCredential _AddressStakingCredential;
-        private bool _flagAddressStakingCredential;
+        public PlutusStakingCredential AddressStakingCredential { get; set; }
 
-        /// <summary>
-        /// Returns false as AddressStakingCredential should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeAddressStakingCredential()
-        {
-            return _flagAddressStakingCredential;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

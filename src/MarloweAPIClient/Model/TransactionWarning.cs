@@ -35,62 +35,62 @@ namespace MarloweAPIClient.Model
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionWarning" /> class
-        /// with the <see cref="TransactionWarningOneOf" /> class
+        /// with the <see cref="NonPositiveDeposit" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of TransactionWarningOneOf.</param>
-        public TransactionWarning(TransactionWarningOneOf actualInstance)
+        /// <param name="actualInstance">An instance of NonPositiveDeposit.</param>
+        public TransactionWarning(NonPositiveDeposit actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionWarning" /> class
-        /// with the <see cref="TransactionWarningOneOf1" /> class
+        /// with the <see cref="NonPositivePayment" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of TransactionWarningOneOf1.</param>
-        public TransactionWarning(TransactionWarningOneOf1 actualInstance)
+        /// <param name="actualInstance">An instance of NonPositivePayment.</param>
+        public TransactionWarning(NonPositivePayment actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionWarning" /> class
-        /// with the <see cref="TransactionWarningOneOf2" /> class
+        /// with the <see cref="PartialPayment" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of TransactionWarningOneOf2.</param>
-        public TransactionWarning(TransactionWarningOneOf2 actualInstance)
+        /// <param name="actualInstance">An instance of PartialPayment.</param>
+        public TransactionWarning(PartialPayment actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionWarning" /> class
-        /// with the <see cref="TransactionWarningOneOf3" /> class
+        /// with the <see cref="VariableShadowing" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of TransactionWarningOneOf3.</param>
-        public TransactionWarning(TransactionWarningOneOf3 actualInstance)
+        /// <param name="actualInstance">An instance of VariableShadowing.</param>
+        public TransactionWarning(VariableShadowing actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionWarning" /> class
-        /// with the <see cref="string" /> class
+        /// with the <see cref="AssertFail" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of string.</param>
-        public TransactionWarning(string actualInstance)
+        /// <param name="actualInstance">An instance of AssertFail.</param>
+        public TransactionWarning(AssertFail actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+            this.SchemaType = "oneOf";
+            this.ActualInstance = actualInstance;
         }
 
 
@@ -107,81 +107,81 @@ namespace MarloweAPIClient.Model
             }
             set
             {
-                if (value.GetType() == typeof(TransactionWarningOneOf))
+                if (value.GetType() == typeof(AssertFail))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(TransactionWarningOneOf1))
+                else if (value.GetType() == typeof(NonPositiveDeposit))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(TransactionWarningOneOf2))
+                else if (value.GetType() == typeof(NonPositivePayment))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(TransactionWarningOneOf3))
+                else if (value.GetType() == typeof(PartialPayment))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(string))
+                else if (value.GetType() == typeof(VariableShadowing))
                 {
                     this._actualInstance = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: TransactionWarningOneOf, TransactionWarningOneOf1, TransactionWarningOneOf2, TransactionWarningOneOf3, string");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: AssertFail, NonPositiveDeposit, NonPositivePayment, PartialPayment, VariableShadowing");
                 }
             }
         }
 
         /// <summary>
-        /// Get the actual instance of `TransactionWarningOneOf`. If the actual instance is not `TransactionWarningOneOf`,
+        /// Get the actual instance of `NonPositiveDeposit`. If the actual instance is not `NonPositiveDeposit`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of TransactionWarningOneOf</returns>
-        public TransactionWarningOneOf GetTransactionWarningOneOf()
+        /// <returns>An instance of NonPositiveDeposit</returns>
+        public NonPositiveDeposit GetNonPositiveDeposit()
         {
-            return (TransactionWarningOneOf)this.ActualInstance;
+            return (NonPositiveDeposit)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `TransactionWarningOneOf1`. If the actual instance is not `TransactionWarningOneOf1`,
+        /// Get the actual instance of `NonPositivePayment`. If the actual instance is not `NonPositivePayment`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of TransactionWarningOneOf1</returns>
-        public TransactionWarningOneOf1 GetTransactionWarningOneOf1()
+        /// <returns>An instance of NonPositivePayment</returns>
+        public NonPositivePayment GetNonPositivePayment()
         {
-            return (TransactionWarningOneOf1)this.ActualInstance;
+            return (NonPositivePayment)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `TransactionWarningOneOf2`. If the actual instance is not `TransactionWarningOneOf2`,
+        /// Get the actual instance of `PartialPayment`. If the actual instance is not `PartialPayment`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of TransactionWarningOneOf2</returns>
-        public TransactionWarningOneOf2 GetTransactionWarningOneOf2()
+        /// <returns>An instance of PartialPayment</returns>
+        public PartialPayment GetPartialPayment()
         {
-            return (TransactionWarningOneOf2)this.ActualInstance;
+            return (PartialPayment)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `TransactionWarningOneOf3`. If the actual instance is not `TransactionWarningOneOf3`,
+        /// Get the actual instance of `VariableShadowing`. If the actual instance is not `VariableShadowing`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of TransactionWarningOneOf3</returns>
-        public TransactionWarningOneOf3 GetTransactionWarningOneOf3()
+        /// <returns>An instance of VariableShadowing</returns>
+        public VariableShadowing GetVariableShadowing()
         {
-            return (TransactionWarningOneOf3)this.ActualInstance;
+            return (VariableShadowing)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `string`. If the actual instance is not `string`,
+        /// Get the actual instance of `AssertFail`. If the actual instance is not `AssertFail`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of string</returns>
-        public string GetString()
+        /// <returns>An instance of AssertFail</returns>
+        public AssertFail GetAssertFail()
         {
-            return (string)this.ActualInstance;
+            return (AssertFail)this.ActualInstance;
         }
 
         /// <summary>
@@ -225,101 +225,101 @@ namespace MarloweAPIClient.Model
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(TransactionWarningOneOf).GetProperty("AdditionalProperties") == null)
+                if (typeof(AssertFail).GetProperty("AdditionalProperties") == null)
                 {
-                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<TransactionWarningOneOf>(jsonString, TransactionWarning.SerializerSettings));
+                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<AssertFail>(jsonString, TransactionWarning.SerializerSettings));
                 }
                 else
                 {
-                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<TransactionWarningOneOf>(jsonString, TransactionWarning.AdditionalPropertiesSerializerSettings));
+                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<AssertFail>(jsonString, TransactionWarning.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("TransactionWarningOneOf");
+                matchedTypes.Add("AssertFail");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into TransactionWarningOneOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into AssertFail: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(TransactionWarningOneOf1).GetProperty("AdditionalProperties") == null)
+                if (typeof(NonPositiveDeposit).GetProperty("AdditionalProperties") == null)
                 {
-                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<TransactionWarningOneOf1>(jsonString, TransactionWarning.SerializerSettings));
+                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<NonPositiveDeposit>(jsonString, TransactionWarning.SerializerSettings));
                 }
                 else
                 {
-                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<TransactionWarningOneOf1>(jsonString, TransactionWarning.AdditionalPropertiesSerializerSettings));
+                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<NonPositiveDeposit>(jsonString, TransactionWarning.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("TransactionWarningOneOf1");
+                matchedTypes.Add("NonPositiveDeposit");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into TransactionWarningOneOf1: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into NonPositiveDeposit: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(TransactionWarningOneOf2).GetProperty("AdditionalProperties") == null)
+                if (typeof(NonPositivePayment).GetProperty("AdditionalProperties") == null)
                 {
-                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<TransactionWarningOneOf2>(jsonString, TransactionWarning.SerializerSettings));
+                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<NonPositivePayment>(jsonString, TransactionWarning.SerializerSettings));
                 }
                 else
                 {
-                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<TransactionWarningOneOf2>(jsonString, TransactionWarning.AdditionalPropertiesSerializerSettings));
+                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<NonPositivePayment>(jsonString, TransactionWarning.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("TransactionWarningOneOf2");
+                matchedTypes.Add("NonPositivePayment");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into TransactionWarningOneOf2: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into NonPositivePayment: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(TransactionWarningOneOf3).GetProperty("AdditionalProperties") == null)
+                if (typeof(PartialPayment).GetProperty("AdditionalProperties") == null)
                 {
-                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<TransactionWarningOneOf3>(jsonString, TransactionWarning.SerializerSettings));
+                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<PartialPayment>(jsonString, TransactionWarning.SerializerSettings));
                 }
                 else
                 {
-                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<TransactionWarningOneOf3>(jsonString, TransactionWarning.AdditionalPropertiesSerializerSettings));
+                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<PartialPayment>(jsonString, TransactionWarning.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("TransactionWarningOneOf3");
+                matchedTypes.Add("PartialPayment");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into TransactionWarningOneOf3: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into PartialPayment: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(string).GetProperty("AdditionalProperties") == null)
+                if (typeof(VariableShadowing).GetProperty("AdditionalProperties") == null)
                 {
-                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<string>(jsonString, TransactionWarning.SerializerSettings));
+                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<VariableShadowing>(jsonString, TransactionWarning.SerializerSettings));
                 }
                 else
                 {
-                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<string>(jsonString, TransactionWarning.AdditionalPropertiesSerializerSettings));
+                    newTransactionWarning = new TransactionWarning(JsonConvert.DeserializeObject<VariableShadowing>(jsonString, TransactionWarning.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("string");
+                matchedTypes.Add("VariableShadowing");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into string: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into VariableShadowing: {1}", jsonString, exception.ToString()));
             }
 
             if (match == 0)
@@ -410,7 +410,7 @@ namespace MarloweAPIClient.Model
         /// <returns>The object converted from the JSON string</returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if(reader.TokenType != JsonToken.Null)
+            if (reader.TokenType != JsonToken.Null)
             {
                 return TransactionWarning.FromJson(JObject.Load(reader).ToString(Formatting.None));
             }

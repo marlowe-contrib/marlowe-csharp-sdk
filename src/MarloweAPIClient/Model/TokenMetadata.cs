@@ -29,13 +29,16 @@ namespace MarloweAPIClient.Model
     /// Metadata for an NFT, as described by https://cips.cardano.org/cips/cip25/
     /// </summary>
     [DataContract(Name = "TokenMetadata")]
-    public partial class TokenMetadata : IEquatable<TokenMetadata>, IValidatableObject
+    public partial class TokenMetadata : Dictionary<String, Metadata>, IEquatable<TokenMetadata>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenMetadata" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected TokenMetadata() { }
+        protected TokenMetadata()
+        {
+            this.AdditionalProperties = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenMetadata" /> class.
         /// </summary>
@@ -44,157 +47,62 @@ namespace MarloweAPIClient.Model
         /// <param name="image">image (required).</param>
         /// <param name="mediaType">mediaType.</param>
         /// <param name="name">name (required).</param>
-        public TokenMetadata(string description = default(string), List<TokenMetadataFile> files = default(List<TokenMetadataFile>), string image = default(string), string mediaType = default(string), string name = default(string))
+        public TokenMetadata(string description = default(string), List<TokenMetadataFile> files = default(List<TokenMetadataFile>), string image = default(string), string mediaType = default(string), string name = default(string)) : base()
         {
             // to ensure "image" is required (not null)
             if (image == null)
             {
                 throw new ArgumentNullException("image is a required property for TokenMetadata and cannot be null");
             }
-            this._Image = image;
+            this.Image = image;
             // to ensure "name" is required (not null)
             if (name == null)
             {
                 throw new ArgumentNullException("name is a required property for TokenMetadata and cannot be null");
             }
-            this._Name = name;
-            this._Description = description;
-            if (this.Description != null)
-            {
-                this._flagDescription = true;
-            }
-            this._Files = files;
-            if (this.Files != null)
-            {
-                this._flagFiles = true;
-            }
-            this._MediaType = mediaType;
-            if (this.MediaType != null)
-            {
-                this._flagMediaType = true;
-            }
+            this.Name = name;
+            this.Description = description;
+            this.Files = files;
+            this.MediaType = mediaType;
+            this.AdditionalProperties = new Dictionary<string, object>();
         }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
         [DataMember(Name = "description", EmitDefaultValue = false)]
-        public string Description
-        {
-            get{ return _Description;}
-            set
-            {
-                _Description = value;
-                _flagDescription = true;
-            }
-        }
-        private string _Description;
-        private bool _flagDescription;
+        public string Description { get; set; }
 
-        /// <summary>
-        /// Returns false as Description should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeDescription()
-        {
-            return _flagDescription;
-        }
         /// <summary>
         /// Gets or Sets Files
         /// </summary>
         [DataMember(Name = "files", EmitDefaultValue = false)]
-        public List<TokenMetadataFile> Files
-        {
-            get{ return _Files;}
-            set
-            {
-                _Files = value;
-                _flagFiles = true;
-            }
-        }
-        private List<TokenMetadataFile> _Files;
-        private bool _flagFiles;
+        public List<TokenMetadataFile> Files { get; set; }
 
-        /// <summary>
-        /// Returns false as Files should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeFiles()
-        {
-            return _flagFiles;
-        }
         /// <summary>
         /// Gets or Sets Image
         /// </summary>
         [DataMember(Name = "image", IsRequired = true, EmitDefaultValue = true)]
-        public string Image
-        {
-            get{ return _Image;}
-            set
-            {
-                _Image = value;
-                _flagImage = true;
-            }
-        }
-        private string _Image;
-        private bool _flagImage;
+        public string Image { get; set; }
 
-        /// <summary>
-        /// Returns false as Image should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeImage()
-        {
-            return _flagImage;
-        }
         /// <summary>
         /// Gets or Sets MediaType
         /// </summary>
         [DataMember(Name = "mediaType", EmitDefaultValue = false)]
-        public string MediaType
-        {
-            get{ return _MediaType;}
-            set
-            {
-                _MediaType = value;
-                _flagMediaType = true;
-            }
-        }
-        private string _MediaType;
-        private bool _flagMediaType;
+        public string MediaType { get; set; }
 
-        /// <summary>
-        /// Returns false as MediaType should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeMediaType()
-        {
-            return _flagMediaType;
-        }
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
-        public string Name
-        {
-            get{ return _Name;}
-            set
-            {
-                _Name = value;
-                _flagName = true;
-            }
-        }
-        private string _Name;
-        private bool _flagName;
+        public string Name { get; set; }
 
         /// <summary>
-        /// Returns false as Name should not be serialized given that it's read-only.
+        /// Gets or Sets additional properties
         /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeName()
-        {
-            return _flagName;
-        }
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -203,11 +111,13 @@ namespace MarloweAPIClient.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class TokenMetadata {\n");
+            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Files: ").Append(Files).Append("\n");
             sb.Append("  Image: ").Append(Image).Append("\n");
             sb.Append("  MediaType: ").Append(MediaType).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -216,7 +126,7 @@ namespace MarloweAPIClient.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
@@ -242,33 +152,34 @@ namespace MarloweAPIClient.Model
             {
                 return false;
             }
-            return 
+            return base.Equals(input) && 
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Files == input.Files ||
                     this.Files != null &&
                     input.Files != null &&
                     this.Files.SequenceEqual(input.Files)
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Image == input.Image ||
                     (this.Image != null &&
                     this.Image.Equals(input.Image))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.MediaType == input.MediaType ||
                     (this.MediaType != null &&
                     this.MediaType.Equals(input.MediaType))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                );
+                )
+                && (this.AdditionalProperties.Count == input.AdditionalProperties.Count && !this.AdditionalProperties.Except(input.AdditionalProperties).Any());
         }
 
         /// <summary>
@@ -279,7 +190,7 @@ namespace MarloweAPIClient.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
+                int hashCode = base.GetHashCode();
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
@@ -300,6 +211,10 @@ namespace MarloweAPIClient.Model
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
+                if (this.AdditionalProperties != null)
+                {
+                    hashCode = (hashCode * 59) + this.AdditionalProperties.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -310,6 +225,16 @@ namespace MarloweAPIClient.Model
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            return this.BaseValidate(validationContext);
+        }
+
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        protected IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> BaseValidate(ValidationContext validationContext)
         {
             yield break;
         }

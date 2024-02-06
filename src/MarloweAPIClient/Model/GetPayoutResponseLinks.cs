@@ -39,95 +39,29 @@ namespace MarloweAPIClient.Model
         /// <param name="withdrawal">withdrawal.</param>
         public GetPayoutResponseLinks(string contract = default(string), string transaction = default(string), string withdrawal = default(string))
         {
-            this._Contract = contract;
-            if (this.Contract != null)
-            {
-                this._flagContract = true;
-            }
-            this._Transaction = transaction;
-            if (this.Transaction != null)
-            {
-                this._flagTransaction = true;
-            }
-            this._Withdrawal = withdrawal;
-            if (this.Withdrawal != null)
-            {
-                this._flagWithdrawal = true;
-            }
+            this.Contract = contract;
+            this.Transaction = transaction;
+            this.Withdrawal = withdrawal;
         }
 
         /// <summary>
         /// Gets or Sets Contract
         /// </summary>
         [DataMember(Name = "contract", EmitDefaultValue = false)]
-        public string Contract
-        {
-            get{ return _Contract;}
-            set
-            {
-                _Contract = value;
-                _flagContract = true;
-            }
-        }
-        private string _Contract;
-        private bool _flagContract;
+        public string Contract { get; set; }
 
-        /// <summary>
-        /// Returns false as Contract should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeContract()
-        {
-            return _flagContract;
-        }
         /// <summary>
         /// Gets or Sets Transaction
         /// </summary>
         [DataMember(Name = "transaction", EmitDefaultValue = false)]
-        public string Transaction
-        {
-            get{ return _Transaction;}
-            set
-            {
-                _Transaction = value;
-                _flagTransaction = true;
-            }
-        }
-        private string _Transaction;
-        private bool _flagTransaction;
+        public string Transaction { get; set; }
 
-        /// <summary>
-        /// Returns false as Transaction should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTransaction()
-        {
-            return _flagTransaction;
-        }
         /// <summary>
         /// Gets or Sets Withdrawal
         /// </summary>
         [DataMember(Name = "withdrawal", EmitDefaultValue = false)]
-        public string Withdrawal
-        {
-            get{ return _Withdrawal;}
-            set
-            {
-                _Withdrawal = value;
-                _flagWithdrawal = true;
-            }
-        }
-        private string _Withdrawal;
-        private bool _flagWithdrawal;
+        public string Withdrawal { get; set; }
 
-        /// <summary>
-        /// Returns false as Withdrawal should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeWithdrawal()
-        {
-            return _flagWithdrawal;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

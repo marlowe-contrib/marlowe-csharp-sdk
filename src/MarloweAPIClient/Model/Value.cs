@@ -35,13 +35,13 @@ namespace MarloweAPIClient.Model
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Value" /> class
-        /// with the <see cref="ValueOneOf" /> class
+        /// with the <see cref="TokenInAccount" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ValueOneOf.</param>
-        public Value(ValueOneOf actualInstance)
+        /// <param name="actualInstance">An instance of TokenInAccount.</param>
+        public Value(TokenInAccount actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -53,115 +53,115 @@ namespace MarloweAPIClient.Model
         public Value(long actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance;
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Value" /> class
-        /// with the <see cref="ValueOneOf1" /> class
+        /// with the <see cref="Negate" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ValueOneOf1.</param>
-        public Value(ValueOneOf1 actualInstance)
+        /// <param name="actualInstance">An instance of Negate.</param>
+        public Value(Negate actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Value" /> class
-        /// with the <see cref="ValueOneOf2" /> class
+        /// with the <see cref="Add" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ValueOneOf2.</param>
-        public Value(ValueOneOf2 actualInstance)
+        /// <param name="actualInstance">An instance of Add.</param>
+        public Value(Add actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Value" /> class
-        /// with the <see cref="ValueOneOf3" /> class
+        /// with the <see cref="Minus" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ValueOneOf3.</param>
-        public Value(ValueOneOf3 actualInstance)
+        /// <param name="actualInstance">An instance of Minus.</param>
+        public Value(Minus actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Value" /> class
-        /// with the <see cref="ValueOneOf4" /> class
+        /// with the <see cref="Multiply" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ValueOneOf4.</param>
-        public Value(ValueOneOf4 actualInstance)
+        /// <param name="actualInstance">An instance of Multiply.</param>
+        public Value(Multiply actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Value" /> class
-        /// with the <see cref="ValueOneOf5" /> class
+        /// with the <see cref="Divide" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ValueOneOf5.</param>
-        public Value(ValueOneOf5 actualInstance)
+        /// <param name="actualInstance">An instance of Divide.</param>
+        public Value(Divide actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Value" /> class
-        /// with the <see cref="ValueOneOf6" /> class
+        /// with the <see cref="ValueOfChoice" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ValueOneOf6.</param>
-        public Value(ValueOneOf6 actualInstance)
+        /// <param name="actualInstance">An instance of ValueOfChoice.</param>
+        public Value(ValueOfChoice actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Value" /> class
-        /// with the <see cref="string" /> class
+        /// with the <see cref="TimeInterval" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of string.</param>
-        public Value(string actualInstance)
+        /// <param name="actualInstance">An instance of TimeInterval.</param>
+        public Value(TimeInterval actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
+            this.ActualInstance = actualInstance;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Value" /> class
+        /// with the <see cref="UseValue" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of UseValue.</param>
+        public Value(UseValue actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Value" /> class
-        /// with the <see cref="ValueOneOf7" /> class
+        /// with the <see cref="IfValue" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of ValueOneOf7.</param>
-        public Value(ValueOneOf7 actualInstance)
+        /// <param name="actualInstance">An instance of IfValue.</param>
+        public Value(IfValue actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Value" /> class
-        /// with the <see cref="ValueOneOf8" /> class
-        /// </summary>
-        /// <param name="actualInstance">An instance of ValueOneOf8.</param>
-        public Value(ValueOneOf8 actualInstance)
-        {
-            this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -179,39 +179,43 @@ namespace MarloweAPIClient.Model
             }
             set
             {
-                if (value.GetType() == typeof(ValueOneOf))
+                if (value.GetType() == typeof(Add))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ValueOneOf1))
+                else if (value.GetType() == typeof(Divide))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ValueOneOf2))
+                else if (value.GetType() == typeof(IfValue))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ValueOneOf3))
+                else if (value.GetType() == typeof(Minus))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ValueOneOf4))
+                else if (value.GetType() == typeof(Multiply))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ValueOneOf5))
+                else if (value.GetType() == typeof(Negate))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ValueOneOf6))
+                else if (value.GetType() == typeof(TimeInterval))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ValueOneOf7))
+                else if (value.GetType() == typeof(TokenInAccount))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(ValueOneOf8))
+                else if (value.GetType() == typeof(UseValue))
+                {
+                    this._actualInstance = value;
+                }
+                else if (value.GetType() == typeof(ValueOfChoice))
                 {
                     this._actualInstance = value;
                 }
@@ -219,25 +223,21 @@ namespace MarloweAPIClient.Model
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(string))
-                {
-                    this._actualInstance = value;
-                }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: ValueOneOf, ValueOneOf1, ValueOneOf2, ValueOneOf3, ValueOneOf4, ValueOneOf5, ValueOneOf6, ValueOneOf7, ValueOneOf8, long, string");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: Add, Divide, IfValue, Minus, Multiply, Negate, TimeInterval, TokenInAccount, UseValue, ValueOfChoice, long");
                 }
             }
         }
 
         /// <summary>
-        /// Get the actual instance of `ValueOneOf`. If the actual instance is not `ValueOneOf`,
+        /// Get the actual instance of `TokenInAccount`. If the actual instance is not `TokenInAccount`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ValueOneOf</returns>
-        public ValueOneOf GetValueOneOf()
+        /// <returns>An instance of TokenInAccount</returns>
+        public TokenInAccount GetTokenInAccount()
         {
-            return (ValueOneOf)this.ActualInstance;
+            return (TokenInAccount)this.ActualInstance;
         }
 
         /// <summary>
@@ -251,93 +251,93 @@ namespace MarloweAPIClient.Model
         }
 
         /// <summary>
-        /// Get the actual instance of `ValueOneOf1`. If the actual instance is not `ValueOneOf1`,
+        /// Get the actual instance of `Negate`. If the actual instance is not `Negate`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ValueOneOf1</returns>
-        public ValueOneOf1 GetValueOneOf1()
+        /// <returns>An instance of Negate</returns>
+        public Negate GetNegate()
         {
-            return (ValueOneOf1)this.ActualInstance;
+            return (Negate)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ValueOneOf2`. If the actual instance is not `ValueOneOf2`,
+        /// Get the actual instance of `Add`. If the actual instance is not `Add`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ValueOneOf2</returns>
-        public ValueOneOf2 GetValueOneOf2()
+        /// <returns>An instance of Add</returns>
+        public Add GetAdd()
         {
-            return (ValueOneOf2)this.ActualInstance;
+            return (Add)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ValueOneOf3`. If the actual instance is not `ValueOneOf3`,
+        /// Get the actual instance of `Minus`. If the actual instance is not `Minus`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ValueOneOf3</returns>
-        public ValueOneOf3 GetValueOneOf3()
+        /// <returns>An instance of Minus</returns>
+        public Minus GetMinus()
         {
-            return (ValueOneOf3)this.ActualInstance;
+            return (Minus)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ValueOneOf4`. If the actual instance is not `ValueOneOf4`,
+        /// Get the actual instance of `Multiply`. If the actual instance is not `Multiply`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ValueOneOf4</returns>
-        public ValueOneOf4 GetValueOneOf4()
+        /// <returns>An instance of Multiply</returns>
+        public Multiply GetMultiply()
         {
-            return (ValueOneOf4)this.ActualInstance;
+            return (Multiply)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ValueOneOf5`. If the actual instance is not `ValueOneOf5`,
+        /// Get the actual instance of `Divide`. If the actual instance is not `Divide`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ValueOneOf5</returns>
-        public ValueOneOf5 GetValueOneOf5()
+        /// <returns>An instance of Divide</returns>
+        public Divide GetDivide()
         {
-            return (ValueOneOf5)this.ActualInstance;
+            return (Divide)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ValueOneOf6`. If the actual instance is not `ValueOneOf6`,
+        /// Get the actual instance of `ValueOfChoice`. If the actual instance is not `ValueOfChoice`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ValueOneOf6</returns>
-        public ValueOneOf6 GetValueOneOf6()
+        /// <returns>An instance of ValueOfChoice</returns>
+        public ValueOfChoice GetValueOfChoice()
         {
-            return (ValueOneOf6)this.ActualInstance;
+            return (ValueOfChoice)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `string`. If the actual instance is not `string`,
+        /// Get the actual instance of `TimeInterval`. If the actual instance is not `TimeInterval`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of string</returns>
-        public string GetString()
+        /// <returns>An instance of TimeInterval</returns>
+        public TimeInterval GetTimeInterval()
         {
-            return (string)this.ActualInstance;
+            return (TimeInterval)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ValueOneOf7`. If the actual instance is not `ValueOneOf7`,
+        /// Get the actual instance of `UseValue`. If the actual instance is not `UseValue`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ValueOneOf7</returns>
-        public ValueOneOf7 GetValueOneOf7()
+        /// <returns>An instance of UseValue</returns>
+        public UseValue GetUseValue()
         {
-            return (ValueOneOf7)this.ActualInstance;
+            return (UseValue)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `ValueOneOf8`. If the actual instance is not `ValueOneOf8`,
+        /// Get the actual instance of `IfValue`. If the actual instance is not `IfValue`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of ValueOneOf8</returns>
-        public ValueOneOf8 GetValueOneOf8()
+        /// <returns>An instance of IfValue</returns>
+        public IfValue GetIfValue()
         {
-            return (ValueOneOf8)this.ActualInstance;
+            return (IfValue)this.ActualInstance;
         }
 
         /// <summary>
@@ -381,181 +381,201 @@ namespace MarloweAPIClient.Model
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ValueOneOf).GetProperty("AdditionalProperties") == null)
+                if (typeof(Add).GetProperty("AdditionalProperties") == null)
                 {
-                    newValue = new Value(JsonConvert.DeserializeObject<ValueOneOf>(jsonString, Value.SerializerSettings));
+                    newValue = new Value(JsonConvert.DeserializeObject<Add>(jsonString, Value.SerializerSettings));
                 }
                 else
                 {
-                    newValue = new Value(JsonConvert.DeserializeObject<ValueOneOf>(jsonString, Value.AdditionalPropertiesSerializerSettings));
+                    newValue = new Value(JsonConvert.DeserializeObject<Add>(jsonString, Value.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ValueOneOf");
+                matchedTypes.Add("Add");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueOneOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into Add: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ValueOneOf1).GetProperty("AdditionalProperties") == null)
+                if (typeof(Divide).GetProperty("AdditionalProperties") == null)
                 {
-                    newValue = new Value(JsonConvert.DeserializeObject<ValueOneOf1>(jsonString, Value.SerializerSettings));
+                    newValue = new Value(JsonConvert.DeserializeObject<Divide>(jsonString, Value.SerializerSettings));
                 }
                 else
                 {
-                    newValue = new Value(JsonConvert.DeserializeObject<ValueOneOf1>(jsonString, Value.AdditionalPropertiesSerializerSettings));
+                    newValue = new Value(JsonConvert.DeserializeObject<Divide>(jsonString, Value.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ValueOneOf1");
+                matchedTypes.Add("Divide");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueOneOf1: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into Divide: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ValueOneOf2).GetProperty("AdditionalProperties") == null)
+                if (typeof(IfValue).GetProperty("AdditionalProperties") == null)
                 {
-                    newValue = new Value(JsonConvert.DeserializeObject<ValueOneOf2>(jsonString, Value.SerializerSettings));
+                    newValue = new Value(JsonConvert.DeserializeObject<IfValue>(jsonString, Value.SerializerSettings));
                 }
                 else
                 {
-                    newValue = new Value(JsonConvert.DeserializeObject<ValueOneOf2>(jsonString, Value.AdditionalPropertiesSerializerSettings));
+                    newValue = new Value(JsonConvert.DeserializeObject<IfValue>(jsonString, Value.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ValueOneOf2");
+                matchedTypes.Add("IfValue");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueOneOf2: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into IfValue: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ValueOneOf3).GetProperty("AdditionalProperties") == null)
+                if (typeof(Minus).GetProperty("AdditionalProperties") == null)
                 {
-                    newValue = new Value(JsonConvert.DeserializeObject<ValueOneOf3>(jsonString, Value.SerializerSettings));
+                    newValue = new Value(JsonConvert.DeserializeObject<Minus>(jsonString, Value.SerializerSettings));
                 }
                 else
                 {
-                    newValue = new Value(JsonConvert.DeserializeObject<ValueOneOf3>(jsonString, Value.AdditionalPropertiesSerializerSettings));
+                    newValue = new Value(JsonConvert.DeserializeObject<Minus>(jsonString, Value.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ValueOneOf3");
+                matchedTypes.Add("Minus");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueOneOf3: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into Minus: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ValueOneOf4).GetProperty("AdditionalProperties") == null)
+                if (typeof(Multiply).GetProperty("AdditionalProperties") == null)
                 {
-                    newValue = new Value(JsonConvert.DeserializeObject<ValueOneOf4>(jsonString, Value.SerializerSettings));
+                    newValue = new Value(JsonConvert.DeserializeObject<Multiply>(jsonString, Value.SerializerSettings));
                 }
                 else
                 {
-                    newValue = new Value(JsonConvert.DeserializeObject<ValueOneOf4>(jsonString, Value.AdditionalPropertiesSerializerSettings));
+                    newValue = new Value(JsonConvert.DeserializeObject<Multiply>(jsonString, Value.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ValueOneOf4");
+                matchedTypes.Add("Multiply");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueOneOf4: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into Multiply: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ValueOneOf5).GetProperty("AdditionalProperties") == null)
+                if (typeof(Negate).GetProperty("AdditionalProperties") == null)
                 {
-                    newValue = new Value(JsonConvert.DeserializeObject<ValueOneOf5>(jsonString, Value.SerializerSettings));
+                    newValue = new Value(JsonConvert.DeserializeObject<Negate>(jsonString, Value.SerializerSettings));
                 }
                 else
                 {
-                    newValue = new Value(JsonConvert.DeserializeObject<ValueOneOf5>(jsonString, Value.AdditionalPropertiesSerializerSettings));
+                    newValue = new Value(JsonConvert.DeserializeObject<Negate>(jsonString, Value.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ValueOneOf5");
+                matchedTypes.Add("Negate");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueOneOf5: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into Negate: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ValueOneOf6).GetProperty("AdditionalProperties") == null)
+                if (typeof(TimeInterval).GetProperty("AdditionalProperties") == null)
                 {
-                    newValue = new Value(JsonConvert.DeserializeObject<ValueOneOf6>(jsonString, Value.SerializerSettings));
+                    newValue = new Value(JsonConvert.DeserializeObject<TimeInterval>(jsonString, Value.SerializerSettings));
                 }
                 else
                 {
-                    newValue = new Value(JsonConvert.DeserializeObject<ValueOneOf6>(jsonString, Value.AdditionalPropertiesSerializerSettings));
+                    newValue = new Value(JsonConvert.DeserializeObject<TimeInterval>(jsonString, Value.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ValueOneOf6");
+                matchedTypes.Add("TimeInterval");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueOneOf6: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into TimeInterval: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ValueOneOf7).GetProperty("AdditionalProperties") == null)
+                if (typeof(TokenInAccount).GetProperty("AdditionalProperties") == null)
                 {
-                    newValue = new Value(JsonConvert.DeserializeObject<ValueOneOf7>(jsonString, Value.SerializerSettings));
+                    newValue = new Value(JsonConvert.DeserializeObject<TokenInAccount>(jsonString, Value.SerializerSettings));
                 }
                 else
                 {
-                    newValue = new Value(JsonConvert.DeserializeObject<ValueOneOf7>(jsonString, Value.AdditionalPropertiesSerializerSettings));
+                    newValue = new Value(JsonConvert.DeserializeObject<TokenInAccount>(jsonString, Value.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ValueOneOf7");
+                matchedTypes.Add("TokenInAccount");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueOneOf7: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into TokenInAccount: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(ValueOneOf8).GetProperty("AdditionalProperties") == null)
+                if (typeof(UseValue).GetProperty("AdditionalProperties") == null)
                 {
-                    newValue = new Value(JsonConvert.DeserializeObject<ValueOneOf8>(jsonString, Value.SerializerSettings));
+                    newValue = new Value(JsonConvert.DeserializeObject<UseValue>(jsonString, Value.SerializerSettings));
                 }
                 else
                 {
-                    newValue = new Value(JsonConvert.DeserializeObject<ValueOneOf8>(jsonString, Value.AdditionalPropertiesSerializerSettings));
+                    newValue = new Value(JsonConvert.DeserializeObject<UseValue>(jsonString, Value.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("ValueOneOf8");
+                matchedTypes.Add("UseValue");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueOneOf8: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into UseValue: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(ValueOfChoice).GetProperty("AdditionalProperties") == null)
+                {
+                    newValue = new Value(JsonConvert.DeserializeObject<ValueOfChoice>(jsonString, Value.SerializerSettings));
+                }
+                else
+                {
+                    newValue = new Value(JsonConvert.DeserializeObject<ValueOfChoice>(jsonString, Value.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("ValueOfChoice");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ValueOfChoice: {1}", jsonString, exception.ToString()));
             }
 
             try
@@ -576,26 +596,6 @@ namespace MarloweAPIClient.Model
             {
                 // deserialization failed, try the next one
                 System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into long: {1}", jsonString, exception.ToString()));
-            }
-
-            try
-            {
-                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(string).GetProperty("AdditionalProperties") == null)
-                {
-                    newValue = new Value(JsonConvert.DeserializeObject<string>(jsonString, Value.SerializerSettings));
-                }
-                else
-                {
-                    newValue = new Value(JsonConvert.DeserializeObject<string>(jsonString, Value.AdditionalPropertiesSerializerSettings));
-                }
-                matchedTypes.Add("string");
-                match++;
-            }
-            catch (Exception exception)
-            {
-                // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into string: {1}", jsonString, exception.ToString()));
             }
 
             if (match == 0)
@@ -686,7 +686,7 @@ namespace MarloweAPIClient.Model
         /// <returns>The object converted from the JSON string</returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if(reader.TokenType != JsonToken.Null)
+            if (reader.TokenType != JsonToken.Null)
             {
                 return Value.FromJson(JObject.Load(reader).ToString(Formatting.None));
             }

@@ -35,10 +35,10 @@ namespace MarloweAPIClient.Model
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="IntervalError" /> class
-        /// with the <see cref="IntervalErrorOneOf" /> class
+        /// with the <see cref="InvalidInterval" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of IntervalErrorOneOf.</param>
-        public IntervalError(IntervalErrorOneOf actualInstance)
+        /// <param name="actualInstance">An instance of InvalidInterval.</param>
+        public IntervalError(InvalidInterval actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -47,10 +47,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IntervalError" /> class
-        /// with the <see cref="IntervalErrorOneOf1" /> class
+        /// with the <see cref="IntervalInPast" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of IntervalErrorOneOf1.</param>
-        public IntervalError(IntervalErrorOneOf1 actualInstance)
+        /// <param name="actualInstance">An instance of IntervalInPast.</param>
+        public IntervalError(IntervalInPast actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -71,39 +71,39 @@ namespace MarloweAPIClient.Model
             }
             set
             {
-                if (value.GetType() == typeof(IntervalErrorOneOf))
+                if (value.GetType() == typeof(IntervalInPast))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(IntervalErrorOneOf1))
+                else if (value.GetType() == typeof(InvalidInterval))
                 {
                     this._actualInstance = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: IntervalErrorOneOf, IntervalErrorOneOf1");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: IntervalInPast, InvalidInterval");
                 }
             }
         }
 
         /// <summary>
-        /// Get the actual instance of `IntervalErrorOneOf`. If the actual instance is not `IntervalErrorOneOf`,
+        /// Get the actual instance of `InvalidInterval`. If the actual instance is not `InvalidInterval`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of IntervalErrorOneOf</returns>
-        public IntervalErrorOneOf GetIntervalErrorOneOf()
+        /// <returns>An instance of InvalidInterval</returns>
+        public InvalidInterval GetInvalidInterval()
         {
-            return (IntervalErrorOneOf)this.ActualInstance;
+            return (InvalidInterval)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `IntervalErrorOneOf1`. If the actual instance is not `IntervalErrorOneOf1`,
+        /// Get the actual instance of `IntervalInPast`. If the actual instance is not `IntervalInPast`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of IntervalErrorOneOf1</returns>
-        public IntervalErrorOneOf1 GetIntervalErrorOneOf1()
+        /// <returns>An instance of IntervalInPast</returns>
+        public IntervalInPast GetIntervalInPast()
         {
-            return (IntervalErrorOneOf1)this.ActualInstance;
+            return (IntervalInPast)this.ActualInstance;
         }
 
         /// <summary>
@@ -147,41 +147,41 @@ namespace MarloweAPIClient.Model
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(IntervalErrorOneOf).GetProperty("AdditionalProperties") == null)
+                if (typeof(IntervalInPast).GetProperty("AdditionalProperties") == null)
                 {
-                    newIntervalError = new IntervalError(JsonConvert.DeserializeObject<IntervalErrorOneOf>(jsonString, IntervalError.SerializerSettings));
+                    newIntervalError = new IntervalError(JsonConvert.DeserializeObject<IntervalInPast>(jsonString, IntervalError.SerializerSettings));
                 }
                 else
                 {
-                    newIntervalError = new IntervalError(JsonConvert.DeserializeObject<IntervalErrorOneOf>(jsonString, IntervalError.AdditionalPropertiesSerializerSettings));
+                    newIntervalError = new IntervalError(JsonConvert.DeserializeObject<IntervalInPast>(jsonString, IntervalError.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("IntervalErrorOneOf");
+                matchedTypes.Add("IntervalInPast");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into IntervalErrorOneOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into IntervalInPast: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(IntervalErrorOneOf1).GetProperty("AdditionalProperties") == null)
+                if (typeof(InvalidInterval).GetProperty("AdditionalProperties") == null)
                 {
-                    newIntervalError = new IntervalError(JsonConvert.DeserializeObject<IntervalErrorOneOf1>(jsonString, IntervalError.SerializerSettings));
+                    newIntervalError = new IntervalError(JsonConvert.DeserializeObject<InvalidInterval>(jsonString, IntervalError.SerializerSettings));
                 }
                 else
                 {
-                    newIntervalError = new IntervalError(JsonConvert.DeserializeObject<IntervalErrorOneOf1>(jsonString, IntervalError.AdditionalPropertiesSerializerSettings));
+                    newIntervalError = new IntervalError(JsonConvert.DeserializeObject<InvalidInterval>(jsonString, IntervalError.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("IntervalErrorOneOf1");
+                matchedTypes.Add("InvalidInterval");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into IntervalErrorOneOf1: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into InvalidInterval: {1}", jsonString, exception.ToString()));
             }
 
             if (match == 0)

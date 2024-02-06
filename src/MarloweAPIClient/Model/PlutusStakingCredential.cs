@@ -35,10 +35,10 @@ namespace MarloweAPIClient.Model
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PlutusStakingCredential" /> class
-        /// with the <see cref="PlutusStakingCredentialOneOf" /> class
+        /// with the <see cref="StakingHash" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of PlutusStakingCredentialOneOf.</param>
-        public PlutusStakingCredential(PlutusStakingCredentialOneOf actualInstance)
+        /// <param name="actualInstance">An instance of StakingHash.</param>
+        public PlutusStakingCredential(StakingHash actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -47,10 +47,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PlutusStakingCredential" /> class
-        /// with the <see cref="PlutusStakingCredentialOneOf1" /> class
+        /// with the <see cref="StakingPointer" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of PlutusStakingCredentialOneOf1.</param>
-        public PlutusStakingCredential(PlutusStakingCredentialOneOf1 actualInstance)
+        /// <param name="actualInstance">An instance of StakingPointer.</param>
+        public PlutusStakingCredential(StakingPointer actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -71,39 +71,39 @@ namespace MarloweAPIClient.Model
             }
             set
             {
-                if (value.GetType() == typeof(PlutusStakingCredentialOneOf))
+                if (value.GetType() == typeof(StakingHash))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(PlutusStakingCredentialOneOf1))
+                else if (value.GetType() == typeof(StakingPointer))
                 {
                     this._actualInstance = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: PlutusStakingCredentialOneOf, PlutusStakingCredentialOneOf1");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: StakingHash, StakingPointer");
                 }
             }
         }
 
         /// <summary>
-        /// Get the actual instance of `PlutusStakingCredentialOneOf`. If the actual instance is not `PlutusStakingCredentialOneOf`,
+        /// Get the actual instance of `StakingHash`. If the actual instance is not `StakingHash`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of PlutusStakingCredentialOneOf</returns>
-        public PlutusStakingCredentialOneOf GetPlutusStakingCredentialOneOf()
+        /// <returns>An instance of StakingHash</returns>
+        public StakingHash GetStakingHash()
         {
-            return (PlutusStakingCredentialOneOf)this.ActualInstance;
+            return (StakingHash)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `PlutusStakingCredentialOneOf1`. If the actual instance is not `PlutusStakingCredentialOneOf1`,
+        /// Get the actual instance of `StakingPointer`. If the actual instance is not `StakingPointer`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of PlutusStakingCredentialOneOf1</returns>
-        public PlutusStakingCredentialOneOf1 GetPlutusStakingCredentialOneOf1()
+        /// <returns>An instance of StakingPointer</returns>
+        public StakingPointer GetStakingPointer()
         {
-            return (PlutusStakingCredentialOneOf1)this.ActualInstance;
+            return (StakingPointer)this.ActualInstance;
         }
 
         /// <summary>
@@ -147,41 +147,41 @@ namespace MarloweAPIClient.Model
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(PlutusStakingCredentialOneOf).GetProperty("AdditionalProperties") == null)
+                if (typeof(StakingHash).GetProperty("AdditionalProperties") == null)
                 {
-                    newPlutusStakingCredential = new PlutusStakingCredential(JsonConvert.DeserializeObject<PlutusStakingCredentialOneOf>(jsonString, PlutusStakingCredential.SerializerSettings));
+                    newPlutusStakingCredential = new PlutusStakingCredential(JsonConvert.DeserializeObject<StakingHash>(jsonString, PlutusStakingCredential.SerializerSettings));
                 }
                 else
                 {
-                    newPlutusStakingCredential = new PlutusStakingCredential(JsonConvert.DeserializeObject<PlutusStakingCredentialOneOf>(jsonString, PlutusStakingCredential.AdditionalPropertiesSerializerSettings));
+                    newPlutusStakingCredential = new PlutusStakingCredential(JsonConvert.DeserializeObject<StakingHash>(jsonString, PlutusStakingCredential.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("PlutusStakingCredentialOneOf");
+                matchedTypes.Add("StakingHash");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into PlutusStakingCredentialOneOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into StakingHash: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(PlutusStakingCredentialOneOf1).GetProperty("AdditionalProperties") == null)
+                if (typeof(StakingPointer).GetProperty("AdditionalProperties") == null)
                 {
-                    newPlutusStakingCredential = new PlutusStakingCredential(JsonConvert.DeserializeObject<PlutusStakingCredentialOneOf1>(jsonString, PlutusStakingCredential.SerializerSettings));
+                    newPlutusStakingCredential = new PlutusStakingCredential(JsonConvert.DeserializeObject<StakingPointer>(jsonString, PlutusStakingCredential.SerializerSettings));
                 }
                 else
                 {
-                    newPlutusStakingCredential = new PlutusStakingCredential(JsonConvert.DeserializeObject<PlutusStakingCredentialOneOf1>(jsonString, PlutusStakingCredential.AdditionalPropertiesSerializerSettings));
+                    newPlutusStakingCredential = new PlutusStakingCredential(JsonConvert.DeserializeObject<StakingPointer>(jsonString, PlutusStakingCredential.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("PlutusStakingCredentialOneOf1");
+                matchedTypes.Add("StakingPointer");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into PlutusStakingCredentialOneOf1: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into StakingPointer: {1}", jsonString, exception.ToString()));
             }
 
             if (match == 0)

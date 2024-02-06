@@ -50,123 +50,51 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("contract is a required property for Transaction and cannot be null");
             }
-            this._Contract = contract;
+            this.Contract = contract;
             // to ensure "input" is required (not null)
             if (input == null)
             {
                 throw new ArgumentNullException("input is a required property for Transaction and cannot be null");
             }
-            this._Input = input;
+            this.Input = input;
             // to ensure "output" is required (not null)
             if (output == null)
             {
                 throw new ArgumentNullException("output is a required property for Transaction and cannot be null");
             }
-            this._Output = output;
+            this.Output = output;
             // to ensure "state" is required (not null)
             if (state == null)
             {
                 throw new ArgumentNullException("state is a required property for Transaction and cannot be null");
             }
-            this._State = state;
+            this.State = state;
         }
 
         /// <summary>
         /// Gets or Sets Contract
         /// </summary>
         [DataMember(Name = "contract", IsRequired = true, EmitDefaultValue = true)]
-        public Contract Contract
-        {
-            get{ return _Contract;}
-            set
-            {
-                _Contract = value;
-                _flagContract = true;
-            }
-        }
-        private Contract _Contract;
-        private bool _flagContract;
+        public Contract Contract { get; set; }
 
-        /// <summary>
-        /// Returns false as Contract should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeContract()
-        {
-            return _flagContract;
-        }
         /// <summary>
         /// Gets or Sets Input
         /// </summary>
         [DataMember(Name = "input", IsRequired = true, EmitDefaultValue = true)]
-        public TransactionInput Input
-        {
-            get{ return _Input;}
-            set
-            {
-                _Input = value;
-                _flagInput = true;
-            }
-        }
-        private TransactionInput _Input;
-        private bool _flagInput;
+        public TransactionInput Input { get; set; }
 
-        /// <summary>
-        /// Returns false as Input should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeInput()
-        {
-            return _flagInput;
-        }
         /// <summary>
         /// Gets or Sets Output
         /// </summary>
         [DataMember(Name = "output", IsRequired = true, EmitDefaultValue = true)]
-        public TransactionOutput Output
-        {
-            get{ return _Output;}
-            set
-            {
-                _Output = value;
-                _flagOutput = true;
-            }
-        }
-        private TransactionOutput _Output;
-        private bool _flagOutput;
+        public TransactionOutput Output { get; set; }
 
-        /// <summary>
-        /// Returns false as Output should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeOutput()
-        {
-            return _flagOutput;
-        }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = true)]
-        public MarloweState State
-        {
-            get{ return _State;}
-            set
-            {
-                _State = value;
-                _flagState = true;
-            }
-        }
-        private MarloweState _State;
-        private bool _flagState;
+        public MarloweState State { get; set; }
 
-        /// <summary>
-        /// Returns false as State should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeState()
-        {
-            return _flagState;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

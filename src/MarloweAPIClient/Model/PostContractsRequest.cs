@@ -35,28 +35,8 @@ namespace MarloweAPIClient.Model
         /// <summary>
         /// Gets or Sets VarVersion
         /// </summary>
-
         [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = true)]
-        public MarloweVersion VarVersion
-        {
-            get{ return _VarVersion;}
-            set
-            {
-                _VarVersion = value;
-                _flagVarVersion = true;
-            }
-        }
-        private MarloweVersion _VarVersion;
-        private bool _flagVarVersion;
-
-        /// <summary>
-        /// Returns false as VarVersion should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeVarVersion()
-        {
-            return _flagVarVersion;
-        }
+        public MarloweVersion VarVersion { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PostContractsRequest" /> class.
         /// </summary>
@@ -70,160 +50,70 @@ namespace MarloweAPIClient.Model
         /// <param name="minUTxODeposit">minUTxODeposit.</param>
         /// <param name="roles">roles.</param>
         /// <param name="tags">tags (required).</param>
+        /// <param name="threadTokenName">threadTokenName.</param>
         /// <param name="varVersion">varVersion (required).</param>
-        public PostContractsRequest(PostContractsRequestContract contract = default(PostContractsRequestContract), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), long minUTxODeposit = default(long), RolesConfig roles = default(RolesConfig), Dictionary<string, Object> tags = default(Dictionary<string, Object>), MarloweVersion varVersion = default(MarloweVersion))
+        public PostContractsRequest(PostContractsRequestContract contract = default(PostContractsRequestContract), Dictionary<string, Metadata> metadata = default(Dictionary<string, Metadata>), long minUTxODeposit = default(long), RolesConfig roles = default(RolesConfig), Dictionary<string, Metadata> tags = default(Dictionary<string, Metadata>), string threadTokenName = default(string), MarloweVersion varVersion = default(MarloweVersion))
         {
             // to ensure "contract" is required (not null)
             if (contract == null)
             {
                 throw new ArgumentNullException("contract is a required property for PostContractsRequest and cannot be null");
             }
-            this._Contract = contract;
+            this.Contract = contract;
             // to ensure "metadata" is required (not null)
             if (metadata == null)
             {
                 throw new ArgumentNullException("metadata is a required property for PostContractsRequest and cannot be null");
             }
-            this._Metadata = metadata;
+            this.Metadata = metadata;
             // to ensure "tags" is required (not null)
             if (tags == null)
             {
                 throw new ArgumentNullException("tags is a required property for PostContractsRequest and cannot be null");
             }
-            this._Tags = tags;
-            this._VarVersion = varVersion;
-            this._MinUTxODeposit = minUTxODeposit;
-            if (this.MinUTxODeposit != null)
-            {
-                this._flagMinUTxODeposit = true;
-            }
-            this._Roles = roles;
-            if (this.Roles != null)
-            {
-                this._flagRoles = true;
-            }
+            this.Tags = tags;
+            this.VarVersion = varVersion;
+            this.MinUTxODeposit = minUTxODeposit;
+            this.Roles = roles;
+            this.ThreadTokenName = threadTokenName;
         }
 
         /// <summary>
         /// Gets or Sets Contract
         /// </summary>
         [DataMember(Name = "contract", IsRequired = true, EmitDefaultValue = true)]
-        public PostContractsRequestContract Contract
-        {
-            get{ return _Contract;}
-            set
-            {
-                _Contract = value;
-                _flagContract = true;
-            }
-        }
-        private PostContractsRequestContract _Contract;
-        private bool _flagContract;
+        public PostContractsRequestContract Contract { get; set; }
 
-        /// <summary>
-        /// Returns false as Contract should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeContract()
-        {
-            return _flagContract;
-        }
         /// <summary>
         /// Gets or Sets Metadata
         /// </summary>
         [DataMember(Name = "metadata", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Object> Metadata
-        {
-            get{ return _Metadata;}
-            set
-            {
-                _Metadata = value;
-                _flagMetadata = true;
-            }
-        }
-        private Dictionary<string, Object> _Metadata;
-        private bool _flagMetadata;
+        public Dictionary<string, Metadata> Metadata { get; set; }
 
-        /// <summary>
-        /// Returns false as Metadata should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeMetadata()
-        {
-            return _flagMetadata;
-        }
         /// <summary>
         /// Gets or Sets MinUTxODeposit
         /// </summary>
         [DataMember(Name = "minUTxODeposit", EmitDefaultValue = false)]
-        public long MinUTxODeposit
-        {
-            get{ return _MinUTxODeposit;}
-            set
-            {
-                _MinUTxODeposit = value;
-                _flagMinUTxODeposit = true;
-            }
-        }
-        private long _MinUTxODeposit;
-        private bool _flagMinUTxODeposit;
+        public long MinUTxODeposit { get; set; }
 
-        /// <summary>
-        /// Returns false as MinUTxODeposit should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeMinUTxODeposit()
-        {
-            return _flagMinUTxODeposit;
-        }
         /// <summary>
         /// Gets or Sets Roles
         /// </summary>
         [DataMember(Name = "roles", EmitDefaultValue = false)]
-        public RolesConfig Roles
-        {
-            get{ return _Roles;}
-            set
-            {
-                _Roles = value;
-                _flagRoles = true;
-            }
-        }
-        private RolesConfig _Roles;
-        private bool _flagRoles;
+        public RolesConfig Roles { get; set; }
 
-        /// <summary>
-        /// Returns false as Roles should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeRoles()
-        {
-            return _flagRoles;
-        }
         /// <summary>
         /// Gets or Sets Tags
         /// </summary>
         [DataMember(Name = "tags", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Object> Tags
-        {
-            get{ return _Tags;}
-            set
-            {
-                _Tags = value;
-                _flagTags = true;
-            }
-        }
-        private Dictionary<string, Object> _Tags;
-        private bool _flagTags;
+        public Dictionary<string, Metadata> Tags { get; set; }
 
         /// <summary>
-        /// Returns false as Tags should not be serialized given that it's read-only.
+        /// Gets or Sets ThreadTokenName
         /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTags()
-        {
-            return _flagTags;
-        }
+        [DataMember(Name = "threadTokenName", EmitDefaultValue = false)]
+        public string ThreadTokenName { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -237,6 +127,7 @@ namespace MarloweAPIClient.Model
             sb.Append("  MinUTxODeposit: ").Append(MinUTxODeposit).Append("\n");
             sb.Append("  Roles: ").Append(Roles).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
+            sb.Append("  ThreadTokenName: ").Append(ThreadTokenName).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -300,6 +191,11 @@ namespace MarloweAPIClient.Model
                     this.Tags.SequenceEqual(input.Tags)
                 ) && 
                 (
+                    this.ThreadTokenName == input.ThreadTokenName ||
+                    (this.ThreadTokenName != null &&
+                    this.ThreadTokenName.Equals(input.ThreadTokenName))
+                ) && 
+                (
                     this.VarVersion == input.VarVersion ||
                     this.VarVersion.Equals(input.VarVersion)
                 );
@@ -331,6 +227,10 @@ namespace MarloweAPIClient.Model
                 {
                     hashCode = (hashCode * 59) + this.Tags.GetHashCode();
                 }
+                if (this.ThreadTokenName != null)
+                {
+                    hashCode = (hashCode * 59) + this.ThreadTokenName.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.VarVersion.GetHashCode();
                 return hashCode;
             }
@@ -344,9 +244,9 @@ namespace MarloweAPIClient.Model
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // MinUTxODeposit (long) maximum
-            if (this.MinUTxODeposit > (long)-1)
+            if (this.MinUTxODeposit > (long)384)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for MinUTxODeposit, must be a value less than or equal to -1.", new [] { "MinUTxODeposit" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for MinUTxODeposit, must be a value less than or equal to 384.", new [] { "MinUTxODeposit" });
             }
 
             // MinUTxODeposit (long) minimum

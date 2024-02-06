@@ -35,73 +35,73 @@ namespace MarloweAPIClient.Model
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Input" /> class
-        /// with the <see cref="InputOneOf" /> class
+        /// with the <see cref="ContinuationInput" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of InputOneOf.</param>
-        public Input(InputOneOf actualInstance)
+        /// <param name="actualInstance">An instance of ContinuationInput.</param>
+        public Input(ContinuationInput actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Input" /> class
-        /// with the <see cref="string" /> class
+        /// with the <see cref="NotifyInput" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of string.</param>
-        public Input(string actualInstance)
+        /// <param name="actualInstance">An instance of NotifyInput.</param>
+        public Input(NotifyInput actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
+            this.ActualInstance = actualInstance;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Input" /> class
+        /// with the <see cref="ChoiceContinuationInput" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of ChoiceContinuationInput.</param>
+        public Input(ChoiceContinuationInput actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Input" /> class
-        /// with the <see cref="InputOneOf1" /> class
+        /// with the <see cref="ChoiceInput" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of InputOneOf1.</param>
-        public Input(InputOneOf1 actualInstance)
+        /// <param name="actualInstance">An instance of ChoiceInput.</param>
+        public Input(ChoiceInput actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Input" /> class
-        /// with the <see cref="InputOneOf2" /> class
+        /// with the <see cref="DepositInput" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of InputOneOf2.</param>
-        public Input(InputOneOf2 actualInstance)
+        /// <param name="actualInstance">An instance of DepositInput.</param>
+        public Input(DepositInput actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Input" /> class
-        /// with the <see cref="InputOneOf3" /> class
+        /// with the <see cref="DepositContinuationInput" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of InputOneOf3.</param>
-        public Input(InputOneOf3 actualInstance)
+        /// <param name="actualInstance">An instance of DepositContinuationInput.</param>
+        public Input(DepositContinuationInput actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Input" /> class
-        /// with the <see cref="InputOneOf4" /> class
-        /// </summary>
-        /// <param name="actualInstance">An instance of InputOneOf4.</param>
-        public Input(InputOneOf4 actualInstance)
-        {
-            this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -119,95 +119,95 @@ namespace MarloweAPIClient.Model
             }
             set
             {
-                if (value.GetType() == typeof(InputOneOf))
+                if (value.GetType() == typeof(ChoiceContinuationInput))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(InputOneOf1))
+                else if (value.GetType() == typeof(ChoiceInput))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(InputOneOf2))
+                else if (value.GetType() == typeof(ContinuationInput))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(InputOneOf3))
+                else if (value.GetType() == typeof(DepositContinuationInput))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(InputOneOf4))
+                else if (value.GetType() == typeof(DepositInput))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(string))
+                else if (value.GetType() == typeof(NotifyInput))
                 {
                     this._actualInstance = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: InputOneOf, InputOneOf1, InputOneOf2, InputOneOf3, InputOneOf4, string");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: ChoiceContinuationInput, ChoiceInput, ContinuationInput, DepositContinuationInput, DepositInput, NotifyInput");
                 }
             }
         }
 
         /// <summary>
-        /// Get the actual instance of `InputOneOf`. If the actual instance is not `InputOneOf`,
+        /// Get the actual instance of `ContinuationInput`. If the actual instance is not `ContinuationInput`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of InputOneOf</returns>
-        public InputOneOf GetInputOneOf()
+        /// <returns>An instance of ContinuationInput</returns>
+        public ContinuationInput GetContinuationInput()
         {
-            return (InputOneOf)this.ActualInstance;
+            return (ContinuationInput)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `string`. If the actual instance is not `string`,
+        /// Get the actual instance of `NotifyInput`. If the actual instance is not `NotifyInput`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of string</returns>
-        public string GetString()
+        /// <returns>An instance of NotifyInput</returns>
+        public NotifyInput GetNotifyInput()
         {
-            return (string)this.ActualInstance;
+            return (NotifyInput)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `InputOneOf1`. If the actual instance is not `InputOneOf1`,
+        /// Get the actual instance of `ChoiceContinuationInput`. If the actual instance is not `ChoiceContinuationInput`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of InputOneOf1</returns>
-        public InputOneOf1 GetInputOneOf1()
+        /// <returns>An instance of ChoiceContinuationInput</returns>
+        public ChoiceContinuationInput GetChoiceContinuationInput()
         {
-            return (InputOneOf1)this.ActualInstance;
+            return (ChoiceContinuationInput)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `InputOneOf2`. If the actual instance is not `InputOneOf2`,
+        /// Get the actual instance of `ChoiceInput`. If the actual instance is not `ChoiceInput`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of InputOneOf2</returns>
-        public InputOneOf2 GetInputOneOf2()
+        /// <returns>An instance of ChoiceInput</returns>
+        public ChoiceInput GetChoiceInput()
         {
-            return (InputOneOf2)this.ActualInstance;
+            return (ChoiceInput)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `InputOneOf3`. If the actual instance is not `InputOneOf3`,
+        /// Get the actual instance of `DepositInput`. If the actual instance is not `DepositInput`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of InputOneOf3</returns>
-        public InputOneOf3 GetInputOneOf3()
+        /// <returns>An instance of DepositInput</returns>
+        public DepositInput GetDepositInput()
         {
-            return (InputOneOf3)this.ActualInstance;
+            return (DepositInput)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `InputOneOf4`. If the actual instance is not `InputOneOf4`,
+        /// Get the actual instance of `DepositContinuationInput`. If the actual instance is not `DepositContinuationInput`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of InputOneOf4</returns>
-        public InputOneOf4 GetInputOneOf4()
+        /// <returns>An instance of DepositContinuationInput</returns>
+        public DepositContinuationInput GetDepositContinuationInput()
         {
-            return (InputOneOf4)this.ActualInstance;
+            return (DepositContinuationInput)this.ActualInstance;
         }
 
         /// <summary>
@@ -251,121 +251,121 @@ namespace MarloweAPIClient.Model
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(InputOneOf).GetProperty("AdditionalProperties") == null)
+                if (typeof(ChoiceContinuationInput).GetProperty("AdditionalProperties") == null)
                 {
-                    newInput = new Input(JsonConvert.DeserializeObject<InputOneOf>(jsonString, Input.SerializerSettings));
+                    newInput = new Input(JsonConvert.DeserializeObject<ChoiceContinuationInput>(jsonString, Input.SerializerSettings));
                 }
                 else
                 {
-                    newInput = new Input(JsonConvert.DeserializeObject<InputOneOf>(jsonString, Input.AdditionalPropertiesSerializerSettings));
+                    newInput = new Input(JsonConvert.DeserializeObject<ChoiceContinuationInput>(jsonString, Input.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("InputOneOf");
+                matchedTypes.Add("ChoiceContinuationInput");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into InputOneOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ChoiceContinuationInput: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(InputOneOf1).GetProperty("AdditionalProperties") == null)
+                if (typeof(ChoiceInput).GetProperty("AdditionalProperties") == null)
                 {
-                    newInput = new Input(JsonConvert.DeserializeObject<InputOneOf1>(jsonString, Input.SerializerSettings));
+                    newInput = new Input(JsonConvert.DeserializeObject<ChoiceInput>(jsonString, Input.SerializerSettings));
                 }
                 else
                 {
-                    newInput = new Input(JsonConvert.DeserializeObject<InputOneOf1>(jsonString, Input.AdditionalPropertiesSerializerSettings));
+                    newInput = new Input(JsonConvert.DeserializeObject<ChoiceInput>(jsonString, Input.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("InputOneOf1");
+                matchedTypes.Add("ChoiceInput");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into InputOneOf1: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ChoiceInput: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(InputOneOf2).GetProperty("AdditionalProperties") == null)
+                if (typeof(ContinuationInput).GetProperty("AdditionalProperties") == null)
                 {
-                    newInput = new Input(JsonConvert.DeserializeObject<InputOneOf2>(jsonString, Input.SerializerSettings));
+                    newInput = new Input(JsonConvert.DeserializeObject<ContinuationInput>(jsonString, Input.SerializerSettings));
                 }
                 else
                 {
-                    newInput = new Input(JsonConvert.DeserializeObject<InputOneOf2>(jsonString, Input.AdditionalPropertiesSerializerSettings));
+                    newInput = new Input(JsonConvert.DeserializeObject<ContinuationInput>(jsonString, Input.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("InputOneOf2");
+                matchedTypes.Add("ContinuationInput");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into InputOneOf2: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ContinuationInput: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(InputOneOf3).GetProperty("AdditionalProperties") == null)
+                if (typeof(DepositContinuationInput).GetProperty("AdditionalProperties") == null)
                 {
-                    newInput = new Input(JsonConvert.DeserializeObject<InputOneOf3>(jsonString, Input.SerializerSettings));
+                    newInput = new Input(JsonConvert.DeserializeObject<DepositContinuationInput>(jsonString, Input.SerializerSettings));
                 }
                 else
                 {
-                    newInput = new Input(JsonConvert.DeserializeObject<InputOneOf3>(jsonString, Input.AdditionalPropertiesSerializerSettings));
+                    newInput = new Input(JsonConvert.DeserializeObject<DepositContinuationInput>(jsonString, Input.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("InputOneOf3");
+                matchedTypes.Add("DepositContinuationInput");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into InputOneOf3: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into DepositContinuationInput: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(InputOneOf4).GetProperty("AdditionalProperties") == null)
+                if (typeof(DepositInput).GetProperty("AdditionalProperties") == null)
                 {
-                    newInput = new Input(JsonConvert.DeserializeObject<InputOneOf4>(jsonString, Input.SerializerSettings));
+                    newInput = new Input(JsonConvert.DeserializeObject<DepositInput>(jsonString, Input.SerializerSettings));
                 }
                 else
                 {
-                    newInput = new Input(JsonConvert.DeserializeObject<InputOneOf4>(jsonString, Input.AdditionalPropertiesSerializerSettings));
+                    newInput = new Input(JsonConvert.DeserializeObject<DepositInput>(jsonString, Input.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("InputOneOf4");
+                matchedTypes.Add("DepositInput");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into InputOneOf4: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into DepositInput: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(string).GetProperty("AdditionalProperties") == null)
+                if (typeof(NotifyInput).GetProperty("AdditionalProperties") == null)
                 {
-                    newInput = new Input(JsonConvert.DeserializeObject<string>(jsonString, Input.SerializerSettings));
+                    newInput = new Input(JsonConvert.DeserializeObject<NotifyInput>(jsonString, Input.SerializerSettings));
                 }
                 else
                 {
-                    newInput = new Input(JsonConvert.DeserializeObject<string>(jsonString, Input.AdditionalPropertiesSerializerSettings));
+                    newInput = new Input(JsonConvert.DeserializeObject<NotifyInput>(jsonString, Input.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("string");
+                matchedTypes.Add("NotifyInput");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into string: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into NotifyInput: {1}", jsonString, exception.ToString()));
             }
 
             if (match == 0)
@@ -456,7 +456,7 @@ namespace MarloweAPIClient.Model
         /// <returns>The object converted from the JSON string</returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if(reader.TokenType != JsonToken.Null)
+            if (reader.TokenType != JsonToken.Null)
             {
                 return Input.FromJson(JObject.Load(reader).ToString(Formatting.None));
             }

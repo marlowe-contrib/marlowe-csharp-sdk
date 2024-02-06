@@ -38,66 +38,22 @@ namespace MarloweAPIClient.Model
         /// <param name="previous">previous.</param>
         public GetTransactionResponseLinks(string next = default(string), string previous = default(string))
         {
-            this._Next = next;
-            if (this.Next != null)
-            {
-                this._flagNext = true;
-            }
-            this._Previous = previous;
-            if (this.Previous != null)
-            {
-                this._flagPrevious = true;
-            }
+            this.Next = next;
+            this.Previous = previous;
         }
 
         /// <summary>
         /// Gets or Sets Next
         /// </summary>
         [DataMember(Name = "next", EmitDefaultValue = false)]
-        public string Next
-        {
-            get{ return _Next;}
-            set
-            {
-                _Next = value;
-                _flagNext = true;
-            }
-        }
-        private string _Next;
-        private bool _flagNext;
+        public string Next { get; set; }
 
-        /// <summary>
-        /// Returns false as Next should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeNext()
-        {
-            return _flagNext;
-        }
         /// <summary>
         /// Gets or Sets Previous
         /// </summary>
         [DataMember(Name = "previous", EmitDefaultValue = false)]
-        public string Previous
-        {
-            get{ return _Previous;}
-            set
-            {
-                _Previous = value;
-                _flagPrevious = true;
-            }
-        }
-        private string _Previous;
-        private bool _flagPrevious;
+        public string Previous { get; set; }
 
-        /// <summary>
-        /// Returns false as Previous should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializePrevious()
-        {
-            return _flagPrevious;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

@@ -10,11 +10,11 @@ Name | Type | Description | Notes
 **ContractId** | **string** | A reference to a transaction output with a transaction ID and index. | 
 **CurrentContract** | [**Contract**](Contract.md) |  | [optional] 
 **InitialContract** | [**Contract**](Contract.md) |  | 
-**Metadata** | **Dictionary&lt;string, Object&gt;** |  | 
+**Metadata** | [**Dictionary&lt;string, Metadata&gt;**](Metadata.md) |  | 
 **RoleTokenMintingPolicyId** | **string** | The hex-encoded minting policy ID for a native Cardano token | 
 **State** | [**MarloweState**](MarloweState.md) |  | [optional] 
 **Status** | **TxStatus** |  | 
-**Tags** | **Dictionary&lt;string, Object&gt;** |  | 
+**Tags** | [**Dictionary&lt;string, Metadata&gt;**](Metadata.md) |  | 
 **TxBody** | [**TextEnvelope**](TextEnvelope.md) |  | [optional] 
 **UnclaimedPayouts** | [**List&lt;Payout&gt;**](Payout.md) |  | 
 **Utxo** | **string** | A reference to a transaction output with a transaction ID and index. | [optional] 

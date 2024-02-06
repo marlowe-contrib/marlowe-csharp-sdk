@@ -48,64 +48,28 @@ namespace MarloweAPIClient.Model
             {
                 throw new ArgumentNullException("txBody is a required property for WithdrawTxBodyEnvelope and cannot be null");
             }
-            this._TxBody = txBody;
+            this.TxBody = txBody;
             // to ensure "withdrawalId" is required (not null)
             if (withdrawalId == null)
             {
                 throw new ArgumentNullException("withdrawalId is a required property for WithdrawTxBodyEnvelope and cannot be null");
             }
-            this._WithdrawalId = withdrawalId;
+            this.WithdrawalId = withdrawalId;
         }
 
         /// <summary>
         /// Gets or Sets TxBody
         /// </summary>
         [DataMember(Name = "txBody", IsRequired = true, EmitDefaultValue = true)]
-        public TextEnvelope TxBody
-        {
-            get{ return _TxBody;}
-            set
-            {
-                _TxBody = value;
-                _flagTxBody = true;
-            }
-        }
-        private TextEnvelope _TxBody;
-        private bool _flagTxBody;
+        public TextEnvelope TxBody { get; set; }
 
-        /// <summary>
-        /// Returns false as TxBody should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTxBody()
-        {
-            return _flagTxBody;
-        }
         /// <summary>
         /// The hex-encoded identifier of a Cardano transaction
         /// </summary>
         /// <value>The hex-encoded identifier of a Cardano transaction</value>
         [DataMember(Name = "withdrawalId", IsRequired = true, EmitDefaultValue = true)]
-        public string WithdrawalId
-        {
-            get{ return _WithdrawalId;}
-            set
-            {
-                _WithdrawalId = value;
-                _flagWithdrawalId = true;
-            }
-        }
-        private string _WithdrawalId;
-        private bool _flagWithdrawalId;
+        public string WithdrawalId { get; set; }
 
-        /// <summary>
-        /// Returns false as WithdrawalId should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeWithdrawalId()
-        {
-            return _flagWithdrawalId;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

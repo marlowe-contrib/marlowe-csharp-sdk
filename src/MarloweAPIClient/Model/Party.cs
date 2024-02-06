@@ -35,10 +35,10 @@ namespace MarloweAPIClient.Model
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Party" /> class
-        /// with the <see cref="PartyOneOf" /> class
+        /// with the <see cref="PartyRoleName" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of PartyOneOf.</param>
-        public Party(PartyOneOf actualInstance)
+        /// <param name="actualInstance">An instance of PartyRoleName.</param>
+        public Party(PartyRoleName actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -47,10 +47,10 @@ namespace MarloweAPIClient.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Party" /> class
-        /// with the <see cref="PartyOneOf1" /> class
+        /// with the <see cref="PartyAddress" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of PartyOneOf1.</param>
-        public Party(PartyOneOf1 actualInstance)
+        /// <param name="actualInstance">An instance of PartyAddress.</param>
+        public Party(PartyAddress actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -71,39 +71,39 @@ namespace MarloweAPIClient.Model
             }
             set
             {
-                if (value.GetType() == typeof(PartyOneOf))
+                if (value.GetType() == typeof(PartyAddress))
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(PartyOneOf1))
+                else if (value.GetType() == typeof(PartyRoleName))
                 {
                     this._actualInstance = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: PartyOneOf, PartyOneOf1");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: PartyAddress, PartyRoleName");
                 }
             }
         }
 
         /// <summary>
-        /// Get the actual instance of `PartyOneOf`. If the actual instance is not `PartyOneOf`,
+        /// Get the actual instance of `PartyRoleName`. If the actual instance is not `PartyRoleName`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of PartyOneOf</returns>
-        public PartyOneOf GetPartyOneOf()
+        /// <returns>An instance of PartyRoleName</returns>
+        public PartyRoleName GetPartyRoleName()
         {
-            return (PartyOneOf)this.ActualInstance;
+            return (PartyRoleName)this.ActualInstance;
         }
 
         /// <summary>
-        /// Get the actual instance of `PartyOneOf1`. If the actual instance is not `PartyOneOf1`,
+        /// Get the actual instance of `PartyAddress`. If the actual instance is not `PartyAddress`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of PartyOneOf1</returns>
-        public PartyOneOf1 GetPartyOneOf1()
+        /// <returns>An instance of PartyAddress</returns>
+        public PartyAddress GetPartyAddress()
         {
-            return (PartyOneOf1)this.ActualInstance;
+            return (PartyAddress)this.ActualInstance;
         }
 
         /// <summary>
@@ -147,41 +147,41 @@ namespace MarloweAPIClient.Model
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(PartyOneOf).GetProperty("AdditionalProperties") == null)
+                if (typeof(PartyAddress).GetProperty("AdditionalProperties") == null)
                 {
-                    newParty = new Party(JsonConvert.DeserializeObject<PartyOneOf>(jsonString, Party.SerializerSettings));
+                    newParty = new Party(JsonConvert.DeserializeObject<PartyAddress>(jsonString, Party.SerializerSettings));
                 }
                 else
                 {
-                    newParty = new Party(JsonConvert.DeserializeObject<PartyOneOf>(jsonString, Party.AdditionalPropertiesSerializerSettings));
+                    newParty = new Party(JsonConvert.DeserializeObject<PartyAddress>(jsonString, Party.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("PartyOneOf");
+                matchedTypes.Add("PartyAddress");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into PartyOneOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into PartyAddress: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(PartyOneOf1).GetProperty("AdditionalProperties") == null)
+                if (typeof(PartyRoleName).GetProperty("AdditionalProperties") == null)
                 {
-                    newParty = new Party(JsonConvert.DeserializeObject<PartyOneOf1>(jsonString, Party.SerializerSettings));
+                    newParty = new Party(JsonConvert.DeserializeObject<PartyRoleName>(jsonString, Party.SerializerSettings));
                 }
                 else
                 {
-                    newParty = new Party(JsonConvert.DeserializeObject<PartyOneOf1>(jsonString, Party.AdditionalPropertiesSerializerSettings));
+                    newParty = new Party(JsonConvert.DeserializeObject<PartyRoleName>(jsonString, Party.AdditionalPropertiesSerializerSettings));
                 }
-                matchedTypes.Add("PartyOneOf1");
+                matchedTypes.Add("PartyRoleName");
                 match++;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into PartyOneOf1: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into PartyRoleName: {1}", jsonString, exception.ToString()));
             }
 
             if (match == 0)
